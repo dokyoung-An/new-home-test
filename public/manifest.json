@@ -1,0 +1,15 @@
+{
+  "short_name": "랜하우스 VR",
+  "name": "랜하우스 VR - 부동산 홍보의 새로운 기준",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+} 

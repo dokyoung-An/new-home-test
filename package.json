@@ -1,0 +1,52 @@
+{
+  "name": "lanhouse-vr",
+  "version": "0.1.0",
+  "private": true,
+  "description": "랜하우스 VR 서비스 문의사항 제출 시스템",
+  "main": "server.js",
+  "proxy": "http://localhost:3000",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "server": "node server.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.8",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^6.11.2",
+    "react-scripts": "^5.0.1",
+    "styled-components": "^5.3.10",
+    "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
