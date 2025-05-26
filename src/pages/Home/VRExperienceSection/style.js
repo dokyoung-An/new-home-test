@@ -67,6 +67,7 @@ export const VRExperience = styled.section`
   
   @media (max-width: 768px) {
     min-height: auto;
+    max-height: none;
     height: auto;
     padding-bottom: 0;
     transition: height 0.3s ease, padding-bottom 0.3s ease;
@@ -94,10 +95,14 @@ export const ExperienceWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     padding-top: 40px;
-    padding-bottom: 0;
+    padding-bottom: 300px;
     height: auto;
     gap: 30px;
     width: 100%;
+  }
+  
+  @media (max-width: 480px) {
+    padding-bottom: 250px;
   }
 `;
 
@@ -334,7 +339,7 @@ export const ExperienceSlider = styled.div`
   position: relative;
   backdrop-filter: blur(5px);
   max-width: 600px;
-  transition: height 0.3s ease, margin-top 0.3s ease;
+  transition: all 0.3s ease;
   overflow: visible;
   z-index: 5;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
@@ -344,12 +349,14 @@ export const ExperienceSlider = styled.div`
     height: 300px;
     margin-top: 15px;
     max-width: 100%;
-    width: 100vw;
+    width: 100%;
     overflow: hidden;
-    margin-left: calc(-50vw + 50%);
-    margin-right: calc(-50vw + 50%);
+    margin-left: 0;
+    margin-right: 0;
     border-radius: 0;
     margin-bottom: 0;
+    position: absolute;
+    bottom: 0;
   }
   
   @media (max-width: 480px) {

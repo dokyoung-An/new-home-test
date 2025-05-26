@@ -44,7 +44,7 @@ const HeroSection = () => {
             원상 복구 분쟁 최상의 솔루션
           </HeroSubTitle>
           <CTAButton>
-            지금 시작하기 <ArrowIcon color="#fff" />
+            <a href="#ContactFormSection">서비스 문의하기</a> <ArrowIcon color="#fff" />
           </CTAButton>
         </HeroContent>
       </Container>

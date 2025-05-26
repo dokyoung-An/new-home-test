@@ -51,7 +51,7 @@ const PromotionSection = () => {
               }
             }}
           >
-            프로모션 문의하기
+            서비스 문의하기
           </Button>
         </PromotionContent>
         

@@ -30,8 +30,8 @@ const CTABannerSection = () => {
   return (
     <CTABanner>
       <Container>
-        <CTASubtitle>발품 파는 부동산 임장은 NO!!</CTASubtitle>
-        <CTATitle>주요 건설사 아파트 내부!</CTATitle>
+        <CTASubtitle>어떻게 생겼는지 궁금해!!😆</CTASubtitle>
+        <CTATitle>대표 건설사 아파트 내부,</CTATitle>
         <CTAHighlight>랜하우스로 편하게 구경하세요.</CTAHighlight>
       
        

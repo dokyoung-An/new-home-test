@@ -258,7 +258,7 @@ export const CTAButton = styled.button`
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   position: relative;
   overflow: hidden;
-  max-width: 180px;
+  max-width: 200px;
   animation: ${fadeIn} 0.8s ease-out forwards;
   opacity: 0;
   animation-delay: 0.8s;
@@ -294,6 +294,18 @@ export const CTAButton = styled.button`
   
   &:active {
     transform: translateY(0) scale(0.98);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+    padding: 10px 20px;
+    max-width: 180px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+    padding: 12px 16px;
+    max-width: 143px;
   }
 `;
 

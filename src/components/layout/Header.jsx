@@ -67,9 +67,10 @@ const HeaderContent = styled.div`
 
 const Logo = styled.div`
   font-size: 1.4rem;
-  font-weight: 700;
+  font-weight: 400;
   transition: all 0.3s ease;
-  
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.05em;
 
   a {
     color: #fff;

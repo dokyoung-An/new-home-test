@@ -33,20 +33,21 @@ const BenefitsSection = () => {
     satisfaction: 0,
   });
   
-  const [inView, setInView] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
-  const intervalIdRef = useRef(null); // setInterval ID 저장용
+  const animationRef = useRef(null);
   
   // IntersectionObserver로 섹션이 화면에 들어왔을 때 감지
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) {
-          setInView(true);
-          observer.disconnect();
-        }
+        const [entry] = entries;
+        setIsVisible(entry.isIntersecting);
       }, 
-      { threshold: 0.25 }
+      { 
+        threshold: 0.25,
+        rootMargin: '-50px'
+      }
     );
     
     if (sectionRef.current) {
@@ -60,17 +61,32 @@ const BenefitsSection = () => {
     };
   }, []);
   
-  // 카운팅 애니메이션 - inView가 true일 때 시작
+  // 카운팅 애니메이션
   useEffect(() => {
-    if (!inView) return;
-  
-    const duration = 2000; // 총 지속 시간 3초
+    if (!isVisible) {
+      // 화면에서 벗어났을 때 숫자 초기화
+      setStats({
+        cost: 0,
+        time: 0,
+        rate: 0,
+        satisfaction: 0,
+      });
+      return;
+    }
+
+    const duration = 2000; // 총 지속 시간 2초
     const fps = 30;        // 초당 프레임 수
     const totalSteps = Math.floor(duration / (1000 / fps));
     let currentStep = 0;
   
     const easeOutQuad = (t) => t * (2 - t); // 부드러운 효과
-    const interval = setInterval(() => {
+
+    // 이전 애니메이션이 있다면 정리
+    if (animationRef.current) {
+      clearInterval(animationRef.current);
+    }
+  
+    animationRef.current = setInterval(() => {
       currentStep++;
       const progress = easeOutQuad(currentStep / totalSteps);
   
@@ -82,12 +98,17 @@ const BenefitsSection = () => {
       });
   
       if (currentStep >= totalSteps) {
-        clearInterval(interval);
+        clearInterval(animationRef.current);
+        animationRef.current = null;
       }
     }, 1000 / fps);
   
-    return () => clearInterval(interval);
-  }, [inView]);
+    return () => {
+      if (animationRef.current) {
+        clearInterval(animationRef.current);
+      }
+    };
+  }, [isVisible]);
   
   
   
