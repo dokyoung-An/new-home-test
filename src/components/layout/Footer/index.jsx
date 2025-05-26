@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container } from '../../../styles/common';
 import { RiInstagramLine, RiKakaoTalkFill } from 'react-icons/ri';
 import { SiNaver, SiYoutube } from 'react-icons/si';
+import RefundPolicyPopup from './RefundPolicyPopup';
 import {
   FooterWrapper,
   FooterContent,
@@ -13,21 +14,25 @@ import {
   FooterSelectGroup,
   FooterNav,
   SocialButtons,
-  SocialButton
+  SocialButton,
+  FooterLink
 } from './style';
 
 const Footer = () => {
+  const [isRefundPolicyOpen, setIsRefundPolicyOpen] = useState(false);
+
   return (
     <FooterWrapper>
       <Container>
         <FooterContent>
           <FooterTop>
             <FooterNav>
-            <a href="#VRExperience">Portfolio</a>
-            <a href="#BenefitsSection">서비스 장점</a>
-            <a href="#FeaturesSection">기능</a>          
-            <a href="#PricingSection">가격안내</a>       
-            <a href="#ContactFormSection">문의하기</a>
+              <a href="#VRExperience">Portfolio</a>
+              <a href="#BenefitsSection">서비스 장점</a>
+              <a href="#FeaturesSection">기능</a>          
+              <a href="#PricingSection">가격안내</a>       
+              <a href="#ContactFormSection">문의하기</a>
+              <FooterLink onClick={() => setIsRefundPolicyOpen(true)}>환불규정</FooterLink>
             </FooterNav>
           </FooterTop>
 
@@ -98,6 +103,11 @@ const Footer = () => {
           </FooterBottom>
         </FooterContent>
       </Container>
+      
+      <RefundPolicyPopup 
+        isOpen={isRefundPolicyOpen}
+        onClose={() => setIsRefundPolicyOpen(false)}
+      />
     </FooterWrapper>
   );
 };

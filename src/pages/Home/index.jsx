@@ -16,13 +16,19 @@ import ContactFormSection from './ContactFormSection';
 import BannerSection from './BannerSection';
 import AdminLink from './AdminLink';
 import NewsSection from './NewsSection';
+import ReservationSection from './ReservationSection';
+import FAQSection from './FAQSection';
+
 const Home = () => {
   return (
     <>
       <Header />
       <HeroSection/>
       <SloganSection/>
+     
       <VRExperienceSection/>
+      <ReservationSection/>
+      
       <CTABannerSection/>
       <FeaturesSection/>
       <BenefitsSection/>
@@ -31,9 +37,11 @@ const Home = () => {
      
       <TestimonialsSection />
       <PricingSection/>
+      <FAQSection/>
       <PromotionSection/>
       <NewsSection/>
       <ProcessSection/>
+      
       <ContactFormSection />
      
       <BannerSection/>

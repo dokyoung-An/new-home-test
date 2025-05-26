@@ -112,7 +112,7 @@ const PricingSectionComponent = () => {
                 <line x1="12" y1="16" x2="12.01" y2="16"></line>
               </svg>
               <span className="title-text">
-                이용 전 <span className="highlight">유의사항</span>
+                촬영 전 <span className="highlight">유의사항</span>
               </span>
             </ServiceSectionTitle>
             <ServiceCardsContainer>

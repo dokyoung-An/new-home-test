@@ -167,4 +167,23 @@ export const SocialButton = styled.a`
   }
 `;
 
+export const FooterLink = styled.button`
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 0;
+  
+  &:hover {
+    color: #fff;
+  }
+
+  &:not(:last-child)::after {
+    content: '|';
+    margin: 0 8px;
+    color: #444;
+  }
+`;
+
 

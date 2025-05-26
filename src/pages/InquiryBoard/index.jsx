@@ -107,7 +107,7 @@ const InquiryBoard = () => {
         interest: item.interest || '',
         message: item.message || '',
         newsletter: item.newsletter ? '동의' : '미동의',
-        status: item.status || 'new',
+        inquiry_status: item.inquiry_status || 'new',
         createdAt: item.created_at,
         response: item.response || null,
         respondedAt: item.responded_at || null
@@ -184,7 +184,7 @@ const InquiryBoard = () => {
             interest: item.interest || '',
             message: item.message || '',
             newsletter: item.newsletter ? '동의' : '미동의',
-            status: item.status || 'new',
+            inquiry_status: item.inquiry_status || 'new',
             createdAt: item.created_at,
             response: item.response || null,
             respondedAt: item.responded_at || null
@@ -265,7 +265,7 @@ const InquiryBoard = () => {
         interest: data.interest || '',
         message: data.message || '',
         newsletter: data.newsletter ? '동의' : '미동의',
-        status: data.status || 'new',
+        inquiry_status: data.inquiry_status || 'new',
         createdAt: data.created_at,
         response: data.response || null,
         respondedAt: data.responded_at || null
@@ -297,11 +297,11 @@ const InquiryBoard = () => {
       setLoading(true);
       
       const { data, error } = await supabase
-        .from(TABLE_NAME)
+        .from('inquiries')
         .update({
           response: responseText,
           responded_at: new Date().toISOString(),
-          status: 'completed'
+          inquiry_status: 'completed'
         })
         .eq('id', selectedInquiry.id)
         .select();
@@ -331,7 +331,7 @@ const InquiryBoard = () => {
           interest: item.interest || '',
           message: item.message || '',
           newsletter: item.newsletter ? '동의' : '미동의',
-          status: item.status || 'new',
+          inquiry_status: item.inquiry_status || 'new',
           createdAt: item.created_at,
           response: item.response || null,
           respondedAt: item.responded_at || null
@@ -354,46 +354,35 @@ const InquiryBoard = () => {
       setLoading(true);
       
       const { data, error } = await supabase
-        .from(TABLE_NAME)
-        .update({ status: newStatus })
+        .from('inquiries')
+        .update({ 
+          inquiry_status: newStatus
+        })
         .eq('id', id)
         .select();
       
       if (error) {
-        throw error;
+        console.error('상태 변경 오류:', error);
+        throw new Error(error.message);
       }
       
-      alert('문의 상태가 변경되었습니다.');
-      // 변경 후 목록 새로고침
-      const { data: refreshData, error: refreshError } = await supabase
-        .from(TABLE_NAME)
-        .select('*')
-        .order('created_at', { ascending: false });
-        
-      if (!refreshError && refreshData) {
-        const formattedData = refreshData.map(item => ({
-          id: item.id,
-          date: item.created_at ? new Date(item.created_at).toISOString().split('T')[0] : '날짜 없음',
-          name: item.name || '이름 없음',
-          email: item.email || '',
-          phone: item.phone || '',
-          region: item.region || '',
-          apartment: item.apartment || '',
-          interest: item.interest || '',
-          message: item.message || '',
-          newsletter: item.newsletter ? '동의' : '미동의',
-          status: item.status || 'new',
-          createdAt: item.created_at,
-          response: item.response || null,
-          respondedAt: item.responded_at || null
-        }));
-        
-        setInquiries(formattedData);
-        setTotalPages(Math.ceil(formattedData.length / itemsPerPage));
+      if (!data || data.length === 0) {
+        throw new Error('데이터를 찾을 수 없습니다.');
       }
+      
+      // 상태 변경 성공 메시지
+      const statusMessages = {
+        'new': '신규문의',
+        'in-progress': '상담중',
+        'completed': '예약완료'
+      };
+      alert(`상태가 "${statusMessages[newStatus]}"로 변경되었습니다.`);
+
+      // 목록 새로고침
+      fetchInquiries();
     } catch (error) {
       console.error('상태 변경 오류:', error);
-      setError('상태 변경 중 오류가 발생했습니다.');
+      alert(`상태 변경 중 오류가 발생했습니다: ${error.message}`);
     } finally {
       setLoading(false);
     }
@@ -482,11 +471,33 @@ const InquiryBoard = () => {
                       <td>{inquiry.phone || '-'}</td>
                       <td>{inquiry.interest}</td>
                       <td>
-                        <StatusBadge status={inquiry.status}>
-                          {inquiry.status === 'new' ? '새 문의' : 
-                           inquiry.status === 'in-progress' ? '처리중' : 
-                           '답변완료'}
-                        </StatusBadge>
+                        <StatusCell>
+                          <StatusBadge status={inquiry.inquiry_status}>
+                            {inquiry.inquiry_status === 'new' ? '신규문의' : 
+                             inquiry.inquiry_status === 'in-progress' ? '상담중' : 
+                             '예약완료'}
+                          </StatusBadge>
+                          <StatusButtonGroup>
+                            <StatusButton
+                              active={inquiry.inquiry_status === 'new'}
+                              onClick={() => handleStatusChange(inquiry.id, 'new')}
+                            >
+                              신규문의
+                            </StatusButton>
+                            <StatusButton
+                              active={inquiry.inquiry_status === 'in-progress'}
+                              onClick={() => handleStatusChange(inquiry.id, 'in-progress')}
+                            >
+                              상담중
+                            </StatusButton>
+                            <StatusButton
+                              active={inquiry.inquiry_status === 'completed'}
+                              onClick={() => handleStatusChange(inquiry.id, 'completed')}
+                            >
+                              예약완료
+                            </StatusButton>
+                          </StatusButtonGroup>
+                        </StatusCell>
                       </td>
                       <td>
                         <ActionButton onClick={() => fetchInquiryDetails(inquiry.id)}>
@@ -573,21 +584,21 @@ const InquiryBoard = () => {
                   <label>상태 변경</label>
                   <StatusButtonsContainer>
                     <StatusButton 
-                      active={selectedInquiry.status === 'new'}
+                      active={selectedInquiry.inquiry_status === 'new'}
                       onClick={() => handleStatusChange(selectedInquiry.id, 'new')}
                       disabled={useTestData}
                     >
                       새 문의
                     </StatusButton>
                     <StatusButton 
-                      active={selectedInquiry.status === 'in-progress'}
+                      active={selectedInquiry.inquiry_status === 'in-progress'}
                       onClick={() => handleStatusChange(selectedInquiry.id, 'in-progress')}
                       disabled={useTestData}
                     >
                       처리중
                     </StatusButton>
                     <StatusButton 
-                      active={selectedInquiry.status === 'completed'}
+                      active={selectedInquiry.inquiry_status === 'completed'}
                       onClick={() => handleStatusChange(selectedInquiry.id, 'completed')}
                       disabled={useTestData}
                     >
@@ -628,8 +639,6 @@ const InquiryBoard = () => {
     </PageWrapper>
   );
 };
-
-
 
 // 새로 추가한 스타일 컴포넌트
 const PageWrapper = styled.div`
@@ -753,29 +762,67 @@ const InquiryTable = styled.div`
   }
 `;
 
+const StatusCell = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+`;
+
+const StatusButtonGroup = styled.div`
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  
+  ${StatusCell}:hover & {
+    opacity: 1;
+  }
+`;
+
+const StatusButton = styled.button`
+  padding: 2px 6px;
+  border: 1px solid ${props => props.active ? '#333' : '#ddd'};
+  border-radius: 4px;
+  background-color: ${props => props.active ? '#333' : 'transparent'};
+  color: ${props => props.active ? '#fff' : '#666'};
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: ${props => props.active ? '#222' : '#f5f5f5'};
+  }
+`;
+
 const StatusBadge = styled.span`
   display: inline-block;
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 13px;
   
   ${({ status }) => {
-    if (status === 'new') {
-      return `
-        background-color: #edf7ed;
-        color: #1e7e1e;
-      `;
-    } else if (status === 'in-progress') {
-      return `
-        background-color: #fff4e5;
-        color: #b65000;
-      `;
-    } else {
-      return `
-        background-color: #eeeef7;
-        color: #5c5c8a;
-      `;
+    switch (status) {
+      case 'new':
+        return `
+          background-color: #e3f2fd;
+          color: #1976d2;
+        `;
+      case 'in-progress':
+        return `
+          background-color: #fff3e0;
+          color: #f57c00;
+        `;
+      case 'completed':
+        return `
+          background-color: #e8f5e9;
+          color: #388e3c;
+        `;
+      default:
+        return `
+          background-color: #f5f5f5;
+          color: #666;
+        `;
     }
   }}
 `;
@@ -925,28 +972,6 @@ const StatusButtonsContainer = styled.div`
   }
 `;
 
-const StatusButton = styled.button`
-  padding: 8px 15px;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  
-  ${({ active }) => active ? `
-    background-color: #333;
-    color: white;
-  ` : `
-    background-color: #eee;
-    color: #666;
-  `}
-  
-  &:hover {
-    background-color: ${({ active }) => active ? '#333' : '#ddd'};
-  }
-`;
-
 const SubmitButton = styled.button`
   background: #ff6600;
   color: white;
@@ -959,6 +984,11 @@ const SubmitButton = styled.button`
   
   &:hover {
     background: #cc5200;
+  }
+  
+  &:disabled {
+    background: #ccc;
+    cursor: not-allowed;
   }
 `;
 
@@ -983,29 +1013,6 @@ const EmptyMessage = styled.div`
   color: #666;
 `;
 
-const TestDataBanner = styled.div`
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  text-align: center;
-`;
-
-const RefreshButton = styled.button`
-  background-color: #ff6600;
-  color: white;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background-color: #cc5200;
-  }
-`;
-
 const TestDataNote = styled.div`
   margin-bottom: 20px;
   color: #666;
@@ -1016,7 +1023,6 @@ const DisabledMessage = styled.div`
   color: #666;
 `;
 
-// 로딩 스피너 컴포넌트
 const LoadingSpinner = styled.div`
   border: 4px solid rgba(0, 0, 0, 0.1);
   width: 36px;
@@ -1036,7 +1042,6 @@ const LoadingSpinner = styled.div`
   }
 `;
 
-// 에러 컨테이너
 const ErrorContainer = styled.div`
   text-align: center;
   padding: 50px;
@@ -1049,4 +1054,19 @@ const ErrorContainer = styled.div`
   }
 `;
 
-export default InquiryBoard; 
+const RefreshButton = styled.button`
+  background-color: #ff5331;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: #cc5200;
+  }
+`;
+
+export default InquiryBoard;
