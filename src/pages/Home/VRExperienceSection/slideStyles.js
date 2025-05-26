@@ -12,6 +12,7 @@ export const SliderContainer = styled.div`
     overflow: hidden;
     padding: 0;
     width: 100%;
+    
   }
 `;
 

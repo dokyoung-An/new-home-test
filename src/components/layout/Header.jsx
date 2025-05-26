@@ -69,11 +69,13 @@ const Logo = styled.div`
   font-size: 1.4rem;
   font-weight: 700;
   transition: all 0.3s ease;
+  
 
   a {
     color: #fff;
     text-decoration: none;
     transition: color 0.3s ease;
+    
   }
 `;
 
@@ -88,7 +90,7 @@ const NavLinks = styled.ul`
 
   a {
     font-size: 0.9rem;
-    font-weight: 500;
+    font-weight: lighter;
     color: #fff;
     text-decoration: none;
     transition: color 0.3s ease;
