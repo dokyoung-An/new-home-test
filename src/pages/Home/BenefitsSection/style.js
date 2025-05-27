@@ -61,13 +61,15 @@ export const BenefitsMent = styled.div`
     font-weight: 500;
     padding-left: 10px;
     line-height: 1.6;
+    word-break: keep-all;
     
     @media (max-width: 768px) {
       font-size: 1rem;
     }
     
     @media (max-width: 480px) {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
+      line-height: 1.8;
     }
   }
 `;

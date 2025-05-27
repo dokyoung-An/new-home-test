@@ -50,8 +50,10 @@ export const CTAHighlight = styled.div`
   animation: ${ctaColorChange} 0.8s ease-in-out infinite;
   
   @media (max-width: 480px) {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     word-break: keep-all;
+    line-height: 1.3;
+    margin-bottom: 6rem;
   }
 `;
 

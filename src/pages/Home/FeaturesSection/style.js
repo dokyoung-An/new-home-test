@@ -267,6 +267,10 @@ export const FeatureTag = styled.span`
   font-size: 0.9rem;
   margin-bottom: 30px;
   box-shadow: 0 0 20px rgba(180, 58, 27, 0.3);
+
+  @media (max-width: 480px) {
+    font-size: 0.6rem;
+  }
 `;
 
 export const FeatureTitle = styled.h2`
@@ -276,26 +280,28 @@ export const FeatureTitle = styled.h2`
   position: relative;
   color: #fff;
   
-  /* 네온 효과 */
-  text-shadow: 0 0 10px rgba(230, 92, 48, 0.5),
-               0 0 20px rgba(180, 58, 27, 0.3);
+ 
   
   @media (max-width: 480px) {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
+    word-break: keep-all;
   }
 `;
 
 export const FeatureParagraph = styled.p`
   max-width: 700px;
   margin: 10px auto 80px;
-  line-height: 1.6;
+  line-height: 1.8;
   font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.8);
   font-weight: 500;
+  word-break: keep-all;
   
   @media (max-width: 480px) {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     margin-bottom: 60px;
+    
+
   }
 `;
 
