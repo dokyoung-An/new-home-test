@@ -25,6 +25,9 @@ export const FloatingButton = styled.button`
   text-decoration: none;
   color: white;
 
+  .kakao-button {
+    background-color : #FFDA00;
+  }
   img {
     width: 30px;
     height: 30px;

@@ -18,8 +18,8 @@ const FloatingButtons = () => {
 
   return (
     <FloatingContainer>
-      <FloatingButton onClick={handleKakaoChannel}>
-        <img src="/img/chlogo.png" alt="채널톡" />
+      <FloatingButton className="kakao-button" onClick={handleKakaoChannel} style={{ backgroundColor: '#FFDA00' }}>
+        <img src="/img/b_chlogo.png" alt="채널톡" />
       </FloatingButton>
       <FloatingButton className="phone-button" onClick={handlePhoneClick}>
         <FaPhone />
