@@ -78,6 +78,10 @@ const Logo = styled.div`
     transition: color 0.3s ease;
     
   }
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    margin-left: -15px;
+  }
 `;
 
 const NavLinks = styled.ul`

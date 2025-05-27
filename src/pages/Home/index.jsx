@@ -28,7 +28,7 @@ const Home = () => {
       <SloganSection/>
      
       <VRExperienceSection/>
-      <ContactFormSection />
+      
      
       
       <CTABannerSection/>
@@ -45,6 +45,7 @@ const Home = () => {
      
       <NewsSection/>
       <CoworkerSection/>
+      <ContactFormSection />
       <FAQSection/>
      
       

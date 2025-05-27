@@ -83,7 +83,7 @@ const FeaturesSection = () => {
             position: 'relative',
             backgroundColor: 'rgba(40, 30, 20, 0.2)',
             borderRadius: '20px',
-            margin: '60px 0',
+            margin: '60px 0 80px 0',
             minHeight: '300px',
             maxWidth: '100%',
            boxShadow: '0 25px 40px rgba(0, 0, 0, 0.25)',

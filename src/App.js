@@ -10,6 +10,7 @@ import styled from 'styled-components';
 import AmbassadorBoard from './pages/AmbassadorBoard';
 import EventPopup from './components/EventPopup';
 import { useState, useEffect } from 'react';
+import FloatingButtons from './components/FloatingButtons';
 
 const MainContent = styled.main`
   /* 패딩 제거 */
@@ -49,6 +50,7 @@ function App() {
             {/* <Route path="/contact" element={<Contact />} /> */}
           </Routes>
         </MainContent>
+        <FloatingButtons />
       </Router>
       {showEventPopup && <EventPopup onClose={handleCloseEventPopup} />}
     </ThemeProvider>

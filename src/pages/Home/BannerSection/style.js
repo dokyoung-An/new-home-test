@@ -35,6 +35,7 @@ export const TypingLine = styled.h1`
   font-size: 2.5rem;
   font-weight: 600;
   color: #ffffff;
+  word-break: keep-all;
 
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 
@@ -77,7 +78,7 @@ export const FixedLine = styled.h2`
   font-size: 2.7rem; /* 기존 2.5rem → 조금 더 큼 */
   font-weight: 700;
   color: ${({ theme }) => theme.primaryColor};
- 
+  word-break: keep-all;
   opacity: 0;
   visibility: hidden;
  
@@ -98,7 +99,7 @@ export const FixedLine = styled.h2`
   }
 
   @media (max-width: 480px) {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 `;
 
