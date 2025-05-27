@@ -159,6 +159,7 @@ const FeaturesSection = () => {
                 textShadow: '0 0 20px rgba(20, 15, 10, 0.9)',
                 marginBottom: '80px',
                 letterSpacing: '0.5px',
+                wordBreak: 'keep-all',
               }}>
                 클릭해 직접 체험해 보세요
               </div>

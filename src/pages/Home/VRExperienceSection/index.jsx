@@ -66,7 +66,7 @@ const VRExperienceSection = () => {
       vrUrl: ' https://lanhouse-in-port.vercel.app/비봉금강펜테리움/'
     },
     {
-      title: '도심역한양수자인리버파인인',
+      title: '도심역한양수자인리버파인',
       description: '사용자 친화적 인터페이스로 쉽게 공간을 이동하고 탐색 가능',
       bgImage: 'dosim.jpg',
       vrUrl: ' https://lanhouse-in-port.vercel.app/도심역한양수자인/'

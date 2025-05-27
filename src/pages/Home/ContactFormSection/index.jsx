@@ -112,7 +112,7 @@ const ContactFormSection = forwardRef((props, ref) => {
   useEffect(() => {
     const fetchRecentInquiries = async () => {
       try {
-        console.log('최근 문의 내역 가져오기 시도');
+      
         const { data, error } = await supabase
           .from('inquiries')
           .select('*')
@@ -124,7 +124,7 @@ const ContactFormSection = forwardRef((props, ref) => {
           return;
         }
 
-        console.log('받은 데이터:', data);
+      
         
         if (Array.isArray(data)) {
           const formattedData = data.map(item => ({
@@ -137,7 +137,7 @@ const ContactFormSection = forwardRef((props, ref) => {
             apartment: item.apartment || '',
             status: item.inquiry_status || 'new'
           }));
-          console.log('변환된 데이터:', formattedData);
+        
           setRecentInquiries(formattedData);
         } else {
           console.error('예상치 못한 데이터 형식:', data);
