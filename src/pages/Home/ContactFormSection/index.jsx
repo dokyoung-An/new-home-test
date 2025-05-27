@@ -109,48 +109,44 @@ const ContactFormSection = forwardRef((props, ref) => {
   });
   const [recentInquiries, setRecentInquiries] = useState([]);
 
-  // 최근 문의 내역 가져오기
-  useEffect(() => {
-    const fetchRecentInquiries = async () => {
-      try {
-      
-        const { data, error } = await supabase
-          .from('inquiries')
-          .select('*')
-          .order('created_at', { ascending: false })
-          .limit(6);
+  // 최근 문의 내역 가져오기 함수
+  const fetchRecentInquiries = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('inquiries')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .limit(5);
 
-        if (error) {
-          console.error('Supabase 쿼리 에러:', error);
-          return;
-        }
-
-      
-        
-        if (Array.isArray(data)) {
-          const formattedData = data.map(item => ({
-            id: item.id,
-            date: new Date(item.created_at).toLocaleDateString('ko-KR', {
-              month: '2-digit',
-              day: '2-digit'
-            }).replace(/\. /g, '.').slice(0, -1),
-            region: item.region || '',
-            apartment: item.apartment || '',
-            status: item.inquiry_status || 'new'
-          }));
-        
-          setRecentInquiries(formattedData);
-        } else {
-          console.error('예상치 못한 데이터 형식:', data);
-          setRecentInquiries([]);
-        }
-      } catch (error) {
-        console.error('최근 문의 내역 로드 실패:', error);
-        setRecentInquiries([]);
+      if (error) {
+        console.error('Supabase 쿼리 에러:', error);
+        return;
       }
-    };
 
-    // 실시간 업데이트 구독
+      if (Array.isArray(data)) {
+        const formattedData = data.map(item => ({
+          id: item.id,
+          date: new Date(item.created_at).toLocaleDateString('ko-KR', {
+            month: '2-digit',
+            day: '2-digit'
+          }).replace(/\. /g, '.').slice(0, -1),
+          name: item.name || '',
+          region: item.region || '',
+          apartment: item.apartment || '',
+          status: item.inquiry_status || 'new'
+        }));
+      
+        setRecentInquiries(formattedData);
+      }
+    } catch (error) {
+      console.error('최근 문의 내역 로드 실패:', error);
+    }
+  };
+
+  // 초기 데이터 로드 및 실시간 업데이트 구독
+  useEffect(() => {
+    fetchRecentInquiries();
+
     const subscription = supabase
       .channel('inquiries_changes')
       .on('postgres_changes', 
@@ -165,14 +161,11 @@ const ContactFormSection = forwardRef((props, ref) => {
       )
       .subscribe();
 
-    // 초기 데이터 로드
-    fetchRecentInquiries();
-
-    // 클린업
     return () => {
       subscription.unsubscribe();
     };
   }, []);
+
   // 상태 텍스트 변환
   const getStatusText = (status) => {
     switch (status) {
@@ -182,8 +175,6 @@ const ContactFormSection = forwardRef((props, ref) => {
       default: return '신규';
     }
   };
-
-
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [rotateDirection, setRotateDirection] = useState('right');
@@ -241,6 +232,9 @@ const ContactFormSection = forwardRef((props, ref) => {
         region: '',
         apartment: ''
       });
+      
+      // 폼 제출 후 즉시 목록 업데이트
+      fetchRecentInquiries();
     } catch (error) {
       console.error('문의 제출 오류:', error);
       alert('문의 제출 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
@@ -288,7 +282,7 @@ const ContactFormSection = forwardRef((props, ref) => {
                     <InquiryContent>
                       <div>{inquiry.apartment}</div>
                       <div className='region'>{inquiry.region}</div>
-                      <div>{index === 0 ? inquiry.name : maskName(inquiry.name)}</div>
+                      {/* <div>{index === 0 ? inquiry.name : maskName(inquiry.name)}</div> */}
                     </InquiryContent>
                     <InquiryStatus status={inquiry.status}>
                       {getStatusText(inquiry.status)}

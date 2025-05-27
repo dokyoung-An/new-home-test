@@ -136,6 +136,7 @@ export const FormSection = styled.div`
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
   position: relative;
   animation: ${fadeIn} 0.6s ease-out;
+  margin-top: 50px;
 
   &::before {
     content: '';
@@ -605,11 +606,15 @@ export const SlideDescription = styled.p`
 // ... 기존 imports 및 스타일 ...
 
 export const InquiryBoard = styled.div`
-  margin-top: 40px;
+  margin-top: 30px;
   background: rgba(255, 255, 255, 0.9);
   border-radius: 12px;
   padding: 24px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+  @media (max-width: 768px) {
+    padding: 24px 12px;
+  }
 `;
 
 export const InquiryBoardTitle = styled.h4`
@@ -644,7 +649,7 @@ export const InquiryList = styled.div`
     border-radius: 3px;
   }
   @media (max-width: 768px) {
-    max-height: 200px;
+    max-height: 280px;
     
   }
 `;
@@ -662,6 +667,10 @@ export const InquiryItem = styled.div`
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  @media (max-width: 768px) {
+    padding: 5px 16px;
   }
 `;
 
@@ -696,7 +705,14 @@ export const InquiryContent = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 5px;
+
+    .region {
+    padding-top: 0px;
+    color: #666;
+    
   }
+  }
+
 `;
 
 export const InquiryStatus = styled.div`
@@ -708,6 +724,8 @@ export const InquiryStatus = styled.div`
   text-align: center;
   min-width: 80px;
   
+ 
+
   ${props => {
     switch (props.status) {
       case 'completed':
@@ -726,7 +744,10 @@ export const InquiryStatus = styled.div`
           color: #1976d2;
         `;
     }
-  }}
+  }
+  
+  
+  }
 `;
 
 // ... 기존 스타일 컴포넌트들 ...

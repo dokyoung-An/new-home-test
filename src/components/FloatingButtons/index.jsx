@@ -1,6 +1,6 @@
 import React from 'react';
 import { FloatingContainer, FloatingButton } from './style';
-import { FaPhone, FaComments, FaCheck } from 'react-icons/fa';
+import { FaPhone } from 'react-icons/fa';
 
 const FloatingButtons = () => {
   const handleKakaoChannel = () => {
@@ -18,11 +18,8 @@ const FloatingButtons = () => {
 
   return (
     <FloatingContainer>
-      <FloatingButton as="a" href="#ContactFormSection">
-        <FaCheck />
-      </FloatingButton>
       <FloatingButton onClick={handleKakaoChannel}>
-        <FaComments />
+        <img src="/img/chlogo.png" alt="채널톡" />
       </FloatingButton>
       <FloatingButton className="phone-button" onClick={handlePhoneClick}>
         <FaPhone />

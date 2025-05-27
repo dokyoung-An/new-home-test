@@ -25,6 +25,11 @@ export const FloatingButton = styled.button`
   text-decoration: none;
   color: white;
 
+  img {
+    width: 30px;
+    height: 30px;
+  }
+
   svg {
     color: white;
     font-size: 20px;
