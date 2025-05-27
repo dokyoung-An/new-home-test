@@ -280,10 +280,11 @@ const ContactFormSection = forwardRef((props, ref) => {
             <InquiryList>
               {recentInquiries.map((inquiry) => (
                 <InquiryItem key={inquiry.id}>
-                  <InquiryDate>{inquiry.date}</InquiryDate>
+                
                   <InquiryContent>
                     {inquiry.apartment}
                   </InquiryContent>
+                  <InquiryDate>{inquiry.date}</InquiryDate>
                   <InquiryStatus status={inquiry.status}>
                     {getStatusText(inquiry.status)}
                   </InquiryStatus>

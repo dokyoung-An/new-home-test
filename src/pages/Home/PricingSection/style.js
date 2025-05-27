@@ -178,9 +178,18 @@ export const PricingCard = styled.div`
       transform: rotate(45deg);
     }
   }
+
+  &:nth-child(1), &:nth-child(3) {
+    height: 70%;
+    align-self: flex-start;
+  }
   
   @media (max-width: 1024px) {
     margin-bottom: 20px;
+    
+    &:nth-child(1), &:nth-child(3) {
+      height: 100%;
+    }
   }
 `;
 
@@ -230,8 +239,62 @@ export const CardDescription = styled.div`
   margin-bottom: 30px;
   flex-grow: 1;
   
+  ul {
+    list-style: none;
+    padding: 0 20px;
+    margin: 24px 0 15px 0;
+  }
+
+  li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 12px;
+    line-height: 1.5;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 18px;
+      height: 18px;
+      background-color: ${({ theme }) => `${theme.primaryMiddle}15`};
+      border-radius: 50%;
+    }
+
+    &::after {
+      content: '✓';
+      position: absolute;
+      left: 4px;
+      top: 2px;
+      font-size: 12px;
+      color: ${({ theme }) => theme.primaryMiddle};
+    }
+  }
+  
   @media (max-width: 480px) {
     font-size: 0.9rem;
+    
+    li {
+      padding-left: 24px;
+      margin-bottom: 10px;
+      
+      &::before {
+        width: 16px;
+        height: 16px;
+        top: 5px;
+      }
+      
+      &::after {
+        font-size: 10px;
+        left: 3px;
+        top: 2px;
+      }
+    }
   }
 `;
 

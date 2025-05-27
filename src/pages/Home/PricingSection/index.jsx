@@ -75,10 +75,17 @@ const PricingSectionComponent = () => {
               <CardDescription>
                 사전점검 후, 준공 후, 카페나 단체방을 통해 함께 하실 분을 모아주세요.
                 모이시는 만큼 비용은 내려갑니다.
+                <ul>
+                <li>10세대 ~ 19세대 : 10% 할인</li>
+                <li>20세대 ~ 29세대 : 20% 할인</li>
+                <li>30세대 ~ 49세대 : 30% 할인</li>
+                <li>50세대 ~ 69세대 : 40% 할인</li>
+                <li>70세대 ~ 99세대 : 35% 할인</li>
+                </ul>
               </CardDescription>
               <PricingBox>
                 <SizeBadge>평당</SizeBadge>
-                <Price> ~ 4,500 원 <VAT>(VAT 포함함)</VAT></Price>
+                <Price> ~ 4,500 원 <VAT>(VAT 포함)</VAT></Price>
               </PricingBox>
             </PricingCard>
             
