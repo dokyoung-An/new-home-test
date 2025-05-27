@@ -1,53 +1,77 @@
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API_URL = process.env.NODE_ENV === 'production'
+  ? '/api'
+  : 'http://localhost:4000/api';
 
 export const api = {
-  // 문의사항 관련
-  async getInquiries() {
-    const response = await fetch(`${API_URL}/inquiries`);
-    if (!response.ok) throw new Error('Failed to fetch inquiries');
-    return response.json();
+  async get(endpoint) {
+    try {
+      const response = await fetch(`${API_URL}${endpoint}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return await response.json();
+    } catch (error) {
+      console.error('API Get Error:', error);
+      throw error;
+    }
   },
 
-  async updateInquiryStatus(id, status) {
-    const response = await fetch(`${API_URL}/inquiries/${id}/status`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ status }),
-    });
-    if (!response.ok) throw new Error('Failed to update inquiry status');
-    return response.json();
+  async post(endpoint, data) {
+    try {
+      const response = await fetch(`${API_URL}${endpoint}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return await response.json();
+    } catch (error) {
+      console.error('API Post Error:', error);
+      throw error;
+    }
   },
 
-  // 엠버서더 관련
-  async submitAmbassadorApplication(data) {
-    const response = await fetch(`${API_URL}/ambassador-applications`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
-    if (!response.ok) throw new Error('Failed to submit application');
-    return response.json();
+  async patch(endpoint, data) {
+    try {
+      const response = await fetch(`${API_URL}${endpoint}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return await response.json();
+    } catch (error) {
+      console.error('API Patch Error:', error);
+      throw error;
+    }
   },
 
-  async getAmbassadorApplications() {
-    const response = await fetch(`${API_URL}/ambassador-applications`);
-    if (!response.ok) throw new Error('Failed to fetch applications');
-    return response.json();
+  // 기존 메서드들을 새로운 메서드들을 사용하도록 수정
+  getInquiries() {
+    return this.get('/inquiries');
   },
 
-  async updateAmbassadorStatus(id, status) {
-    const response = await fetch(`${API_URL}/ambassador-applications/${id}/status`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ status }),
-    });
-    if (!response.ok) throw new Error('Failed to update status');
-    return response.json();
+  updateInquiryStatus(id, status) {
+    return this.patch(`/inquiries/${id}/status`, { status });
   },
+
+  submitAmbassadorApplication(data) {
+    return this.post('/ambassador-applications', data);
+  },
+
+  getAmbassadorApplications() {
+    return this.get('/ambassador-applications');
+  },
+
+  updateAmbassadorStatus(id, status) {
+    return this.patch(`/ambassador-applications/${id}/status`, { status });
+  }
 };
