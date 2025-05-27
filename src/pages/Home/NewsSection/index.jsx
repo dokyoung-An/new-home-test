@@ -38,10 +38,10 @@ const NewsComponent = () => {
       id: 1,
       category: 'notice',
       categoryName: '공지사항',
-      title: '랜하우스 신규 지점 오픈 안내',
+      title: '랜하우스 신규 지점 오픈 준비중중',
       description: '경기도 하남시 랜하우스 지사 오픈을 준비합니다. 더욱 빠르고 원활한 서비스로 고객 여러분께 만족을 드리겠습니다',
       date: '2025.05.27',
-      image: '/img/deone.jpg',
+      image: '/img/office.jpg',
       content: `랜하우스가 경기도 하남시에 새로운 지점을 오픈합니다.
 
 • 위치: 서울 강남구 신사동 123-45
@@ -62,7 +62,7 @@ const NewsComponent = () => {
       title: '홈페이지 개편 프로모션',
       description: '랜하우스 홈페이지 오픈 기념, 이벤트를 준비했습니다. 넉넉한 호스팅 기간, 특화된 서비스를 마음껏 누르보세요',
       date: '2025.05.28',
-      image: '/img/deone.jpg',
+      image: '/img/present.jpg',
       content: `신규 고객님을을 위한 특별한 혜택을 준비했습니다!
 
 [프로모션 혜택]
@@ -79,10 +79,10 @@ const NewsComponent = () => {
       id: 3,
       category: 'news',
       categoryName: '뉴스',
-      title: '랜하우스, 입주박람회 플랫폼 우집사와 MOU체결',
+      title: '랜하우스, 입주박람회 플랫폼 우집사와 MOU 예정',
       description: '랜하우스가 입주박람회 플랫폼 우집사와 MOU를 체결했습니다. 랜하우스 이용하고 포인트로 우집사에서 원하는 시공 자유롭게 받아보세요요',
       date: '2025.06.18',
-      image: '/img/deone.jpg',
+      image: '/img/mou.jpg',
       content: `랜하우스가 입주박람회 플랫폼 우집사와 MOU를 체결했습니다.`
     }
   ];

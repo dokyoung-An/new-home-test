@@ -28,7 +28,7 @@ const PromotionSection = () => {
       <PromotionContainer>
         <PromotionContent>
           <TitleDecoration />
-          <PromotionTitle>지금 신청하고<br />혜택 받으세요</PromotionTitle>
+          <PromotionTitle>지금! 신청하고<br />혜택 받으세요</PromotionTitle>
           <PromotionText>
             서비스 런칭 기념 프로모션! 호스팅 연장, 무료 기술 지원, 마케팅 기술 지원 등
             다양한 혜택을 제공합니다.

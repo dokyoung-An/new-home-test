@@ -319,7 +319,7 @@ export const PromotionTitle = styled.h2`
   font-weight: 700;
   margin-bottom: 25px;
   color: ${BRAND_COLORS.white};
-  line-height: 1.2;
+  line-height: 1.4;
   animation: ${slideInLeft} 0.8s ease-out forwards;
   animation-delay: 0.4s;
   position: relative;
@@ -355,6 +355,7 @@ export const PromotionText = styled.p`
   max-width: 500px;
   animation: ${slideInLeft} 0.8s ease-out forwards;
   animation-delay: 0.6s;
+  word-break: keep-all;
   
   @media (max-width: 1024px) {
     margin: 0 auto 30px;
