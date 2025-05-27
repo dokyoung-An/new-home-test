@@ -30,6 +30,7 @@ const HeroSection = () => {
     <Hero>
       <VideoBackground autoPlay muted loop playsInline preload="auto">
         <source src="/img/hero.mp4" type="video/mp4" />
+        <source src="video.webm" type="video/webm"/>
       </VideoBackground>
       
       <Container>
