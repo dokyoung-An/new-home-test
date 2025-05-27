@@ -38,44 +38,34 @@ const VRExperienceSection = () => {
       title: '더샵 엘로이',
       description: '부동산 방문 없이도 실제 공간을 체험할 수 있는 가상 투어 서비스',
       bgImage: 'eloi.jpg',
-      vrUrl: 'https://ilsanloe.vercel.app/1026352/'
+      vrUrl: ' https://lanhouse-in-port.vercel.app/더샵엘로이/'
     },
     {
-      title: '대전 둔산자이',
+      title: '수원아이파크시티12단지',
       description: '관심 있는 매물만 방문하여 효율적인 부동산 탐색 가능',
       bgImage: 'dunsanzae.jpg',
-      vrUrl: 'https://lanhouse051011.vercel.app/p2048234/'
+      vrUrl: 'https://lanhouse-in-port.vercel.app/수원아이파크시티12단지/'
     },
     {
       title: '분당어울림',
       description: '360도 4K 고화질 촬영으로 공간의 디테일까지 섬세하게 표현',
       bgImage: 'bundangulim.jpg',
-      vrUrl: 'https://geumhoeulim.vercel.app/1026344/'
+      vrUrl: 'https://lanhouse-in-port.vercel.app/금호어울림/'
     },
     {
-      title: '운정경남아너스빌디원',
+      title: '리버센SK뷰',
       description: '웹사이트, 소셜 미디어, 메신저 등 다양한 플랫폼에서 공유 가능',
       bgImage: 'deone.jpg',
-      vrUrl: 'https://lanhouse051011.vercel.app/p2048234/'
+      vrUrl: 'https://lanhouse-in-port.vercel.app/리버센sk뷰/'
     },
-    {
-      title: '올림픽파크포레온',
-      description: '부동산의 특성과 고객 요구에 맞춘 맞춤형 VR 콘텐츠 제작',
-      bgImage: 'olim.jpg',
-      vrUrl: 'https://lanhouse051011.vercel.app/p2048234/'
-    },
+   
     {
       title: '화성비봉금강펜테리움',
       description: '사용자 친화적 인터페이스로 쉽게 공간을 이동하고 탐색 가능',
       bgImage: 'bibong.jpg',
-      vrUrl: 'https://lanhouse051011.vercel.app/h3028138/'
+      vrUrl: ' https://lanhouse-in-port.vercel.app/비봉금강펜테리움/'
     },
-    {
-      title: '덕정역서희스타힐스',
-      description: '24시간 접근 가능한 VR 투어로 시간과 장소의 제약 없이 매물 확인',
-      bgImage: 'suhee.jpg',
-      vrUrl: 'https://lanhouse051011.vercel.app/p2048234/'
-    }
+   
   ];
 
   // 이미지 프리로드

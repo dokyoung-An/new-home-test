@@ -20,6 +20,7 @@ import ReservationSection from './ReservationSection';
 import FAQSection from './FAQSection';
 import CoworkerSection from './CoworkerSection';
 
+
 const Home = () => {
   return (
     <>
@@ -41,6 +42,7 @@ const Home = () => {
       <FAQSection/>
       <PromotionSection/>
       <ContactFormSection />
+     
       <NewsSection/>
       <CoworkerSection/>
      

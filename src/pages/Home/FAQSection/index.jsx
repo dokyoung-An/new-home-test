@@ -62,8 +62,8 @@ const FAQSection = () => {
           <FAQContainer>
             <div>
               <FAQTitle>
-                <h2>렌하우스</h2>
-                <h3>F&A</h3>
+                <h2>랜하우스</h2>
+                <h3>F&Q</h3>
               </FAQTitle>
               <FAQDescription>
                 VR 촬영부터 웹사이트 업로드까지, 모든 과정을 무료로 진행해 드립니다. 

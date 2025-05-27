@@ -93,7 +93,7 @@ const FeaturesSection = () => {
         >
           {/* iframe */}
           <iframe 
-            src="https://ilsanloe.vercel.app/1026352/"
+            src="https://lanhouse-in-port.vercel.app/부산에코델타/"
             title="랜하우스 VR 데모"
             allowFullScreen
             allow="xr-spatial-tracking; gyroscope; accelerometer"

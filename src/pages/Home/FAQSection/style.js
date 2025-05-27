@@ -94,38 +94,72 @@ export const FAQContainer = styled.div`
   }
 `;
 
-export const FAQTitle = styled.div`
+// ... existing code ...
 
-  
-  h2 {
-    font-size: 48px;
+export const FAQTitle = styled.div`
+  h2, h3 {
+    font-size: 3rem;
     font-weight: 700;
-    color: ${props => props.theme.secondaryColor};
     margin: 0;
     line-height: 1.2;
+    
+    @media (max-width: 1024px) {
+      font-size: 2.5rem;
+    }
+    
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 1.75rem;
+    }
+  }
+  
+  h2 {
+    color: ${props => props.theme.secondaryColor};
   }
   
   h3 {
-    font-size: 48px;
-    font-weight: 700;
     color: ${props => props.theme.primaryColor};
-    margin: 0;
-    line-height: 1.2;
   }
 `;
 
 export const FAQDescription = styled.p`
-  font-size: 16px;
+  font-size: 1.125rem;
   color: ${props => props.theme.darkGray};
   margin-top: 24px;
   line-height: 1.6;
   max-width: 400px;
+  
+  @media (max-width: 1024px) {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 0.9375rem;
+    margin-top: 20px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.875rem;
+    margin-top: 16px;
+  }
 `;
 
 export const FAQList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  
+  @media (max-width: 768px) {
+    gap: 6px;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 4px;
+  }
 `;
 
 export const FAQItem = styled.div`
@@ -142,7 +176,7 @@ export const FAQQuestion = styled.div`
   align-items: center;
   padding: 24px 0;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 500;
   color: ${props => props.theme.secondaryColor};
   transition: all 0.3s ease;
@@ -152,14 +186,41 @@ export const FAQQuestion = styled.div`
   }
   
   .icon {
-    font-size: 24px;
+    font-size: 1.5rem;
     color: ${props => props.theme.primaryColor};
     font-weight: 300;
+  }
+  
+  @media (max-width: 1024px) {
+    font-size: 1.125rem;
+    padding: 20px 0;
+    
+    .icon {
+      font-size: 1.375rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    padding: 16px 0;
+    
+    .icon {
+      font-size: 1.25rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.9375rem;
+    padding: 14px 0;
+    
+    .icon {
+      font-size: 1.125rem;
+    }
   }
 `;
 
 export const FAQAnswer = styled.div`
-  font-size: 16px;
+  font-size: 1rem;
   color: ${props => props.theme.darkGray};
   line-height: 1.8;
   padding-bottom: ${props => props.isOpen ? '24px' : '0'};
@@ -168,12 +229,31 @@ export const FAQAnswer = styled.div`
   overflow: hidden;
   transition: all 0.3s ease;
   white-space: pre-line;
+  
+  @media (max-width: 1024px) {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    padding-bottom: ${props => props.isOpen ? '20px' : '0'};
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    padding-bottom: ${props => props.isOpen ? '16px' : '0'};
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    padding-bottom: ${props => props.isOpen ? '14px' : '0'};
+  }
 `;
 
-export const MoreFAQLink = styled.a`  display: inline-block;
+export const MoreFAQLink = styled.a`
+  display: inline-block;
   margin-top: 40px;
   color: ${props => props.theme.primaryColor};
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   text-decoration: none;
   transition: color 0.3s ease;
@@ -181,4 +261,21 @@ export const MoreFAQLink = styled.a`  display: inline-block;
   &:hover {
     color: ${props => props.theme.primaryDark};
   }
-`; 
+  
+  @media (max-width: 1024px) {
+    font-size: 0.9375rem;
+    margin-top: 32px;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 0.875rem;
+    margin-top: 28px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.8125rem;
+    margin-top: 24px;
+  }
+`;
+
+// ... existing code ...

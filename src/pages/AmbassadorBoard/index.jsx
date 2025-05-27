@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import Header from '../../components/layout/Header';
 import styled from 'styled-components';
+import { api } from '../../lib/app'; 
 
 
 
@@ -46,6 +47,7 @@ const AmbassadorBoard = () => {
   const [useTestData, setUseTestData] = useState(false);
   const itemsPerPage = 10;
 
+  
   // 신청 목록 가져오기
   const fetchApplications = async () => {
     try {
