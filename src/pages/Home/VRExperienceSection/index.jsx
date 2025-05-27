@@ -43,7 +43,7 @@ const VRExperienceSection = () => {
     {
       title: '수원아이파크시티12단지',
       description: '관심 있는 매물만 방문하여 효율적인 부동산 탐색 가능',
-      bgImage: 'dunsanzae.jpg',
+      bgImage: 'suwon.jpg',
       vrUrl: 'https://lanhouse-in-port.vercel.app/수원아이파크시티12단지/'
     },
     {
@@ -64,6 +64,12 @@ const VRExperienceSection = () => {
       description: '사용자 친화적 인터페이스로 쉽게 공간을 이동하고 탐색 가능',
       bgImage: 'bibong.jpg',
       vrUrl: ' https://lanhouse-in-port.vercel.app/비봉금강펜테리움/'
+    },
+    {
+      title: '도심역한양수자인리버파인인',
+      description: '사용자 친화적 인터페이스로 쉽게 공간을 이동하고 탐색 가능',
+      bgImage: 'dosim.jpg',
+      vrUrl: ' https://lanhouse-in-port.vercel.app/도심역한양수자인/'
     },
    
   ];

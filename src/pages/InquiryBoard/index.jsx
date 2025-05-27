@@ -99,14 +99,10 @@ const InquiryBoard = () => {
       const formattedData = data.map(item => ({
         id: item.id,
         date: item.created_at ? new Date(item.created_at).toISOString().split('T')[0] : '날짜 없음',
-        name: item.name || '이름 없음',
-        email: item.email || '',
+        name: item.name || '이름 없음',       
         phone: item.phone || '',
         region: item.region || '',
         apartment: item.apartment || '',
-        interest: item.interest || '',
-        message: item.message || '',
-        newsletter: item.newsletter ? '동의' : '미동의',
         inquiry_status: item.inquiry_status || 'new',
         createdAt: item.created_at,
         response: item.response || null,
@@ -177,13 +173,13 @@ const InquiryBoard = () => {
             id: item.id,
             date: item.created_at ? new Date(item.created_at).toISOString().split('T')[0] : '날짜 없음',
             name: item.name || '이름 없음',
-            email: item.email || '',
+          
             phone: item.phone || '',
             region: item.region || '',
             apartment: item.apartment || '',
-            interest: item.interest || '',
+           
             message: item.message || '',
-            newsletter: item.newsletter ? '동의' : '미동의',
+         
             inquiry_status: item.inquiry_status || 'new',
             createdAt: item.created_at,
             response: item.response || null,
@@ -258,13 +254,12 @@ const InquiryBoard = () => {
         id: data.id,
         date: new Date(data.created_at).toISOString().split('T')[0],
         name: data.name || '이름 없음',
-        email: data.email || '',
+       
         phone: data.phone || '',
         region: data.region || '',
         apartment: data.apartment || '',
-        interest: data.interest || '',
-        message: data.message || '',
-        newsletter: data.newsletter ? '동의' : '미동의',
+      
+      
         inquiry_status: data.inquiry_status || 'new',
         createdAt: data.created_at,
         response: data.response || null,
@@ -324,13 +319,11 @@ const InquiryBoard = () => {
           id: item.id,
           date: item.created_at ? new Date(item.created_at).toISOString().split('T')[0] : '날짜 없음',
           name: item.name || '이름 없음',
-          email: item.email || '',
+        
           phone: item.phone || '',
           region: item.region || '',
           apartment: item.apartment || '',
-          interest: item.interest || '',
-          message: item.message || '',
-          newsletter: item.newsletter ? '동의' : '미동의',
+         
           inquiry_status: item.inquiry_status || 'new',
           createdAt: item.created_at,
           response: item.response || null,
@@ -568,18 +561,6 @@ const InquiryBoard = () => {
               
               <FormSection>
                 <h3>문의 정보</h3>
-                <FormGroup>
-                  <label>관심 분야</label>
-                  <p>{selectedInquiry.interest}</p>
-                </FormGroup>
-                <FormGroup>
-                  <label>문의 내용</label>
-                  <p>{selectedInquiry.message}</p>
-                </FormGroup>
-                <FormGroup>
-                  <label>정보 수신 동의</label>
-                  <p>{selectedInquiry.newsletter}</p>
-                </FormGroup>
                 <FormGroup>
                   <label>상태 변경</label>
                   <StatusButtonsContainer>

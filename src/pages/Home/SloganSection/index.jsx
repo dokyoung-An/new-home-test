@@ -62,8 +62,8 @@ const SloganSection = () => {
         </ChatBubbles>
         
         <VerticalLine />
-        <SloganTitle>부동산의 패러다임을 바꾸다!</SloganTitle>
-        <SloganSubtitle>가상현실(VR)로 만드는<br />새로운 부동산 경험</SloganSubtitle>
+        <SloganTitle>한 번의 촬영, 끝까지 남는 기록</SloganTitle>
+        <SloganSubtitle>24시간, 언제든지<br/>360°VR로 만나는 우리집</SloganSubtitle>
         <HighlightText>랜하우스</HighlightText>
       </Container>
     </Slogan>

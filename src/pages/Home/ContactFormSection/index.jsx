@@ -1,5 +1,6 @@
 import React, { useState, useEffect, forwardRef } from 'react';
 import { createClient } from '@supabase/supabase-js';
+import { api } from '../../../lib/app'; 
 import { IoCamera, IoHome, IoCall, IoMail } from 'react-icons/io5';
 import { MdOutline360, MdVrpano, MdPhotoCamera, MdEdit } from 'react-icons/md';
 import {
@@ -42,7 +43,14 @@ import {
   VRPopup,
   DesignElement1,
   DesignElement2,
-  DesignElement3
+  DesignElement3,
+  InquiryList,
+  InquiryItem,
+  InquiryDate,
+  InquiryContent,
+  InquiryStatus,
+  InquiryBoard,
+  InquiryBoardTitle
 } from './style';
 
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
@@ -98,18 +106,59 @@ const features = [
     description: '맞춤형 편집과 안정적인 호스팅 서비스'
   }
 ];
-
 const ContactFormSection = forwardRef((props, ref) => {
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
     phone: '',
     region: '',
-    apartment: '',
-    interest: '',
-    message: '',
-    newsletter: false
+    apartment: ''
   });
+  const [recentInquiries, setRecentInquiries] = useState([]);
+
+  // 최근 문의 내역 가져오기
+  useEffect(() => {
+    const fetchRecentInquiries = async () => {
+      try {
+        console.log('최근 문의 내역 가져오기 시도');
+        const data = await api.get('/inquiries/recent');
+        console.log('받은 데이터:', data);
+        
+        if (Array.isArray(data)) {
+          const formattedData = data.map(item => ({
+            id: item.id,
+            date: new Date(item.created_at).toLocaleDateString('ko-KR', {
+              month: '2-digit',
+              day: '2-digit'
+            }).replace(/\. /g, '.').slice(0, -1),
+            region: item.region || '',
+            apartment: item.apartment || '',
+            status: item.inquiry_status || 'new'
+          }));
+          console.log('변환된 데이터:', formattedData);
+          setRecentInquiries(formattedData);
+        } else {
+          console.error('예상치 못한 데이터 형식:', data);
+        }
+      } catch (error) {
+        console.error('최근 문의 내역 로드 실패:', error);
+      }
+    };
+
+    fetchRecentInquiries();
+    const interval = setInterval(fetchRecentInquiries, 30000);
+    return () => clearInterval(interval);
+  }, []);
+  // 상태 텍스트 변환
+  const getStatusText = (status) => {
+    switch (status) {
+      case 'new': return '신규';
+      case 'in-progress': return '상담중';
+      case 'completed': return '완료';
+      default: return '신규';
+    }
+  };
+
+
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [rotateDirection, setRotateDirection] = useState('right');
@@ -147,15 +196,14 @@ const ContactFormSection = forwardRef((props, ref) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { error } = await supabase
-        .from(TABLE_NAME)
-        .insert([{
-          ...formData,
-          status: 'new',
-          created_at: new Date().toISOString()
-        }]);
+      const response = await api.post('/inquiries', {
+        ...formData,
+        status: 'new',
+        created_at: new Date().toISOString()
+      });
 
-      if (error) throw error;
+      if (response.error) throw response.error;
+
       
       alert('문의가 성공적으로 접수되었습니다. 빠른 시일 내에 연락드리겠습니다.');
       setFormData({
@@ -186,6 +234,8 @@ const ContactFormSection = forwardRef((props, ref) => {
     document.body.style.overflow = 'auto';
   };
 
+  
+
   return (
     <ContactSection id="ContactFormSection" ref={ref}>
       <ContactContainer>
@@ -200,35 +250,24 @@ const ContactFormSection = forwardRef((props, ref) => {
             랜하우스의 VR 투어 서비스로 부동산의 가치를 극대화하세요.
             전문가의 맞춤 상담을 통해 최적의 솔루션을 제공해드립니다.
           </SectionDescription>
-          <FeatureList>
-            {features.map((feature, index) => (
-              <FeatureItem key={index}>
-                <FeatureIcon>{feature.icon}</FeatureIcon>
-                <FeatureContent>
-                  <FeatureTitle>{feature.title}</FeatureTitle>
-                  <FeatureDescription>{feature.description}</FeatureDescription>
-                </FeatureContent>
-              </FeatureItem>
-            ))}
-          </FeatureList>
-          <SlideSection 
-            rotateDirection={rotateDirection}
-            onClick={openPopup}
-          >
-            {vrTours.map((tour, index) => (
-              <Slide
-                key={index}
-                image={tour.image}
-                active={index === currentImageIndex}
-              />
-            ))}
-            <SlideOverlay>
-              <SlideTitle>VR 투어 미리보기</SlideTitle>
-              <SlideDescription>
-                실제 VR 투어 예시를 확인해보세요
-              </SlideDescription>
-            </SlideOverlay>
-          </SlideSection>
+            {/* 최근 문의 내역 게시판 */}
+            <InquiryBoard>
+            <InquiryBoardTitle>최근 문의 내역</InquiryBoardTitle>
+            <InquiryList>
+              {recentInquiries.map((inquiry) => (
+                <InquiryItem key={inquiry.id}>
+                  <InquiryDate>{inquiry.date}</InquiryDate>
+                  <InquiryContent>
+                    {inquiry.region} {inquiry.apartment}
+                  </InquiryContent>
+                  <InquiryStatus status={inquiry.status}>
+                    {getStatusText(inquiry.status)}
+                  </InquiryStatus>
+                </InquiryItem>
+              ))}
+            </InquiryList>
+          </InquiryBoard>
+       
         </ContentSection>
         <FormSection>
           <FormTitle>VR 투어 문의하기</FormTitle>
@@ -237,7 +276,11 @@ const ContactFormSection = forwardRef((props, ref) => {
           </FormSubtitle>
           <Form onSubmit={handleSubmit}>
             <FormRow>
-              <FormGroup>
+              
+            </FormRow>
+
+            <FormRow columns="1fr 1fr">
+            <FormGroup>
                 <Label>이름<RequiredMark>*</RequiredMark></Label>
                 <Input
                   type="text"
@@ -245,20 +288,6 @@ const ContactFormSection = forwardRef((props, ref) => {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="이름을 입력해주세요"
-                  required
-                />
-              </FormGroup>
-            </FormRow>
-
-            <FormRow columns="1fr 1fr">
-              <FormGroup>
-                <Label>이메일<RequiredMark>*</RequiredMark></Label>
-                <Input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="이메일을 입력해주세요"
                   required
                 />
               </FormGroup>
@@ -300,46 +329,6 @@ const ContactFormSection = forwardRef((props, ref) => {
               </FormGroup>
             </FormRow>
 
-            <FormRow>
-              <FormGroup>
-                <Label>관심 분야<RequiredMark>*</RequiredMark></Label>
-                <Input
-                  type="text"
-                  name="interest"
-                  value={formData.interest}
-                  onChange={handleChange}
-                  placeholder="예: VR 투어, 360° 촬영"
-                  required
-                />
-              </FormGroup>
-            </FormRow>
-
-            <FormRow>
-              <FormGroup>
-                <Label>문의 내용<RequiredMark>*</RequiredMark></Label>
-                <TextArea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="문의하실 내용을 자세히 적어주세요"
-                  required
-                />
-              </FormGroup>
-            </FormRow>
-
-            <FormRow>
-              <FormGroup>
-                <Label>
-                  <Input
-                    type="checkbox"
-                    name="newsletter"
-                    checked={formData.newsletter}
-                    onChange={handleChange}
-                  />
-                  뉴스레터 및 마케팅 정보 수신 동의
-                </Label>
-              </FormGroup>
-            </FormRow>
 
             <SubmitButton type="submit">문의하기</SubmitButton>
           </Form>

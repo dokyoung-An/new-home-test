@@ -581,3 +581,104 @@ export const SlideDescription = styled.p`
   line-height: 1.6;
   text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 `; 
+
+// ... 기존 imports 및 스타일 ...
+
+export const InquiryBoard = styled.div`
+  margin-top: 40px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+`;
+
+export const InquiryBoardTitle = styled.h4`
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: ${props => props.theme.secondaryColor};
+  margin-bottom: 20px;
+  
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+`;
+
+export const InquiryList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 300px;
+  overflow-y: auto;
+  
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: ${props => props.theme.primaryColor};
+    border-radius: 3px;
+  }
+`;
+
+export const InquiryItem = styled.div`
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  background: white;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+`;
+
+export const InquiryDate = styled.div`
+  font-size: 0.9rem;
+  color: ${props => props.theme.darkGray};
+  white-space: nowrap;
+`;
+
+export const InquiryContent = styled.div`
+  font-size: 0.95rem;
+  color: ${props => props.theme.secondaryColor};
+  font-weight: 500;
+`;
+
+export const InquiryStatus = styled.div`
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  
+  ${props => {
+    switch (props.status) {
+      case 'completed':
+        return `
+          background-color: #e8f5e9;
+          color: #2e7d32;
+        `;
+      case 'in-progress':
+        return `
+          background-color: #fff3e0;
+          color: #ef6c00;
+        `;
+      default:
+        return `
+          background-color: #e3f2fd;
+          color: #1976d2;
+        `;
+    }
+  }}
+`;
+
+// ... 기존 스타일 컴포넌트들 ...
