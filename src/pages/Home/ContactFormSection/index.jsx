@@ -1,6 +1,7 @@
 import React, { useState, useEffect, forwardRef } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { api } from '../../../lib/app'; 
+import { supabase } from '../../../lib/supabaseClient';
 import { IoCamera, IoHome, IoCall, IoMail } from 'react-icons/io5';
 import { MdOutline360, MdVrpano, MdPhotoCamera, MdEdit } from 'react-icons/md';
 import {
@@ -52,14 +53,6 @@ import {
   InquiryBoard,
   InquiryBoardTitle
 } from './style';
-
-const supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
-const supabaseKey = process.env.REACT_APP_SUPABASE_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey, {
-  auth: { persistSession: false, autoRefreshToken: false }
-});
-
-const TABLE_NAME = 'inquiries';
 
 const vrTours = [
   {
@@ -120,7 +113,17 @@ const ContactFormSection = forwardRef((props, ref) => {
     const fetchRecentInquiries = async () => {
       try {
         console.log('최근 문의 내역 가져오기 시도');
-        const data = await api.get('/inquiries/recent');
+        const { data, error } = await supabase
+          .from('inquiries')
+          .select('*')
+          .order('created_at', { ascending: false })
+          .limit(6);
+
+        if (error) {
+          console.error('Supabase 쿼리 에러:', error);
+          return;
+        }
+
         console.log('받은 데이터:', data);
         
         if (Array.isArray(data)) {
@@ -138,15 +141,36 @@ const ContactFormSection = forwardRef((props, ref) => {
           setRecentInquiries(formattedData);
         } else {
           console.error('예상치 못한 데이터 형식:', data);
+          setRecentInquiries([]);
         }
       } catch (error) {
         console.error('최근 문의 내역 로드 실패:', error);
+        setRecentInquiries([]);
       }
     };
 
+    // 실시간 업데이트 구독
+    const subscription = supabase
+      .channel('inquiries_changes')
+      .on('postgres_changes', 
+        { 
+          event: '*', 
+          schema: 'public', 
+          table: 'inquiries' 
+        }, 
+        () => {
+          fetchRecentInquiries();
+        }
+      )
+      .subscribe();
+
+    // 초기 데이터 로드
     fetchRecentInquiries();
-    const interval = setInterval(fetchRecentInquiries, 30000);
-    return () => clearInterval(interval);
+
+    // 클린업
+    return () => {
+      subscription.unsubscribe();
+    };
   }, []);
   // 상태 텍스트 변환
   const getStatusText = (status) => {
@@ -244,7 +268,7 @@ const ContactFormSection = forwardRef((props, ref) => {
           <DesignElement2 />
           <DesignElement3 />
           <SectionTitle>
-            Contact <span>US</span>
+            Meet <span>랜하우스</span>
           </SectionTitle>
           <SectionDescription>
             랜하우스의 VR 투어 서비스로 부동산의 가치를 극대화하세요.
@@ -258,7 +282,7 @@ const ContactFormSection = forwardRef((props, ref) => {
                 <InquiryItem key={inquiry.id}>
                   <InquiryDate>{inquiry.date}</InquiryDate>
                   <InquiryContent>
-                    {inquiry.region} {inquiry.apartment}
+                    {inquiry.apartment}
                   </InquiryContent>
                   <InquiryStatus status={inquiry.status}>
                     {getStatusText(inquiry.status)}

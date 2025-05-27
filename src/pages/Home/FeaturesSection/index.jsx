@@ -72,7 +72,7 @@ const FeaturesSection = () => {
       </VideoBackground>
       <Container>
         <FeatureTag>VIRTUAL TOUR</FeatureTag>
-        <FeatureTitle>최고의 가상현실 경험</FeatureTitle>
+        <FeatureTitle>말보다 빠른 경험<br/>360도VR, 바로 체험해 보세요</FeatureTitle>
         <FeatureParagraph>
           랜하우스는 최첨단 360도 카메라와 전문 기술을 통해 놀라운 VR 경험을 제공합니다
         </FeatureParagraph>

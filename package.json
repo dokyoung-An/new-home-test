@@ -4,7 +4,7 @@
   "private": true,
   "description": "랜하우스 VR 서비스 문의사항 제출 시스템",
   "main": "server.js",
-  "proxy": "http://localhost:3000",
+  "proxy": "http://localhost:5000",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

@@ -34,7 +34,7 @@ const HeroSection = () => {
       
       <Container>
         <HeroContent>
-          <HeroTagline><span>부동산 문제, 이제는 VR로!</span></HeroTagline>
+          <HeroTagline><span>소중한 공간 기록. 이제는 VR로!</span></HeroTagline>
           <HeroTitle>
             <HeroTitleHighlight>360°</HeroTitleHighlight>
             VR 랜하우스

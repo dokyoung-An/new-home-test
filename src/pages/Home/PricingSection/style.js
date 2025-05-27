@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 
 export const PricingWrapper = styled.section`
-  padding: 140px 0 0 0;
+  padding: 100px 0 100px 0;
   background-color: #fff;
 `;
 

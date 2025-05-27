@@ -12,11 +12,7 @@ if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_KEY) {
 const app = express();
 
 // CORS 설정 - 프로덕션에서는 실제 도메인으로 제한해야 함
-app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? 'https://your-domain.com' 
-    : 'http://localhost:3000'
-}));
+app.use(cors());  // 개발 환경에서는 모든 도메인 허용
 app.use(express.json());
 
 // Supabase 클라이언트 초기화
@@ -142,7 +138,7 @@ app.patch('/api/ambassador-applications/:id/status', async (req, res, next) => {
 // 에러 핸들링 미들웨어 적용
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

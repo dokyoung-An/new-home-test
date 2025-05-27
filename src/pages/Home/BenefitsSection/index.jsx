@@ -117,13 +117,13 @@ const BenefitsSection = () => {
       <Benefits ref={sectionRef}>
         <Container>
           <SectionContainer>
-            <SectionSubtitle>랜하우스 100% 활용하기</SectionSubtitle>
-            <SectionTitle>어떻게 달라질까요?</SectionTitle>
+            <SectionSubtitle>랜하우스 100% 활용하면</SectionSubtitle>
+            <SectionTitle>이렇게 달라집니다!</SectionTitle>
             
             <BenefitsMent>
-              <p>랜하우스 VR은 임대차 이후 분쟁 소지를 감소시켜주고,<br/> 
-                여러 세대를 직접 보러가느라 허비하는 시간을 없애
-                부동산 계약까지 걸리는 시간을 줄여줍니다. </p>
+              <p>랜하우스 VR을 경험하신 분들께선 VR로 원상복구 의무에 관한 분쟁이 줄고<br/> 
+                집을 매매,임차 하기 위해 써야만 했던 시간이 획기적으로 줄어,
+                부동산 계약까지 걸리는 시간을 감소할 수 있다고 말씀하셨습니다. </p>
             </BenefitsMent>
             
             <StatsContainer>

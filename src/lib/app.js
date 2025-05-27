@@ -1,18 +1,25 @@
 const API_URL = process.env.NODE_ENV === 'production'
   ? '/api'
-  : 'http://localhost:4000/api';
+  : 'http://localhost:5000/api';
 
 export const api = {
   async get(endpoint) {
     try {
-      const response = await fetch(`${API_URL}${endpoint}`);
+      const response = await fetch(`${API_URL}${endpoint}`, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
+      
       return await response.json();
     } catch (error) {
       console.error('API Get Error:', error);
-      throw error;
+      return null;
     }
   },
 
@@ -56,6 +63,10 @@ export const api = {
 
   // 기존 메서드들을 새로운 메서드들을 사용하도록 수정
   getInquiries() {
+    return this.get('/inquiries');
+  },
+
+  getRecentInquiries() {
     return this.get('/inquiries');
   },
 

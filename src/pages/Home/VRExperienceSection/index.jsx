@@ -123,12 +123,12 @@ const VRExperienceSection = () => {
           <ExperienceWrapper>
             <ExperienceContent>
               <ExperienceSubtitle>Premium VR 솔루션</ExperienceSubtitle>
-              <ExperienceTitle>부동산 문제 해결 혁신</ExperienceTitle>
-              <ExperienceHighlight>몰입형 VR </ExperienceHighlight>
+              <ExperienceTitle>진짜 사진만으로 괜찮으세요?</ExperienceTitle>
+              <ExperienceHighlight>360° VR로 <br/>확실하게, 선명하게!</ExperienceHighlight>
               <p>
-                랜하우스 VR은 부동산 비즈니스에 차별화된 경쟁력을 제공합니다. 
-                고품질 360° 촬영과 직관적인 인터페이스로 고객에게 잊을 수 없는 
-                가상 투어 경험을 선사합니다.
+                소중한 공간의 가치를 지키기 위한 시작엔 확실한 기록이 있습니다.
+                랜하우스 360° VR은 단순한 사진으론 담을 수 없는, '진짜 우리집'을
+                생생하게 담아드립니다.
               </p>
               <ExperienceCTA>
                 <CTAItem>
@@ -137,7 +137,7 @@ const VRExperienceSection = () => {
                   </CTAIcon>
                   <CTAText>
                     <h4>360° VR 투어</h4>
-                    <p>현장 몰입감 느끼는 가상 투어</p>
+                    <p>현장감 넘치는 렌선 투어</p>
                   </CTAText>
                 </CTAItem>
                 <CTAItem>

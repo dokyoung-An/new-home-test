@@ -29,7 +29,7 @@ export const Testimonials = styled.section`
   color: #fff;
   position: relative;
   overflow: hidden;
-  padding: 140px 0;
+  padding: 100px 0;
   
   /* 상단 경계선 효과 */
   &::before {

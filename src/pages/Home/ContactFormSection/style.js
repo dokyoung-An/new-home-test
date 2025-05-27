@@ -17,10 +17,14 @@ const slideIn = keyframes`
 `;
 
 export const ContactSection = styled.section`
-  padding: 160px 0;
+  padding: 140px 0;
   background: ${({ theme }) => theme.background};
   position: relative;
   overflow: hidden;
+
+  @media (max-width: 480px) {
+    padding: 80px 0;
+  }
 `;
 
 export const ContactContainer = styled.div`
@@ -60,6 +64,7 @@ export const SectionTitle = styled.h2`
   
   @media (max-width: 480px) {
     font-size: 1.8rem;
+    margin-left: 20px;
   }
 `;
 
@@ -161,6 +166,11 @@ export const DesignElement1 = styled.div`
   opacity: 0.9;
   transform: rotate(-15deg);
   z-index: 1;
+
+  @media (max-width: 480px) {
+    top: 10px;
+    left: 0px;
+  }
 `;
 
 export const DesignElement2 = styled.div`
@@ -174,6 +184,11 @@ export const DesignElement2 = styled.div`
   opacity: 0.85;
   transform: rotate(10deg);
   z-index: 0;
+ 
+  @media (max-width: 480px) {
+    top: -25px;
+    left: 18px;
+  }
 `;
 
 export const DesignElement3 = styled.div`
@@ -187,6 +202,11 @@ export const DesignElement3 = styled.div`
   opacity: 0.95;
   transform: rotate(25deg);
   z-index: 2;
+
+  @media (max-width: 480px) {
+    top: -20px;
+    left: -15px;
+  }
 `;
 
 export const FormTitle = styled.h3`

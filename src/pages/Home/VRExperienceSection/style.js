@@ -107,7 +107,7 @@ export const ExperienceWrapper = styled.div`
 `;
 
 export const ExperienceContent = styled.div`
-  max-width: 500px;
+  max-width: 600px;
   padding: 60px 0 0 0;
   text-align: left;
   margin-bottom: 0;
@@ -171,6 +171,8 @@ export const ExperienceContent = styled.div`
     }
     
     p {
+      font-size: 0.9rem;
+      word-break: keep-all;
       margin-left: auto;
       margin-right: auto;
     }
@@ -214,7 +216,7 @@ export const ExperienceSubtitle = styled.h3`
 `;
 
 export const ExperienceTitle = styled.h2`
-  font-size: 2.8rem;
+  font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 5px;
   color: #fff;
@@ -223,11 +225,11 @@ export const ExperienceTitle = styled.h2`
   letter-spacing: -0.5px;
   
   @media (max-width: 768px) {
-    font-size: 2.3rem;
+    font-size: 1.8rem;
   }
   
   @media (max-width: 480px) {
-    font-size: 1.9rem;
+    font-size: 1.6rem;
   }
 `;
 
@@ -240,7 +242,7 @@ export const ExperienceHighlight = styled.div`
   font-size: 3.2rem;
   font-weight: 800;
   margin-bottom: 35px;
-  line-height: 1.1;
+  line-height: 1.3;
   text-shadow: 0 0 15px rgba(244, 167, 122, 0.3);
   position: relative;
   animation: ${highlightAnimation} 7s ease infinite;
@@ -258,6 +260,7 @@ export const ExperienceHighlight = styled.div`
     z-index: -1;
     animation: ${pulse} 3s ease-in-out infinite alternate;
   }
+   
   
   @media (max-width: 768px) {
     font-size: 2.6rem;
@@ -300,6 +303,17 @@ export const CTAItem = styled.div`
     transform: translateY(-2px);
     border-color: rgba(255, 255, 255, 0.12);
   }
+
+  @media (max-width: 468px) { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    word-break: keep-all;
+    width: 100%;
+  }
+
 `;
 
 export const CTAIcon = styled.div`

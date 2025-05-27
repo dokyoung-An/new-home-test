@@ -107,10 +107,10 @@ const TestimonialsSection = () => {
           <SectionHeader>
             <SectionSubtitle>고객 후기</SectionSubtitle>
             <SectionTitle>랜하우스</SectionTitle>
-            <HighlightText>고객님들의 후기</HighlightText>
+            <HighlightText>REAL 체험 후기</HighlightText>
             <p>
-              방문은 줄이고, 분쟁은 막고, 기록은 남겼습니다.<br/>
-              고객이 말하는 랜하우스의 진짜 가치, 지금 만나보세요.
+              랜하우스로 100% 효과를 거두신 <br/>
+              진짜 고객님의 이야기를 확인해 보세요.
             </p>
           </SectionHeader>
           

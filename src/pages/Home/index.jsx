@@ -16,7 +16,6 @@ import ContactFormSection from './ContactFormSection';
 import BannerSection from './BannerSection';
 import AdminLink from './AdminLink';
 import NewsSection from './NewsSection';
-import ReservationSection from './ReservationSection';
 import FAQSection from './FAQSection';
 import CoworkerSection from './CoworkerSection';
 
@@ -29,22 +28,24 @@ const Home = () => {
       <SloganSection/>
      
       <VRExperienceSection/>
-      <ReservationSection/>
+      <ContactFormSection />
+     
       
       <CTABannerSection/>
       <FeaturesSection/>
-      <BenefitsSection/>
+      
       <UseCasesSection/>
-      <ProcessSection/>
-     
+      <BenefitsSection/>
       <TestimonialsSection />
+      <ProcessSection/>
       <PricingSection/>
-      <FAQSection/>
+      
       <PromotionSection/>
-      <ContactFormSection />
+      
      
       <NewsSection/>
       <CoworkerSection/>
+      <FAQSection/>
      
       
      
