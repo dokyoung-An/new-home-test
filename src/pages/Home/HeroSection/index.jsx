@@ -28,7 +28,7 @@ const HeroSection = () => {
 
   return (
     <Hero>
-      <VideoBackground autoPlay muted loop playsInline preload="auto">
+      <VideoBackground autoPlay muted loop playsInline preload="auto"  poster="/img/hero-poster.png" >
         <source src="/img/hero.mp4" type="video/mp4" />
         <source src="video.webm" type="video/webm"/>
       </VideoBackground>
