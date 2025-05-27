@@ -102,6 +102,7 @@ const Logo = styled.div`
   @media (max-width: 768px) {
     font-size: 1.2rem;
     margin-left: -15px;
+    margin-top: -5px;
   }
 `;
 
@@ -141,6 +142,7 @@ const HamburgerButton = styled.button`
   cursor: pointer;
   padding: 10px 0;
   z-index: 101;
+  margin-top: 2px;
 
   @media (max-width: 768px) {
     display: block;
