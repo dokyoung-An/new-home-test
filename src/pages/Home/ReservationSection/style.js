@@ -26,7 +26,7 @@ export const BoardsContainer = styled.div`
   display: flex;
   gap: 140px;
   justify-content: center;
-  max-width: 1400px;
+  width: 100%;
   margin: 0 auto;
   
   @media (max-width: 768px) {
@@ -37,7 +37,7 @@ export const BoardsContainer = styled.div`
 
 export const BoardColumn = styled.div`
   flex: 1;
-  max-width: 550px;
+ 
 `;
 
 export const BoardTitle = styled.div`

@@ -139,16 +139,7 @@ const ReservationSection = () => {
                 </BoardListWrapper>
               </BoardColumn>
               
-              <BoardColumn>
-                <BoardTitle>
-                  <h3>VR 촬영 현황</h3>
-                  <div className="more">더보기</div>
-                </BoardTitle>
-                <BoardListWrapper>
-                  {renderBoardItems(vrWorks)}
-                  {renderBoardItems(vrWorks, true)}
-                </BoardListWrapper>
-              </BoardColumn>
+         
             </BoardsContainer>
           </SectionContainer>
         </Container>

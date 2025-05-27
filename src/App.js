@@ -7,12 +7,32 @@ import Home from './pages/Home';
 import InquiryBoard from './pages/InquiryBoard';
 import Header from './components/layout/Header';
 import styled from 'styled-components';
+import AmbassadorBoard from './pages/AmbassadorBoard';
+import EventPopup from './components/EventPopup';
+import { useState, useEffect } from 'react';
 
 const MainContent = styled.main`
   /* 패딩 제거 */
 `;
 
 function App() {
+
+  const [showEventPopup, setShowEventPopup] = useState(false);
+
+  useEffect(() => {
+    // 로컬 스토리지에서 팝업 표시 여부 확인
+    const hasSeenPopup = localStorage.getItem('hasSeenEventPopup');
+    if (hasSeenPopup) {
+      setShowEventPopup(true);
+    }
+  }, []);
+
+  const handleCloseEventPopup = () => {
+    setShowEventPopup(false);
+    // 팝업을 닫았다는 정보를 로컬 스토리지에 저장
+    localStorage.setItem('hasSeenEventPopup', 'true');
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
@@ -22,12 +42,15 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/admin/inquiry-board" element={<InquiryBoard />} />
+            <Route path="/admin/ambassador" element={<AmbassadorBoard />} />
+            {/* <Route path="/admin/ambassador" element={<Ambassador />} /> */}
             {/* 향후 확장을 위한 라우트 */}
             {/* <Route path="/about" element={<About />} /> */}
             {/* <Route path="/contact" element={<Contact />} /> */}
           </Routes>
         </MainContent>
       </Router>
+      {showEventPopup && <EventPopup onClose={handleCloseEventPopup} />}
     </ThemeProvider>
   );
 }
