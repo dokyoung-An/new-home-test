@@ -5,8 +5,7 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
 const supabaseKey = process.env.REACT_APP_SUPABASE_KEY;
 
-console.log('Supabase URL:', supabaseUrl ? '설정됨' : '설정되지 않음');
-console.log('Supabase Key:', supabaseKey ? '설정됨' : '설정되지 않음');
+
 
 if (!supabaseUrl || !supabaseKey) {
   throw new Error(`
