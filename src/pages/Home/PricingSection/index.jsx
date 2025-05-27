@@ -33,10 +33,10 @@ const PricingSectionComponent = () => {
       <PricingWrapper>
         <Container>
           <SectionSubtitle>가격 안내</SectionSubtitle>
-          <SectionTitle>랜하우스 VR 촬영 패키지 요금제</SectionTitle>
+          <SectionTitle>랜하우스 360° VR 가격 안내</SectionTitle>
           <DescriptionText>
-            합리적인 비용으로 고품질 VR 촬영 서비스를 이용하세요. <br/>
-            부동산 규모와 요구사항에 맞는 다양한 패키지를 제공합니다.
+            합리적인 비용으로 고품질 VR 서비스를 이용하세요. <br/>
+            이용 세대 수, 기능 추가에 따라 가격이 달라집니다.
           </DescriptionText>
           
           <PricingPlans>

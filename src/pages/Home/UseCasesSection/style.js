@@ -82,7 +82,7 @@ export const SectionSubtitle = styled.h4`
   }
   
   @media (max-width: 480px) {
-    font-size: 1rem;
+    font-size: 0.7rem;
   }
 `;
 

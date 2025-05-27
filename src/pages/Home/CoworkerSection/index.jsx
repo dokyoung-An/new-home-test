@@ -15,24 +15,22 @@ import {
 const CTABannerSection = () => {
   // 파트너 이미지 객체 배열 (타입 구분)
   const partners = [
-    { src: 'partner1-1.png', type: 'png', alt: '자이' },
-    { src: 'partner1-2.png', type: 'png', alt: '케이디리빙' },
-    { src: 'partner1-3.png', type: 'png', alt: '래미안' },
-    { src: 'partner1-4.png', type: 'png', alt: '푸르지오' },
-    { src: 'partner1-5.png', type: 'png', alt: '디에트르' },
-    { src: 'partner1-7.png', type: 'png', alt: '더샵' },
-    { src: 'partner1-8.png', type: 'png', alt: '엘리프' },
-    { src: 'partner1-1.svg', type: 'svg', alt: '서한이다음' },
-    { src: 'partner1-2.svg', type: 'svg', alt: '서희스타힐스' },
-    { src: 'partner1-3.svg', type: 'svg', alt: '아이파크' }
+    { src: 'g-logo.png', type: 'png', alt: '공감' },
+    { src: 'woori.png', type: 'png', alt: '우리홈' },
+    { src: 'logo-wozip.png', type: 'png', alt: '우집사' },
+    { src: 'habang.png', type: 'png', alt: '하방' },
+    { src: 'g-logo.png', type: 'png', alt: '공감' },
+    { src: 'woori.png', type: 'png', alt: '우리홈' },
+    { src: 'habang.png', type: 'png', alt: '하방' }
+  
   ];
 
   return (
     <CTABanner>
       <Container>
-        <CTASubtitle>어떻게 생겼는지 궁금해!!😆</CTASubtitle>
-        <CTATitle>대표 건설사 아파트 내부,</CTATitle>
-        <CTAHighlight>랜하우스로 편하게 구경하세요.</CTAHighlight>
+        <CTASubtitle>랜하우스 제휴사</CTASubtitle>
+        <CTATitle>360도 VR 랜하우스와 함께,</CTATitle>
+        <CTAHighlight>마케팅의 혁신을 가져가세요.</CTAHighlight>
       
        
       </Container>

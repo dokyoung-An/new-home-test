@@ -52,10 +52,10 @@ const ProcessSection = () => {
         <SectionHeader>
           <SectionSubtitle>간편한 이용 절차</SectionSubtitle>
           <SectionTitle>4단계로 완성되는</SectionTitle>
-          <HighlightText>VR 부동산 솔루션</HighlightText>
+          <HighlightText>360도 VR 서비스</HighlightText>
           <p>
-            전화 한 통으로 시작하여 링크 한 개로 완성되는 랜하우스만의 프로세스입니다.
-            <br/>고객님의 소중한 시간을 위해 모든 절차가 최적화되어 있습니다.
+            소중한 우리집 영구 기록. 단, 4단계로 끝!
+           
           </p>
         </SectionHeader>
         

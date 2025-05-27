@@ -6,6 +6,10 @@ export const Benefits = styled.section`
   background-color: #ffffff;
   text-align: center;
   overflow: hidden;
+
+  @media (max-width: 480px) {
+    padding: 40px 0;
+  }
 `;
 
 export const SectionContainer = styled.div`
@@ -79,21 +83,25 @@ export const StatsContainer = styled.div`
   justify-content: space-around;
   flex-wrap: wrap;
   margin-top: 50px;
+  gap: 20px;
+  padding: 0 20px;
   
   @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
     margin-top: 40px;
   }
   
   @media (max-width: 480px) {
+    gap: 12px;
     margin-top: 30px;
+    padding: 0 10px;
   }
 `;
 
 export const StatBox = styled.div`
   padding: 25px 20px;
-  margin: 15px;
   flex: 1;
   min-width: 220px;
   max-width: 280px;
@@ -105,10 +113,16 @@ export const StatBox = styled.div`
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   
   @media (max-width: 768px) {
+    min-width: unset;
+    max-width: unset;
     width: 100%;
-    max-width: 300px;
-    margin: 10px auto;
     padding: 20px 15px;
+    margin: 0;
+  }
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   }
 `;
 

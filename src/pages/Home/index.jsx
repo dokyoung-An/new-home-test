@@ -52,7 +52,7 @@ const Home = () => {
      
       <BannerSection/>
       <Footer />
-      <AdminLink />
+    
     </>
   );
 };

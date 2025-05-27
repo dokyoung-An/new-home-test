@@ -343,6 +343,7 @@ export const PromotionTitle = styled.h2`
   @media (max-width: 480px) {
     font-size: 1.8rem;
     margin-bottom: 15px;
+    line-height: 1.4;
   }
 `;
 

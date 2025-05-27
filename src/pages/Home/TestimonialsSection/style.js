@@ -29,7 +29,7 @@ export const Testimonials = styled.section`
   color: #fff;
   position: relative;
   overflow: hidden;
-  padding: 100px 0;
+  padding: 60px 0;
   
   /* 상단 경계선 효과 */
   &::before {
@@ -108,15 +108,16 @@ export const Testimonials = styled.section`
   }
   
   @media (max-width: 1024px) {
-    padding: 100px 0;
+    padding: 60px 0;
   }
   
   @media (max-width: 768px) {
-    padding: 90px 0;
+    padding: 60px 0;
   }
   
   @media (max-width: 480px) {
-    padding: 70px 0;
+    padding: 40px 0;
+   
   }
 `;
 
@@ -128,7 +129,8 @@ export const SectionContainer = styled.div`
   
   @media (max-width: 1024px) {
     flex-direction: column;
-    gap: 40px;
+    gap: 0px;
+    
   }
 `;
 
@@ -137,6 +139,7 @@ export const SectionHeader = styled.div`
   margin-bottom: 0;
   flex: 0 0 35%;
   position: relative;
+  margin-top: 100px;
   
   p {
     color: rgba(255, 255, 255, 0.8);
@@ -157,7 +160,9 @@ export const SectionHeader = styled.div`
     
     @media (max-width: 480px) {
       font-size: 0.9rem;
-      line-height: 1.6;
+      line-height: 1.8;
+      margin-top: 10px;
+      
     }
   }
   
@@ -165,6 +170,10 @@ export const SectionHeader = styled.div`
     margin-bottom: 20px;
     flex: 0 0 100%;
     text-align: center;
+    width: 100%;
+  }
+  @media (max-width: 480px) {
+    margin-top: 30px;
   }
 `;
 
@@ -185,6 +194,7 @@ export const SectionTitle = styled.h2`
   
   @media (max-width: 480px) {
     font-size: 1.8rem;
+    margin-bottom: 0px;
   }
 `;
 

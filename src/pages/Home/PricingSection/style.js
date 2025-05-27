@@ -3,6 +3,10 @@ import styled, { keyframes } from 'styled-components';
 export const PricingWrapper = styled.section`
   padding: 100px 0 100px 0;
   background-color: #fff;
+
+  @media (max-width: 480px) {
+    padding: 40px 0;
+  }
 `;
 
 export const PricingContainer = styled.div`
@@ -48,7 +52,7 @@ export const SectionSubtitle = styled.h3`
   text-align: center;
   
   @media (max-width: 480px) {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
   }
 `;
 
@@ -114,12 +118,12 @@ export const DescriptionText = styled.p`
   @media (max-width: 768px) {
     margin: 25px auto 40px;
     font-size: 16px;
-    padding: 0 20px;
+    padding: 0 5px;
   }
   
   @media (max-width: 480px) {
-    margin: 20px auto 30px;
-    font-size: 15px;
+    margin: 20px auto 0px;
+    font-size: 0.9rem;
     line-height: 1.5;
     br {
       margin: 5px 0;

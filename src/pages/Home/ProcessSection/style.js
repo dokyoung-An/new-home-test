@@ -171,7 +171,8 @@ export const SectionHeader = styled(CommonSectionHeader)`
     
     @media (max-width: 480px) {
       font-size: 0.9rem;
-      line-height: 1.6;
+      line-height: 1.8;
+      word-break: keep-all;
     }
   }
   
@@ -194,7 +195,7 @@ export const SectionSubtitle = styled.h3`
   letter-spacing: 0.5px;
   
   @media (max-width: 480px) {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     padding: 7px 18px;
     margin-bottom: 15px;
   }
@@ -216,7 +217,8 @@ export const SectionTitle = styled.h2`
   }
   
   @media (max-width: 480px) {
-    font-size: 1.8rem;
+    font-size: 1.8rem; 
+    margin-bottom: 0px;
   }
 `;
 

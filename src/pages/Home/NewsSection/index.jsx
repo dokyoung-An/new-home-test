@@ -39,10 +39,10 @@ const NewsComponent = () => {
       category: 'notice',
       categoryName: '공지사항',
       title: '랜하우스 신규 지점 오픈 안내',
-      description: '서울 강남구 신사동에 새롭게 문을 여는 랜하우스를 소개합니다. 더욱 넓어진 공간과 새로운 서비스로 찾아뵙겠습니다.',
-      date: '2025.05.15',
+      description: '경기도 하남시 랜하우스 지사 오픈을 준비합니다. 더욱 빠르고 원활한 서비스로 고객 여러분께 만족을 드리겠습니다',
+      date: '2025.05.27',
       image: '/img/deone.jpg',
-      content: `랜하우스가 신사동에 새로운 지점을 오픈합니다.
+      content: `랜하우스가 경기도 하남시에 새로운 지점을 오픈합니다.
 
 • 위치: 서울 강남구 신사동 123-45
 • 오픈일: 2025년 6월 1일
@@ -60,23 +60,18 @@ const NewsComponent = () => {
       category: 'event',
       categoryName: '이벤트',
       title: '홈페이지 개편 프로모션',
-      description: '랜하우스의 새로운 가족이 되어주세요. 신규 회원 가입 시 첫 달 이용료 50% 할인 혜택을 드립니다.',
-      date: '2025.05.10',
+      description: '랜하우스 홈페이지 오픈 기념, 이벤트를 준비했습니다. 넉넉한 호스팅 기간, 특화된 서비스를 마음껏 누르보세요',
+      date: '2025.05.28',
       image: '/img/deone.jpg',
-      content: `신규 회원을 위한 특별한 혜택을 준비했습니다!
+      content: `신규 고객님을을 위한 특별한 혜택을 준비했습니다!
 
 [프로모션 혜택]
-1. 신규 가입 시 첫 달 50% 할인
-2. 무료 미팅룸 10시간 제공
-3. 웰컴 키트 증정
+1. 호스팅 기간 연장 2개월 -> 2년
+2. 커스텀 인터페이스 마케팅 지원
+3. 임대차 계약서 첨부 기능
 
 [적용 기간]
-• 2025년 5월 1일 ~ 5월 31일
-
-[참여 방법]
-1. 랜하우스 홈페이지 회원가입
-2. 프로모션 코드 'WELCOME2025' 입력
-3. 원하는 멤버십 선택
+• 2025년 5월 28일 ~ 
 
 * 프로모션은 조기 종료될 수 있습니다.`
     },
@@ -85,22 +80,10 @@ const NewsComponent = () => {
       category: 'news',
       categoryName: '뉴스',
       title: '랜하우스, 입주박람회 플랫폼 우집사와 MOU체결',
-      description: '혁신적인 공간 솔루션과 서비스 품질을 인정받아 2025 워크플레이스 어워드에서 대상을 수상하였습니다.',
-      date: '2025.05.01',
+      description: '랜하우스가 입주박람회 플랫폼 우집사와 MOU를 체결했습니다. 랜하우스 이용하고 포인트로 우집사에서 원하는 시공 자유롭게 받아보세요요',
+      date: '2025.06.18',
       image: '/img/deone.jpg',
-      content: `랜하우스가 '2025 워크플레이스 어워드'에서 영예의 대상을 수상했습니다.
-
-[수상 내역]
-• 부문: 혁신적 워크플레이스 솔루션
-• 평가 기준: 공간 활용성, 서비스 품질, 회원 만족도
-• 주최: 한국 오피스 협회
-
-[심사위원 평가]
-"랜하우스는 단순한 공유 오피스를 넘어 새로운 업무 문화를 
-창조하는 혁신적인 워크플레이스를 제공하고 있습니다."
-
-앞으로도 더 나은 서비스로 보답하겠습니다.
-감사합니다.`
+      content: `랜하우스가 입주박람회 플랫폼 우집사와 MOU를 체결했습니다.`
     }
   ];
 
@@ -120,7 +103,7 @@ const NewsComponent = () => {
       <NewsContainer>
         <NewsSectionHeader>
           <NewsTitle>언론과 함께 하는<br /><span style={{ color:'#E65C30' }}>랜하우스</span></NewsTitle>
-          <NewsSubTitle>랜하우스의 새로운 소식과 유용한 정보를 확인하실 수 있습니다.</NewsSubTitle>
+          <NewsSubTitle>랜하우스의 새로운 소식과 유용한 정보를 확인해 보세요.</NewsSubTitle>
         </NewsSectionHeader>
         
         <NewsGrid>
@@ -136,9 +119,9 @@ const NewsComponent = () => {
               </NewsCardContent>
               <NewsCardFooter>
                 <NewsDate>{item.date}</NewsDate>
-                <NewsLink as="span">
+                {/* <NewsLink as="span">
                   자세히 보기 <FiArrowRight />
-                </NewsLink>
+                </NewsLink> */}
               </NewsCardFooter>
             </NewsCard>
           ))}
