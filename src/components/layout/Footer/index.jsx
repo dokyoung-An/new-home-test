@@ -39,9 +39,10 @@ const Footer = () => {
           <FooterInfo>
             <div>
               <FooterNotice>
-                회사명 : 에이치엔비테크 | 브랜드 : 랜하우스 | 대표자: 안도경 <br/>
+                회사명 : (주)에이치엔비테크 | 브랜드 : 랜하우스 | 대표자: 이제현 <br/>
                 사업자번호: 602-88-02651 ｜ E. lhs@lanhouse.kr | F. 070-4773-2028 
                 <br />
+                A.울산광역시 중구 서동 동천 1길 40, 세영이노세븐지식산업센터<br/>
                 A. 경기도 하남시 미사대로 현대지식산업센터한강미사2차 B동 (12925) 
                 <br />
                 Copyright ⓒ lanhouse. all rights reserved
@@ -84,7 +85,7 @@ const Footer = () => {
             <FooterTel>
               <p>VR제작문의</p>
               <strong>평일 09:00 ~ 17:30</strong>
-              <h2>1566-2539</h2>
+              <a href="tel:1566-2539"><h2>1566-2539</h2></a>
             </FooterTel>
           </FooterInfo>
 

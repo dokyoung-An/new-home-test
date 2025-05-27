@@ -38,7 +38,7 @@ const NewsComponent = () => {
       id: 1,
       category: 'notice',
       categoryName: '공지사항',
-      title: '랜하우스 신규 지점 오픈 준비중중',
+      title: '랜하우스 신규 지점 오픈 준비중',
       description: '경기도 하남시 랜하우스 지사 오픈을 준비합니다. 더욱 빠르고 원활한 서비스로 고객 여러분께 만족을 드리겠습니다',
       date: '2025.05.27',
       image: '/img/office.jpg',
