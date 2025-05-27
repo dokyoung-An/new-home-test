@@ -29,8 +29,8 @@ const CTABannerSection = () => {
     <CTABanner>
       <Container>
         <CTASubtitle>랜하우스 제휴사</CTASubtitle>
-        <CTATitle>360도 VR 랜하우스와 함께,</CTATitle>
-        <CTAHighlight>마케팅의 혁신을 가져가세요.</CTAHighlight>
+        <CTATitle>비지니스의 매력을 한층 끓어올릴,</CTATitle>
+        <CTAHighlight>360° VR를 도입하세요.</CTAHighlight>
       
        
       </Container>

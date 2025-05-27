@@ -51,7 +51,8 @@ import {
   InquiryContent,
   InquiryStatus,
   InquiryBoard,
-  InquiryBoardTitle
+  InquiryBoardTitle,
+  InquiryId
 } from './style';
 
 const vrTours = [
@@ -220,25 +221,25 @@ const ContactFormSection = forwardRef((props, ref) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.post('/inquiries', {
-        ...formData,
-        status: 'new',
-        created_at: new Date().toISOString()
-      });
+      const { data, error } = await supabase
+        .from('inquiries')
+        .insert([{
+          name: formData.name,
+          phone: formData.phone,
+          region: formData.region,
+          apartment: formData.apartment,
+          inquiry_status: 'new',
+          created_at: new Date().toISOString()
+        }]);
 
-      if (response.error) throw response.error;
+      if (error) throw error;
 
-      
       alert('문의가 성공적으로 접수되었습니다. 빠른 시일 내에 연락드리겠습니다.');
       setFormData({
         name: '',
-        email: '',
         phone: '',
         region: '',
-        apartment: '',
-        interest: '',
-        message: '',
-        newsletter: false
+        apartment: ''
       });
     } catch (error) {
       console.error('문의 제출 오류:', error);
@@ -258,7 +259,10 @@ const ContactFormSection = forwardRef((props, ref) => {
     document.body.style.overflow = 'auto';
   };
 
-  
+  const maskName = (name) => {
+    if (!name) return '';
+    return name.charAt(0) + '*'.repeat(name.length - 1);
+  };
 
   return (
     <ContactSection id="ContactFormSection" ref={ref}>
@@ -276,22 +280,23 @@ const ContactFormSection = forwardRef((props, ref) => {
           </SectionDescription>
             {/* 최근 문의 내역 게시판 */}
             <InquiryBoard>
-            <InquiryBoardTitle>최근 문의 내역</InquiryBoardTitle>
-            <InquiryList>
-              {recentInquiries.map((inquiry) => (
-                <InquiryItem key={inquiry.id}>
-                
-                  <InquiryContent>
-                    {inquiry.apartment}
-                  </InquiryContent>
-                  <InquiryDate>{inquiry.date}</InquiryDate>
-                  <InquiryStatus status={inquiry.status}>
-                    {getStatusText(inquiry.status)}
-                  </InquiryStatus>
-                </InquiryItem>
-              ))}
-            </InquiryList>
-          </InquiryBoard>
+              <InquiryBoardTitle>최근 문의 내역</InquiryBoardTitle>
+              <InquiryList>
+                {recentInquiries.map((inquiry, index) => (
+                  <InquiryItem key={inquiry.id}>
+                    <InquiryId>{inquiry.id}</InquiryId>
+                    <InquiryContent>
+                      <div>{inquiry.apartment}</div>
+                      <div className='region'>{inquiry.region}</div>
+                      <div>{index === 0 ? inquiry.name : maskName(inquiry.name)}</div>
+                    </InquiryContent>
+                    <InquiryStatus status={inquiry.status}>
+                      {getStatusText(inquiry.status)}
+                    </InquiryStatus>
+                  </InquiryItem>
+                ))}
+              </InquiryList>
+            </InquiryBoard>
        
         </ContentSection>
         <FormSection>

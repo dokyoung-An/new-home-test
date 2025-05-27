@@ -643,17 +643,21 @@ export const InquiryList = styled.div`
     background: ${props => props.theme.primaryColor};
     border-radius: 3px;
   }
+  @media (max-width: 768px) {
+    max-height: 200px;
+    
+  }
 `;
 
 export const InquiryItem = styled.div`
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 30px 1fr 80px;
   align-items: center;
-  gap: 16px;
-  padding: 12px;
+  gap: 20px;
+  padding: 12px 16px;
   background: white;
-  border-radius: 8px;
   transition: all 0.2s ease;
+  border-bottom: 1px solid #e0e0e0;
   
   &:hover {
     transform: translateY(-2px);
@@ -661,16 +665,38 @@ export const InquiryItem = styled.div`
   }
 `;
 
-export const InquiryDate = styled.div`
+export const InquiryId = styled.div`
   font-size: 0.9rem;
-  color: ${props => props.theme.darkGray};
-  white-space: nowrap;
+  color: #666;
+  font-weight: 500;
 `;
 
 export const InquiryContent = styled.div`
-  font-size: 0.95rem;
-  color: ${props => props.theme.secondaryColor};
-  font-weight: 500;
+  display: grid;
+  grid-template-columns: 1fr  0.33fr;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: #333;
+  vertical-align: middle;
+  
+  div {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+  }
+
+  .region {
+    font-size: 0.7rem;
+    padding-top: 5px;
+    color: #666;
+    
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
 `;
 
 export const InquiryStatus = styled.div`
@@ -679,6 +705,8 @@ export const InquiryStatus = styled.div`
   font-size: 0.85rem;
   font-weight: 500;
   white-space: nowrap;
+  text-align: center;
+  min-width: 80px;
   
   ${props => {
     switch (props.status) {

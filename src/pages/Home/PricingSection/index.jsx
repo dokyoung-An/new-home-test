@@ -80,7 +80,7 @@ const PricingSectionComponent = () => {
                 <li>20세대 ~ 29세대 : 20% 할인</li>
                 <li>30세대 ~ 49세대 : 30% 할인</li>
                 <li>50세대 ~ 69세대 : 40% 할인</li>
-                <li>70세대 ~ 99세대 : 35% 할인</li>
+                <li>70세대 ~ 99세대 : 45% 할인</li>
                 </ul>
               </CardDescription>
               <PricingBox>
