@@ -18,7 +18,6 @@ const shimmer = keyframes`
 `;
 
 export const Hero = styled.section`
-  background: linear-gradient(to bottom, #f4a32a 0%, #f56a2c 50%, #eb6227 100%);
   color: ${({ theme }) => theme.lightColor};
   min-height: 100vh;
   display: flex;
