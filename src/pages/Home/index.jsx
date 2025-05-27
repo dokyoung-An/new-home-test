@@ -18,6 +18,7 @@ import AdminLink from './AdminLink';
 import NewsSection from './NewsSection';
 import ReservationSection from './ReservationSection';
 import FAQSection from './FAQSection';
+import CoworkerSection from './CoworkerSection';
 
 const Home = () => {
   return (
@@ -33,16 +34,18 @@ const Home = () => {
       <FeaturesSection/>
       <BenefitsSection/>
       <UseCasesSection/>
-      
+      <ProcessSection/>
      
       <TestimonialsSection />
       <PricingSection/>
       <FAQSection/>
       <PromotionSection/>
-      <NewsSection/>
-      <ProcessSection/>
-      
       <ContactFormSection />
+      <NewsSection/>
+      <CoworkerSection/>
+     
+      
+     
      
       <BannerSection/>
       <Footer />

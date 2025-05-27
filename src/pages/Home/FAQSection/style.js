@@ -95,8 +95,7 @@ export const FAQContainer = styled.div`
 `;
 
 export const FAQTitle = styled.div`
-  position: sticky;
-  top: 100px;
+
   
   h2 {
     font-size: 48px;

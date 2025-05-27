@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 
 export const BannerWrapper = styled.section`
-  min-height: 75vh; /* ✅ 높이 0.75배로 조정 */
+  min-height: 65vh; /* ✅ 높이 0.75배로 조정 */
   padding: 80px 20px;
   display: flex;
   justify-content: center;
@@ -35,7 +35,7 @@ export const TypingLine = styled.h1`
   font-size: 2.5rem;
   font-weight: 600;
   color: #ffffff;
-  min-height: 3em;
+
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 
   .cursor {
@@ -77,10 +77,10 @@ export const FixedLine = styled.h2`
   font-size: 2.7rem; /* 기존 2.5rem → 조금 더 큼 */
   font-weight: 700;
   color: ${({ theme }) => theme.primaryColor};
-  margin-top: -50px;
+ 
   opacity: 0;
   visibility: hidden;
-  min-height: 3em;
+ 
   transition: opacity 0.3s ease;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 
@@ -119,7 +119,7 @@ const pulseOnce = keyframes`
 `;
 
 export const ButtonCircle = styled.a`
-  margin-top: 20px;
+  margin-top: 50px;
   width: 48px;
   height: 48px;
   border-radius: 50%;
