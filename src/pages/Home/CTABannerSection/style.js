@@ -59,7 +59,7 @@ export const CTAHighlight = styled.div`
 
 export const CameraContainer = styled.div`
   position: absolute;
-  bottom: 0;
+  bottom: -5px;
   left: 50%;
   transform: translateX(-50%);
   width: 550px;

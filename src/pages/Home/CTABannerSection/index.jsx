@@ -38,7 +38,7 @@ const CTABannerSection = () => {
       </Container>
       
       <CameraContainer>
-        <CameraImg src={'/img/camera.png'} alt="VR 카메라" />
+        <CameraImg src={'/img/insta.png'} alt="VR 카메라" />
       </CameraContainer>
       
       <PartnersSlider>
