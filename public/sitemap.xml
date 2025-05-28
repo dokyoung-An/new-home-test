@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.lanhouse.kr/</loc>
+    <lastmod>2025-05-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.lanhouse.kr/#ContactFormSection</loc>
+    <loc>https://www.lanhouse.kr/#VRExperienceSection </loc>
+    <loc>https://www.lanhouse.kr/#CoworkerSection</loc>
+    <loc>https://www.lanhouse.kr/#CTABannerSection</loc>
+    <loc>https://www.lanhouse.kr/#FooterSection</loc>
+    <loc>https://www.lanhouse.kr/#HeaderSection</loc>
+    <loc>https://www.lanhouse.kr/#HeroSection</loc>
+    <loc>https://www.lanhouse.kr/#AboutSection</loc>
+    <loc>https://www.lanhouse.kr/#FeaturesSection</loc>
+    <loc>https://www.lanhouse.kr/#PricingSection</loc>
+    <loc>https://www.lanhouse.kr/#TestimonialsSection</loc>
+    <loc>https://www.lanhouse.kr/#FAQSection</loc>
+    <loc>https://www.lanhouse.kr/#ContactFormSection</loc>
+    <loc>https://www.lanhouse.kr/#FooterSection</loc>
+    
+    <priority>0.8</priority>
+  </url>
+</urlset>

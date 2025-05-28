@@ -23,6 +23,12 @@ const pulse = keyframes`
   100% { transform: scale(1.2); opacity: 0.3; }
 `;
 
+const floatAnimation = keyframes`
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+  100% { transform: translateY(0); }
+`;
+
 export const VRExperience = styled.section`
   ${sectionSpacing}
   background-color: ${({ theme }) => theme.secondaryColor};
@@ -576,28 +582,7 @@ export const SlideContent = styled.div`
     transition: all 0.3s ease;
   }
   
-  /* 이미지 로딩 최적화 */
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    z-index: 1;
-    opacity: 1;
-    transition: opacity 0.3s ease;
-  }
-  
-  /* 이미지가 로드되기 전 배경색 표시 */
-  background-color: #222;
-  
-  &.loaded {
-    &::after {
-      opacity: 0;
-    }
-  }
+ 
   
   h3, p {
     position: relative;
@@ -636,6 +621,30 @@ export const SlideContent = styled.div`
       overflow: hidden;
       text-overflow: ellipsis;
     }
+    
+    &::after {
+      bottom: 5px;
+      font-size: 0.7rem;
+      padding: 4px 8px;
+    }
+
+    &::after {
+    content: '이미지를 터치해 직접 체험해 보세요 ↑';
+    position: absolute;
+    bottom: 10px;
+    left: 5%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    z-index: 3;
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 15px;
+    white-space: nowrap;
+    animation: ${floatAnimation} 2s ease-in-out infinite;
+  }
   }
   
   @media (max-width: 480px) {
@@ -648,6 +657,12 @@ export const SlideContent = styled.div`
     p {
       font-size: 0.8rem;
       -webkit-line-clamp: 2;
+    }
+    
+    &::after {
+      bottom: 3px;
+      font-size: 0.7rem;
+      padding: 3px 6px;
     }
   }
 `;
