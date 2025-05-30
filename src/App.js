@@ -21,17 +21,17 @@ function App() {
   const [showEventPopup, setShowEventPopup] = useState(false);
 
   useEffect(() => {
-    // 로컬 스토리지에서 팝업 표시 여부 확인
-    const hasSeenPopup = localStorage.getItem('hasSeenEventPopup');
-    if (hasSeenPopup) {
+    // 세션 스토리지에서 팝업 표시 여부 확인
+    const hasSeenPopup = sessionStorage.getItem('hasSeenEventPopup');
+    if (!hasSeenPopup) {
       setShowEventPopup(true);
     }
   }, []);
 
   const handleCloseEventPopup = () => {
     setShowEventPopup(false);
-    // 팝업을 닫았다는 정보를 로컬 스토리지에 저장
-    localStorage.setItem('hasSeenEventPopup', 'true');
+    // 팝업을 닫았다는 정보를 세션 스토리지에 저장
+    sessionStorage.setItem('hasSeenEventPopup', 'true');
   };
 
   return (

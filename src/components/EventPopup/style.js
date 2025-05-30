@@ -1,51 +1,71 @@
 import styled from 'styled-components';
 
+/* 1) 오버레이: 화면 전체를 막지 않도록 최소 범위만 차지 */
 export const PopupOverlay = styled.div`
   position: fixed;
-  top: 50px;
+  top: 50px;          /* ← 원하는 오프셋 그대로 */
   left: 20px;
   z-index: 1000;
+  /* overlay 자체는 투명, 클릭 방해 X */
+  pointer-events: none;
 `;
 
+/* 2) 컨테이너: 예쁜 카드 디자인 + 진짜 클릭 영역 */
 export const PopupContainer = styled.div`
-  background-color: white;
-  padding: 30px;
-  border-radius: 20px;
-  width: 480px;
-  max-height: calc(100vh - 160px);
+  /* pointer-events 복원: 팝업 자체만 클릭 가능 */
+  pointer-events: auto;
+
+  width: min(92vw, 480px);
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px 28px 36px;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
   overflow-y: auto;
-  position: relative;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  max-height: calc(100vh - 120px);
 
-  /* 스크롤바 숨기기 */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none;  /* IE 10+ */
-  
-  &::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
-  }
+  /* 등장 애니메이션 (살짝 위→아래) */
+  animation: fadeSlide 0.4s ease;
 
+  /* 모바일에서 살짝 더 좁게 */
   @media (max-width: 480px) {
     width: calc(100vw - 40px);
-    padding: 20px;
+    padding: 24px 20px 32px;
   }
+
+  /* 스크롤바 숨김 */
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
 `;
 
 
 export const CloseButton = styled.button`
   position: absolute;
-  top: 20px;
-  right: 20px;
-  background: none;
+  top: 15px;
+  right: 15px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.1);
   border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 24px;
-  cursor: pointer;
   color: #666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
   
   &:hover {
+    background: rgba(0, 0, 0, 0.2);
     color: #333;
+    transform: rotate(90deg);
   }
- 
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px ${props => props.theme.primaryColor}40;
+  }
 `;
 
 export const PopupHeader = styled.div`

@@ -185,7 +185,8 @@ export const HeroTitle = styled.h1`
 export const HeroTitleHighlight = styled.span`
   font-size: 140px;
   font-weight: 900;
-  margin-bottom: -10px;
+  display: inline-block;
+  margin-bottom: 10px;
   background: linear-gradient(90deg, #fff, #ffb74d, #fff);
   background-size: 200% auto;
   color: transparent;
@@ -201,7 +202,7 @@ export const HeroTitleHighlight = styled.span`
 
   @media (max-width: 480px) {
     font-size: 70px;
-    margin-bottom: -10px;
+    margin-bottom:0px;
   }
 `;
 

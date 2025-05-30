@@ -545,7 +545,7 @@ export const FeatureCard = styled.div`
   }
   
   &.row1-card1 {
-    background-image: url(${process.env.PUBLIC_URL + '/img/apartment.jpg'});
+    background-image: url(${process.env.PUBLIC_URL + '/img/'});
     background-size: cover;
     background-position: center;
     color: #fff;
