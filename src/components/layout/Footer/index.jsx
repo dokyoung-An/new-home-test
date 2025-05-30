@@ -73,7 +73,7 @@ const Footer = () => {
                   <SiYoutube />
                 </SocialButton>
                 <SocialButton 
-                  href="https://pf.kakao.com" 
+                  href="http://pf.kakao.com/_HxoWPn/chat" 
                   target="_blank"
                   rel="noopener noreferrer"
                   $bgColor="#FAE100"
