@@ -24,7 +24,8 @@ function App() {
     // 세션 스토리지에서 팝업 표시 여부 확인
     const hasSeenPopup = sessionStorage.getItem('hasSeenEventPopup');
     if (!hasSeenPopup) {
-      setShowEventPopup(true);
+      setShowEventPopup(false);
+      
     }
   }, []);
 
