@@ -18,6 +18,7 @@ import AdminLink from './AdminLink';
 import NewsSection from './NewsSection';
 import FAQSection from './FAQSection';
 import CoworkerSection from './CoworkerSection';
+import Category from './Category';
 
 
 const Home = () => {
@@ -26,14 +27,9 @@ const Home = () => {
       <Header />
       <HeroSection/>
       <SloganSection/>
-     
+     <Category/>
+     <FeaturesSection/>
       <VRExperienceSection/>
-      
-     
-      
-      <CTABannerSection/>
-      <FeaturesSection/>
-      
       <UseCasesSection/>
       <BenefitsSection/>
       <TestimonialsSection />

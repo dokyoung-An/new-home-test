@@ -22,7 +22,7 @@ const BenefitsSection = () => {
     cost: 30,
     time: 70,
     rate: 98,
-    satisfaction: 35,
+    satisfaction: 80,
   };
 
   // 현재 숫자 상태 - 초기값은 0
@@ -117,16 +117,41 @@ const BenefitsSection = () => {
       <Benefits ref={sectionRef}>
         <Container>
           <SectionContainer>
-            <SectionSubtitle>랜하우스 100% 활용하면</SectionSubtitle>
+            <SectionSubtitle>하방 100% 활용하면</SectionSubtitle>
             <SectionTitle>이렇게 달라집니다!</SectionTitle>
             
             <BenefitsMent>
-              <p>랜하우스 VR을 경험하신 분들께선 VR로 원상복구 의무에 관한 분쟁이 줄고<br/> 
-                집을 매매,임차 하기 위해 써야만 했던 시간이 획기적으로 줄어,
-                부동산 계약까지 걸리는 시간을 감소할 수 있다고 말씀하셨습니다. </p>
+            <p>입주 전에 하자를 찾아 <span>입주 후 불편을 줄이고</span><br/>
+            세대 상태를 VR로 기록해 <span>시공 분쟁</span>과 <span>임대 복구</span>에 대비할 수 있습니다<br/>
+            임대 관리도 주기적인 <span>하자 점검</span>과 <span>기록 관리</span>로 더 체계적으로 바뀝니다<br/>
+            확실한 사전점검과 스마트한 관리 하방이 해냅니다</p>
             </BenefitsMent>
             
             <StatsContainer>
+            <StatBox>
+                <StatIcon>
+                  <img src={process.env.PUBLIC_URL + '/img/bosu.svg'} alt="계약률 상승" />
+                </StatIcon>
+                <StatTitle>하자보수율</StatTitle>
+                <StatBoxContent>
+                  <PlusSign>+</PlusSign>
+                  <StatNumber>{stats.satisfaction}</StatNumber>
+                  <Unit>%</Unit>
+                </StatBoxContent>
+              </StatBox>
+
+              <StatBox>
+                <StatIcon>
+                  <img src={process.env.PUBLIC_URL + '/img/icon-time.svg'} alt="시간 단축" />
+                </StatIcon>
+                <StatTitle>하자점검 시간 단축</StatTitle>
+                <StatBoxContent>
+                  <PlusSign>-</PlusSign>
+                  <StatNumber>{stats.time}</StatNumber>
+                  <Unit>분</Unit>
+                </StatBoxContent>
+              </StatBox>
+
               <StatBox>
                 <StatIcon>
                   <img src={process.env.PUBLIC_URL + '/img/icon-cost.svg'} alt="비용 절감" />
@@ -139,17 +164,7 @@ const BenefitsSection = () => {
                 </StatBoxContent>
               </StatBox>
               
-              <StatBox>
-                <StatIcon>
-                  <img src={process.env.PUBLIC_URL + '/img/icon-time.svg'} alt="시간 단축" />
-                </StatIcon>
-                <StatTitle>임장 시간 단축</StatTitle>
-                <StatBoxContent>
-                  <PlusSign>-</PlusSign>
-                  <StatNumber>{stats.time}</StatNumber>
-                  <Unit>분</Unit>
-                </StatBoxContent>
-              </StatBox>
+              
               
               <StatBox>
                 <StatIcon>
@@ -162,17 +177,7 @@ const BenefitsSection = () => {
                 </StatBoxContent>
               </StatBox>
               
-              <StatBox>
-                <StatIcon>
-                  <img src={process.env.PUBLIC_URL + '/img/icon-contract.svg'} alt="계약률 상승" />
-                </StatIcon>
-                <StatTitle>평균 계약률 상승</StatTitle>
-                <StatBoxContent>
-                  <PlusSign>+</PlusSign>
-                  <StatNumber>{stats.satisfaction}</StatNumber>
-                  <Unit>%</Unit>
-                </StatBoxContent>
-              </StatBox>
+             
             </StatsContainer>
           </SectionContainer>
         </Container>

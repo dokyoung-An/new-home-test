@@ -23,8 +23,8 @@ export const Testimonials = styled.section`
   ${sectionSpacing}
   background-color: #0e1016;
   background-image: 
-    radial-gradient(circle at 20% 30%, rgba(230, 92, 48, 0.07) 0%, transparent 60%),
-    radial-gradient(circle at 80% 70%, rgba(230, 92, 48, 0.1) 0%, transparent 60%),
+    radial-gradient(circle at 20% 30%, rgba(26, 109, 255, 0.07) 0%, transparent 60%),
+    radial-gradient(circle at 80% 70%, rgba(26, 109, 255, 0.1) 0%, transparent 60%),
     radial-gradient(circle at 50% 50%, rgba(25, 30, 45, 0.9) 0%, rgba(14, 16, 22, 1) 70%);
   color: #fff;
   position: relative;
@@ -41,7 +41,7 @@ export const Testimonials = styled.section`
     height: 3px;
     background: linear-gradient(90deg, 
       rgba(230, 92, 48, 0), 
-      rgba(230, 92, 48, 0.9), 
+      rgba(26, 109, 255, 0.9), 
       rgba(230, 92, 48, 0)
     );
     z-index: 2;
@@ -56,8 +56,8 @@ export const Testimonials = styled.section`
     right: 0;
     bottom: 0;
     background-image: 
-      linear-gradient(rgba(230, 92, 48, 0.02) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(230, 92, 48, 0.02) 1px, transparent 1px);
+      linear-gradient(rgba(26, 109, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26, 109, 255, 0.02) 1px, transparent 1px);
     background-size: 20px 20px;
     z-index: 1;
     opacity: 0.8;
@@ -77,7 +77,7 @@ export const Testimonials = styled.section`
   .glow-particle1 {
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(230, 92, 48, 0.4) 0%, transparent 70%);
+    background: radial-gradient(circle,   rgba(26, 109, 255, 0.4) 0%, transparent 70%);
     top: 10%;
     right: 5%;
     animation: ${float} 20s ease-in-out infinite;
@@ -86,7 +86,7 @@ export const Testimonials = styled.section`
   .glow-particle2 {
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(230, 92, 48, 0.3) 0%, transparent 70%);
+    background: radial-gradient(circle,rgba(26, 109, 255, 0.4) 0%, transparent 70%);
     bottom: 10%;
     left: 10%;
     animation: ${float} 25s ease-in-out infinite alternate-reverse;
@@ -185,8 +185,8 @@ export const SectionTitle = styled.h2`
   animation: ${fadeIn} 1s ease-in-out;
   
   /* 네온 효과 */
-  text-shadow: 0 0 10px rgba(230, 92, 48, 0.5),
-               0 0 20px rgba(180, 58, 27, 0.3);
+  text-shadow: 0 0 10px rgba(26, 109, 255, 0.5),
+               0 0 20px rgba(26, 109, 255, 0.3);
   
   @media (max-width: 768px) {
     font-size: 2.2rem;
@@ -207,7 +207,7 @@ export const SectionSubtitle = styled.h3`
   font-weight: 500;
   font-size: 0.9rem;
   margin-bottom: 20px;
-  box-shadow: 0 0 20px rgba(180, 58, 27, 0.3);
+  box-shadow: 0 0 20px rgba(26, 109, 255, 0.3);
   animation: ${fadeIn} 1s ease-in-out 0.2s backwards;
   
   @media (max-width: 480px) {
@@ -253,7 +253,7 @@ export const TestimonialContainer = styled.div`
     left: -20px;
     right: -20px;
     height: 50%;
-    background: linear-gradient(to bottom, transparent, rgba(230, 92, 48, 0.05));
+    background: linear-gradient(to bottom, transparent, rgba(26, 109, 255, 0.05));
     z-index: 0;
     border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
     filter: blur(20px);
@@ -298,7 +298,7 @@ export const TestimonialCard = styled.div`
   border-radius: 20px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
   margin-bottom: 20px;
-  border: 1px solid rgba(230, 92, 48, 0.15);
+  border: 1px solid rgba(26, 109, 255, 0.15);
   transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
@@ -306,8 +306,8 @@ export const TestimonialCard = styled.div`
   
   &:hover {
     transform: translateY(-15px) scale(1.03);
-    box-shadow: 0 20px 40px rgba(230, 92, 48, 0.25);
-    border-color: rgba(230, 92, 48, 0.3);
+    box-shadow: 0 20px 40px rgba(26, 109, 255, 0.25);
+    border-color:rgba(26, 109, 255, 0.4);
   }
   
   &::before {
@@ -318,9 +318,9 @@ export const TestimonialCard = styled.div`
     width: 100%;
     height: 5px;
     background: linear-gradient(90deg, 
-      rgba(230, 92, 48, 0.3), 
-      rgba(230, 92, 48, 0.8), 
-      rgba(230, 92, 48, 0.3)
+      rgba(26, 109, 255, 0.3), 
+      rgba(26, 109, 255, 0.8), 
+      rgba(26, 109, 255, 0.3)
     );
   }
   
@@ -366,7 +366,7 @@ export const Stars = styled.div`
 
 export const StarIcon = styled.span`
   color: ${props => props.theme.primaryLight};
-  filter: drop-shadow(0 0 3px rgba(230, 92, 48, 0.6));
+  filter: drop-shadow(0 0 3px rgba(26, 109, 255, 0.6));
   font-size: 20px;
   
   svg {
@@ -389,8 +389,8 @@ export const CardTitle = styled.h3`
   font-weight: 600;
   color: #fff;
   margin-bottom: 15px;
-  text-shadow: 0 0 10px rgba(230, 92, 48, 0.4);
-  background: linear-gradient(90deg, #fff, #f5a583);
+  text-shadow: 0 0 10px rgba(26, 109, 255, 0.4);
+  background: linear-gradient(90deg, #fff, #1a6dff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   
@@ -421,7 +421,7 @@ export const CardText = styled.p`
 
 export const QuoteIcon = styled.div`
   margin-bottom: 20px;
-  color: rgba(230, 92, 48, 0.6);
+  color: rgba(26, 109, 255, 0.6);
   
   svg {
     width: 36px;
@@ -468,7 +468,7 @@ export const ClientAvatar = styled.div`
   overflow: hidden;
   margin-right: 20px;
   border: 2px solid ${props => props.theme.primaryColor};
-  box-shadow: 0 0 15px rgba(230, 92, 48, 0.4);
+  box-shadow: 0 0 15px rgba(26, 109, 255, 0.4);
   
   img {
     width: 100%;
@@ -537,7 +537,7 @@ export const Dot = styled.div`
   &.active {
     background-color: ${props => props.theme.primaryColor};
     transform: scale(1.2);
-    box-shadow: 0 0 10px rgba(230, 92, 48, 0.6);
+    box-shadow: 0 0 10px rgba(26, 109, 255, 0.6);
   }
   
   &:hover {
@@ -567,7 +567,7 @@ export const SliderControls = styled.div`
   
   button {
     pointer-events: auto;
-    background-color: rgba(230, 92, 48, 0.2);
+    background-color: rgba(26, 109, 255, 0.2);
     color: #fff;
     border: none;
     width: 50px;
@@ -582,7 +582,7 @@ export const SliderControls = styled.div`
     backdrop-filter: blur(5px);
     
     &:hover {
-      background-color: rgba(230, 92, 48, 0.8);
+      background-color: rgba(26, 109, 255, 0.8);
       transform: scale(1.1);
     }
     

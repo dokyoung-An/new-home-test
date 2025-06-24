@@ -83,7 +83,7 @@ export const Features = styled.section`
   color: #fff;
   position: relative;
   overflow: hidden;
-  padding: 160px 0;
+  padding: 160px 0 100px 0;
   
   /* 3D 그리드 패턴 */
   &::before {
@@ -115,7 +115,7 @@ export const Features = styled.section`
     height: 3px;
     background: linear-gradient(90deg, 
       rgba(230, 92, 48, 0), 
-      rgba(230, 92, 48, 0.7), 
+rgba(26, 109, 255,0.7),
       rgba(230, 92, 48, 0)
     );
     z-index: 3;
@@ -305,138 +305,9 @@ export const FeatureParagraph = styled.p`
   }
 `;
 
-export const FeatureDemo = styled.div`
-  background-color: #f0f0f0;
-  border-radius: 20px;
-  padding: 60px 40px;
-  margin: 40px 0;
-  position: relative;
-  min-height: 300px;
-  height: 600px;
-`;
 
-export const DemoPlaceholder = styled.div`
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #555;
-  text-align: center;
-  font-size: 1.2rem;
-  line-height: 1.6;
-  max-width: 600px;
-  margin: 0 auto;
-  width: 100%;
-  position: relative;
-`;
 
-export const PromoImage = styled.div`
-  background-color: rgba(30, 20, 10, 0.3);
-  border-radius: 20px;
-  padding: 0;
-  margin: 60px 0;
-  position: relative;
-  min-height: 300px;
-  max-width: 100%;
-  box-shadow: 0 0 30px rgba(230, 92, 48, 0.3),
-              0 0 50px rgba(180, 58, 27, 0.1);
-  height: 600px;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: ${props => props.$isActive ? 'default' : 'grab'};
-  animation: ${rotate3d} 15s ease-in-out infinite;
-  animation-play-state: ${props => props.$isActive ? 'paused' : 'running'};
-  
-  &:hover {
-    transform: ${props => props.$isActive ? 'none' : 'scale(1.01)'};
-    box-shadow: 0 0 40px rgba(230, 92, 48, 0.4),
-                0 0 80px rgba(180, 58, 27, 0.2);
-  }
-  
-  /* 오버레이 (클릭 전) */
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    z-index: 20;
-    opacity: ${props => props.$isActive ? '0' : '1'};
-    transition: opacity 0.4s ease;
-    pointer-events: ${props => props.$isActive ? 'none' : 'auto'};
-  }
-  
-  /* data-active 속성을 사용한 오버레이 제어 (대체 방법) */
-  &[data-active="true"]::before {
-    opacity: 0;
-    pointer-events: none;
-  }
-  
-  &::after {
-    content: '클릭하셔서 VR을 직접 체험해 보세요';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 21;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 500;
-    text-align: center;
-    padding: 20px;
-    text-shadow: 0 0 15px rgba(230, 92, 48, 0.8);
-    background-image: url('/img/vr-icon.svg');
-    background-size: 60px;
-    background-repeat: no-repeat;
-    background-position: center bottom;
-    padding-bottom: 80px;
-    opacity: ${props => props.$isActive ? '0' : '1'};
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-    white-space: nowrap;
-  }
-  
-  /* data-active 속성을 사용한 텍스트 제어 (대체 방법) */
-  &[data-active="true"]::after {
-    opacity: 0;
-  }
-  
-  .iframe-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-    z-index: 10;
-  }
-  
-  @media (max-width: 768px) {
-    height: 450px;
-    margin: 40px 0;
-    
-    &::after {
-      font-size: 1.2rem;
-      background-size: 50px;
-      padding-bottom: 70px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    height: 350px;
-    margin: 30px 0;
-    
-    &::after {
-      font-size: 1rem;
-      background-size: 40px;
-      padding-bottom: 60px;
-      white-space: normal;
-      width: 90%;
-    }
-  }
-`;
+
 
 export const FeatureGrid = styled.div`
   display: grid;
@@ -453,6 +324,7 @@ export const FeatureGrid = styled.div`
 export const Row1 = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  
   gap: 30px;
   
   @media (max-width: 768px) {
@@ -464,6 +336,7 @@ export const Row1 = styled.div`
     gap: 15px;
   }
 `;
+
 
 export const Row2 = styled.div`
   display: grid;
@@ -486,7 +359,7 @@ export const Row2 = styled.div`
 export const FeatureCard = styled.div`
   border-radius: 20px;
   padding: 30px;
-  height: 220px;
+  height: 420px;
   background-color: rgba(35, 38, 48, 0.7);
   backdrop-filter: blur(10px);
   color: #fff;
@@ -702,3 +575,64 @@ export const CardIcon = styled.div`
     transform: scale(1.1);
   }
 `; 
+
+export const circle = keyframes`
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+`;
+
+export const AddContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+
+  img {
+    width: 60px;
+    height: 60px;
+    animation: ${circle} 3s infinite;
+    margin-bottom: 10px;
+  }
+`;
+
+export const line = keyframes`
+  0% { width: 0; }
+  100% { width: 100%; }
+`;
+
+export const AddTitle = styled.h2`
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  position: relative;
+  color: #fff;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(135deg, ${props => props.theme.primaryLight}, ${props => props.theme.primaryColor});
+    animation: ${line} 3s ease-in-out infinite;
+  }
+`;
+
+
+export const bounceDown = keyframes`
+  0% { transform: translateY(0); }
+  50% { transform: translateY(20px); }
+  100% { transform: translateY(0); }
+`;
+
+export const ArrowIcon = styled.div`
+  font-size: 2.5rem;
+  margin-top: 10px;
+  animation: ${bounceDown} 1.2s infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

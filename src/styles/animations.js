@@ -13,13 +13,13 @@ export const fadeIn = keyframes`
 
 export const colorChange = keyframes`
   0% {
-    color: #EB6227;
+    color: #1a6dff;
   }
   50% {
-    color: #F4A32A;
+    color: #bfdcff;
   }
   100% {
-    color: #EB6227;
+      color: #1a6dff;
   }
 `;
 

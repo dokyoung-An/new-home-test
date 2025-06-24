@@ -187,7 +187,7 @@ export const HeroTitleHighlight = styled.span`
   font-weight: 900;
   display: inline-block;
   margin-bottom: 10px;
-  background: linear-gradient(90deg, #fff, #ffb74d, #fff);
+  background: linear-gradient(90deg, #e3efff, #1a6dff, #fff);
   background-size: 200% auto;
   color: transparent;
   -webkit-background-clip: text;
@@ -333,7 +333,7 @@ export const SlideTrack = styled.div`
 export const SliderLogo = styled.img`
   height: 120px;
   margin: 0 30px;
-  opacity: 0.7;
+  opacity: 0.2;
   
   @media (max-width: 768px) {
     height: 80px;

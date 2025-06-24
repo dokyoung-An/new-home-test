@@ -1,8 +1,9 @@
 import React from 'react';
 import { Container } from '../../../styles/common';
 import ArrowIcon from '../../../components/common/ArrowIcon';
-import wordmarkLogo from '../../../assets/images/Wordmark White.png';
-import symbolLogo from '../../../assets/images/Symbol White.png';
+import wordmarkLogo from '../../../assets/images/logo.png';
+import symbolLogo from '../../../assets/images/habang4.png';
+
 import {
   Hero,
   HeroContent,
@@ -29,20 +30,19 @@ const HeroSection = () => {
   return (
     <Hero>
       <VideoBackground autoPlay muted loop playsInline preload="auto"  poster="/img/hero-poster.png" >
-        <source src="/img/hero.mp4" type="video/mp4" />
-        <source src="video.webm" type="video/webm"/>
+        <source src="/img/4.webm" type="video/webm" />
+        <source src="/img/4.mp4" type="video/mp4"/>
       </VideoBackground>
       
       <Container>
         <HeroContent>
-          <HeroTagline><span>소중한 공간 기록. 이제는 VR로!</span></HeroTagline>
+          <HeroTagline><span>신축아파트 하자 확인! 입주 전 필수</span></HeroTagline>
           <HeroTitle>
-            <HeroTitleHighlight><span>360° VR</span></HeroTitleHighlight>
-            랜하우스
+            <HeroTitleHighlight><span>HABANG</span></HeroTitleHighlight>
+            사전점검대행 서비스 
           </HeroTitle>
           <HeroSubTitle>
-            현장 방문과 똑같은 임장 경험 &
-            원상 복구 분쟁 최상의 솔루션
+           하자 확인에서 접수까지! 모든 과정을 완벽하게 대행해드립니다.
           </HeroSubTitle>
           <CTAButton>
             <a href="#ContactFormSection">서비스 문의하기</a> <ArrowIcon color="#fff" />

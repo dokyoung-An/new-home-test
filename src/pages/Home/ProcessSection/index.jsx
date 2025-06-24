@@ -19,27 +19,27 @@ const ProcessSection = () => {
   const processSteps = [
     {
       id: 1,
-      icon: 'Calling.svg',
+      icon: 'phone.svg',
       title: '예약문의',
       description: '전화 문의를 통해 서비스 제공일을 예약해주세요.'
     },
     {
       id: 2,
-      icon: 'Camera.svg',
-      title: '현장촬영',
-      description: '전문 촬영팀이 현장에서 VR 촬영을 진행합니다.'
+      icon: 'sms.svg',
+      title: '해피콜',
+      description: '사전점검 2~3일 전 서비스 진행에 관한 안내문자 발송 드립니다'
     },
     {
       id: 3,
-      icon: 'Laptop.svg',
-      title: 'VR제작',
-      description: '촬영된 영상을 바탕으로 고품질 VR 콘텐츠를 제작합니다.'
+      icon: 'check.svg',
+      title: '사전점검진행',
+      description: '사전점검 당일 하자 체크 및 사진 촬영. 하자 보수 신청 현장 접수.'
     },
     {
       id: 4,
-      icon: 'Share.svg',
-      title: '링크전송',
-      description: '완성된 VR 콘텐츠의 링크를 고객님께 전송해 드립니다.'
+      icon: 'link.svg',
+      title: `하자점검 보고서 \n + VR링크 전달`,
+      description: '사진과 하자 내용을 담은 보고서 및 세대 현장 기록 360VR 링크 전달'
     }
   ];
 
@@ -52,9 +52,9 @@ const ProcessSection = () => {
         <SectionHeader>
           <SectionSubtitle>간편한 이용 절차</SectionSubtitle>
           <SectionTitle>4단계로 완성되는</SectionTitle>
-          <HighlightText>360도 VR 서비스</HighlightText>
+          <HighlightText>하방의 사전점검</HighlightText>
           <p>
-            소중한 우리집 영구 기록. 단, 4단계로 끝!
+            입주민 여러분의 당당한 권리행사, 하방과 함께 강력히 행사하세요요
            
           </p>
         </SectionHeader>
@@ -63,7 +63,7 @@ const ProcessSection = () => {
           {processSteps.map((step, index) => (
             <Step key={step.id} index={index}>
               <StepIcon>
-                <img src={`${process.env.PUBLIC_URL}/img/icons/${step.icon}`} alt={`${step.title} 아이콘`} />
+                <img src={`${process.env.PUBLIC_URL}/img/service/${step.icon}`} alt={`${step.title} 아이콘`} />
               </StepIcon>
               <StepText>
                 <StepTitle>{step.title}</StepTitle>

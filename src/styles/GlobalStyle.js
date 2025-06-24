@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Noto Sans KR', sans-serif;
     line-height: 1.6;
     color: ${({ theme }) => theme.secondaryColor};
-    background-color: ${({ theme }) => theme.lightColor};
+   
   }
 
   a {

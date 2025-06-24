@@ -36,7 +36,7 @@ const Header = () => {
   return (
     <HeaderContainer scrolled={scrolled} isHome={isHome}>
       <HeaderContent>
-        <Logo><a href="/">LANHOUSE</a></Logo>
+        <Logo><a href="/">HABANG</a></Logo>
         <NavLinks>
           <li><a href="#VRExperience">Portfolio</a></li>
           <li><a href="#BenefitsSection">서비스 장점</a></li>

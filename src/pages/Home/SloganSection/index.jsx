@@ -48,23 +48,23 @@ const SloganSection = () => {
       <Container>
         <ChatBubbles ref={chatBubblesRef}>
           <ChatBubble className="chat-bubble">
-            <p>사전점검 때 봤던 우리집, 준공나기 전에 다시 볼 수 없을까?</p>
+            <p>사전점검 때 찾지 못한 하자는 입주 전 보수가 안된다고?</p>
             <Emoji>⁉️</Emoji>
           </ChatBubble>
           <ChatBubble className="chat-bubble">
-            <p>집은 내야 하는데.. 모르는 사람이 자꾸 오는 건 싫어!!</p>
+            <p>건축에 대해 하나도 모르는데 하자를 어떻게 찾지?</p>
             <Emoji>😨</Emoji>
           </ChatBubble>
           <ChatBubble className="chat-bubble">
-            <p>임차인이 나갈 때 엉망으로 해놓으면 어쩌지?<p> 사진 찍어놔야 하나;;</p></p>
-            <Emoji>💰</Emoji>
+            <p>아.. 여행가서 참석할 수 없는데 어쩌지...;;</p>
+            <Emoji>✈️</Emoji>
           </ChatBubble>
         </ChatBubbles>
         
         <VerticalLine />
-        <SloganTitle>한 번의 촬영, 끝까지 남는 기록</SloganTitle>
-        <SloganSubtitle>24시간, 언제든지<br/>360°VR로 만나는 우리집</SloganSubtitle>
-        <HighlightText>랜하우스</HighlightText>
+        <SloganTitle>소중한 우리집, 하자란 단연코 없어야 합니다.</SloganTitle>
+        <SloganSubtitle>처음이라 어렵고, 시간이 없어 하기 힘든 하자 확인!<br/> 하방이 해결해드립니다.</SloganSubtitle>
+        <HighlightText>사전점검대행 하방</HighlightText>
       </Container>
     </Slogan>
   );

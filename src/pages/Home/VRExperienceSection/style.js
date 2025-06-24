@@ -32,7 +32,7 @@ const floatAnimation = keyframes`
 export const VRExperience = styled.section`
   ${sectionSpacing}
   background-color: ${({ theme }) => theme.secondaryColor};
-  background-image: url('/img/livingroom.png');
+  background-image: url('/img/1.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -328,7 +328,7 @@ export const CTAIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(247, 96, 51, 0.4));
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.2),#1a6dff);
   border-radius: 8px;
   color: #fff;
   font-size: 16px;

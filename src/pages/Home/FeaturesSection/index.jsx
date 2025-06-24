@@ -12,7 +12,10 @@ import {
   IconContainer,
   CardIcon,
   CardContent,
-  VideoBackground
+  VideoBackground,
+  AddContainer,
+  AddTitle,
+  ArrowIcon
 } from './style';
 
 // 애니메이션을 위한 별도 스타일
@@ -71,110 +74,13 @@ const FeaturesSection = () => {
         <source src="/img/event.mp4" type="video/mp4" />
       </VideoBackground>
       <Container>
-        <FeatureTag>VIRTUAL TOUR</FeatureTag>
-        <FeatureTitle>말보다 빠른 경험<br/>360도VR, 바로 체험해 보세요</FeatureTitle>
+        <FeatureTag>HABANG SERVICE</FeatureTag>
+        <FeatureTitle>7년의 노하우!!<br/>하방의 특별한 점검 서비스</FeatureTitle>
         <FeatureParagraph>
-          자체 개발 최신 디지털 트윈 기술로<br/> 놀라운 VR 경험을 제공합니다
+          하자체크는 기본! 하자 접수까지 진행하는<br/>올인원 서비스
         </FeatureParagraph>
         
-        {/* VR 데모 컨테이너 - 최대한 단순화 */}
-        <div 
-          style={{
-            position: 'relative',
-            backgroundColor: 'rgba(40, 30, 20, 0.2)',
-            borderRadius: '20px',
-            margin: '60px 0 80px 0',
-            minHeight: '300px',
-            maxWidth: '100%',
-           boxShadow: '0 25px 40px rgba(0, 0, 0, 0.25)',
-            height: '600px',
-            overflow: 'hidden',
-          }}
-        >
-          {/* iframe */}
-          <iframe 
-            src="https://lanhouse-in-port.vercel.app/부산에코델타/"
-            title="랜하우스 VR 데모"
-            allowFullScreen
-            allow="xr-spatial-tracking; gyroscope; accelerometer"
-            onLoad={handleIframeLoad}
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              border: 'none',
-              zIndex: 10,
-              pointerEvents: showOverlay ? 'none' : 'auto'
-            }}
-          />
-          
-          {/* 로딩 인디케이터 */}
-          {isLoading && (
-            <div style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              backgroundColor: 'rgba(0, 0, 0, 0.2)',
-              zIndex: 40,
-              color: '#fff',
-              fontSize: '1.2rem',
-              fontWeight: 'bold',
-            }}>
-              VR 컨텐츠를 불러오는 중입니다...
-            </div>
-          )}
-          
-          {/* 클릭 유도 오버레이 */}
-          {showOverlay && (
-            <div 
-              onClick={handlePromoClick}
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                background: 'linear-gradient(to bottom, rgba(20, 15, 10, 0.3), rgba(20, 15, 10, 0.5))',
-                zIndex: 20,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'grab'
-              }}
-            >
-              <div style={{
-                color: 'white',
-                fontSize: '1.7rem',
-                fontWeight: '600',
-                textAlign: 'center',
-                padding: '20px',
-                textShadow: '0 0 20px rgba(20, 15, 10, 0.9)',
-                marginBottom: '80px',
-                letterSpacing: '0.5px',
-                wordBreak: 'keep-all',
-              }}>
-                클릭해 직접 체험해 보세요
-              </div>
-              <div style={{
-                width: '70px', 
-                height: '70px',
-                backgroundImage: 'url(/img/vr-icon.svg)',
-                backgroundSize: 'contain',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                filter: 'drop-shadow(0 0 15px rgba(230, 92, 48, 0.8))',
-              }} />
-            </div>
-          )}
-        </div>
+       
         
         <FeatureGrid>
           <Row1>
@@ -184,7 +90,7 @@ const FeaturesSection = () => {
                   <CardIcon>🏠</CardIcon>
                 </IconContainer>
                 <div>
-                  <h3>실제와 동일한 공간감</h3>
+                  <h3>육안점검</h3>
                   <p>실제 방문한 것처럼 생생한 공간감을 경험할 수 있습니다</p>
                 </div>
               </CardContent>
@@ -196,7 +102,7 @@ const FeaturesSection = () => {
                   <CardIcon>📱</CardIcon>
                 </IconContainer>
                 <div>
-                  <h3>멀티 플랫폼 지원</h3>
+                  <h3>장비점검</h3>
                   <p>웹, 모바일, VR 헤드셋 등 다양한 기기에서 이용 가능합니다</p>
                 </div>
               </CardContent>
@@ -210,7 +116,7 @@ const FeaturesSection = () => {
                   <CardIcon>🔍</CardIcon>
                 </IconContainer>
                 <div>
-                  <h3>상세 확대 기능</h3>
+                  <h3>하자접수</h3>
                   <p>주요 포인트를 세밀하게 살펴볼 수 있는 줌 기능 제공</p>
                 </div>
               </CardContent>
@@ -222,7 +128,7 @@ const FeaturesSection = () => {
                   <CardIcon>💼</CardIcon>
                 </IconContainer>
                 <div>
-                  <h3>비즈니스 최적화</h3>
+                  <h3>하자점검 보고서</h3>
                   <p>부동산 비즈니스에 최적화된 기능과 인터페이스로 고객과의 소통을 원활하게 합니다</p>
                 </div>
               </CardContent>
@@ -234,7 +140,7 @@ const FeaturesSection = () => {
                   <CardIcon>📊</CardIcon>
                 </IconContainer>
                 <div>
-                  <h3>데이터 분석</h3>
+                  <h3>하자 Q&A</h3>
                   <p>방문자 통계와 관심 지점 분석으로 마케팅 전략 수립</p>
                 </div>
               </CardContent>
@@ -242,6 +148,12 @@ const FeaturesSection = () => {
           </Row2>
         </FeatureGrid>
       </Container>
+
+      <AddContainer>
+        <img src="/img/plus.png" alt="add" />
+        <AddTitle>SPECIAL SERVICE</AddTitle>
+        <ArrowIcon>⬇️</ArrowIcon>
+      </AddContainer>
     </Features>
   );
 };

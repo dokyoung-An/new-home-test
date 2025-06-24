@@ -1,12 +1,9 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import { Container } from '../../../styles/common';
 import {
   PricingWrapper,
-  PricingContainer,
-  SectionHeader,
   SectionSubtitle,
   SectionTitle,
-  HighlightText,
   DescriptionText,
   PricingPlans,
   PricingCard,
@@ -18,28 +15,65 @@ import {
   SizeBadge,
   Price,
   VAT,
-  LastSection,
-  ServiceSectionTitle,
-  ServiceCardsContainer,
-  ServiceCard,
-  ServiceIconWrapper,
-  ServiceTitle,
-  ServiceDescription
+  Wrapper,
+  Label,
+  Select,
+  PriceBox,
 } from './style';
 
+const priceTable = {
+  '사전점검 서비스': {
+    '25평 이하': '24만 원',
+    '30평': '27만 원',
+    '34평': '30만 원',
+    '40평 이상': '33만 원',
+  },
+  '입주 전 사전점검 서비스': {
+    '25평 이하': '26만 원',
+    '30평': '29만 원',
+    '34평': '32만 원',
+    '40평 이상': '35만 원',
+  },
+};
+
 const PricingSectionComponent = () => {
+  const [service, setService] = useState('사전점검 서비스');
+  const [size, setSize] = useState('25평 이하');
+
+  const price = priceTable[service][size];
+
   return (
     <section id="PricingSection">
       <PricingWrapper>
         <Container>
           <SectionSubtitle>가격 안내</SectionSubtitle>
-          <SectionTitle>랜하우스 360° VR 가격 안내</SectionTitle>
+          <SectionTitle>하방 서비스 가격 안내</SectionTitle>
           <DescriptionText>
             합리적인 비용으로 고품질 VR 서비스를 이용하세요. <br/>
             이용 세대 수, 기능 추가에 따라 가격이 달라집니다.
           </DescriptionText>
+
+          <Wrapper>
+      <Label htmlFor="service">서비스명</Label>
+      <Select id="service" value={service} onChange={(e) => setService(e.target.value)}>
+        {Object.keys(priceTable).map((svc) => (
+          <option key={svc} value={svc}>{svc}</option>
+        ))}
+      </Select>
+
+      <Label htmlFor="size">평형</Label>
+      <Select id="size" value={size} onChange={(e) => setSize(e.target.value)}>
+        {Object.keys(priceTable[service]).map((sz) => (
+          <option key={sz} value={sz}>{sz}</option>
+        ))}
+      </Select>
+
+      <PriceBox>
+        {price}
+      </PriceBox>
+    </Wrapper>
           
-          <PricingPlans>
+          {/* <PricingPlans>
             <PricingCard>
               <CardNumber>01</CardNumber>
               <CardTitle>
@@ -56,7 +90,7 @@ const PricingSectionComponent = () => {
               </CardDescription>
               <PricingBox>
                 <SizeBadge> 평당</SizeBadge>
-                <Price>5,000 원 <VAT>(VAT 포함)</VAT></Price>
+                <Price>8,500 원 <VAT>(VAT 포함)</VAT></Price>
               </PricingBox>
             </PricingCard>
             
@@ -107,7 +141,7 @@ const PricingSectionComponent = () => {
                 <Price>견적 문의</Price>
               </PricingBox>
             </PricingCard>
-          </PricingPlans>
+          </PricingPlans> */}
         </Container>
         
        

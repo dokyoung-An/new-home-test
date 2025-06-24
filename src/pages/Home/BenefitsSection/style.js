@@ -58,6 +58,13 @@ export const BenefitsMent = styled.div`
   max-width: 800px;
   word-break: keep-all;
   
+  span{
+      color: ${({ theme }) => theme.primaryColor};
+      font-weight: 600;
+      text-decoration: underline;
+      
+    }
+
   p {
     margin: 0;
     font-size: 1.1rem;
@@ -66,6 +73,8 @@ export const BenefitsMent = styled.div`
     padding-left: 10px;
     line-height: 1.6;
     word-break: keep-all;
+
+   
     
     @media (max-width: 768px) {
       font-size: 1rem;
@@ -226,7 +235,7 @@ export const Unit = styled.span`
 
 export const StatIcon = styled.div`
   margin-bottom: 15px;
-  background-color: rgba(255, 102, 0, 0.1);
+  background-color: rgba(26, 109, 255, 0.1);
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -238,6 +247,6 @@ export const StatIcon = styled.div`
   
   ${StatBox}:hover & {
     transform: scale(1.1);
-    background-color: rgba(255, 102, 0, 0.15);
+    background-color: rgba(26, 109, 255, 0.15);
   }
 `; 

@@ -158,8 +158,8 @@ const UseCasesSection = () => {
   return (
     <UseCasesWrapper id="UseCasesSection">
       <Container>
-        <SectionSubtitle>활용 사례</SectionSubtitle>
-        <SectionTitle>랜하우스 VR! 이렇게 사용하세요</SectionTitle>
+        <SectionSubtitle>HOW TO USE</SectionSubtitle>
+        <SectionTitle>하방 이렇게 활용하세요</SectionTitle>
         
         <TabsContainer>
           <TabButton 
@@ -172,13 +172,13 @@ const UseCasesSection = () => {
             isActive={activeTab === 'residential'} 
             onClick={() => setActiveTab('residential')}
           >
-            임대차
+            실입주자
           </TabButton>
           <TabButton 
             isActive={activeTab === 'commercial'} 
             onClick={() => setActiveTab('commercial')}
           >
-            중개업
+            임대차
           </TabButton>
           <TabButton 
             isActive={activeTab === 'management'} 
@@ -194,9 +194,9 @@ const UseCasesSection = () => {
               <CardImage bgImage={caseItem.image} />
               <CardContent>
                 <CardBadge>
-                  {caseItem.category === 'residential' && '임대차'}
-                  {caseItem.category === 'commercial' && '중개용'}
-                  {caseItem.category === 'management' && '관리용'}
+                  {caseItem.category === 'residential' && '실입주자'}
+                  {caseItem.category === 'commercial' && '임대차'}
+                  {caseItem.category === 'management' && '관리업'}
                 </CardBadge>
                 <CardTitle>{caseItem.title}</CardTitle>
                 <CardDescription>{caseItem.description}</CardDescription>

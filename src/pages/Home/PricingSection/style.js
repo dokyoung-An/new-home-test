@@ -46,7 +46,7 @@ export const SectionSubtitle = styled.h3`
   border-radius: 50px;
   font-weight: 500;
   font-size: 0.9rem;
-  box-shadow: 0 0 20px rgba(180, 58, 27, 0.3);
+  box-shadow: 0 0 20px rgba(26, 109, 255, 0.3);
   animation: ${fadeIn} 1s ease-in-out 0.2s backwards;
   letter-spacing: 0.5px;
   text-align: center;
@@ -159,7 +159,7 @@ export const PricingCard = styled.div`
   
   &:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(230, 92, 48, 0.15);
+    box-shadow: 0 15px 35px rgba(26, 109, 255, 0.15);
   }
   
   &:nth-child(2) {
@@ -196,7 +196,7 @@ export const PricingCard = styled.div`
 export const CardNumber = styled.div`
   font-size: 48px;
   font-weight: 700;
-  color: rgba(230, 92, 48, 0.1);
+  color: rgba(26, 109, 255, 0.1);
   margin-bottom: -32px;
   margin-left: -8px;
   z-index: 0;
@@ -225,7 +225,7 @@ export const HighlightTitle = styled.div`
   display: inline-block;
   padding: 5px 10px;
   border-radius: 5px;
-  background-color: rgba(230, 92, 48, 0.1);
+  background-color: rgba(26, 109, 255, 0.1);
   
   @media (max-width: 480px) {
     font-size: 1.1rem;
@@ -307,7 +307,7 @@ export const PricingBox = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: auto;
-  box-shadow: 0 8px 20px rgba(230, 92, 48, 0.2);
+  box-shadow: 0 8px 20px rgba(26, 109, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.1);
 `;
 
@@ -494,7 +494,7 @@ export const ServiceIconWrapper = styled.div`
     right: -2px;
     width: 16px;
     height: 16px;
-    background-color: #FF6B3D;
+    background-color: ${({ theme }) => theme.primaryMiddle};
     border-radius: 50%;
     border: 2px solid #fff;
   }
@@ -542,7 +542,7 @@ export const CautionTitle = styled.h3`
     left: -25px;
     top: 50%;
     transform: translateY(-50%);
-    box-shadow: 0 2px 5px rgba(230, 92, 48, 0.3);
+    box-shadow: 0 2px 5px rgba(26, 109, 255, 0.3);
   }
   
   &.caution-title {
@@ -640,7 +640,7 @@ export const CautionNote = styled.div`
     right: 0;
     width: 100px;
     height: 100px;
-    background: linear-gradient(135deg, transparent 70%, rgba(230, 92, 48, 0.1));
+    background: linear-gradient(135deg, transparent 70%, rgba(26, 109, 255, 0.1));
     border-radius: 0 0 0 100%;
   }
   
@@ -671,4 +671,39 @@ export const CautionNote = styled.div`
   @media (max-width: 480px) {
     padding: 20px;
   }
+`;
+
+
+export const Wrapper = styled.div`
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background: #f9f9f9;
+`;
+
+export const Label = styled.label`
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+`;
+
+export const Select = styled.select`
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+`;
+
+export const PriceBox = styled.div`
+  margin-top: 1rem;
+  padding: 1.5rem;
+  background-color: #e6f0ff;
+  color: #1557cc;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 8px;
+  text-align: center;
 `;

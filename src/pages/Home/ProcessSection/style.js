@@ -147,9 +147,9 @@ export const SectionHeader = styled(CommonSectionHeader)`
     width: 100px;
     height: 4px;
     background: linear-gradient(90deg, 
-      rgba(230, 92, 48, 0.3), 
-      rgba(230, 92, 48, 0.8), 
-      rgba(230, 92, 48, 0.3)
+      rgba(26, 109, 255, 0.3), 
+      rgba(26, 109, 255, 0.8), 
+      rgba(26, 109, 255, 0.3)
     );
     border-radius: 2px;
   }
@@ -190,7 +190,7 @@ export const SectionSubtitle = styled.h3`
   font-weight: 500;
   font-size: 0.9rem;
   margin-bottom: 20px;
-  box-shadow: 0 0 20px rgba(180, 58, 27, 0.3);
+  box-shadow: 0 0 20px rgba(26, 109, 255, 0.3);
   animation: ${fadeIn} 1s ease-in-out 0.2s backwards;
   letter-spacing: 0.5px;
   
@@ -207,10 +207,11 @@ export const SectionTitle = styled.h2`
   color: #fff;
   margin-bottom: 10px;
   animation: ${fadeIn} 1s ease-in-out;
+ 
   
   /* 네온 효과 */
-  text-shadow: 0 0 10px rgba(230, 92, 48, 0.5),
-               0 0 20px rgba(180, 58, 27, 0.3);
+  text-shadow: 0 0 10px rgba(26, 109, 255, 0.5),
+               0 0 20px rgba(26, 109, 255, 0.3);
   
   @media (max-width: 768px) {
     font-size: 2.2rem;
@@ -263,9 +264,9 @@ export const ProcessSteps = styled.div`
     width: 90%;
     height: 2px;
     background: linear-gradient(90deg, 
-      rgba(230, 92, 48, 0.3), 
-      rgba(230, 92, 48, 0.8), 
-      rgba(230, 92, 48, 0.3)
+      rgba(26, 109, 255, 0.3), 
+      rgba(26, 109, 255, 0.8), 
+      rgba(26, 109, 255, 0.3)
     );
     z-index: 1;
   }
@@ -336,7 +337,7 @@ export const StepIcon = styled.div`
   backdrop-filter: blur(10px);
   border-radius: 50%;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(230, 92, 48, 0.15);
+  border: 1px solid rgba(26, 109, 255, 0.15);
   transition: all 0.4s ease;
   
   img {
@@ -375,7 +376,7 @@ export const StepText = styled.div`
   border-radius: 15px;
   padding: 20px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(230, 92, 48, 0.1);
+  border: 1px solid rgba(26, 109, 255, 0.1);
   transition: all 0.3s ease;
   width: 100%;
   min-height: 120px;
@@ -384,8 +385,8 @@ export const StepText = styled.div`
   justify-content: center;
   
   &:hover {
-    border-color: rgba(230, 92, 48, 0.3);
-    box-shadow: 0 12px 30px rgba(230, 92, 48, 0.15);
+    border-color: rgba(26, 109, 255, 0.3);
+    box-shadow: 0 12px 30px rgba(26, 109, 255, 0.15);
   }
   
   @media (max-width: 768px) {
@@ -400,10 +401,11 @@ export const StepTitle = styled.h3`
   font-weight: 600;
   color: #fff;
   margin-bottom: 10px;
-  text-shadow: 0 0 10px rgba(230, 92, 48, 0.4);
-  background: linear-gradient(90deg, #fff, #f5a583);
+  text-shadow: 0 0 10px rgba(26, 109, 255, 0.4);
+  background: linear-gradient(90deg, #fff, #1a6dff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  white-space: pre-line;
   
   @media (max-width: 480px) {
     font-size: 1.1rem;

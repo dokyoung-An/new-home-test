@@ -33,7 +33,7 @@ export const SloganSubtitle = styled.h3`
 `;
 
 export const HighlightText = styled.div`
-  color: #EB6227;
+  color: #1a6dff;
   font-size: 3.5rem;
   font-weight: 700;
   margin: 20px 0 60px;

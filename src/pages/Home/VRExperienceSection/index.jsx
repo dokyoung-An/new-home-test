@@ -117,18 +117,18 @@ const VRExperienceSection = () => {
   };
 
   return (
-    <section id="VRExperience" style={{ marginBottom: 0, paddingBottom: 0 }}>
+    <section id="VRExperience" style={{ marginBottom: 0, paddingBottom: 0 ,paddingTop: 0}}>
       <VRExperience>
         <Container>
           <ExperienceWrapper>
             <ExperienceContent>
-              <ExperienceSubtitle>Premium VR 솔루션</ExperienceSubtitle>
+              <ExperienceSubtitle>오직 하방에서만! 세대기록 서비스</ExperienceSubtitle>
               <ExperienceTitle>진짜 사진만으로 괜찮으세요?</ExperienceTitle>
               <ExperienceHighlight>360° VR로 <br/>확실하게, 선명하게!</ExperienceHighlight>
               <p>
                 소중한 공간의 가치를 지키기 위한 시작엔 확실한 기록이 있습니다.
-                랜하우스 360° VR은 단순한 사진으론 담을 수 없는, '진짜 우리집'을
-                생생하게 담아드립니다.
+                사전점검대행업체 하방 X 랜하우스 360° VR은 단순한 사진으론 담을 수 없는, 
+                사전점검 현장의 모습을 생생하게 담아드립니다.
               </p>
               <ExperienceCTA>
                 <CTAItem>
