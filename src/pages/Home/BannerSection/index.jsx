@@ -12,8 +12,8 @@ import {
 const BannerSection = () => {
   const videoRef = useRef(null);
 
-  const firstText = '기록하세요!';
-  const secondText = ' 분쟁은 줄고, 계약은 쉬워집니다.'; // 앞에 공백 포함
+  const firstText = '점검하세요!';
+  const secondText = ' 하자는 줄이고, 입주는 편해집니다.'; // 앞에 공백 포함
   const [displayedText, setDisplayedText] = useState('');
   const [firstDone, setFirstDone] = useState(false);
   const [index, setIndex] = useState(0);
@@ -69,7 +69,7 @@ const BannerSection = () => {
   return (
     <BannerWrapper>
       <VideoBackground ref={videoRef} autoPlay muted loop playsInline>
-        <source src="/img/hand.mp4" type="video/mp4" />
+        <source src="/img/banner.mp4" type="video/mp4" />
       </VideoBackground>
       <VideoOverlay />
 
@@ -80,7 +80,7 @@ const BannerSection = () => {
         </TypingLine>
 
         <FixedLine className={showFixedLine ? 'fade-in' : ''}>
-          랜하우스, 지금 바로 시작하세요.
+          하방, 지금 바로 시작하세요.
         </FixedLine>
 
         <ButtonCircle

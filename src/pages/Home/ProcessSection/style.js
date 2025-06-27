@@ -21,7 +21,7 @@ const shimmer = keyframes`
 
 export const ProcessWrapper = styled.section`
   ${sectionSpacing}
-  background-color: #0e1016;
+  background: linear-gradient(135deg, #102347, #1557cc);
   color: #ffffff;
   overflow: hidden;
   display: flex;
@@ -39,7 +39,7 @@ export const ProcessWrapper = styled.section`
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('${process.env.PUBLIC_URL}/img/processbg.png');
+    background-image: url('${process.env.PUBLIC_URL}/img/bg4.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -147,9 +147,9 @@ export const SectionHeader = styled(CommonSectionHeader)`
     width: 100px;
     height: 4px;
     background: linear-gradient(90deg, 
-      rgba(26, 109, 255, 0.3), 
-      rgba(26, 109, 255, 0.8), 
-      rgba(26, 109, 255, 0.3)
+      ${props => props.theme.primaryReward}, 
+      ${props => props.theme.primaryMiddle}, 
+      ${props => props.theme.primaryReward}
     );
     border-radius: 2px;
   }
@@ -183,7 +183,7 @@ export const SectionHeader = styled(CommonSectionHeader)`
 
 export const SectionSubtitle = styled.h3`
   display: inline-block;
-  background: linear-gradient(135deg, ${props => props.theme.primaryDark}, ${props => props.theme.primaryColor});
+  background: linear-gradient(135deg, ${props => props.theme.primaryReward}, ${props => props.theme.primaryMiddle});
   color: #fff;
   padding: 8px 20px;
   border-radius: 50px;

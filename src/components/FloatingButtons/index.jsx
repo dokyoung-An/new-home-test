@@ -4,11 +4,11 @@ import { FaPhone } from 'react-icons/fa';
 
 const FloatingButtons = () => {
   const handleKakaoChannel = () => {
-    window.open(' http://pf.kakao.com/_HxoWPn/chat', '_blank');
+    window.open(' http://pf.kakao.com/_hIxdss/chat', '_blank');
   };
 
   const handlePhoneClick = () => {
-    const phoneNumber = '1566-2539';
+    const phoneNumber = '1566-2384';
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
       window.location.href = `tel:${phoneNumber.replace(/-/g, '')}`;
     } else {

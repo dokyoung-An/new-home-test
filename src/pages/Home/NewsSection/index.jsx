@@ -37,53 +37,31 @@ const NewsComponent = () => {
     {
       id: 1,
       category: 'notice',
-      categoryName: '공지사항',
-      title: '랜하우스 신규 지점 오픈 준비중',
-      description: '경기도 하남시 랜하우스 지사 오픈을 준비합니다. 더욱 빠르고 원활한 서비스로 고객 여러분께 만족을 드리겠습니다',
-      date: '2025.05.27',
-      image: '/img/office.jpg',
-      content: `랜하우스가 경기도 하남시에 새로운 지점을 오픈합니다.
-
-• 위치: 서울 강남구 신사동 123-45
-• 오픈일: 2025년 6월 1일
-• 규모: 총 5개층, 1,000평 규모
-• 주요 시설: 
-  - 1층: 라운지 & 카페
-  - 2-3층: 코워킹 스페이스
-  - 4층: 미팅룸 & 컨퍼런스룸
-  - 5층: 프라이빗 오피스
-
-사전 예약 및 문의: 02-1234-5678`
+      categoryName: '공구중',
+      title: '창원힐스테이트 더퍼스트 공동구매',
+      description: '창원힐스테이트 더퍼스트 공동구매 중입니다. 혜택을 받으세요',
+      date: '2025.07.05',
+      image: '/img/news/3.jpg',
+      
     },
     {
       id: 2,
       category: 'event',
       categoryName: '이벤트',
       title: '홈페이지 개편 프로모션',
-      description: '랜하우스 홈페이지 오픈 기념, 이벤트를 준비했습니다. 넉넉한 호스팅 기간, 특화된 서비스를 마음껏 누르보세요',
-      date: '2025.05.28',
-      image: '/img/present.jpg',
-      content: `신규 고객님을을 위한 특별한 혜택을 준비했습니다!
-
-[프로모션 혜택]
-1. 호스팅 기간 연장 2개월 -> 2년
-2. 커스텀 인터페이스 마케팅 지원
-3. 임대차 계약서 첨부 기능
-
-[적용 기간]
-• 2025년 5월 28일 ~ 
-
-* 프로모션은 조기 종료될 수 있습니다.`
+      description: '하방 홈페이지 오픈 기념, 이벤트를 준비했습니다. 하방의 프리미엄 서비스를 마음껏 누려보세요',
+      date: '2025.07.10~',
+      image: '/img/news/2.png',
+     
     },
     {
       id: 3,
       category: 'news',
-      categoryName: '뉴스',
-      title: '랜하우스, 입주박람회 플랫폼 우집사와 MOU 예정',
-      description: '랜하우스가 입주박람회 플랫폼 우집사와 MOU를 체결했습니다. 랜하우스 이용하고 포인트로 우집사에서 원하는 시공 자유롭게 받아보세요요',
-      date: '2025.06.18',
-      image: '/img/mou.jpg',
-      content: `랜하우스가 입주박람회 플랫폼 우집사와 MOU를 체결했습니다.`
+      categoryName: '하자정보',
+      title: '2024 경기도 공동주택 품질점검 사례집 ',
+      description: '2024 경기도 공동주택 품질점검 사례집 ☆. 2024 경기도 공동주택 품질점검 사례집.',
+      date: '2024.11.5',
+      image: '/img/news/1.png',
     }
   ];
 
@@ -102,8 +80,8 @@ const NewsComponent = () => {
       <DesignElement3 />
       <NewsContainer>
         <NewsSectionHeader>
-          <NewsTitle>언론과 함께 하는<br /><span style={{ color:'#E65C30' }}>랜하우스</span></NewsTitle>
-          <NewsSubTitle>랜하우스의 새로운 소식과 유용한 정보를 확인해 보세요.</NewsSubTitle>
+          <NewsTitle>최신 뉴스 & 정보<br /><span style={{ color:'#1a6dff' }}>하방 INFO</span></NewsTitle>
+          <NewsSubTitle>하방의 새로운 소식과 유용한 정보를 확인해 보세요.</NewsSubTitle>
         </NewsSectionHeader>
         
         <NewsGrid>
@@ -128,7 +106,7 @@ const NewsComponent = () => {
         </NewsGrid>
       </NewsContainer>
 
-      {selectedNews && (
+      {/* {selectedNews && (
         <PopupOverlay onClick={handleClosePopup}>
           <PopupContent onClick={(e) => e.stopPropagation()}>
             <PopupHeader>
@@ -154,7 +132,7 @@ const NewsComponent = () => {
             </PopupFooter>
           </PopupContent>
         </PopupOverlay>
-      )}
+      )} */}
     </NewsSection>
   );
 };

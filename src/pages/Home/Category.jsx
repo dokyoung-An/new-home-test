@@ -63,14 +63,16 @@ const Sidebar = styled.div`
 const CategoryItem = styled.div`
   padding: 18px 24px;
   cursor: pointer;
-  background: ${({ active }) => (active ? '#000' : 'transparent')};
-  color: ${({ active }) => (active ? '#fff' : '#222')};
-  font-weight: ${({ active }) => (active ? 'bold' : 'normal')};
+  background: ${({ active }) => (active ? '#1557cc' : 'transparent')};
+  color: ${({ active }) => (active ? '#fff' : '#262626')};
+  font-weight: ${({ active }) => (active ? 'normal' : 'normal')};
   font-size: 1.1rem;
   border-left: 4px solid ${({ active }) => (active ? '#000' : 'transparent')};
   transition: background 0.2s, color 0.2s;
   &:hover {
-    background: #f5f5f5;
+    background: #bfdcff;
+    color: #1a6dff;
+    font-weight: bolder;
   }
 `;
 
@@ -108,16 +110,21 @@ const ImageOverlay = styled.div`
   }
   .content {
     position: absolute;
-    top: 10%;
-    left: 1%;
+    top: 13%;
+    left: 3%;
     z-index: 3;
     color: #fff;
-    max-width: 500px;
-    font-size: 2rem;
-    font-weight: 700;
+    max-width: 750px;
+    font-size: 1.5rem;
+    font-weight: lighter;
     line-height: 1.4;
     letter-spacing: -1px;
     margin-left: 40px;
+    word-break: keep-all;
+    text-align: justify;
+    line-height: 1.7;
+    break-word: keep-all;
+    word-wrap: break-word;
   }
 `;
 

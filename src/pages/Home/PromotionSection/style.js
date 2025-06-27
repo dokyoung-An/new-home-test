@@ -167,8 +167,8 @@ export const Promotion = styled.section`
       135deg,
       ${BRAND_COLORS.darkerNavy} 0%,
       ${BRAND_COLORS.darkNavy} 25%,
-      rgba(230, 92, 48, 0.12) 60%,
-      rgba(230, 92, 48, 0.05) 100%
+      rgba(26, 109, 255, 0.12) 60%,
+      rgba(26, 109, 255, 0.05) 100%
     );
     background-size: 200% 200%;
     
@@ -186,8 +186,8 @@ export const Promotion = styled.section`
     background: linear-gradient(
       -45deg,
       transparent 0%,
-      rgba(230, 92, 48, 0.08) 35%,
-      rgba(230, 92, 48, 0.03) 70%,
+      rgba(26, 109, 255, 0.08) 35%,
+      rgba(2  6, 109, 255, 0.03) 70%,
       transparent 100%
     );
     background-size: 200% 200%;
@@ -218,7 +218,7 @@ export const PromotionContainer = styled.div`
     bottom: -100px;
     background: radial-gradient(
       circle at 30% 50%,
-      rgba(230, 92, 48, 0.08) 0%,
+      rgba(26, 109, 255, 0.08) 0%,
       transparent 60%
     );
    
@@ -247,8 +247,8 @@ export const PromotionContent = styled.div`
     height: 400px;
     background: radial-gradient(
       circle at 70% 30%,
-      rgba(230, 92, 48, 0.1) 0%,
-      rgba(230, 92, 48, 0.05) 30%,
+      rgba(26, 109, 255, 0.1) 0%,
+      rgba(26, 109, 255, 0.05) 30%,
       transparent 70%
     );
     z-index: -1;
@@ -265,8 +265,8 @@ export const PromotionContent = styled.div`
     height: 300px;
     background: radial-gradient(
       circle at 30% 70%,
-      rgba(230, 92, 48, 0.12) 0%,
-      rgba(230, 92, 48, 0.06) 40%,
+      rgba(26, 109, 255, 0.12) 0%,
+      rgba(26, 109, 255, 0.06) 40%,
       transparent 70%
     );
     z-index: -1;
@@ -301,7 +301,7 @@ export const TitleDecoration = styled.div`
     flex: 1;
     height: 2px;
     margin-left: 15px;
-    background: linear-gradient(90deg, ${BRAND_COLORS.primary}, transparent);
+    background: linear-gradient(90deg, ${props => props.theme.primaryReward}, transparent);
     opacity: 0.5;
   }
 
@@ -326,14 +326,15 @@ export const PromotionTitle = styled.h2`
   
   background: linear-gradient(
     135deg,
-    ${BRAND_COLORS.white} 0%,
+    ${props => props.theme.primarypurple} 0%,
     rgba(255, 255, 255, 0.9) 50%,
-    ${BRAND_COLORS.primary} 100%
+    ${props => props.theme.primaryMiddle} 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 200% 200%;
   animation: ${shine} 5s linear infinite;
+
   
   @media (max-width: 768px) {
     font-size: 2.2rem;
@@ -356,6 +357,7 @@ export const PromotionText = styled.p`
   animation: ${slideInLeft} 0.8s ease-out forwards;
   animation-delay: 0.6s;
   word-break: keep-all;
+
   
   @media (max-width: 1024px) {
     margin: 0 auto 30px;
@@ -417,26 +419,26 @@ export const PromotionCard = styled.div`
   
   &:hover {
     transform: scale(1.1) translateY(-10px) !important;
-    box-shadow: 0 20px 40px rgba(230, 92, 48, 0.2);
+    box-shadow: 0 20px 40px rgba(26, 109, 255, 0.2);
     background: rgba(255, 255, 255, 0.03);
-    border-color: rgba(230, 92, 48, 0.3);
+    border-color: rgba(26, 109, 255, 0.3);
     z-index: 2;
     opacity: 1 !important;
     filter: blur(0) !important;
 
     .card-icon {
       animation: ${floatAnimation} 2s ease-in-out infinite;
-      background: linear-gradient(135deg, ${BRAND_COLORS.primary}, ${BRAND_COLORS.accent});
+      background: linear-gradient(135deg, ${props => props.theme.primaryMiddle}, ${BRAND_COLORS.accent});
       color: white;
     }
 
     h3 {
-      color: ${BRAND_COLORS.primary};
+      color: ${props => props.theme.primaryMiddle};
     }
 
     li::before {
       transform: scale(1.2);
-      background: ${BRAND_COLORS.primary};
+      background: ${props => props.theme.primaryMiddle};
     }
   }
 
@@ -498,8 +500,8 @@ export const PromotionCard = styled.div`
       left: 0;
       top: 1px;
       font-size: 14px;
-      color: ${BRAND_COLORS.primary};
-      background: linear-gradient(135deg, ${BRAND_COLORS.primary}, ${BRAND_COLORS.accent});
+      color: ${props => props.theme.primaryMiddle};
+      background: linear-gradient(135deg, ${props => props.theme.primaryMiddle}, ${BRAND_COLORS.accent});
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       transition: all 0.3s ease;
@@ -517,17 +519,17 @@ export const PromotionCard = styled.div`
 
     &:has(🔸) {
       margin-top: 20px;
-      color: ${BRAND_COLORS.primary};
+      color: ${props => props.theme.primaryLight};
       font-weight: 500;
       background: linear-gradient(135deg, 
-        rgba(230, 92, 48, 0.15) 0%, 
+        rgba(26, 109, 255, 0.15) 0%, 
         rgba(230, 92, 48, 0.05) 100%
       );
       border-radius: 12px;
       padding: 14px 18px 14px 32px;
       margin-left: -8px;
       margin-right: -8px;
-      border: 1px solid rgba(230, 92, 48, 0.2);
+      border: 1px solid rgba(26, 109, 255, 0.2);
       backdrop-filter: blur(5px);
 
       &::before {
@@ -538,10 +540,10 @@ export const PromotionCard = styled.div`
 
       &:hover {
         background: linear-gradient(135deg, 
-          rgba(230, 92, 48, 0.2) 0%, 
-          rgba(230, 92, 48, 0.08) 100%
+          rgba(26, 109, 255, 0.02) 0%, 
+          rgba(26, 109, 255, 0.08) 100%
         );
-        border-color: rgba(230, 92, 48, 0.3);
+        border-color: rgba(26, 109, 255, 0.3);
       }
     }
   }

@@ -36,7 +36,6 @@ export const TypingLine = styled.h1`
   font-weight: 600;
   color: #ffffff;
   word-break: keep-all;
-
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 
   .cursor {
@@ -77,13 +76,13 @@ const fadeInUp = keyframes`
 export const FixedLine = styled.h2`
   font-size: 2.7rem; /* 기존 2.5rem → 조금 더 큼 */
   font-weight: 700;
-  color: ${({ theme }) => theme.primaryColor};
+  color: ${({ theme }) => theme.primaryLight};
   word-break: keep-all;
   opacity: 0;
   visibility: hidden;
  
   transition: opacity 0.3s ease;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 -2px 4px rgba(0, 0, 0, 0.5);
 
   &.fade-in {
     animation: ${fadeInUp} 0.6s ease-out forwards;
@@ -165,7 +164,7 @@ export const VideoBackground = styled.video`
   object-fit: cover;
   z-index: 0;
   pointer-events: none; // 마우스 클릭 통과
-  opacity: 0.65;
+  opacity: 0.5;
   filter: blur(4px);
  
 `;
@@ -177,7 +176,7 @@ export const VideoOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* 검정 반투명 */
+  background-color: rgba(0, 0, 0, 0.55); /* 검정 반투명 */
   z-index: 0.5;
   pointer-events: none;
 `;

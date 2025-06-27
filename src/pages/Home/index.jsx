@@ -19,6 +19,8 @@ import NewsSection from './NewsSection';
 import FAQSection from './FAQSection';
 import CoworkerSection from './CoworkerSection';
 import Category from './Category';
+import ImageCard from './ImageCard';
+
 
 
 const Home = () => {
@@ -27,7 +29,7 @@ const Home = () => {
       <Header />
       <HeroSection/>
       <SloganSection/>
-     <Category/>
+      <ImageCard/>
      <FeaturesSection/>
       <VRExperienceSection/>
       <UseCasesSection/>
@@ -35,18 +37,11 @@ const Home = () => {
       <TestimonialsSection />
       <ProcessSection/>
       <PricingSection/>
-      
       <PromotionSection/>
-      
-     
       <NewsSection/>
       <CoworkerSection/>
       <ContactFormSection />
       <FAQSection/>
-     
-      
-     
-     
       <BannerSection/>
       <Footer />
     

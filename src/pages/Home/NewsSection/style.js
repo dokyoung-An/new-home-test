@@ -16,7 +16,7 @@ export const DesignElement1 = styled.div`
   left: calc((100% - 1200px) / 2 - 20px);
   width: 20px;
   height: 20px;
-  background: linear-gradient(135deg, #E65C30, #FF7F50);
+  background: linear-gradient(135deg, #1a6dff, #bfdcff);
   border-radius: 6px;
   opacity: 0.9;
   transform: rotate(-15deg);
@@ -43,7 +43,7 @@ export const DesignElement2 = styled.div`
   left: calc((100% - 1200px) / 2 + 10px);
   width: 25px;
   height: 25px;
-  background: linear-gradient(135deg, #FF9F45, #FFB067);
+  background: linear-gradient(135deg, #1a6dff, #00BFA6);
   border-radius: 8px;
   opacity: 0.85;
   transform: rotate(10deg);
@@ -71,7 +71,7 @@ export const DesignElement3 = styled.div`
   left: calc((100% - 1200px) / 2 - 5px);
   width: 15px;
   height: 15px;
-  background: linear-gradient(135deg, #FF6B3D, #FF8960);
+  background: linear-gradient(135deg, 	#00C896, #A259FF);
   border-radius: 5px;
   opacity: 0.95;
   transform: rotate(30deg);
@@ -194,25 +194,25 @@ export const NewsCategory = styled.span`
   background: ${({ type }) => {
     switch (type) {
       case 'notice':
-        return '#E8F5E9';
+        return '#00BFA6';
       case 'event':
-        return '#FFF3E0';
+        return '#FF4C29';
       case 'news':
-        return '#E3F2FD';
+        return '#1a6dff';
       default:
-        return '#F5F5F5';
+        return '#1a6dff';
     }
   }};
   color: ${({ type }) => {
     switch (type) {
       case 'notice':
-        return '#2E7D32';
+        return '#fff';
       case 'event':
-        return '#E65100';
+        return '#fff';
       case 'news':
-        return '#1565C0';
+        return '#fff';
       default:
-        return '#616161';
+        return '#1a6dff';
     }
   }};
   border-radius: 20px;

@@ -21,26 +21,37 @@ import {
   PriceBox,
 } from './style';
 
-const priceTable = {
+const priceDetails = {
   '사전점검 서비스': {
-    '25평 이하': '24만 원',
-    '30평': '27만 원',
-    '34평': '30만 원',
-    '40평 이상': '33만 원',
+    description: `육안점검 + 장비점검 + 하자 접수 \n+ 하자점검 보고서 + VR 세대기록 서비스`,
+    prices: {
+      '25평 이하': '240,000원',
+      '30평': '270,000원',
+      '34평': '300,000원',
+      '40평': '330,000원',
+      '40평 이상': '상담문의',
+    },
   },
   '입주 전 사전점검 서비스': {
-    '25평 이하': '26만 원',
-    '30평': '29만 원',
-    '34평': '32만 원',
-    '40평 이상': '35만 원',
+    description: '육안점검 + 장비점검 + 하자 접수 + 하자점검 보고서',
+    prices: {
+      '25평 이하': '140,000원',
+      '30평': '160,000원',
+      '34평': '180,000원',
+      '40평': '200,000원',
+      '40평 이상': '상담문의',
+    },
   },
 };
 
+
 const PricingSectionComponent = () => {
   const [service, setService] = useState('사전점검 서비스');
+  
   const [size, setSize] = useState('25평 이하');
 
-  const price = priceTable[service][size];
+  const selected = priceDetails[service];
+  const price = selected.prices[size];
 
   return (
     <section id="PricingSection">
@@ -56,20 +67,27 @@ const PricingSectionComponent = () => {
           <Wrapper>
       <Label htmlFor="service">서비스명</Label>
       <Select id="service" value={service} onChange={(e) => setService(e.target.value)}>
-        {Object.keys(priceTable).map((svc) => (
+        {Object.keys(priceDetails).map((svc) => (
           <option key={svc} value={svc}>{svc}</option>
         ))}
       </Select>
 
       <Label htmlFor="size">평형</Label>
       <Select id="size" value={size} onChange={(e) => setSize(e.target.value)}>
-        {Object.keys(priceTable[service]).map((sz) => (
+        {Object.keys(selected.prices).map((sz) => (
           <option key={sz} value={sz}>{sz}</option>
         ))}
       </Select>
 
       <PriceBox>
-        {price}
+        <div className='description'>{selected.description}</div>
+        <div className='price'>{price} <span>VAT포함</span>  </div>
+        <div className='price-description'>
+          <ul> 
+            <li>6세대 이상 공동구매 진행 시 추가 1만원 할인</li>
+            <li>서울,경기,경상도 지역 외 출장비 발생.상담문의</li>
+          </ul>
+        </div>
       </PriceBox>
     </Wrapper>
           

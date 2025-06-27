@@ -16,7 +16,7 @@ const supabase = createClient(supabaseUrl, supabaseKey, {
 });
 
 // 테이블 이름 - 복수형과 단수형 모두 시도
-const TABLE_NAME = 'inquiries';
+const TABLE_NAME = 'habang';
 
 // 임시 데이터 (연결 문제가 있을 때 표시할 데이터)
 const TEMP_DATA = [
@@ -347,7 +347,7 @@ const InquiryBoard = () => {
       setLoading(true);
       
       const { data, error } = await supabase
-        .from('inquiries')
+        .from('habang')
         .update({ 
           inquiry_status: newStatus
         })
@@ -366,7 +366,7 @@ const InquiryBoard = () => {
       // 상태 변경 성공 메시지
       const statusMessages = {
         'new': '신규문의',
-        'in-progress': '상담중',
+        'in-progress': '상담완료',
         'completed': '예약완료'
       };
       alert(`상태가 "${statusMessages[newStatus]}"로 변경되었습니다.`);
@@ -481,7 +481,7 @@ const InquiryBoard = () => {
                               active={inquiry.inquiry_status === 'in-progress'}
                               onClick={() => handleStatusChange(inquiry.id, 'in-progress')}
                             >
-                              상담중
+                              상담완료
                             </StatusButton>
                             <StatusButton
                               active={inquiry.inquiry_status === 'completed'}
@@ -792,7 +792,7 @@ const StatusBadge = styled.span`
       case 'in-progress':
         return `
           background-color: #fff3e0;
-          color: #f57c00;
+          color: #00BFA6;
         `;
       case 'completed':
         return `

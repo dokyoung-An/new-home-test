@@ -110,7 +110,7 @@ const TestimonialsSection = () => {
             <SectionTitle>사전점검대행 하방</SectionTitle>
             <HighlightText>REAL 체험 후기</HighlightText>
             <p>
-              랜하우스로 100% 효과를 거두신 <br/>
+              하방을 먼저 경험하신  <br/>
               진짜 고객님의 이야기를 확인해 보세요.
             </p>
           </SectionHeader>

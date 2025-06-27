@@ -72,12 +72,12 @@ export const partnerSlide = keyframes`
 
 export const ctaColorChange = keyframes`
   0% {
-    color: #EB6227;
+    color: #bbdcff;
   }
   50% {
-    color: #F4A32A;
+    color: #1a6dff;
   }
   100% {
-    color: #EB6227;
+    color: #A259FF;
   }
 `; 

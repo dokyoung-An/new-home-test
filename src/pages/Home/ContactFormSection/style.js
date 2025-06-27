@@ -162,7 +162,7 @@ export const DesignElement1 = styled.div`
   left: -10px;
   width: 15px;
   height: 15px;
-  background: linear-gradient(135deg, ${({ theme }) => theme.primaryMiddle}, ${({ theme }) => theme.primaryLight});
+  background: linear-gradient(135deg, #1a6dff, #00BFA6);
   border-radius: 4px;
   opacity: 0.9;
   transform: rotate(-15deg);
@@ -180,7 +180,7 @@ export const DesignElement2 = styled.div`
   left: -35px;
   width: 20px;
   height: 20px;
-  background: linear-gradient(135deg, #E65C30, #FF7F50);
+  background: linear-gradient(135deg, #1a6dff, #1557cc);
   border-radius: 5px;
   opacity: 0.85;
   transform: rotate(10deg);
@@ -198,7 +198,7 @@ export const DesignElement3 = styled.div`
   left: -40px;
   width: 25px;
   height: 25px;
-  background: linear-gradient(135deg, #FF6B3D, #FF8960);
+  background: linear-gradient(135deg, 	#00C896, #A259FF);
   border-radius: 6px;
   opacity: 0.95;
   transform: rotate(25deg);
@@ -225,7 +225,7 @@ export const FormTitle = styled.h3`
     bottom: 2px;
     width: 100%;
     height: 6px;
-    background: linear-gradient(135deg, rgb(245, 190, 90),rgb(248, 201, 201),rgb(245, 190, 90));
+    background: linear-gradient(135deg, #1a6dff, #bfdcff);
     transform: scaleX(0);
     transform-origin: bottom right;
     animation: underlineAnimation 0.6s ease-out forwards;
@@ -335,7 +335,7 @@ export const TextArea = styled.textarea`
 
 export const SubmitButton = styled.button`
   padding: 18px;
-  background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+  background: linear-gradient(135deg, #1a6dff, #1557cc);
   color: #fff;
   border: none;
   border-radius: 12px;
@@ -348,8 +348,8 @@ export const SubmitButton = styled.button`
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(255, 107, 107, 0.2);
-    background: linear-gradient(135deg, #FF8E53, #FF6B6B);
+    box-shadow: 0 10px 20px rgba(26, 109, 255, 0.2);
+    background: linear-gradient(135deg, #1557cc,  #bfdcff);
   }
 
   &:active {
@@ -730,18 +730,18 @@ export const InquiryStatus = styled.div`
     switch (props.status) {
       case 'completed':
         return `
-          background-color: #e8f5e9;
-          color: #2e7d32;
+          background-color: #1a6dff;
+          color: #fff;
         `;
       case 'in-progress':
         return `
-          background-color: #fff3e0;
-          color: #ef6c00;
+         background-color: #FFD600;
+          color: #fff;
         `;
       default:
         return `
-          background-color: #e3f2fd;
-          color: #1976d2;
+          background-color:#00BFA6;
+          color: #fff;
         `;
     }
   }

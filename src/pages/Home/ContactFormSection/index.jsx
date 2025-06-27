@@ -113,7 +113,7 @@ const ContactFormSection = forwardRef((props, ref) => {
   const fetchRecentInquiries = async () => {
     try {
       const { data, error } = await supabase
-        .from('inquiries')
+        .from('habang')
         .select('*')
         .order('created_at', { ascending: false })
         .limit(5);
@@ -169,9 +169,9 @@ const ContactFormSection = forwardRef((props, ref) => {
   // 상태 텍스트 변환
   const getStatusText = (status) => {
     switch (status) {
-      case 'new': return '신규';
-      case 'in-progress': return '상담중';
-      case 'completed': return '완료';
+      case 'new': return '상담문의';
+      case 'in-progress': return '상담완료';
+      case 'completed': return '예약완료';
       default: return '신규';
     }
   };
@@ -213,7 +213,7 @@ const ContactFormSection = forwardRef((props, ref) => {
     e.preventDefault();
     try {
       const { data, error } = await supabase
-        .from('inquiries')
+        .from('habang')
         .insert([{
           name: formData.name,
           phone: formData.phone,
@@ -266,11 +266,10 @@ const ContactFormSection = forwardRef((props, ref) => {
           <DesignElement2 />
           <DesignElement3 />
           <SectionTitle>
-            Meet <span>랜하우스</span>
+            Meet <span>하방</span>
           </SectionTitle>
           <SectionDescription>
-            랜하우스의 VR 투어 서비스로 부동산의 가치를 극대화하세요.
-            전문가의 맞춤 상담을 통해 최적의 솔루션을 제공해드립니다.
+            하방의 프리미엄엄 원스탑 서비스로<br/> 입주민 여러분의 당당한 권리를 행사해 보세요
           </SectionDescription>
             {/* 최근 문의 내역 게시판 */}
             <InquiryBoard>
@@ -294,7 +293,7 @@ const ContactFormSection = forwardRef((props, ref) => {
        
         </ContentSection>
         <FormSection>
-          <FormTitle>VR 투어 문의하기</FormTitle>
+          <FormTitle>사전점검 문의하기</FormTitle>
           <FormSubtitle>
             문의하신 내용은 담당자 검토 후 순차적으로 답변드리겠습니다.
           </FormSubtitle>

@@ -3,6 +3,8 @@ import styled, { keyframes } from 'styled-components';
 export const PricingWrapper = styled.section`
   padding: 100px 0 100px 0;
   background-color: #fff;
+  background: url('/img/bg4.png') no-repeat center center;
+  background-attachment: fixed;
 
   @media (max-width: 480px) {
     padding: 40px 0;
@@ -15,6 +17,7 @@ export const PricingContainer = styled.div`
   align-items: flex-start;
   gap: 40px;
   
+
   @media (max-width: 1024px) {
     flex-direction: column;
   }
@@ -706,4 +709,40 @@ export const PriceBox = styled.div`
   font-weight: bold;
   border-radius: 8px;
   text-align: center;
+  word-break: keep-all;
+  white-space: pre-line;
+
+  .description {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color:${({ theme }) => theme.primaryMiddle};
+  }
+
+  .price {
+    margin-top: 1rem;
+    font-size: 2.3rem;
+    span {
+      font-size: 1rem;
+      color: #555;
+      font-weight: 400;
+    }
+  }
+  .price-description {
+    ul {
+      list-style: disc;
+      padding: 0;
+      margin: 0;
+      padding-left: 20px;
+      width:73%;
+      margin: 0 auto;
+      margin-top: 1.5rem;
+      li {
+        font-size: 0.9rem;
+        color: #555;
+        font-weight: 400;
+        margin-bottom: 0.2rem;
+      }
+    }
+  }
 `;

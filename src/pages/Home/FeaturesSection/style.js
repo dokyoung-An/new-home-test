@@ -78,7 +78,7 @@ const particlePattern = keyframes`
 export const Features = styled.section`
   ${sectionSpacing}
   text-align: center;
-  background-color: #111;
+  background-color: #101010;
  
   color: #fff;
   position: relative;
@@ -376,8 +376,8 @@ export const FeatureCard = styled.div`
   
   &:hover {
     transform: translateY(-8px) translateZ(0);
-    box-shadow: 0 20px 40px rgba(230, 92, 48, 0.25), 0 10px 20px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 40px rgba(26, 109, 255, 0.25), 0 10px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(26, 109, 255, 0.15);
   }
   
   &::after {
@@ -389,8 +389,8 @@ export const FeatureCard = styled.div`
     height: 100%;
     background: linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.1) 0%,
-      rgba(255, 255, 255, 0.05) 40%,
+      rgba(26, 109, 255, 0.1) 0%,
+      rgba(26, 109, 255, 0.05) 40%,
       transparent 60%
     );
     pointer-events: none;
@@ -407,8 +407,8 @@ export const FeatureCard = styled.div`
   
   &.orange {
     background: linear-gradient(135deg, 
-      rgba(225, 152, 25, 0.3), 
-      rgba(240, 130, 50, 0.7)
+      rgba(26, 109, 255, 0.3), 
+      rgba(26, 109, 255, 0.7)
     );
     color: #fff;
     
@@ -490,25 +490,25 @@ export const CardContent = styled.div`
   
   /* 클래스 기반 배경 이미지 설정 */
   &.space-bg::before {
-    background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');
+    background-image: url('/img/service/7.jpeg');
   }
   
   &.multi-platform-bg::before {
-    background-image: url('https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');
+    background-image: url('/img/service/11.jpg');
   }
   
   &.zoom-bg::before {
-    background-image: url('/img/features/zoom-detail.jpg');
+    background-image: url('/img/service/submmit1.jpg');
     background-position: center;
     opacity: 0.25;
   }
   
   &.business-bg::before {
-    background-image: url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');
+    background-image: url('/img/service/report.png');
   }
   
   &.data-bg::before {
-    background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');
+    background-image: url('/img/service/qna.png');
   }
   
   h3 {
@@ -556,7 +556,7 @@ export const IconContainer = styled.div`
   
   ${FeatureCard}:hover & {
     transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 20px rgba(230, 92, 48, 0.25);
+    box-shadow: 0 8px 20px rgb(26, 109, 255,0.25);
     background: rgba(255, 255, 255, 0.15);
   }
 `;

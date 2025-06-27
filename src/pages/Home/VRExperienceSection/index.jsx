@@ -155,7 +155,7 @@ const VRExperienceSection = () => {
                   </CTAIcon>
                   <CTAText>
                     <h4>빠른 제작</h4>
-                    <p>48시간 이내 VR 투어 제작</p>
+                    <p>2주주 이내 VR 투어 제작</p>
                   </CTAText>
                 </CTAItem>
                 <CTAItem>

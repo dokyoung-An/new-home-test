@@ -182,7 +182,7 @@ export const CaseCard = styled.div`
     }
   }
   
-  &::after {
+  /* &::after {
     content: '자세히 보기';
     position: absolute;
     bottom: 15px;
@@ -195,7 +195,7 @@ export const CaseCard = styled.div`
     font-weight: 600;
     opacity: 0;
     transition: opacity 0.3s ease;
-  }
+  } */
 `;
 
 export const CardImage = styled.div`
@@ -225,7 +225,7 @@ export const CardBadge = styled.span`
   border-radius: 20px;
   font-size: 12px;
   font-weight: 600;
-  box-shadow: 0 5px 10px rgba(230, 92, 48, 0.3);
+  box-shadow: 0 5px 10px rgba(26, 109, 255, 0.3);
 `;
 
 export const CardTitle = styled.h3`

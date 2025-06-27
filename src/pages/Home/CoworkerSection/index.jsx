@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Container } from '../../../styles/common';
 import {
   CTABanner,
@@ -12,51 +12,78 @@ import {
   PartnerLogo
 } from './style';
 
-const CTABannerSection = () => {
-  // 파트너 이미지 객체 배열 (타입 구분)
+const CoworkerSection = () => {
   const partners = [
-    { src: 'g-logo.png', type: 'png', alt: '공감' },
-    { src: 'woori.png', type: 'png', alt: '우리홈' },
-    { src: 'logo-wozip.png', type: 'png', alt: '우집사' },
-    { src: 'habang.png', type: 'png', alt: '하방' },
-    { src: 'g-logo.png', type: 'png', alt: '공감' },
-    { src: 'woori.png', type: 'png', alt: '우리홈' },
-    { src: 'habang.png', type: 'png', alt: '하방' }
-  
+    { src: 'gonggam.png', type: 'png', alt: '공감', title: '공감' },
+    { src: 'edge.png', type: 'png', alt: '엣지컴퍼니', title: '엣지컴퍼니' },
+    { src: 'bukyoung1.png', type: 'png', alt: '부경', title: '부경' },
+    { src: 'togather.png', type: 'png', alt: '투게더', title: '투게더' },
+    { src: 'onepass.png', type: 'png', alt: '원패스', title: '원패스' },
+    { src: 'woozi.png', type: 'png', alt: '우집사', title: '우집사' },
+    { src: 'ever.png', type: 'png', alt: '에버스카이', title: '에버스카이' },
   ];
+
+  const repeatedPartners = [...partners, ...partners];
+  const sliderRef = useRef(null);
+  const [position, setPosition] = useState(0);
+  
+  const partnerWidth = 180; // 로고 + 마진 너비
+  const totalWidth = partners.length * partnerWidth;
+  const animationDuration = 20; // 전체 애니메이션 시간(초)
+
+  useEffect(() => {
+    const startTime = Date.now();
+    let animationFrame;
+
+    const animate = () => {
+      const currentTime = Date.now();
+      const elapsed = (currentTime - startTime) / 1000; // 초 단위로 변환
+      
+      // 전체 너비를 animationDuration 초 동안 이동
+      const newPosition = (elapsed % animationDuration) * (totalWidth / animationDuration);
+      
+      // 첫 번째 세트가 완전히 지나가면 position을 리셋
+      if (newPosition >= totalWidth) {
+        setPosition(0);
+      } else {
+        setPosition(-newPosition);
+      }
+
+      animationFrame = requestAnimationFrame(animate);
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+    
+    return () => {
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+      }
+    };
+  }, [totalWidth]);
 
   return (
     <CTABanner>
       <Container>
-        <CTASubtitle>랜하우스 제휴사</CTASubtitle>
-        <CTATitle>비지니스의 매력을 한층 끓어올릴,</CTATitle>
-        <CTAHighlight>360° VR를 도입하세요.</CTAHighlight>
-      
-       
+        <CTASubtitle>업무제휴</CTASubtitle>
+        <CTATitle>하방은 전국의 입주 박람회 주관사와 함께</CTATitle>
+        <CTAHighlight>사전점검 서비스를 제공합니다.</CTAHighlight>
       </Container>
-      
-      <CameraContainer>
-        <CameraImg src={'/img/insta.png'} alt="VR 카메라" />
-      </CameraContainer>
-      
       <PartnersSlider>
-        <PartnersTrack>
-          {partners.map((partner, index) => (
-            <PartnerLogo 
-              key={index} 
-              src={'/img/' + partner.src} 
+        <PartnersTrack
+          ref={sliderRef}
+          style={{
+            transform: `translateX(${position}px)`,
+            width: `${repeatedPartners.length * partnerWidth}px`
+          }}
+        >
+          {repeatedPartners.map((partner, index) => (
+            <PartnerLogo
+              key={index}
+              src={'/img/' + partner.src}
               alt={partner.alt}
+              title={partner.title}
               $isSvg={partner.type === 'svg'}
-            />
-          ))}
-          
-          {/* 무한 애니메이션을 위한 복제 */}
-          {partners.map((partner, index) => (
-            <PartnerLogo 
-              key={`dup-${index}`} 
-              src={'/img/' + partner.src} 
-              alt={partner.alt}
-              $isSvg={partner.type === 'svg'}
+              loading="lazy"
             />
           ))}
         </PartnersTrack>
@@ -65,4 +92,4 @@ const CTABannerSection = () => {
   );
 };
 
-export default CTABannerSection; 
+export default CoworkerSection; 
