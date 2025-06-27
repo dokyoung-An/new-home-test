@@ -1,4 +1,4 @@
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API_URL = process.env.REACT_APP_API_URL || 'https://api.habang.kr/api';
 
 export const api = {
   // 문의사항 관련
