@@ -41,7 +41,7 @@ const NewsComponent = () => {
       title: '창원힐스테이트 더퍼스트 공동구매',
       description: '창원힐스테이트 더퍼스트 공동구매 중입니다. 혜택을 받으세요',
       date: '2025.07.05',
-      image: '/img/news/3.jpg',
+      image: '/img/news/3.png',
       
     },
     {
