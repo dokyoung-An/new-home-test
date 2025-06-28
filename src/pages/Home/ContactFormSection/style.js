@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 
+
 const floatAnimation = keyframes`
   0% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
@@ -17,14 +18,9 @@ const slideIn = keyframes`
 `;
 
 export const ContactSection = styled.section`
-  padding: 140px 0;
-  background: ${({ theme }) => theme.background};
+  background: ${({ theme }) => `linear-gradient(to bottom, ${theme.background}, ${theme.cardBackground})`};
   position: relative;
   overflow: hidden;
-
-  @media (max-width: 480px) {
-    padding: 80px 0;
-  }
 `;
 
 export const ContactContainer = styled.div`
@@ -152,7 +148,7 @@ export const FormSection = styled.div`
   }
 
   @media (max-width: 768px) {
-    padding: 40px 24px;
+    padding: 0px 20px 40px 20px;
   }
 `;
 
@@ -289,6 +285,10 @@ export const Label = styled.label`
   font-size: 0.95rem;
   font-weight: 500;
   color: ${({ theme }) => theme.text};
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+  }
 `;
 
 export const Input = styled.input`
@@ -318,8 +318,9 @@ export const TextArea = styled.textarea`
   border-radius: 12px;
   font-size: 1rem;
   color: ${({ theme }) => theme.text};
-  min-height: 120px;
-  resize: vertical;
+  min-height: 200px;
+  height: 200px;
+  resize: none;
   transition: all 0.2s ease;
 
   &:focus {
@@ -330,6 +331,11 @@ export const TextArea = styled.textarea`
 
   &::placeholder {
     color: ${({ theme }) => theme.textLight};
+  }
+
+  @media (max-width: 480px) {
+    min-height: 100px;
+    height: 100px;
   }
 `;
 
@@ -606,14 +612,15 @@ export const SlideDescription = styled.p`
 // ... 기존 imports 및 스타일 ...
 
 export const InquiryBoard = styled.div`
-  margin-top: 30px;
   background: rgba(255, 255, 255, 0.9);
   border-radius: 12px;
   padding: 24px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-
+  height: auto;
+  
   @media (max-width: 768px) {
-    padding: 24px 12px;
+    padding: 20px;
+    height: auto;
   }
 `;
 
@@ -629,98 +636,74 @@ export const InquiryBoardTitle = styled.h4`
 `;
 
 export const InquiryList = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  max-height: 300px;
-  overflow-y: auto;
+  margin-top: 20px;
+  height: auto;
+  overflow-y: visible;
   
-  &::-webkit-scrollbar {
-    width: 6px;
-  }
-  
-  &::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 3px;
-  }
-  
-  &::-webkit-scrollbar-thumb {
-    background: ${props => props.theme.primaryColor};
-    border-radius: 3px;
-  }
   @media (max-width: 768px) {
-    max-height: 280px;
-    
+    margin-top: 15px;
   }
 `;
 
 export const InquiryItem = styled.div`
   display: grid;
-  grid-template-columns: 30px 1fr 80px;
+  grid-template-columns: 80px 1fr 100px;
   align-items: center;
   gap: 20px;
-  padding: 12px 16px;
-  background: white;
+  padding: 10px 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease;
-  border-bottom: 1px solid #e0e0e0;
+  
+  &:last-child {
+    border-bottom: none;
+  }
   
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    background: rgba(26, 109, 255, 0.05);
   }
-
+  
   @media (max-width: 768px) {
-    padding: 5px 16px;
+    grid-template-columns: 60px 1fr 80px;
+    gap: 10px;
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 480px) {
+    grid-template-columns: 50px 1fr 70px;
+    gap: 8px;
+    padding: 8px;
+    font-size: 0.85rem;
   }
 `;
 
 export const InquiryId = styled.div`
-  font-size: 0.9rem;
-  color: #666;
-  font-weight: 500;
+  color: ${({ theme }) => theme.primaryDark};
+  font-weight: 600;
 `;
 
 export const InquiryContent = styled.div`
   display: grid;
-  grid-template-columns: 1fr  0.33fr;
-  gap: 10px;
-  font-size: 0.9rem;
-  color: #333;
-  vertical-align: middle;
+  gap: 4px;
   
-  div {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    
-  }
-
   .region {
-    font-size: 0.7rem;
-    padding-top: 5px;
-    color: #666;
-    
+    font-size: 0.9em;
+    color: ${({ theme }) => theme.textColor};
+    opacity: 0.8;
   }
   
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 5px;
-
     .region {
-    padding-top: 0px;
-    color: #666;
-    
+      font-size: 0.85em;
+    }
   }
-  }
-
 `;
 
 export const InquiryStatus = styled.div`
-  padding: 4px 12px;
+  padding: 6px 8px;
   border-radius: 20px;
-  font-size: 0.85rem;
+  font-size: 0.9em;
   font-weight: 500;
-  white-space: nowrap;
   text-align: center;
   min-width: 80px;
   
@@ -744,9 +727,21 @@ export const InquiryStatus = styled.div`
           color: #fff;
         `;
     }
-  }
+  }};
+  color: ${({ status, theme }) => {
+    switch (status) {
+      case 'completed':
+        return '#15803d';
+      case 'in_progress':
+        return theme.primaryDark;
+      default:
+        return theme.textColor;
+    }
+  }};
   
-  
+  @media (max-width: 768px) {
+    padding: 4px 6px;
+    font-size: 0.85em;
   }
 `;
 

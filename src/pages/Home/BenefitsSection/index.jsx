@@ -120,12 +120,12 @@ const BenefitsSection = () => {
             <SectionSubtitle>하방 100% 활용하면</SectionSubtitle>
             <SectionTitle>이렇게 달라집니다!</SectionTitle>
             
-            <BenefitsMent>
+            {/* <BenefitsMent>
             입주 전 하자를 잡고, VR로 세대를 기록해 분쟁에 대비하세요.<br/>
             임대 관리도 정기 점검과 기록으로 더 스마트해집니다.
 
 
-            </BenefitsMent>
+            </BenefitsMent> */}
             
             <StatsContainer>
             <StatBox>

@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { IoArrowForward } from 'react-icons/io5';
 import { RiQuestionMark } from 'react-icons/ri';
+import { FaUserTie, FaMapMarkedAlt, FaChalkboardTeacher, FaUsers, FaVrCardboard } from 'react-icons/fa';
 
 const Section = styled.section`
-  padding: 100px 0;
-  background: #f0f0f0;
+  
+  background:rgba(245, 245, 245,0.5);
 `;
 
 const Container = styled.div`
@@ -295,6 +296,28 @@ const Card = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
+  @media (hover: none) {
+    background-size: cover;
+    background-position: center;
+    transform: translateZ(0);
+    will-change: transform;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: inherit;
+      background-size: cover;
+      background-position: center;
+      filter: contrast(1.1) brightness(1.1);
+      z-index: 0;
+      transform: translateZ(0);
+      will-change: transform;
+    }
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -332,40 +355,30 @@ const Card = styled.div`
   }
 
   @media (hover: none) {
-    .card-description, .arrow-icon {
-      opacity: 0;
-      transition: opacity 0.3s ease;
+    &::before {
+      background: linear-gradient(to bottom,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.5)
+      );
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      z-index: 1;
     }
 
-    &::after {
-      content: '👆 Touch!!';
-      white-space: pre-line;
-      position: absolute;
-      top: 60%;
-      left: 50%;
-      transform: translate(-50%, -40%);
-      font-size: 1.2rem;
-      font-weight: 500;
-      color: white;
-      text-align: center;
-      z-index: 3;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-      opacity: 0.9;
-      animation: pulse 2s infinite;
+    .card-description, .arrow-icon {
+      opacity: 1;
+    }
+
+    & > div {
+      z-index: 2;
     }
 
     &.active {
       &::before {
-        background: ${props => props.hoverOverlay || 'linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6))'};
-      }
-
-      &::after {
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .card-description, .arrow-icon {
-        opacity: 1;
+        background: linear-gradient(to bottom,
+          rgba(0, 0, 0, 0.1),
+          rgba(0, 0, 0, 0.4)
+        );
       }
     }
   }
@@ -396,12 +409,38 @@ const CardTitle = styled.h3`
   gap: 10px;
 
   @media (hover: none) {
-    opacity: 0.7;
-    transition: opacity 0.3s ease;
-  }
-
-  ${Card}.active & {
+    font-size: 1.3rem;
     opacity: 1;
+    padding: 8px 12px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  }
+`;
+
+const CardIcon = styled.div`
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 12px;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+
+  ${Card}:hover & {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.3);
   }
 `;
 
@@ -414,6 +453,19 @@ const CardDescription = styled.p`
   word-wrap: break-word;
   transition: all 0.3s ease;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+
+  @media (hover: none) {
+    font-size: 0.95rem;
+    padding: 12px 15px;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 12px;
+    margin-top: 15px;
+    line-height: 1.5;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  }
 `;
 
 const ArrowIcon = styled(IoArrowForward)`
@@ -453,6 +505,7 @@ const BestPoint = () => {
 
   const cards = [
     {
+      icon: <FaUserTie />,
       title: '검증된 전문가 팀',
       description: `하방은 검증된 전문가 팀으로 구성되어 있습니다. 여기에 더해 공신력 있는 안전진단 전문업체 
       (주)영남이엔지와 협력하여 고급 하자점검 기술을 확보하였습니다.`,
@@ -461,41 +514,41 @@ const BestPoint = () => {
       hoverOverlay: 'linear-gradient(to bottom, rgba(25, 118, 210, 0.3), rgba(25, 118, 210, 0.6))'
     },
     {
+      icon: <FaMapMarkedAlt />,
       title: '경상권 전문 사전점검업체',
       description: `하방은 7년간 경상권 아파트 사전점검에 집중해온 전문업체입니다.
 풍부한 현장 경험과 지역 맞춤형 점검 시스템으로, 하자의 원인을 정확히 짚어내고 신속하게 대응합니다.`,
       background: 'url(/img/bestpoint/7.jpeg)',
-     overlay: 'linear-gradient(to bottom, rgba(0, 191, 166, 0.8), rgba(0, 191, 166, 0.9))',
-    hoverOverlay: 'linear-gradient(to bottom, rgba(0, 191, 166, 0.2), rgba(0, 191, 166, 0.4))'
+      overlay: 'linear-gradient(to bottom, rgba(0, 191, 166, 0.8), rgba(0, 191, 166, 0.9))',
+      hoverOverlay: 'linear-gradient(to bottom, rgba(0, 191, 166, 0.2), rgba(0, 191, 166, 0.4))'
     },
     {
+      icon: <FaChalkboardTeacher />,
       title: '하자점검 정기교육',
       description: `하방은 하자점검 전문성을 유지하기 위해 정기적인 내부 교육과 실무 워크숍을 실시하고 있습니다.
 전문가들의 최신 트렌드와 사례를 지속적으로 공유하며, 점검 품질의 균일성과 정확성을 높이고 있습니다.
 `,
-      background: 'url(/img/bestpoint/4.jpg)',
+      background: 'url(/img/bestpoint/2.jpeg)',
       overlay: 'linear-gradient(to bottom, rgba(162, 89, 255, 0.8), rgba(162, 89, 255, 0.9))',
-hoverOverlay: 'linear-gradient(to bottom, rgba(162, 89, 255, 0.3), rgba(162, 89, 255, 0.6))'
-
+      hoverOverlay: 'linear-gradient(to bottom, rgba(162, 89, 255, 0.3), rgba(162, 89, 255, 0.6))'
     },
     {
-        title: '공동구매 진행',
-        description: `하방은 주관사의 초청과 입주민들의 적극적인 참여로 형성된 공동구매 형태의 점검을 다수 진행해왔습니다.
+      icon: <FaUsers />,
+      title: '공동구매 진행',
+      description: `하방은 주관사의 초청과 입주민들의 적극적인 참여로 형성된 공동구매 형태의 점검을 다수 진행해왔습니다.
 풍부한 진행 경험을 바탕으로, 단지별 특성과 일정에 맞춘 효율적인 사전점검 서비스를 제공합니다.`,
-        background: 'url(/img/bestpoint/4.jpg)',
-        overlay: 'linear-gradient(to bottom, rgba(21, 87, 204, 0.8), rgba(21, 87, 204, 0.9))',
-hoverOverlay: 'linear-gradient(to bottom, rgba(21, 87, 204, 0.3), rgba(21, 87, 204, 0.6))'
-
-      },
+      background: 'url(/img/bestpoint/4.jpg)',
+      overlay: 'linear-gradient(to bottom, rgba(21, 87, 204, 0.8), rgba(21, 87, 204, 0.9))',
+      hoverOverlay: 'linear-gradient(to bottom, rgba(21, 87, 204, 0.3), rgba(21, 87, 204, 0.6))'
+    },
     {
+      icon: <FaVrCardboard />,
       title: '국내최초! 세대기록 서비스',
       description: `하방은 국내 최초로 360도 VR을 활용한 세대 기록 서비스를 랜하우스와의 협업을 통해 제공하고 있습니다.
 눈으로 직접 보는 듯한 입체적인 기록은, 하자 발생 시 증빙 자료로 활용되며 입주 후 분쟁 예방에도 강력한 효과를 발휘합니다.`,
       background: 'url(/img/bestpoint/vr2.png)',
       overlay: 'linear-gradient(to bottom, rgba(204, 171, 0, 0.85), rgba(153, 128, 0, 0.95))',
       hoverOverlay: 'linear-gradient(to bottom, rgba(204, 171, 0, 0.3), rgba(153, 128, 0, 0.5))'
-      
-
     }
   ];
 
@@ -527,6 +580,7 @@ hoverOverlay: 'linear-gradient(to bottom, rgba(21, 87, 204, 0.3), rgba(21, 87, 2
                 className={activeCard === index ? 'active' : ''}
               >
                 <div>
+                  <CardIcon>{card.icon}</CardIcon>
                   <CardTitle className="card-title">{card.title}</CardTitle>
                   <CardDescription className="card-description">{card.description}</CardDescription>
                 </div>
@@ -545,6 +599,7 @@ hoverOverlay: 'linear-gradient(to bottom, rgba(21, 87, 204, 0.3), rgba(21, 87, 2
                 className={activeCard === (index + 2) ? 'active' : ''}
               >
                 <div>
+                  <CardIcon>{card.icon}</CardIcon>
                   <CardTitle className="card-title">{card.title}</CardTitle>
                   <CardDescription className="card-description">{card.description}</CardDescription>
                 </div>

@@ -1,14 +1,17 @@
 import styled, { keyframes } from 'styled-components';
 
 export const BannerWrapper = styled.section`
-  min-height: 65vh; /* ✅ 높이 0.75배로 조정 */
-  padding: 80px 20px;
+  /* ✅ 높이 0.75배로 조정 */
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   position: relative;
   overflow: hidden;
+
+  @media (max-width: 480px) {
+    min-height: 40vh;
+  }
 `;
 
 
@@ -17,17 +20,19 @@ export const BannerContent = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 260px; /* 고정 높이 */
-  min-height: 260px;
+  height: 240px; /* 고정 높이 */
+  min-height: 240px;
   z-index: 1;
-  margin-top: 80px;
+  margin-top: 40px;
 
   @media (max-width: 768px) {
     height: 220px;
+    min-height: 220px;
   }
 
   @media (max-width: 480px) {
     height: 200px;
+    min-height: 200px;
   }
 `;
 
@@ -165,7 +170,12 @@ export const VideoBackground = styled.video`
   z-index: 0;
   pointer-events: none; // 마우스 클릭 통과
   opacity: 0.5;
-  filter: blur(4px);
+  @media (hover: hover) {
+    filter: blur(4px);
+  }
+  @media (hover: none) {
+    filter: blur(2px);
+  }
  
 `;
 

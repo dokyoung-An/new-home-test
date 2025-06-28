@@ -44,8 +44,7 @@ const Home = () => {
      
       <PromotionSection/>
       <NewsSection/>
-   
-     
+  
       <BannerSection/>
       <Footer />
     </>

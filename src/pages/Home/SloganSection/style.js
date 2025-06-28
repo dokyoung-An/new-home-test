@@ -53,6 +53,10 @@ export const ChatBubbles = styled.div`
   max-width: 900px;
   margin: 0 auto 60px;
   position: relative;
+
+  @media (max-width: 768px) {
+    margin: 0 auto 40px;
+  }
 `;
 
 export const ChatBubble = styled.div`

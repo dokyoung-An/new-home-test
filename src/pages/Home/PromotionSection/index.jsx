@@ -28,9 +28,9 @@ const PromotionSection = () => {
       <PromotionContainer>
         <PromotionContent>
           <TitleDecoration />
-          <PromotionTitle>지금! 신청하고<br />혜택 받으세요</PromotionTitle>
+          <PromotionTitle>지금 신청하고<br />혜택 받으세요</PromotionTitle>
           <PromotionText>
-            사전점검 대행업체 하방의 서비스! <br/>지금이 하방의 가장 좋은 혜택을 누릴 수 있는 기회입니다.
+          사전점검 전문 하방!<br />지금이 최고의 혜택을 누릴 기회입니다.
           </PromotionText>
           <Button 
             primary 

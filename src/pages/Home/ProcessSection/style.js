@@ -29,7 +29,7 @@ export const ProcessWrapper = styled.section`
   position: relative;
   margin-top: 0;
   z-index: 1;
-  padding: 220px 0;
+ 
   
   /* 배경 이미지와 오버레이 */
   &::before {
@@ -419,5 +419,108 @@ export const StepDescription = styled.p`
   
   @media (max-width: 480px) {
     font-size: 0.9rem;
+  }
+`;
+
+export const PromotionCard = styled.div`
+  position: relative;
+  background: ${({ theme }) => theme.cardBackground};
+  border-radius: 20px;
+  padding: 30px;
+  height: 100%;
+  overflow: visible;
+  backdrop-filter: none;
+  
+  @media (min-width: 769px) {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      
+      li {
+        transform: translateX(10px);
+        color: ${({ theme }) => theme.primaryLight};
+      }
+    }
+  }
+  
+  h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: ${({ theme }) => theme.primaryDark};
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    font-size: 1.1rem;
+    color: ${({ theme }) => theme.textColor};
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.4;
+    
+    @media (min-width: 769px) {
+      transition: all 0.3s ease;
+    }
+    
+    &:before {
+      content: '•';
+      color: ${({ theme }) => theme.primaryMiddle};
+      margin-right: 10px;
+      margin-top: 2px;
+    }
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 25px;
+    overflow: visible;
+    height: auto;
+    background: ${({ theme }) => theme.cardBackground};
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    
+    h3 {
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+    }
+    
+    li {
+      font-size: 2.15rem;
+      margin-bottom: 15px;
+      line-height: 1.3;
+      word-break: keep-all;
+      
+      &:before {
+        margin-top: 8px;
+        font-size: 2.15rem;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 20px;
+    
+    h3 {
+      font-size: 1.4rem;
+    }
+    
+    li {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      
+      &:before {
+        font-size: 2rem;
+      }
+    }
   }
 `;

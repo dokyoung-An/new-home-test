@@ -64,9 +64,9 @@ const CoworkerSection = () => {
   return (
     <CTABanner>
       <Container>
-        <CTASubtitle>업무제휴</CTASubtitle>
-        <CTATitle>하방은 전국의 입주 박람회 주관사와 함께</CTATitle>
-        <CTAHighlight>사전점검 서비스를 제공합니다.</CTAHighlight>
+        <CTASubtitle>파트너사</CTASubtitle>
+        <CTATitle>하방은 경상권 입주 박람회 주관사와</CTATitle>
+<CTAHighlight>공식 파트너로 활동 하고 있습니다.</CTAHighlight>
       </Container>
       <PartnersSlider>
         <PartnersTrack

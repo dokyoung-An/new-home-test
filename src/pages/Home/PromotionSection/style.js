@@ -152,7 +152,6 @@ export const Promotion = styled.section`
   position: relative;
   color: ${BRAND_COLORS.white};
   text-align: left;
-  padding: 180px 0;
   overflow: hidden;
   background: ${BRAND_COLORS.darkNavy};
   
@@ -195,6 +194,9 @@ export const Promotion = styled.section`
     z-index: 1;
     transform-origin: top left;
     mix-blend-mode: soft-light;
+  }
+  @media (max-width: 480px) {
+    padding: 50px 0;
   }
 `;
 
@@ -433,12 +435,12 @@ export const PromotionCard = styled.div`
     }
 
     h3 {
-      color: ${props => props.theme.primaryMiddle};
+      color: ${props => props.theme.primaryReward};
     }
 
     li::before {
       transform: scale(1.2);
-      background: ${props => props.theme.primaryMiddle};
+      background: ${props => props.theme.primaryLight};
     }
   }
 

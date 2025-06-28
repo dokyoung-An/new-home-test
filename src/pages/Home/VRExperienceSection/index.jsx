@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { IoIosArrowUp } from 'react-icons/io';
 
 import { Container } from '../../../styles/common';
 import {
@@ -24,7 +25,7 @@ import {
   CTAItem,
   CTAIcon,
   CTAText,
-
+  ClickGuide,
 } from './style';
 import { MdVrpano, MdPhotoCamera, MdOutlineSpeed, MdDevices } from 'react-icons/md';
 
@@ -37,38 +38,38 @@ const VRExperienceSection = () => {
   const slides = [
     {
       title: '더샵 엘로이',
-      description: '부동산 방문 없이도 실제 공간을 체험할 수 있는 가상 투어 서비스',
+   
       bgImage: 'eloi.jpg',
       vrUrl: ' https://lanhouse-in-port.vercel.app/더샵엘로이/'
     },
     {
       title: '수원아이파크시티12단지',
-      description: '관심 있는 매물만 방문하여 효율적인 부동산 탐색 가능',
+      
       bgImage: 'suwon.jpg',
       vrUrl: 'https://lanhouse-in-port.vercel.app/수원아이파크시티12단지/'
     },
     {
       title: '분당어울림',
-      description: '360도 4K 고화질 촬영으로 공간의 디테일까지 섬세하게 표현',
+      
       bgImage: 'bundangulim.jpg',
       vrUrl: 'https://lanhouse-in-port.vercel.app/금호어울림/'
     },
     {
       title: '리버센SK뷰',
-      description: '웹사이트, 소셜 미디어, 메신저 등 다양한 플랫폼에서 공유 가능',
+      
       bgImage: 'deone.jpg',
       vrUrl: 'https://lanhouse-in-port.vercel.app/리버센sk뷰/'
     },
    
     {
       title: '화성비봉금강펜테리움',
-      description: '사용자 친화적 인터페이스로 쉽게 공간을 이동하고 탐색 가능',
+     
       bgImage: 'bibong.jpg',
       vrUrl: ' https://lanhouse-in-port.vercel.app/비봉금강펜테리움/'
     },
     {
       title: '도심역한양수자인리버파인',
-      description: '사용자 친화적 인터페이스로 쉽게 공간을 이동하고 탐색 가능',
+      
       bgImage: 'dosim.jpg',
       vrUrl: ' https://lanhouse-in-port.vercel.app/도심역한양수자인/'
     },
@@ -118,14 +119,14 @@ const VRExperienceSection = () => {
   };
 
   return (
-    <section id="VRExperience" style={{ marginBottom: 0, paddingBottom: 0 ,paddingTop: 0}}>
+    <section id="VRExperience" style={{ marginBottom: 0, paddingBottom: 0, paddingTop: 0}}>
       <VRExperience>
         <Container>
           <ExperienceWrapper>
             <ExperienceContent>
               <ExperienceSubtitle><span>Special Service</span>_세대기록 서비스</ExperienceSubtitle>
-              <ExperienceTitle>사전점검 후에도 자유롭게</ExperienceTitle>
-              <ExperienceHighlight>우리집 VR로 <br/>언제 어디서든 확인</ExperienceHighlight>
+              <ExperienceTitle>우리집 <span>in Digital World</span></ExperienceTitle>
+              <ExperienceHighlight>언제 어디서든 VR Check</ExperienceHighlight>
               <p>
                 소중한 공간의 가치를 지키기 위한 시작엔 확실한 기록이 있습니다.
                 사전점검대행업체 하방 X 랜하우스 360° VR은 단순한 사진으론 담을 수 없는, 
@@ -203,45 +204,47 @@ const VRExperienceSection = () => {
                     </SlideItem>
                   ))}
                 </SliderTrack>
+               
               </SliderContainer>
             </ExperienceSlider>
           </ExperienceWrapper>
         </Container>
         
-        {/* VR 팝업 */}
-        <VRPopupOverlay isOpen={isPopupOpen} onClick={closePopup}>
-          <VRPopupContent onClick={(e) => e.stopPropagation()}>
-            {selectedSlide && (
-              <>
-                <VRPopupHeader>
-                  <VRPopupTitle>{selectedSlide.title} VR 투어</VRPopupTitle>
-                  <CloseButton onClick={closePopup}>×</CloseButton>
-                </VRPopupHeader>
-                {isMobile && (
-                  <div style={{ 
-                    color: 'rgba(255,255,255,0.7)', 
-                    fontSize: '12px', 
-                    marginBottom: '10px',
-                    textAlign: 'center',
-                    padding: '6px',
-                    backgroundColor: 'rgba(255,255,255,0.1)',
-                    borderRadius: '4px'
-                  }}>
-                    <span role="img" aria-label="회전">🔄</span> 최적의 경험을 위해 화면을 가로로 회전해보세요
-                  </div>
-                )}
-                <IframeContainer>
-                  <StyledIframe
-                    src={selectedSlide.vrUrl}
-                    title={`${selectedSlide.title} VR 투어`}
-                    allowFullScreen
-                    allow="xr-spatial-tracking; gyroscope; accelerometer"
-                  />
-                </IframeContainer>
-              </>
-            )}
-          </VRPopupContent>
-        </VRPopupOverlay>
+        {isPopupOpen && selectedSlide && (
+          <VRPopupOverlay onClick={closePopup}>
+            <VRPopupContent onClick={(e) => e.stopPropagation()}>
+              <VRPopupHeader>
+                <VRPopupTitle>{selectedSlide.title} VR 투어</VRPopupTitle>
+                <CloseButton onClick={closePopup}>×</CloseButton>
+              </VRPopupHeader>
+              {isMobile && (
+                <div style={{ 
+                  color: 'rgba(255,255,255,0.7)', 
+                  fontSize: '12px', 
+                  marginBottom: '10px',
+                  textAlign: 'center',
+                  padding: '6px',
+                  backgroundColor: 'rgba(255,255,255,0.1)',
+                  borderRadius: '4px'
+                }}>
+                  <span role="img" aria-label="회전">🔄</span> 최적의 경험을 위해 화면을 가로로 회전해보세요
+                </div>
+              )}
+              <IframeContainer>
+                <StyledIframe
+                  src={selectedSlide.vrUrl}
+                  title={`${selectedSlide.title} VR 투어`}
+                  allowFullScreen
+                  allow="xr-spatial-tracking; gyroscope; accelerometer"
+                />
+              </IframeContainer>
+            </VRPopupContent>
+          </VRPopupOverlay>
+        )}
+         <ClickGuide>
+                  <IoIosArrowUp />
+                  <span>Click!</span>
+                </ClickGuide>
       </VRExperience>
     </section>
   );

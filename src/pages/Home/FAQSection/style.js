@@ -4,12 +4,17 @@ import { sectionSpacing } from '../../../styles/common';
 export const FAQWrapper = styled.div`
   ${sectionSpacing}
   background-color: #fff;
-  padding: 100px 0;
   background-image: url('/img/bg4.png');
+  transform: translateZ(0);
+  will-change: transform;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
+
+  @media (max-width: 480px) {
+    padding: 0px 0;
+  }
 `;
 
 export const DesignElement1 = styled.div`
@@ -30,7 +35,7 @@ export const DesignElement1 = styled.div`
   @media (max-width: 768px) {
     width: 15px;
     height: 15px;
-    top: 65px;
+    top:-10px;
   }
 `;
 
@@ -52,7 +57,8 @@ export const DesignElement2 = styled.div`
   @media (max-width: 768px) {
     width: 18px;
     height: 18px;
-    top: 45px;
+    left: 32px;
+    top: -20px;
   }
 `;
 
@@ -74,7 +80,7 @@ export const DesignElement3 = styled.div`
   @media (max-width: 768px) {
     width: 12px;
     height: 12px;
-    top: 80px;
+    top: 5px;
   }
 `;
 
@@ -133,17 +139,17 @@ export const FAQDescription = styled.p`
   max-width: 400px;
   
   @media (max-width: 1024px) {
-    font-size: 1rem;
+    font-size: 1.1rem;
     max-width: 100%;
   }
   
   @media (max-width: 768px) {
-    font-size: 0.9375rem;
+    font-size: 1rem;
     margin-top: 20px;
   }
   
   @media (max-width: 480px) {
-    font-size: 0.875rem;
+    font-size: 0.9rem;
     margin-top: 16px;
   }
 `;
@@ -192,7 +198,7 @@ export const FAQQuestion = styled.div`
   }
   
   @media (max-width: 1024px) {
-    font-size: 1.125rem;
+    font-size: 1.2rem;
     padding: 20px 0;
     
     .icon {
@@ -201,7 +207,7 @@ export const FAQQuestion = styled.div`
   }
   
   @media (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 1.1rem;
     padding: 16px 0;
     
     .icon {
@@ -210,7 +216,7 @@ export const FAQQuestion = styled.div`
   }
   
   @media (max-width: 480px) {
-    font-size: 0.9375rem;
+    font-size: 1rem;
     padding: 14px 0;
     
     .icon {
@@ -220,7 +226,7 @@ export const FAQQuestion = styled.div`
 `;
 
 export const FAQAnswer = styled.div`
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: ${props => props.theme.darkGray};
   line-height: 1.8;
   padding-bottom: ${props => props.isOpen ? '24px' : '0'};
@@ -231,20 +237,20 @@ export const FAQAnswer = styled.div`
   white-space: pre-line;
   
   @media (max-width: 1024px) {
-    font-size: 0.9375rem;
+    font-size: 1rem;
     line-height: 1.7;
     padding-bottom: ${props => props.isOpen ? '20px' : '0'};
   }
   
   @media (max-width: 768px) {
-    font-size: 0.875rem;
+    font-size: 0.9rem;
     line-height: 1.6;
     padding-bottom: ${props => props.isOpen ? '16px' : '0'};
   }
   
   @media (max-width: 480px) {
-    font-size: 0.8125rem;
-    line-height: 1.5;
+    font-size: 0.9rem;
+    line-height: 1.6;
     padding-bottom: ${props => props.isOpen ? '14px' : '0'};
   }
 `;

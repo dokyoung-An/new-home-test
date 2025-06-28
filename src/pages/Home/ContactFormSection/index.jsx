@@ -116,7 +116,7 @@ const ContactFormSection = forwardRef((props, ref) => {
         .from('habang')
         .select('*')
         .order('created_at', { ascending: false })
-        .limit(5);
+        .limit(10);  // 최근 10개로 수정
 
       if (error) {
         console.error('Supabase 쿼리 에러:', error);
@@ -277,7 +277,7 @@ const ContactFormSection = forwardRef((props, ref) => {
               <InquiryList>
                 {recentInquiries.map((inquiry, index) => (
                   <InquiryItem key={inquiry.id}>
-                    <InquiryId>{inquiry.id}</InquiryId>
+                    <InquiryId>{inquiry.id+9480}</InquiryId>
                     <InquiryContent>
                       <div>{inquiry.apartment}</div>
                       <div className='region'>{inquiry.region}</div>

@@ -81,7 +81,7 @@ export const VRExperience = styled.section`
   }
   
   @media (max-width: 480px) {
-    padding-bottom: 0;
+    padding: 0;
     margin-bottom: 0;
   }
 `;
@@ -114,7 +114,7 @@ export const ExperienceWrapper = styled.div`
 
 export const ExperienceContent = styled.div`
   max-width: 600px;
-  padding: 60px 0 0 0;
+  padding: 50px;
   text-align: left;
   margin-bottom: 0;
   height: auto;
@@ -124,163 +124,116 @@ export const ExperienceContent = styled.div`
   position: relative;
   z-index: 5;
   color: #fff;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-  position: relative;
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 16px;
+  @media (hover: hover) {
+    backdrop-filter: blur(20px);
+  }
+  @media (hover: none) {
+    background: rgba(0, 0, 0, 0.85);
+  }
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   
-  /* 장식용 배경 요소 추가 */
   &::before {
     content: '';
     position: absolute;
-    top: 20px;
-    left: -20px;
-    width: 60px;
-    height: 60px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, ${props => props.theme.primaryLight}40, ${props => props.theme.primaryDark}30);
-    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(26, 109, 255, 0.1), transparent);
+    border-radius: 16px;
+    pointer-events: none;
   }
-  
-  /* 장식용 요소 추가 */
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 40px;
-    right: 60px;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background: radial-gradient(circle, ${props => props.theme.primaryDark}20, transparent 70%);
-    z-index: -1;
-  }
-  
+
   p {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.85);
     line-height: 1.8;
-    margin-bottom: 35px;
+    margin: 25px 0 35px;
     font-size: 1.1rem;
-    font-weight: 300;
+    font-weight: 400;
     position: relative;
-    padding-left: 0;
     letter-spacing: 0.3px;
-    max-width: 450px;
+    max-width: 500px;
+    text-shadow: none;
   }
   
   @media (max-width: 768px) {
     max-width: 100%;
     text-align: center;
-    padding: 30px 15px;
+    padding: 35px;
     height: auto;
-    margin-bottom: 0;
-    
-    &::before, &::after {
-      display: none;
-    }
+    margin-bottom: 40px;
     
     p {
-      font-size: 0.9rem;
+      font-size: 1rem;
       word-break: keep-all;
       margin-left: auto;
       margin-right: auto;
     }
   }
+  
+  @media (max-width: 480px) {
+    padding: 30px;
+  }
 `;
 
 export const ExperienceSubtitle = styled.h3`
   color: ${({ theme }) => theme.primaryLight};
-  font-size: 1.2rem;
-  margin-bottom: 15px;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
   font-weight: 600;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
   letter-spacing: 1px;
   text-transform: uppercase;
   display: inline-block;
   position: relative;
   
-  /* 밑줄 장식 추가 */
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 50px;
-    height: 2px;
-    background: linear-gradient(to right, ${props => props.theme.primaryLight}, transparent);
+  span {
+    color: #fff;
+    opacity: 0.9;
+    font-weight: 500;
+    margin-left: 8px;
   }
   
   @media (max-width: 768px) {
-    font-size: 1.1rem;
-    
-    &::after {
-      left: 50%;
-      transform: translateX(-50%);
-    }
-  }
-  
-  @media (max-width: 480px) {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 `;
 
 export const ExperienceTitle = styled.h2`
-  font-size: 2.2rem;
+  font-size: 2.8rem;
   font-weight: 700;
-  margin-bottom: 5px;
   color: #fff;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  margin-bottom: 10px;
   line-height: 1.2;
+  letter-spacing: -0.5px;
+
+  span {
+    color: ${({ theme }) => theme.primaryLight};
+    font-size: 1.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    span {
+      font-size: 1.2rem;
+    }
+  }
+`;
+
+export const ExperienceHighlight = styled.h2`
+  font-size: 2.4rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, ${({ theme }) => theme.primaryLight}, #4A90E2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 25px;
+  line-height: 1.3;
   letter-spacing: -0.5px;
   
   @media (max-width: 768px) {
     font-size: 1.8rem;
-  }
-  
-  @media (max-width: 480px) {
-    font-size: 1.6rem;
-  }
-`;
-
-export const ExperienceHighlight = styled.div`
-  background: linear-gradient(90deg, ${props => props.theme.primaryDark}, ${props => props.theme.primaryColor}, ${props => props.theme.primaryLight}, ${props => props.theme.primaryColor});
-  background-size: 300% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-size: 3.2rem;
-  font-weight: 800;
-  margin-bottom: 35px;
-  line-height: 1.3;
-  text-shadow: 0 0 15px rgba(244, 167, 122, 0.3);
-  position: relative;
-  animation: ${highlightAnimation} 7s ease infinite;
-  
-  /* 텍스트 주변 효과 */
-  &::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: -15px;
-    width: 30px;
-    height: 30px;
-    background-image: radial-gradient(circle, ${props => props.theme.primaryLight}70 10%, transparent 70%);
-    border-radius: 50%;
-    z-index: -1;
-    animation: ${pulse} 3s ease-in-out infinite alternate;
-  }
-   
-  
-  @media (max-width: 768px) {
-    font-size: 2.6rem;
-    
-    &::before {
-      left: 50%;
-      transform: translateX(-50%);
-      animation: none;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    font-size: 2.2rem;
-    margin-bottom: 25px;
   }
 `;
 
@@ -387,16 +340,13 @@ export const ExperienceSlider = styled.div`
 `;
 
 export const SliderContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  overflow: visible;
   position: relative;
-  padding: 0;
-    
+  width: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+  
   @media (max-width: 768px) {
-    overflow: hidden;
-    padding: 0;
-    width: 100%;
+    margin-bottom: 40px;
   }
 `;
 
@@ -795,4 +745,50 @@ export const StyledIframe = styled.iframe`
     border-radius: 6px;
   }
 `;
+
+export const ClickGuide = styled.div`
+  display: none;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  text-align: center;
+  animation: bounce 2s infinite;
+  pointer-events: none;
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translate(-50%, 0);
+    }
+    40% {
+      transform: translate(-50%, -10px);
+    }
+    60% {
+      transform: translate(-50%, -5px);
+    }
+  }
+
+  svg {
+    color: #fff;
+    font-size: 28px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  }
+
+  span {
+    display: block;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 0px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
+
+
 

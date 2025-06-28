@@ -6,6 +6,10 @@ export const Benefits = styled.section`
   text-align: center;
   overflow: hidden;
 
+  @media (max-width: 768px) {
+    padding: 0px 0;
+  }
+
 `;
 
 export const SectionContainer = styled.div`

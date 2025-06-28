@@ -361,7 +361,12 @@ export const FeatureCard = styled.div`
   padding: 30px;
   height: 420px;
   background-color: rgba(35, 38, 48, 0.7);
-  backdrop-filter: blur(10px);
+  @media (hover: hover) {
+    backdrop-filter: blur(10px);
+  }
+  @media (hover: none) {
+    background-color: rgba(35, 38, 48, 0.9);
+  }
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -442,12 +447,12 @@ export const FeatureCard = styled.div`
   }
   
   @media (max-width: 768px) {
-    height: 200px;
+    height: 320px;
     padding: 25px;
   }
   
   @media (max-width: 480px) {
-    height: 180px;
+    height: 280px;
     padding: 20px;
   }
 `;
@@ -521,19 +526,21 @@ export const CardContent = styled.div`
     letter-spacing: 0.5px;
     
     @media (max-width: 480px) {
-      font-size: 1rem;
+      font-size: 1.2rem;
     }
   }
   
   p {
     color: rgba(255, 255, 255, 0.95);
-    font-size: 0.95rem;
+    font-size: 1rem;
     line-height: 1.6;
     position: relative;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    word-break: keep-all;
+    word-wrap: nowrap;
     
     @media (max-width: 480px) {
-      font-size: 0.8rem;
+      font-size: 1rem;
     }
   }
 `;

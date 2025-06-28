@@ -18,9 +18,12 @@ const floatUp = keyframes`
 `;
 
 // 메인 래퍼
+
+
 export const UseCasesWrapper = styled.section`
-  padding: 180px 0;
   background-color: #f8f9fa;
+  ${sectionSpacing}
+
   
   @media (max-width: 768px) {
     padding: 70px 0;

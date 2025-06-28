@@ -7,11 +7,13 @@ export const SliderContainer = styled.div`
   overflow: visible;
   position: relative;
   padding: 0;
+  
     
   @media (max-width: 768px) {
     overflow: hidden;
     padding: 0;
     width: 100%;
+  
     
   }
 `;
@@ -34,6 +36,8 @@ export const SliderTrack = styled.div`
     animation: ${scroll} 50s linear infinite;
     width: fit-content;
     padding: 10px 0;
+   
+    
     
     & > div:nth-child(${props => props.children?.length / 2}):after {
       content: '';
@@ -137,6 +141,7 @@ export const SlideContent = styled.div.attrs({
       -webkit-box-orient: vertical;
       overflow: hidden;
       text-overflow: ellipsis;
+     
     }
   }
   
@@ -150,8 +155,12 @@ export const SlideContent = styled.div.attrs({
     p {
       font-size: 0.8rem;
       -webkit-line-clamp: 2;
+      
     }
   }
+
+ 
+
 `;
 
 export const SlideItem = styled.div`

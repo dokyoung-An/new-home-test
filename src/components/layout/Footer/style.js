@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const FooterWrapper = styled.footer`
   background-color: #1a1a1a;
   color: #ccc;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   padding: 40px 0 20px;
 
   @media (max-width: 480px) {
@@ -79,7 +79,7 @@ export const FooterRight = styled.div`
 
 export const FooterNotice = styled.div`
   line-height: 1.8;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   color: #888;
 `;
 
@@ -104,7 +104,7 @@ export const FooterNav = styled.div`
   a {
     color: #aaa;
     text-decoration: none;
-    font-size: 0.7rem;
+    font-size: 0.85rem;
 
     &:hover {
       color: #fff;
@@ -126,7 +126,7 @@ export const FooterBottom = styled.div`
   border-top: 1px solid #222;
 
   .copyright {
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     color: #555;
   }
 
@@ -149,7 +149,7 @@ export const FooterSelectGroup = styled.div`
     color: #ccc;
     border: 1px solid #333;
     padding: 4px 10px;
-    font-size: 0.75rem;
+    font-size: 0.85rem;
 
     &:hover {
       background-color: #222;
@@ -165,14 +165,14 @@ export const SocialButtons = styled.div`
 `;
 
 export const SocialButton = styled.a`
-  width: 28px;
-  height: 28px;
-  font-size: 14px;
+  width: 38px;
+  height: 38px;
+  font-size: 16px;
 
   @media (max-width: 480px) {
-    width: 24px;
-    height: 24px;
-    font-size: 12px;
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
   }
 `;
 
@@ -180,7 +180,7 @@ export const FooterLink = styled.button`
   background: none;
   border: none;
   color: #aaa;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   cursor: pointer;
   padding: 0;
 

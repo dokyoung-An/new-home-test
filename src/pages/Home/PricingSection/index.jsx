@@ -23,7 +23,7 @@ import {
 
 const priceDetails = {
   '사전점검 서비스': {
-    description: `육안점검 + 장비점검 + 하자 접수 \n+ 하자점검 보고서 + VR 세대기록 서비스`,
+    description: `육안점검 + 장비점검 + 하자 접수 \n+ 하자점검 보고서 + VR 세대기록`,
     prices: {
       '25평 이하': '240,000원',
       '30평': '270,000원',
@@ -57,11 +57,10 @@ const PricingSectionComponent = () => {
     <section id="PricingSection">
       <PricingWrapper>
         <Container>
-          <SectionSubtitle>가격 안내</SectionSubtitle>
+          <SectionSubtitle>Price</SectionSubtitle>
           <SectionTitle>하방 서비스 가격 안내</SectionTitle>
           <DescriptionText>
-            합리적인 비용으로 고품질 VR 서비스를 이용하세요. <br/>
-            이용 세대 수, 기능 추가에 따라 가격이 달라집니다.
+            합리적인 비용으로 하자 점검 서비스를 이용하세요. <br/>
           </DescriptionText>
 
           <Wrapper>
@@ -85,7 +84,7 @@ const PricingSectionComponent = () => {
         <div className='price-description'>
           <ul> 
             <li>6세대 이상 공동구매 진행 시 추가 1만원 할인</li>
-            <li>서울,경기,경상도 지역 외 출장비 발생.상담문의</li>
+            <li>경상도 지역 외 출장비 추가. 상담문의</li>
           </ul>
         </div>
       </PriceBox>

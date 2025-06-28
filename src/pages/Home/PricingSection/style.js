@@ -1,13 +1,15 @@
 import styled, { keyframes } from 'styled-components';
 
-export const PricingWrapper = styled.section`
-  padding: 100px 0 100px 0;
+export const PricingWrapper = styled.section` 
   background-color: #fff;
   background: url('/img/bg4.png') no-repeat center center;
-  background-attachment: fixed;
+  background-size: cover;
+  transform: translateZ(0);
+  will-change: transform;
+  padding: 0px 0 40px 0;
 
   @media (max-width: 480px) {
-    padding: 40px 0;
+    padding: 0px 0;
   }
 `;
 
@@ -717,6 +719,13 @@ export const PriceBox = styled.div`
     font-weight: bold;
     margin-bottom: 1rem;
     color:${({ theme }) => theme.primaryMiddle};
+    word-break: keep-all;
+    white-space: pre-line;
+    word-wrap: nowrap;
+
+    @media (max-width: 480px) {
+      font-size: 1rem;
+    }
   }
 
   .price {
@@ -743,6 +752,17 @@ export const PriceBox = styled.div`
         font-weight: 400;
         margin-bottom: 0.2rem;
       }
+     
+      }
+      @media (max-width: 480px) {
+        ul {
+          width: 100%;
+          li {
+            font-size: 0.8rem;
+            text-align: left;
+          }
+        }
     }
+
   }
 `;

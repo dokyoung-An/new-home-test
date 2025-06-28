@@ -22,7 +22,8 @@ import {
   StatItem,
   StatValue,
   StatLabel,
-  CloseButton
+  CloseButton,
+ 
 } from './style';
 
 const UseCasesSection = () => {
@@ -159,7 +160,7 @@ const UseCasesSection = () => {
   return (
     <UseCasesWrapper id="UseCasesSection">
       <Container>
-        <SectionSubtitle>HOW TO USE</SectionSubtitle>
+        <SectionSubtitle>Use Cases</SectionSubtitle>
         <SectionTitle>하방 이렇게 활용하세요</SectionTitle>
         
         <TabsContainer>
