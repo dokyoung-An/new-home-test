@@ -495,15 +495,15 @@ export const CardContent = styled.div`
   
   /* 클래스 기반 배경 이미지 설정 */
   &.space-bg::before {
-    background-image: url('/img/service/7.jpeg');
+    background-image: url('/img/service/1.jpg');
   }
   
   &.multi-platform-bg::before {
-    background-image: url('/img/service/11.jpg');
+    background-image: url('/img/service/7.png');
   }
   
   &.zoom-bg::before {
-    background-image: url('/img/service/submmit1.jpg');
+    background-image: url('/img/service/hand.jpg');
     background-position: center;
     opacity: 0.25;
   }
