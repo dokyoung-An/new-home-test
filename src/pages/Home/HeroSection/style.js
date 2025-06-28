@@ -32,7 +32,7 @@ export const Hero = styled.section`
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8));
+   
     z-index: 1;
   }
 `;
