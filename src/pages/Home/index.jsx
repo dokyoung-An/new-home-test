@@ -19,9 +19,7 @@ import NewsSection from './NewsSection';
 import FAQSection from './FAQSection';
 import CoworkerSection from './CoworkerSection';
 import Category from './Category';
-import ImageCard from './ImageCard';
-
-
+import BestPoint from './BestPoint';
 
 const Home = () => {
   return (
@@ -29,22 +27,27 @@ const Home = () => {
       <Header />
       <HeroSection/>
       <SloganSection/>
-      <ImageCard/>
-     <FeaturesSection/>
-      <VRExperienceSection/>
-      <UseCasesSection/>
+      <BestPoint/>
       <BenefitsSection/>
-      <TestimonialsSection />
+      <FeaturesSection/>
+      <VRExperienceSection/>
+     
+      <UseCasesSection/>
+    
+      <CoworkerSection/>
       <ProcessSection/>
       <PricingSection/>
+      <ContactFormSection />
+      <TestimonialsSection />
+      <FAQSection/>
+    
+     
       <PromotionSection/>
       <NewsSection/>
-      <CoworkerSection/>
-      <ContactFormSection />
-      <FAQSection/>
+   
+     
       <BannerSection/>
       <Footer />
-    
     </>
   );
 };

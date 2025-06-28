@@ -340,7 +340,7 @@ export const Row1 = styled.div`
 
 export const Row2 = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1.5fr 1fr;
+  grid-template-columns: 1fr 1fr 1.5fr;
   gap: 30px;
   margin-top: 30px;
   
@@ -508,7 +508,7 @@ export const CardContent = styled.div`
   }
   
   &.data-bg::before {
-    background-image: url('/img/service/qna.png');
+    background-image: url('/img/service/vr2.png');
   }
   
   h3 {
@@ -601,38 +601,3 @@ export const line = keyframes`
   100% { width: 100%; }
 `;
 
-export const AddTitle = styled.h2`
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 30px;
-  position: relative;
-  color: #fff;
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(135deg, ${props => props.theme.primaryLight}, ${props => props.theme.primaryColor});
-    animation: ${line} 3s ease-in-out infinite;
-  }
-`;
-
-
-export const bounceDown = keyframes`
-  0% { transform: translateY(0); }
-  50% { transform: translateY(20px); }
-  100% { transform: translateY(0); }
-`;
-
-export const ArrowIcon = styled.div`
-  font-size: 2.5rem;
-  margin-top: 10px;
-  animation: ${bounceDown} 1.2s infinite;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;

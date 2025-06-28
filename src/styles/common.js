@@ -8,15 +8,15 @@ export const Container = styled.div`
 `;
 
 export const sectionSpacing = css`
-  padding: 100px 0;
+  padding: 80px 0;
   position: relative;
   
   @media (max-width: 1024px) {
-    padding: 80px 0;
+    padding: 60px 0;
   }
   
   @media (max-width: 768px) {
-    padding: 60px 0;
+    padding: 30px 0;
   }
 `;
 

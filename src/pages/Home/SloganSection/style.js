@@ -27,7 +27,7 @@ export const SloganSubtitle = styled.h3`
   line-height: 1.3;
 
   @media (max-width: 480px) {
-    font-size: 2rem;
+    font-size: 1.8rem;
     word-break: keep-all;
   }
 `;
@@ -36,12 +36,12 @@ export const HighlightText = styled.div`
   color: #1a6dff;
   font-size: 3.5rem;
   font-weight: 700;
-  margin: 20px 0 60px;
+  margin: 20px 0 40px;
   line-height: 1.2;
   animation: ${colorChange} 0.8s ease-in-out infinite;
 
   @media (max-width: 480px) {
-    font-size: 3rem;
+    font-size: 2.5rem;
     word-break: keep-all;
   }
 `;
@@ -144,4 +144,9 @@ export const VerticalLine = styled.div`
   height: 8rem;
   background-color: #606060;
   margin: 0 auto 60px;
+
+  @media (max-width: 480px) {
+    height: 4rem;
+  
+  }
 `; 

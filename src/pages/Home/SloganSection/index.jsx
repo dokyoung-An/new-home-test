@@ -63,7 +63,7 @@ const SloganSection = () => {
         
         <VerticalLine />
         <SloganTitle>소중한 우리집, 하자란 단연코 없어야 합니다.</SloganTitle>
-        <SloganSubtitle>처음이라 어렵고, 시간이 없어 하기 힘든 하자 확인!<br/> 하방이 해결해드립니다.</SloganSubtitle>
+        <SloganSubtitle>어렵고, 번거로운 하자 확인!<br/> 하방이 해결해드립니다.</SloganSubtitle>
         <HighlightText>사전점검대행 하방</HighlightText>
       </Container>
     </Slogan>

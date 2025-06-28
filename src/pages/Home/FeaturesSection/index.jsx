@@ -13,9 +13,7 @@ import {
   CardIcon,
   CardContent,
   VideoBackground,
-  AddContainer,
-  AddTitle,
-  ArrowIcon
+ 
 } from './style';
 
 // 애니메이션을 위한 별도 스타일
@@ -58,10 +56,10 @@ const FeaturesSection = () => {
         <source src="/img/0619.mp4" type="video/mp4" />
       </VideoBackground>
       <Container>
-        <FeatureTag>HABANG SERVICE</FeatureTag>
-        <FeatureTitle>7년의 노하우!!<br/>하방의 특별한 점검 서비스</FeatureTitle>
+        <FeatureTag>SERVICE</FeatureTag>
+        <FeatureTitle>하방은 이렇게 다릅니다</FeatureTitle>
         <FeatureParagraph>
-          하자체크는 기본! 하자 접수까지 진행하는<br/>올인원 서비스
+          하자체크는 기본! 하자 접수에 우리집 사이버모델하우스까지
         </FeatureParagraph>
         
        
@@ -124,8 +122,8 @@ const FeaturesSection = () => {
                   <CardIcon>❓</CardIcon>
                 </IconContainer>
                 <div>
-                  <h3>하자 Q&A</h3>
-                  <p>하자에 관한 궁금증 해결을 위한 제공합니다.<br/> 상세 상담은 고객센터로 직접 문의해 주세요.</p>
+                  <h3>360도 VR 세대기록</h3>
+                  <p>사전점검 현장을, 360도 VR로 기록해 점검 후에도 쉽게 확인할 수 있습니다.</p>
                 </div>
               </CardContent>
             </FeatureCard>
@@ -133,11 +131,7 @@ const FeaturesSection = () => {
         </FeatureGrid>
       </Container>
 
-      <AddContainer>
-        <img src="/img/plus.png" alt="add" />
-        <AddTitle>SPECIAL SERVICE</AddTitle>
-        <ArrowIcon>⬇️</ArrowIcon>
-      </AddContainer>
+  
     </Features>
   );
 };

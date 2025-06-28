@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ArrowIcon from '../../../components/common/ArrowIcon';
+
 import { Container } from '../../../styles/common';
 import {
   VRExperience,
@@ -23,7 +23,8 @@ import {
   StyledIframe,
   CTAItem,
   CTAIcon,
-  CTAText
+  CTAText,
+
 } from './style';
 import { MdVrpano, MdPhotoCamera, MdOutlineSpeed, MdDevices } from 'react-icons/md';
 
@@ -122,9 +123,9 @@ const VRExperienceSection = () => {
         <Container>
           <ExperienceWrapper>
             <ExperienceContent>
-              <ExperienceSubtitle>오직 하방에서만! 세대기록 서비스</ExperienceSubtitle>
-              <ExperienceTitle>진짜 사진만으로 괜찮으세요?</ExperienceTitle>
-              <ExperienceHighlight>360° VR로 <br/>확실하게, 선명하게!</ExperienceHighlight>
+              <ExperienceSubtitle><span>Special Service</span>_세대기록 서비스</ExperienceSubtitle>
+              <ExperienceTitle>사전점검 후에도 자유롭게</ExperienceTitle>
+              <ExperienceHighlight>우리집 VR로 <br/>언제 어디서든 확인</ExperienceHighlight>
               <p>
                 소중한 공간의 가치를 지키기 위한 시작엔 확실한 기록이 있습니다.
                 사전점검대행업체 하방 X 랜하우스 360° VR은 단순한 사진으론 담을 수 없는, 
@@ -155,7 +156,7 @@ const VRExperienceSection = () => {
                   </CTAIcon>
                   <CTAText>
                     <h4>빠른 제작</h4>
-                    <p>2주주 이내 VR 투어 제작</p>
+                    <p>2주 이내 VR 투어 제작</p>
                   </CTAText>
                 </CTAItem>
                 <CTAItem>

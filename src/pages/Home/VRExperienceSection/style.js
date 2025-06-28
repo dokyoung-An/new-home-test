@@ -32,7 +32,7 @@ const floatAnimation = keyframes`
 export const VRExperience = styled.section`
   ${sectionSpacing}
   background-color: ${({ theme }) => theme.secondaryColor};
-  background-image: url('/img/1.png');
+  background-image: url('/img/service/vr2.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -795,3 +795,4 @@ export const StyledIframe = styled.iframe`
     border-radius: 6px;
   }
 `;
+

@@ -2,14 +2,10 @@ import styled from 'styled-components';
 import { sectionSpacing, SectionTitle as CommonSectionTitle, SectionSubtitle as CommonSectionSubtitle } from '../../../styles/common';
 
 export const Benefits = styled.section`
-  ${sectionSpacing}
   background-color: #ffffff;
   text-align: center;
   overflow: hidden;
 
-  @media (max-width: 480px) {
-    padding: 40px 0;
-  }
 `;
 
 export const SectionContainer = styled.div`

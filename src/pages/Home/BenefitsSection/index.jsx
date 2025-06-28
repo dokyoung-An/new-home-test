@@ -121,10 +121,10 @@ const BenefitsSection = () => {
             <SectionTitle>이렇게 달라집니다!</SectionTitle>
             
             <BenefitsMent>
-            <p>입주 전에 하자를 찾아 <span>입주 후 불편을 줄이고</span><br/>
-            세대 상태를 VR로 기록해 <span>시공 분쟁</span>과 <span>임대 복구</span>에 대비할 수 있습니다<br/>
-            임대 관리도 주기적인 <span>하자 점검</span>과 <span>기록 관리</span>로 더 체계적으로 바뀝니다<br/>
-            확실한 사전점검과 스마트한 관리 하방이 해냅니다</p>
+            입주 전 하자를 잡고, VR로 세대를 기록해 분쟁에 대비하세요.<br/>
+            임대 관리도 정기 점검과 기록으로 더 스마트해집니다.
+
+
             </BenefitsMent>
             
             <StatsContainer>
