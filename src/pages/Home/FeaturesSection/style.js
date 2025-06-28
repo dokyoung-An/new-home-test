@@ -83,7 +83,7 @@ export const Features = styled.section`
   color: #fff;
   position: relative;
   overflow: hidden;
-  padding: 160px 0 100px 0;
+  padding: 100px 0;
   
   /* 3D 그리드 패턴 */
   &::before {
