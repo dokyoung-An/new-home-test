@@ -450,90 +450,7 @@ const ContactFormSection = forwardRef((props, ref) => {
 
   return (
     <ContactSection id="ContactFormSection" ref={ref}>
-      <ContactContainer>
-        <ContentSection>
-          <DesignElement1 />
-          <DesignElement2 />
-          <DesignElement3 />
-          <SectionTitle>
-            Meet <span>하방</span>
-          </SectionTitle>
-          <SectionDescription>
-            하방의 프리미엄 원스탑 서비스로<br/> 입주민 여러분의 당당한 권리를 행사해 보세요
-          </SectionDescription>
-          <PricingSection/>
-         
-       
-        </ContentSection>
-        <FormSection>
-          <FormTitle>사전점검 문의하기</FormTitle>
-          <FormSubtitle>
-            문의하신 내용은 담당자 검토 후 순차적으로 답변드리겠습니다.
-          </FormSubtitle>
-          <Form onSubmit={handleSubmit}>
-            <FormRow>
-              
-            </FormRow>
-
-            <FormRow columns="1fr 1fr">
-            <FormGroup>
-                <Label>이름<RequiredMark>*</RequiredMark></Label>
-                <Input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="이름을 입력해주세요"
-                  required
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label>연락처<RequiredMark>*</RequiredMark></Label>
-                <Input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="연락처를 입력해주세요"
-                  required
-                />
-              </FormGroup>
-            </FormRow>
-
-            <FormRow columns="1fr 1fr">
-              <FormGroup>
-                <Label>지역<RequiredMark>*</RequiredMark></Label>
-                <Input
-                  type="text"
-                  name="region"
-                  value={formData.region}
-                  onChange={handleChange}
-                  placeholder="예: 서울시 강남구"
-                  required
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label>아파트명<RequiredMark>*</RequiredMark></Label>
-                <Input
-                  type="text"
-                  name="apartment"
-                  value={formData.apartment}
-                  onChange={handleChange}
-                  placeholder="아파트명을 입력해주세요"
-                  required
-                />
-              </FormGroup>
-            </FormRow>
-
-
-            <SubmitButton type="submit">문의하기</SubmitButton>
-          </Form>
-        </FormSection>
-      </ContactContainer>
-
-  
-
-      <Sections>
+        <Sections>
         <Container>
           <Title>상담 현황</Title>
           <Subtitle>서비스 현황과 시 하자 100% 완벽관리입니다.</Subtitle>
@@ -633,6 +550,82 @@ const ContactFormSection = forwardRef((props, ref) => {
           </TableContainer>
         </Container>
       </Sections>
+      <ContactContainer>
+        <ContentSection>
+         
+          <PricingSection/>
+         
+       
+        </ContentSection>
+        <FormSection>
+          <FormTitle>사전점검 문의하기</FormTitle>
+          <FormSubtitle>
+            문의하신 내용은 담당자 검토 후 순차적으로 답변드리겠습니다.
+          </FormSubtitle>
+          <Form onSubmit={handleSubmit}>
+            <FormRow>
+              
+            </FormRow>
+
+            <FormRow columns="1fr 1fr">
+            <FormGroup>
+                <Label>이름<RequiredMark>*</RequiredMark></Label>
+                <Input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="이름을 입력해주세요"
+                  required
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label>연락처<RequiredMark>*</RequiredMark></Label>
+                <Input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="연락처를 입력해주세요"
+                  required
+                />
+              </FormGroup>
+            </FormRow>
+
+            <FormRow columns="1fr 1fr">
+              <FormGroup>
+                <Label>지역<RequiredMark>*</RequiredMark></Label>
+                <Input
+                  type="text"
+                  name="region"
+                  value={formData.region}
+                  onChange={handleChange}
+                  placeholder="예: 서울시 강남구"
+                  required
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label>아파트명<RequiredMark>*</RequiredMark></Label>
+                <Input
+                  type="text"
+                  name="apartment"
+                  value={formData.apartment}
+                  onChange={handleChange}
+                  placeholder="아파트명을 입력해주세요"
+                  required
+                />
+              </FormGroup>
+            </FormRow>
+
+
+            <SubmitButton type="submit">문의하기</SubmitButton>
+          </Form>
+        </FormSection>
+      </ContactContainer>
+
+  
+
+    
     </ContactSection>
   );
 });
