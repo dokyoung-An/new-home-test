@@ -32,15 +32,14 @@ import {
   Th,
   Td,
   StatusButton,
-  Title as TableTitle
+  Title as TableTitle,
+  MobileTable,
+  MobileRow
 } from './style';
 import styled from 'styled-components';
 import { useInView } from 'react-intersection-observer';
 
-const Section = styled.section`
-  padding: 80px 0;
-  background: #F8F9FA;
-`;
+
 
 const Container = styled.div`
   max-width: 1200px;
@@ -331,29 +330,41 @@ const ContactFormSection = forwardRef((props, ref) => {
 
   useEffect(() => {
     if (inView) {
-      const duration = 2000;
+      const duration = 2000; // 애니메이션 지속 시간 (2초)
       const steps = 60;
       const interval = duration / steps;
+      const oneMinute = 60000; // 1분
 
-      let currentStep = 0;
-
-      const timer = setInterval(() => {
-        currentStep++;
+      // 애니메이션 실행 함수
+      const runAnimation = () => {
+        setAnimatedStats({ total: 0, completed: 0, reserved: 0 }); // 초기화
+        let currentStep = 0;
         
-        if (currentStep <= steps) {
-          const progress = currentStep / steps;
-          setAnimatedStats({
-            total: Math.floor(stats.total * progress),
-            completed: Math.floor(stats.completed * progress),
-            reserved: Math.floor(stats.reserved * progress)
-          });
-        } else {
-          clearInterval(timer);
-          setAnimatedStats(stats);
-        }
-      }, interval);
+        const timer = setInterval(() => {
+          currentStep++;
+          if (currentStep <= steps) {
+            const progress = currentStep / steps;
+            setAnimatedStats({
+              total: Math.floor(stats.total * progress),
+              completed: Math.floor(stats.completed * progress),
+              reserved: Math.floor(stats.reserved * progress)
+            });
+          } else {
+            clearInterval(timer);
+            setAnimatedStats(stats);
+          }
+        }, interval);
+      };
 
-      return () => clearInterval(timer);
+      // 초기 애니메이션 실행
+      runAnimation();
+
+      // 1분마다 애니메이션 실행
+      const timer = setInterval(runAnimation, oneMinute);
+
+      return () => {
+        clearInterval(timer);
+      };
     }
   }, [inView, stats]);
 
@@ -596,6 +607,25 @@ const ContactFormSection = forwardRef((props, ref) => {
                 ))}
               </tbody>
             </Table>
+
+            <MobileTable>
+              {currentInquiries.map((inquiry) => (
+                <MobileRow key={inquiry.id}>
+                  <div className="apartment">{inquiry.apartment}</div>
+                  <div className="info-row">
+                    <div className="info-left">
+                      <span className="name">{maskName(inquiry.name)}</span>
+                      <span className="date">{new Date(inquiry.created_at).toLocaleDateString()}</span>
+                    </div>
+                    <StatusButton status={inquiry.inquiry_status}>
+                      {inquiry.inquiry_status === 'completed' ? '예약완료' :
+                       inquiry.inquiry_status === 'in-progress' ? '상담완료' :
+                       '상담문의'}
+                    </StatusButton>
+                  </div>
+                </MobileRow>
+              ))}
+            </MobileTable>
 
             <Pagination>
               {renderPaginationButtons()}

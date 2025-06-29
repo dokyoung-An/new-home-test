@@ -32,7 +32,7 @@ export const BannerContent = styled.div`
 
   @media (max-width: 480px) {
     height: 200px;
-    min-height: 200px;
+    max-height: 200px;
   }
 `;
 

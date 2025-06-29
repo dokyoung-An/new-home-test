@@ -13,6 +13,7 @@ import AdminLink from './AdminLink';
 import NewsSection from './NewsSection';
 import FAQSection from '../ContactPage/FAQSection';
 import CoworkerSection from './CoworkerSection';
+import ProcessSection from '../ContactPage/ProcessSection';
 
 import BestPoint from './BestPoint';
 
@@ -29,17 +30,13 @@ const Home = () => {
      
       <UseCasesSection/>
       <TestimonialsSection />
-      <CoworkerSection/>
       
-     
-    
-      <FAQSection/>
-    
-     
-      
+      <ProcessSection/>
+      <FAQSection/> 
       <NewsSection/>
-  
-      <BannerSection/>
+      <CoworkerSection/>
+     
+     
       <Footer />
     </>
   );

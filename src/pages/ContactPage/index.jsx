@@ -18,10 +18,10 @@ const ContactPage = () => {
   return (
     <PageContainer>
       <Header />
-      <ProcessSection />
+    
       <ContactFormSection />
-      <PromotionSection />
-      <FAQSection/>
+     
+      
       <Footer />
     </PageContainer>
    

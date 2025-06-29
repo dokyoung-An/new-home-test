@@ -850,6 +850,11 @@ export const StatusButton = styled.button`
         return 'background-color: #1a6dff;';
     }
   }}
+
+  @media (max-width: 768px) {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
 `;
 
 // ... 기존 스타일 컴포넌트들 ...
@@ -866,17 +871,74 @@ export const TableContainer = styled.div`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
+export const Table = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
 export const TableHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 20px 30px;
   border-bottom: 1px solid #eee;
 `;
 
-export const Table = styled.table`
-  width: 100%;
-  border-collapse: collapse;
+export const MobileTable = styled.div`
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
+
+export const MobileRow = styled.div`
+  padding: 16px;
+  border-bottom: 1px solid #eee;
+  background: white;
+
+  .apartment {
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .info-left {
+    display: flex;
+    gap: 12px;
+    color: #666;
+    font-size: 14px;
+  }
+
+  .name {
+    position: relative;
+    padding-right: 12px;
+    
+    &:after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 12px;
+      background-color: #ddd;
+    }
+  }
+
+  .date {
+    color: #666;
+  }
 `;
 
 export const Th = styled.th`
