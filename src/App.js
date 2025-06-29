@@ -11,6 +11,7 @@ import AmbassadorBoard from './pages/AmbassadorBoard';
 import EventPopup from './components/EventPopup';
 import { useState, useEffect } from 'react';
 import FloatingButtons from './components/FloatingButtons';
+import ContactPage from './pages/ContactPage';
 
 const MainContent = styled.main`
   /* 패딩 제거 */
@@ -45,6 +46,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/admin/inquiry-board" element={<InquiryBoard />} />
             <Route path="/admin/ambassador" element={<AmbassadorBoard />} />
+            <Route path="/contact" element={<ContactPage />} />
             {/* <Route path="/admin/ambassador" element={<Ambassador />} /> */}
             {/* 향후 확장을 위한 라우트 */}
             {/* <Route path="/about" element={<About />} /> */}

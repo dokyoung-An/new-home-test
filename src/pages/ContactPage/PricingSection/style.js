@@ -1,16 +1,8 @@
 import styled, { keyframes } from 'styled-components';
 
 export const PricingWrapper = styled.section` 
-  background-color: #fff;
-  background: url('/img/bg4.png') no-repeat center center;
-  background-size: cover;
-  transform: translateZ(0);
-  will-change: transform;
-  padding: 0px 0 40px 0;
+  background-color: transparent;
 
-  @media (max-width: 480px) {
-    padding: 0px 20px;
-  }
 `;
 
 export const PricingContainer = styled.div`

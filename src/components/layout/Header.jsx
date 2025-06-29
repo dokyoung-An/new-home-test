@@ -38,22 +38,24 @@ const Header = () => {
       <HeaderContent>
         <Logo><a href="/">HABANG</a></Logo>
         <NavLinks>
-          <li><a href="#VRExperience">Portfolio</a></li>
-          <li><a href="#BenefitsSection">서비스 장점</a></li>
-          <li><a href="#FeaturesSection">기능</a></li>
-          <li><a href="#PricingSection">가격안내</a></li>
-          <li><a href="#ContactFormSection">문의하기</a></li>
+          <li><a href="#VRExperience">ABOUT</a></li>
+          <li><a href="#BenefitsSection">서비스</a></li>
+          <li><a href="#FeaturesSection">하자정보</a></li>
+          <li><a href="#FeaturesSection">보고서</a></li>
+          <li><a href="#PricingSection">우리집VR</a></li>
+          <li><a href="/contact">문의하기</a></li>
         </NavLinks>
         <HamburgerButton onClick={toggleMenu}>
           <FaBars />
         </HamburgerButton>
         <MobileNav isOpen={isMenuOpen}>
           <MobileNavLinks>
-            <li><a href="#VRExperience" onClick={closeMenu}>Portfolio</a></li>
-            <li><a href="#BenefitsSection" onClick={closeMenu}>서비스 장점</a></li>
-            <li><a href="#FeaturesSection" onClick={closeMenu}>기능</a></li>
-            <li><a href="#PricingSection" onClick={closeMenu}>가격안내</a></li>
-            <li><a href="#ContactFormSection" onClick={closeMenu}>문의하기</a></li>
+            <li><a href="#VRExperience" onClick={closeMenu}>ABOUT</a></li>
+            <li><a href="#BenefitsSection" onClick={closeMenu}>서비스</a></li>
+            <li><a href="#FeaturesSection" onClick={closeMenu}>하자정보</a></li>
+            <li><a href="#PricingSection" onClick={closeMenu}>보고서</a></li>
+            <li><a href="#PricingSection" onClick={closeMenu}>우리집VR</a></li>
+            <li><a href="/contact" onClick={closeMenu}>문의하기</a></li>
           </MobileNavLinks>
         </MobileNav>
       </HeaderContent>

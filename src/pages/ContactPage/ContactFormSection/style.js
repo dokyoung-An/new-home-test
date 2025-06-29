@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { sectionSpacing } from '../../../styles/common';
 
 
 const floatAnimation = keyframes`
@@ -21,6 +22,7 @@ export const ContactSection = styled.section`
   background: ${({ theme }) => `linear-gradient(to bottom, ${theme.background}, ${theme.cardBackground})`};
   position: relative;
   overflow: hidden;
+  ${sectionSpacing}
 `;
 
 export const ContactContainer = styled.div`
@@ -44,8 +46,8 @@ export const ContentSection = styled.div`
 `;
 
 export const SectionTitle = styled.h2`
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 32px;
+  font-weight: bold;
   color: ${({ theme }) => theme.text};
   margin-bottom: 24px;
   line-height: 1.2;
@@ -62,6 +64,97 @@ export const SectionTitle = styled.h2`
   @media (max-width: 480px) {
     font-size: 1.8rem;
     margin-left: 20px;
+  }
+`;
+
+export const SectionSubtitle = styled.h3`
+  font-size: 18px;
+  color: #1a6dff;
+  margin-bottom: 16px;
+`;
+
+export const DescriptionText = styled.p`
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 32px;
+  line-height: 1.6;
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+`;
+
+export const Label = styled.label`
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+`;
+
+export const Select = styled.select`
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  width: 100%;
+  cursor: pointer;
+  
+  &:focus {
+    outline: none;
+    border-color: #1a6dff;
+  }
+`;
+
+export const PriceBox = styled.div`
+  background-color: #f8f9fa;
+  padding: 24px;
+  border-radius: 12px;
+  margin-top: 20px;
+
+  .description {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 16px;
+    white-space: pre-line;
+  }
+
+  .price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1a6dff;
+    margin-bottom: 16px;
+
+    span {
+      font-size: 14px;
+      color: #666;
+      margin-left: 8px;
+    }
+  }
+
+  .price-description {
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 8px;
+        position: relative;
+        padding-left: 20px;
+
+        &:before {
+          content: "•";
+          position: absolute;
+          left: 0;
+          color: #1a6dff;
+        }
+      }
+    }
   }
 `;
 
@@ -281,16 +374,6 @@ export const FormGroup = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
-`;
-
-export const Label = styled.label`
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: ${({ theme }) => theme.text};
-
-  @media (max-width: 480px) {
-    font-size: 0.8rem;
-  }
 `;
 
 export const Input = styled.input`
@@ -747,4 +830,79 @@ export const InquiryStatus = styled.div`
   }
 `;
 
+export const StatusButton = styled.button`
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.2s;
+
+  ${props => {
+    switch (props.status) {
+      case 'completed':
+        return 'background-color: #FFD600;';
+      case 'in-progress':
+        return 'background-color: #00C4B4;';
+      default:
+        return 'background-color: #1a6dff;';
+    }
+  }}
+`;
+
 // ... 기존 스타일 컴포넌트들 ...
+
+export const Sections = styled.div`
+ 
+`;
+
+export const TableContainer = styled.div`
+  width: 100%;
+  margin-top: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+`;
+
+export const TableHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+`;
+
+export const Table = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+`;
+
+export const Th = styled.th`
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  font-weight: 600;
+  color: #333;
+  background-color: #f8f9fa;
+`;
+
+export const Td = styled.td`
+  padding: 16px;
+  border-bottom: 1px solid #eee;
+  color: #666;
+`;
+
+export const Title = styled.h2`
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+`;
+
+export const Container = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+`;
