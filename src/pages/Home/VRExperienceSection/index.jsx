@@ -105,16 +105,23 @@ const VRExperienceSection = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  const openPopup = (slide) => {
+  const openPopup = (slide, e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     setSelectedSlide(slide);
     setIsPopupOpen(true);
-    // 팝업이 열렸을 때 스크롤 방지
     document.body.style.overflow = 'hidden';
   };
 
-  const closePopup = () => {
+  const closePopup = (e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     setIsPopupOpen(false);
-    // 팝업이 닫혔을 때 스크롤 다시 활성화
+    setSelectedSlide(null);
     document.body.style.overflow = 'auto';
   };
 
@@ -176,7 +183,16 @@ const VRExperienceSection = () => {
               <SliderContainer>
                 <SliderTrack>
                   {slides.map((slide, index) => (
-                    <SlideItem key={index} onClick={() => openPopup(slide)}>
+                    <SlideItem 
+                      key={index} 
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        openPopup(slide, e);
+                      }}
+                      role="button"
+                      tabIndex={0}
+                    >
                       <SlideContent 
                         bgImage={slide.bgImage}
                         className={`slide-content ${imagesLoaded[slide.bgImage] ? 'loaded' : ''}`}
@@ -191,7 +207,16 @@ const VRExperienceSection = () => {
                   
                   {/* 무한 애니메이션을 위한 복제 슬라이드 */}
                   {slides.map((slide, index) => (
-                    <SlideItem key={`duplicate-${index}`} onClick={() => openPopup(slide)}>
+                    <SlideItem 
+                      key={`duplicate-${index}`} 
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        openPopup(slide, e);
+                      }}
+                      role="button"
+                      tabIndex={0}
+                    >
                       <SlideContent 
                         bgImage={slide.bgImage}
                         className={`slide-content ${imagesLoaded[slide.bgImage] ? 'loaded' : ''}`}
@@ -204,18 +229,17 @@ const VRExperienceSection = () => {
                     </SlideItem>
                   ))}
                 </SliderTrack>
-               
               </SliderContainer>
             </ExperienceSlider>
           </ExperienceWrapper>
         </Container>
         
         {isPopupOpen && selectedSlide && (
-          <VRPopupOverlay onClick={closePopup}>
+          <VRPopupOverlay isOpen={isPopupOpen} onClick={(e) => closePopup(e)}>
             <VRPopupContent onClick={(e) => e.stopPropagation()}>
               <VRPopupHeader>
                 <VRPopupTitle>{selectedSlide.title} VR 투어</VRPopupTitle>
-                <CloseButton onClick={closePopup}>×</CloseButton>
+                <CloseButton onClick={(e) => closePopup(e)}>×</CloseButton>
               </VRPopupHeader>
               {isMobile && (
                 <div style={{ 
