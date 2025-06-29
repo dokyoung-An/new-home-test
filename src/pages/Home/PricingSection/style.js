@@ -9,7 +9,7 @@ export const PricingWrapper = styled.section`
   padding: 0px 0 40px 0;
 
   @media (max-width: 480px) {
-    padding: 0px 0;
+    padding: 0px 20px;
   }
 `;
 

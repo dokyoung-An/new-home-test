@@ -30,6 +30,14 @@ const errorHandler = (err, req, res, next) => {
       : err.message 
   });
 };
+
+app.use((req, res, next) => {
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
+  next();
+});
+
 // 최근 문의 내역 조회 API
 app.get('/api/inquiries/recent', async (req, res, next) => {
   try {

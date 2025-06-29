@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 export const NewsSection = styled.section`
-  padding: 140px 0;
+  padding: 100px 0;
   background-color: #fff;
   position: relative;
 
   @media (max-width: 480px) {
-    padding: 60px 0;
+    padding: 60px 20px  ;
   }
 `;
 

@@ -196,7 +196,7 @@ export const Promotion = styled.section`
     mix-blend-mode: soft-light;
   }
   @media (max-width: 480px) {
-    padding: 50px 0;
+    padding: 50px 20px;
   }
 `;
 

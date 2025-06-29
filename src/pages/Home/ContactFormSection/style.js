@@ -49,6 +49,7 @@ export const SectionTitle = styled.h2`
   color: ${({ theme }) => theme.text};
   margin-bottom: 24px;
   line-height: 1.2;
+  
 
   span {
     color: ${({ theme }) => theme.primaryMiddle};
@@ -70,6 +71,7 @@ export const SectionDescription = styled.p`
   color: ${({ theme }) => theme.textLight};
   margin-bottom: 40px;
   max-width: 500px;
+  padding-left: 10px;
   
   @media (max-width: 480px) {
     font-size: 0.95rem;

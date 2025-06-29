@@ -26,11 +26,11 @@ export const UseCasesWrapper = styled.section`
 
   
   @media (max-width: 768px) {
-    padding: 70px 0;
+    padding: 70px 20px;
   }
   
   @media (max-width: 480px) {
-    padding: 50px 0;
+    padding: 50px 20px;
   }
 `;
 

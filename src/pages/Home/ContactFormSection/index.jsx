@@ -269,7 +269,7 @@ const ContactFormSection = forwardRef((props, ref) => {
             Meet <span>하방</span>
           </SectionTitle>
           <SectionDescription>
-            하방의 프리미엄엄 원스탑 서비스로<br/> 입주민 여러분의 당당한 권리를 행사해 보세요
+            하방의 프리미엄 원스탑 서비스로<br/> 입주민 여러분의 당당한 권리를 행사해 보세요
           </SectionDescription>
             {/* 최근 문의 내역 게시판 */}
             <InquiryBoard>

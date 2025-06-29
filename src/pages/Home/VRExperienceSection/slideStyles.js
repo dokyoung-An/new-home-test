@@ -147,6 +147,7 @@ export const SlideContent = styled.div.attrs({
   
   @media (max-width: 480px) {
     padding: 15px;
+    border: 2px solid red;
     
     h3 {
       font-size: 1.1rem;
@@ -155,7 +156,7 @@ export const SlideContent = styled.div.attrs({
     p {
       font-size: 0.8rem;
       -webkit-line-clamp: 2;
-      
+      background-color: rgba(255,0,0,0.2);
     }
   }
 
