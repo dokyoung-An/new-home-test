@@ -89,9 +89,16 @@ export const Wrapper = styled.div`
 `;
 
 export const Label = styled.label`
-  font-size: 16px;
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
   font-weight: 500;
   color: #333;
+`;
+
+export const RequiredMark = styled.span`
+  color: #ff4d4f;
+  margin-left: 4px;
 `;
 
 export const Select = styled.select`
@@ -221,178 +228,80 @@ export const FeatureDescription = styled.p`
 `;
 
 export const FormSection = styled.div`
-  background: ${({ theme }) => theme.cardBackground};
-  border-radius: 30px;
-  padding: 50px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
-  position: relative;
-  animation: ${fadeIn} 0.6s ease-out;
-  margin-top: 50px;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    width: 100%;
-    height: 100%;
-    border-radius: 30px;
-    background: ${({ theme }) => theme.primaryGradient};
-    z-index: -1;
-    opacity: 0.1;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  
+  &.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+`;
+
+export const FormInner = styled.div`
+  background: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  animation: ${fadeIn} 0.3s ease-out;
 
   @media (max-width: 768px) {
-    padding: 0px 20px 40px 20px;
-  }
-`;
-
-export const DesignElement1 = styled.div`
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  width: 15px;
-  height: 15px;
-  background: linear-gradient(135deg, #1a6dff, #00BFA6);
-  border-radius: 4px;
-  opacity: 0.9;
-  transform: rotate(-15deg);
-  z-index: 1;
-
-  @media (max-width: 480px) {
-    top: 10px;
-    left: 0px;
-  }
-`;
-
-export const DesignElement2 = styled.div`
-  position: absolute;
-  top: -30px;
-  left: -35px;
-  width: 20px;
-  height: 20px;
-  background: linear-gradient(135deg, #1a6dff, #1557cc);
-  border-radius: 5px;
-  opacity: 0.85;
-  transform: rotate(10deg);
-  z-index: 0;
- 
-  @media (max-width: 480px) {
-    top: -25px;
-    left: 18px;
-  }
-`;
-
-export const DesignElement3 = styled.div`
-  position: absolute;
-  top: 0px;
-  left: -40px;
-  width: 25px;
-  height: 25px;
-  background: linear-gradient(135deg, 	#00C896, #A259FF);
-  border-radius: 6px;
-  opacity: 0.95;
-  transform: rotate(25deg);
-  z-index: 2;
-
-  @media (max-width: 480px) {
-    top: -20px;
-    left: -15px;
+    width: 95%;
+    padding: 30px 20px;
   }
 `;
 
 export const FormTitle = styled.h3`
-  font-size: 1.8rem;
+  font-size: 24px;
   font-weight: 700;
-  color: ${({ theme }) => theme.text};
-  margin-bottom: 12px;
-  position: relative;
-  display: inline-block;
-  
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 2px;
-    width: 100%;
-    height: 6px;
-    background: linear-gradient(135deg, #1a6dff, #bfdcff);
-    transform: scaleX(0);
-    transform-origin: bottom right;
-    animation: underlineAnimation 0.6s ease-out forwards;
-    z-index: -1;
-  }
-
-  @keyframes underlineAnimation {
-    to {
-      transform: scaleX(1);
-      transform-origin: bottom left;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    font-size: 1.6rem;
-  }
-  
-  @media (max-width: 480px) {
-    font-size: 1.4rem;
-  }
-`;
-
-export const RequiredMark = styled.span`
-  color: ${({ theme }) => theme.error || '#ff4d4f'};
-  margin-left: 4px;
+  margin-bottom: 10px;
+  text-align: left;
+  color: #000;
 `;
 
 export const FormSubtitle = styled.p`
-  font-size: 1.1rem;
-  color: ${({ theme }) => theme.textLight};
-  margin-bottom: 40px;
-  
-  @media (max-width: 480px) {
-    font-size: 0.95rem;
-  }
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 30px;
+  text-align: left;
 `;
 
 export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  width: 100%;
 `;
 
 export const FormRow = styled.div`
-  display: grid;
-  grid-template-columns: ${props => props.columns || '1fr'};
-  gap: 20px;
-  
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
+  margin-bottom: 20px;
+  width: 100%;
 `;
 
 export const FormGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  margin-bottom: 20px;
+  width: 100%;
 `;
 
 export const Input = styled.input`
-  padding: 16px;
-  background: ${({ theme }) => theme.inputBackground};
-  border: 1px solid ${({ theme }) => theme.borderColor};
-  border-radius: 12px;
-  font-size: 1rem;
-  color: ${({ theme }) => theme.text};
-  transition: all 0.2s ease;
-
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  
   &:focus {
     outline: none;
-    border-color: ${({ theme }) => theme.primaryMiddle};
-    background: ${({ theme }) => theme.inputBackgroundFocus};
+    border-color: ${({ theme }) => theme.primaryColor};
   }
 
   &::placeholder {
-    color: ${({ theme }) => theme.textLight};
+    color: #999;
   }
 `;
 
@@ -425,26 +334,19 @@ export const TextArea = styled.textarea`
 `;
 
 export const SubmitButton = styled.button`
-  padding: 18px;
-  background: linear-gradient(135deg, #1a6dff, #1557cc);
-  color: #fff;
+  width: 100%;
+  padding: 15px;
+  background: ${({ theme }) => theme.primaryColor};
+  color: white;
   border: none;
-  border-radius: 12px;
-  font-size: 1rem;
+  border-radius: 8px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-
+  transition: background-color 0.3s ease;
+  
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(26, 109, 255, 0.2);
-    background: linear-gradient(135deg, #1557cc,  #bfdcff);
-  }
-
-  &:active {
-    transform: translateY(0);
+    background: ${({ theme }) => theme.primaryDarkColor};
   }
 `;
 
@@ -561,15 +463,18 @@ export const VRPopupTitle = styled.h3`
 `;
 
 export const CloseButton = styled.button`
+  position: absolute;
+  top: 20px;
+  right: 20px;
   background: none;
   border: none;
-  color: #fff;
-  font-size: 1.8rem;
+  font-size: 24px;
   cursor: pointer;
-  transition: color 0.2s ease;
+  color: #000;
+  padding: 5px;
   
   &:hover {
-    color: ${({ theme }) => theme.primaryColor};
+    opacity: 0.7;
   }
 `;
 
@@ -865,27 +770,29 @@ export const Sections = styled.div`
 
 export const TableContainer = styled.div`
   width: 100%;
-  margin-top: 20px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 100px;
+ 
 `;
 
 export const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
 
+ 
+
   @media (max-width: 768px) {
     display: none;
   }
 `;
 
+
+
 export const TableHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 30px;
   border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
 `;
 
 export const MobileTable = styled.div`
@@ -967,4 +874,77 @@ export const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+`;
+
+export const StatsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+   
+  @media (max-width: 768px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+  }
+`;
+
+export const StatBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 20px;
+  flex: 1;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+`;
+
+export const StatIcon = styled.div`
+  width: 58px;
+  height: 58px;
+  background-color: #E8F1FF;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  
+  svg {
+    width: 34px;
+    height: 34px;
+    color: #0066FF;
+  }
+`;
+
+export const StatContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+`;
+
+export const StatLabel = styled.span`
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #666;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+`;
+
+export const StatNumber = styled.span`
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  line-height: 1;
+  
+  &::after {
+    content: '건';
+    font-size: 1rem;
+    margin-left: 4px;
+    color: #666;
+  }
 `;

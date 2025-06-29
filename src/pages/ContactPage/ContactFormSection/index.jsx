@@ -1,4 +1,4 @@
-import React, { useState, useEffect, forwardRef } from 'react';
+import React, { useState, useEffect, forwardRef, useRef } from 'react';
 import { supabase } from '../../../lib/supabaseClient';
 import PricingSection from '../PricingSection';
 import {
@@ -34,12 +34,38 @@ import {
   StatusButton,
   Title as TableTitle,
   MobileTable,
-  MobileRow
+  MobileRow,
+  FormInner,
+  CloseButton,
+  
+  StatsContainer,
+  StatBox,
+  StatContent,
+  StatLabel,
+  StatNumber,
+  StatIcon
 } from './style';
 import styled from 'styled-components';
 import { useInView } from 'react-intersection-observer';
+import { BsFillChatDotsFill, BsFillCheckCircleFill, BsCalendarCheckFill } from 'react-icons/bs';
 
 
+const TitleBoxContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+`;
+
+const TitleContainer = styled.div`
+  background-color: #F8F9FA;
+  padding: 60px 0;
+`;
+
+const TitleBox = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+`;
 
 const Container = styled.div`
   max-width: 1200px;
@@ -48,7 +74,8 @@ const Container = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 2rem;
+
+  font-size: 4rem;
   font-weight: 700;
   margin-bottom: 10px;
 `;
@@ -57,57 +84,6 @@ const Subtitle = styled.p`
   font-size: 1rem;
   color: #666;
   margin-bottom: 50px;
-`;
-
-const StatsContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 60px;
-  gap: 20px;
-`;
-
-const StatBox = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  background: white;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  flex: 1;
-`;
-
-const StatIcon = styled.div`
-  width: 48px;
-  height: 48px;
-  background-color: #E8F1FF;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  img {
-    width: 24px;
-    height: 24px;
-  }
-`;
-
-const StatContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-`;
-
-const StatLabel = styled.span`
-  font-size: 1rem;
-  color: #666;
-`;
-
-const StatValue = styled.span`
-  font-size: 2rem;
-  font-weight: 700;
-  color: #333;
-  line-height: 1;
 `;
 
 const ButtonGroup = styled.div`
@@ -160,15 +136,29 @@ const ContactFormSection = forwardRef((props, ref) => {
   });
   const [recentInquiries, setRecentInquiries] = useState([]);
   const [inquiries, setInquiries] = useState([]);
-  const [stats, setStats] = useState({ total: 0, completed: 0, reserved: 0 });
-  const [animatedStats, setAnimatedStats] = useState({ total: 0, completed: 0, reserved: 0 });
+  const [stats, setStats] = useState({
+    total: 150,
+    completed: 80,
+    reserved: 40
+  });
+
+  const [animatedStats, setAnimatedStats] = useState({
+    total: 0,
+    completed: 0,
+    reserved: 0
+  });
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
-  
+
+  const hasAnimated = useRef(false);
+
   const { ref: statsRef, inView } = useInView({
     threshold: 0.1,
     triggerOnce: true
   });
+
+  const formRef = useRef(null);
 
   // 실시간 데이터 업데이트를 위한 interval 설정
   useEffect(() => {
@@ -315,12 +305,14 @@ const ContactFormSection = forwardRef((props, ref) => {
       console.error('문의 제출 오류:', error);
       alert('문의 제출 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
     }
+    handleCloseForm();
   };
 
-  const closePopup = () => {
-    setIsPopupOpen(false);
-    setSelectedTour(null);
-    document.body.style.overflow = 'auto';
+  const handleCloseForm = () => {
+    const formSection = document.querySelector('.form-section');
+    if (formSection) {
+      formSection.classList.remove('active');
+    }
   };
 
   const maskName = (name) => {
@@ -329,44 +321,33 @@ const ContactFormSection = forwardRef((props, ref) => {
   };
 
   useEffect(() => {
-    if (inView) {
-      const duration = 2000; // 애니메이션 지속 시간 (2초)
-      const steps = 60;
-      const interval = duration / steps;
-      const oneMinute = 60000; // 1분
+    if (hasAnimated.current) return; // 이미 애니메이션이 실행됐다면 리턴
 
-      // 애니메이션 실행 함수
-      const runAnimation = () => {
-        setAnimatedStats({ total: 0, completed: 0, reserved: 0 }); // 초기화
-        let currentStep = 0;
-        
-        const timer = setInterval(() => {
-          currentStep++;
-          if (currentStep <= steps) {
-            const progress = currentStep / steps;
-            setAnimatedStats({
-              total: Math.floor(stats.total * progress),
-              completed: Math.floor(stats.completed * progress),
-              reserved: Math.floor(stats.reserved * progress)
-            });
-          } else {
-            clearInterval(timer);
-            setAnimatedStats(stats);
-          }
-        }, interval);
-      };
-
-      // 초기 애니메이션 실행
-      runAnimation();
-
-      // 1분마다 애니메이션 실행
-      const timer = setInterval(runAnimation, oneMinute);
-
-      return () => {
+    const duration = 2000; // 애니메이션 지속 시간 (2초)
+    const steps = 60;
+    const interval = duration / steps;
+    let currentStep = 0;
+    
+    const timer = setInterval(() => {
+      currentStep++;
+      if (currentStep <= steps) {
+        const progress = currentStep / steps;
+        setAnimatedStats({
+          total: Math.floor(stats.total * progress),
+          completed: Math.floor(stats.completed * progress),
+          reserved: Math.floor(stats.reserved * progress)
+        });
+      } else {
         clearInterval(timer);
-      };
-    }
-  }, [inView, stats]);
+        setAnimatedStats(stats);
+        hasAnimated.current = true; // 애니메이션 완료 표시
+      }
+    }, interval);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, [stats]);
 
   // 페이지네이션 관련 함수들
   const totalPages = Math.ceil(inquiries.length / itemsPerPage);
@@ -448,50 +429,62 @@ const ContactFormSection = forwardRef((props, ref) => {
     }
   };
 
+  const handleConformClick = () => {
+    const formSection = document.querySelector('.form-section');
+    if (formSection) {
+      formSection.classList.add('active');
+    }
+  };
+
   return (
     <ContactSection id="ContactFormSection" ref={ref}>
         <Sections>
-        <Container>
-          <Title>상담 현황</Title>
+       
+          <TitleBoxContainer>
+        <Title>상담 현황</Title>
           <Subtitle>서비스 현황과 시 하자 100% 완벽관리입니다.</Subtitle>
-          
+          </TitleBoxContainer>
+          <TitleContainer>
+          <TitleBox>
           <StatsContainer ref={statsRef}>
             <StatBox>
               <StatIcon>
-                <img src="/icons/consultation.svg" alt="상담신청" />
+                <BsFillChatDotsFill />
               </StatIcon>
               <StatContent>
                 <StatLabel>상담신청</StatLabel>
-                <StatValue>{animatedStats.total.toLocaleString()}</StatValue>
+                <StatNumber>{animatedStats.total}</StatNumber>
               </StatContent>
             </StatBox>
             
             <StatBox>
               <StatIcon>
-                <img src="/icons/completed.svg" alt="상담완료" />
+                <BsFillCheckCircleFill />
               </StatIcon>
               <StatContent>
                 <StatLabel>상담완료</StatLabel>
-                <StatValue>{animatedStats.completed.toLocaleString()}</StatValue>
+                <StatNumber>{animatedStats.completed}</StatNumber>
               </StatContent>
             </StatBox>
             
             <StatBox>
               <StatIcon>
-                <img src="/icons/reserved.svg" alt="예약완료" />
+                <BsCalendarCheckFill />
               </StatIcon>
               <StatContent>
                 <StatLabel>예약완료</StatLabel>
-                <StatValue>{animatedStats.reserved.toLocaleString()}</StatValue>
+                <StatNumber>{animatedStats.reserved}</StatNumber>
               </StatContent>
             </StatBox>
           </StatsContainer>
-
+          </TitleBox>
+        </TitleContainer>
+        <Container>
           <TableContainer>
             <TableHeader>
-              <TableTitle>상담 현황 목록</TableTitle>
+              <TableTitle style={{fontSize: '2rem', fontWeight: 'bold', marginBottom: '20px', color: '#333'}}>상담 현황 목록</TableTitle>
               <ButtonGroup>
-                <Button active>최신 순</Button>
+                <Button active className="conform" onClick={handleConformClick}>상담신청</Button>
                 <Button>조회수</Button>
               </ButtonGroup>
             </TableHeader>
@@ -553,73 +546,76 @@ const ContactFormSection = forwardRef((props, ref) => {
       <ContactContainer>
         <ContentSection>
          
-          <PricingSection/>
+     
          
        
         </ContentSection>
-        <FormSection>
-          <FormTitle>사전점검 문의하기</FormTitle>
-          <FormSubtitle>
-            문의하신 내용은 담당자 검토 후 순차적으로 답변드리겠습니다.
-          </FormSubtitle>
-          <Form onSubmit={handleSubmit}>
-            <FormRow>
-              
-            </FormRow>
+        <FormSection className="form-section">
+          <FormInner>
+            <CloseButton onClick={handleCloseForm}>×</CloseButton>
+            <FormTitle>사전점검 문의하기</FormTitle>
+            <FormSubtitle>
+              문의하신 내용은 담당자 검토 후 순차적으로 답변드리겠습니다.
+            </FormSubtitle>
+            <Form onSubmit={handleSubmit}>
+              <FormRow>
+                
+              </FormRow>
 
-            <FormRow columns="1fr 1fr">
-            <FormGroup>
-                <Label>이름<RequiredMark>*</RequiredMark></Label>
-                <Input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="이름을 입력해주세요"
-                  required
-                />
-              </FormGroup>
+              <FormRow columns="1fr 1fr">
               <FormGroup>
-                <Label>연락처<RequiredMark>*</RequiredMark></Label>
-                <Input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="연락처를 입력해주세요"
-                  required
-                />
-              </FormGroup>
-            </FormRow>
+                  <Label>이름<RequiredMark>*</RequiredMark></Label>
+                  <Input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="이름을 입력해주세요"
+                    required
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <Label>연락처<RequiredMark>*</RequiredMark></Label>
+                  <Input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="연락처를 입력해주세요"
+                    required
+                  />
+                </FormGroup>
+              </FormRow>
 
-            <FormRow columns="1fr 1fr">
-              <FormGroup>
-                <Label>지역<RequiredMark>*</RequiredMark></Label>
-                <Input
-                  type="text"
-                  name="region"
-                  value={formData.region}
-                  onChange={handleChange}
-                  placeholder="예: 서울시 강남구"
-                  required
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label>아파트명<RequiredMark>*</RequiredMark></Label>
-                <Input
-                  type="text"
-                  name="apartment"
-                  value={formData.apartment}
-                  onChange={handleChange}
-                  placeholder="아파트명을 입력해주세요"
-                  required
-                />
-              </FormGroup>
-            </FormRow>
+              <FormRow columns="1fr 1fr">
+                <FormGroup>
+                  <Label>지역<RequiredMark>*</RequiredMark></Label>
+                  <Input
+                    type="text"
+                    name="region"
+                    value={formData.region}
+                    onChange={handleChange}
+                    placeholder="예: 서울시 강남구"
+                    required
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <Label>아파트명<RequiredMark>*</RequiredMark></Label>
+                  <Input
+                    type="text"
+                    name="apartment"
+                    value={formData.apartment}
+                    onChange={handleChange}
+                    placeholder="아파트명을 입력해주세요"
+                    required
+                  />
+                </FormGroup>
+              </FormRow>
 
 
-            <SubmitButton type="submit">문의하기</SubmitButton>
-          </Form>
+              <SubmitButton type="submit">문의하기</SubmitButton>
+            </Form>
+          </FormInner>
         </FormSection>
       </ContactContainer>
 
