@@ -23,6 +23,7 @@ export const ContactSection = styled.section`
   position: relative;
   overflow: hidden;
   ${sectionSpacing}
+
 `;
 
 export const ContactContainer = styled.div`
@@ -793,6 +794,15 @@ export const TableHeader = styled.div`
   align-items: center;
   border-bottom: 1px solid #eee;
   margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #222;
+  }
 `;
 
 export const MobileTable = styled.div`
@@ -946,5 +956,56 @@ export const StatNumber = styled.span`
     font-size: 1rem;
     margin-left: 4px;
     color: #666;
+  }
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+`;
+
+export const LoadMoreButton = styled.button`
+  display: none;
+  width: 100%;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 20px;
+
+  &:hover {
+    background-color: #f5f5f5;
+  }
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
+
+export const Pagination = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+export const PageButton = styled.button`
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: ${props => props.active ? '#4285F4' : 'white'};
+  color: ${props => props.active ? 'white' : '#333'};
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: ${props => props.active ? '#3367D6' : '#f5f5f5'};
   }
 `;

@@ -43,7 +43,10 @@ import {
   StatContent,
   StatLabel,
   StatNumber,
-  StatIcon
+  StatIcon,
+  LoadMoreButton,
+  Pagination,
+  PageButton
 } from './style';
 import styled from 'styled-components';
 import { useInView } from 'react-intersection-observer';
@@ -78,6 +81,10 @@ const Title = styled.h2`
   font-size: 4rem;
   font-weight: 700;
   margin-bottom: 10px;
+
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
+  }
 `;
 
 const Subtitle = styled.p`
@@ -99,27 +106,6 @@ const Button = styled.button`
   color: ${props => props.active ? 'white' : '#333'};
   cursor: pointer;
   font-weight: 500;
-  transition: all 0.2s ease;
-
-  &:hover {
-    background: ${props => props.active ? '#3367D6' : '#f5f5f5'};
-  }
-`;
-
-const Pagination = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  padding: 20px;
-`;
-
-const PageButton = styled.button`
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  background: ${props => props.active ? '#4285F4' : 'white'};
-  color: ${props => props.active ? 'white' : '#333'};
-  cursor: pointer;
   transition: all 0.2s ease;
 
   &:hover {
@@ -159,6 +145,18 @@ const ContactFormSection = forwardRef((props, ref) => {
   });
 
   const formRef = useRef(null);
+
+  const [visibleItems, setVisibleItems] = useState(itemsPerPage);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // 실시간 데이터 업데이트를 위한 interval 설정
   useEffect(() => {
@@ -255,17 +253,6 @@ const ContactFormSection = forwardRef((props, ref) => {
   const [rotateDirection, setRotateDirection] = useState('right');
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [selectedTour, setSelectedTour] = useState(null);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -436,9 +423,13 @@ const ContactFormSection = forwardRef((props, ref) => {
     }
   };
 
+  const handleLoadMore = () => {
+    setVisibleItems(prev => prev + itemsPerPage);
+  };
+
   return (
     <ContactSection id="ContactFormSection" ref={ref}>
-        <Sections>
+        <Sections style={{padding: '100px 0'}}>
        
           <TitleBoxContainer>
         <Title>상담 현황</Title>
@@ -537,9 +528,17 @@ const ContactFormSection = forwardRef((props, ref) => {
               ))}
             </MobileTable>
 
-            <Pagination>
-              {renderPaginationButtons()}
-            </Pagination>
+            {isMobile ? (
+              visibleItems < inquiries.length && (
+                <LoadMoreButton onClick={handleLoadMore}>
+                  더보기 ({visibleItems}/{inquiries.length})
+                </LoadMoreButton>
+              )
+            ) : (
+              <Pagination>
+                {renderPaginationButtons()}
+              </Pagination>
+            )}
           </TableContainer>
         </Container>
       </Sections>
