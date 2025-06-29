@@ -33,16 +33,15 @@ const Home = () => {
       <VRExperienceSection/>
      
       <UseCasesSection/>
-    
-      <CoworkerSection/>
-      <ProcessSection/>
-      <PricingSection/>
-      <ContactFormSection />
       <TestimonialsSection />
+      <CoworkerSection/>
+      
+     
+    
       <FAQSection/>
     
      
-      <PromotionSection/>
+      
       <NewsSection/>
   
       <BannerSection/>

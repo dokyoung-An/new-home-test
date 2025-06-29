@@ -8,7 +8,7 @@ export const Container = styled.div`
 `;
 
 export const sectionSpacing = css`
-  padding: 80px 0;
+  padding: 160px 0;
   position: relative;
   
   @media (max-width: 1024px) {

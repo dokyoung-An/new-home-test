@@ -80,4 +80,25 @@ export const ctaColorChange = keyframes`
   100% {
     color: #A259FF;
   }
+`;
+
+export const float = keyframes`
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+`;
+
+export const pulse = keyframes`
+  0% {
+    box-shadow: 0 0 0 0 rgba(26, 109, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(26, 109, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(26, 109, 255, 0);
+  }
 `; 

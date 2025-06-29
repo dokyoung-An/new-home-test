@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { IoArrowForward } from 'react-icons/io5';
-import { RiQuestionMark } from 'react-icons/ri';
-import { FaUserTie, FaMapMarkedAlt, FaChalkboardTeacher, FaUsers, FaVrCardboard } from 'react-icons/fa';
+import { BsQuestionCircle } from 'react-icons/bs';
 
 const Section = styled.section`
-  
-  background:rgba(245, 245, 245,0.5);
+  padding: 80px 0;
+  background:rgba(191, 220, 255, 0.2) ;
+  overflow: hidden;
+  position: relative;
 `;
 
 const Container = styled.div`
@@ -15,599 +15,203 @@ const Container = styled.div`
   padding: 0 20px;
 `;
 
-const GridContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-`;
-
-const TopGrid = styled.div`
+const Grid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 24px;
-  
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 30px;
+  margin-top: 20px;
+
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
+    grid-template-rows: auto;
   }
 `;
 
-const BottomGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 24px;
-  background-position: center;
-
-  
-  @media (max-width: 1024px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-const TitleContainer = styled.div`
+const TitleSection = styled.div`
+  grid-column: 1;
+  grid-row: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 40px;
-  position: relative;
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 20px;
-    left: 40px;
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, ${({ theme }) => theme.primaryMiddle}, transparent);
-  }
+  align-items: flex-start;
+  gap: 20px;
+  padding: 40px 0;
 
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 20px;
-    right: 40px;
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, ${({ theme }) => theme.primaryMiddle});
-  }
-
-  @media (max-width: 768px) {
-    padding: 30px;
-    
-    &::before, &::after {
-      width: 40px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    padding: 25px;
-    
-    &::before, &::after {
-      width: 30px;
-    }
+  @media (max-width: 1024px) {
+    grid-column: 1;
+    grid-row: 1;
+    padding: 20px 0;
   }
 `;
 
-const IconContainer = styled.div`
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-
-  @media (max-width: 768px) {
-    margin-bottom: 15px;
-    gap: 10px;
-  }
-`;
-
-const CircleIcon = styled.div`
-  width: 50px;
-  height: 50px;
+const IconWrapper = styled.div`
+  width: 60px;
+  height: 60px;
+  background: #4285F4;
   border-radius: 50%;
-  background: linear-gradient(135deg, ${({ theme }) => theme.primaryMiddle}, #4A90E2);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-size: 24px;
-  box-shadow: 0 6px 15px rgba(26, 109, 255, 0.3);
-  transform: rotate(-10deg);
-  transition: transform 0.3s ease;
 
-  &:hover {
-    transform: rotate(0deg);
-  }
-
-  @media (max-width: 768px) {
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
+  svg {
+    color: white;
+    font-size: 30px;
   }
 `;
 
-const Decoration = styled.div`
-  width: 80px;
-  height: 2px;
-  background: ${({ theme }) => theme.primaryMiddle};
-  position: relative;
-  opacity: 0.5;
+const TitleWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
 
-  &::before {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: -4px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: ${({ theme }) => theme.primaryMiddle};
-  }
-
-  @media (max-width: 768px) {
-    width: 60px;
-    
-    &::before {
-      width: 6px;
-      height: 6px;
-      top: -3px;
-    }
-  }
+const WhyTitle = styled.h3`
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #4285F4;
+  margin: 0;
 `;
 
 const Title = styled.h2`
   font-size: 2.5rem;
   font-weight: 700;
-  color: ${({ theme }) => theme.secondaryColor};
-  text-align: left;
-  margin-bottom: 20px;
-  line-height: 1.2;
-  
-  span {
-    &:first-child {
-      font-size: 3.5rem;
-      display: block;
-      margin-bottom: 12px;
-      font-weight: 800;
-      background: linear-gradient(135deg, ${({ theme }) => theme.primaryMiddle}, #4A90E2);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-      letter-spacing: 1px;
-      position: relative;
-      
-      &::after {
-        content: 'WHY';
-        position: absolute;
-        left: 2px;
-        top: 2px;
-        opacity: 0.1;
-        z-index: -1;
-        color: ${({ theme }) => theme.primaryDark};
-        -webkit-text-fill-color: ${({ theme }) => theme.primaryDark};
-      }
-    }
-    
-    &:last-child {
-      font-size: 2.5rem;
-      color: ${({ theme }) => theme.secondaryColor};
-      position: relative;
-      display: inline-block;
-      
-      &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: -5px;
-        width: 100%;
-        height: 3px;
-        background: linear-gradient(90deg, ${({ theme }) => theme.primaryMiddle}, transparent);
-        border-radius: 2px;
-      }
-    }
-  }
-  
-  @media (max-width: 1024px) {
-    font-size: 2.2rem;
-    span:first-child {
-      font-size: 3rem;
-    }
-    span:last-child {
-      font-size: 2.2rem;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    font-size: 2rem;
-    margin-bottom: 15px;
-    span:first-child {
-      font-size: 2.8rem;
-      margin-bottom: 10px;
-    }
-    span:last-child {
-      font-size: 2rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1.8rem;
-    span:first-child {
-      font-size: 2.4rem;
-    }
-    span:last-child {
-      font-size: 1.8rem;
-    }
-  }
+  color: #333;
+  margin: 0;
 `;
 
-const Subtitle = styled.p`
+const Description = styled.p`
   font-size: 1.2rem;
-  color: ${({ theme }) => theme.secondaryColor};
-  opacity: 0.8;
+  color: #666;
+  margin: 0;
   position: relative;
   padding-left: 15px;
-  margin-top: 10px;
-  font-weight: 500;
-  
+
   &::before {
     content: '';
     position: absolute;
     left: 0;
     top: 50%;
-    transform: translateY(-50%);
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: ${({ theme }) => theme.primaryMiddle};
-    box-shadow: 0 0 0 4px rgba(26, 109, 255, 0.1);
-  }
-
-  @media (max-width: 768px) {
-    font-size: 1.1rem;
-    padding-left: 12px;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1rem;
-    padding-left: 10px;
+    background: #4285F4;
+    transform: translateY(-50%);
   }
 `;
 
 const Card = styled.div`
-  background: ${props => props.background || '#1a237e'};
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   border-radius: 20px;
-  padding: 40px;
-  color: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
   overflow: hidden;
-  min-height: 280px;
+  background: white;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 
-  @media (hover: none) {
-    background-size: cover;
-    background-position: center;
-    transform: translateZ(0);
-    will-change: transform;
-    &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: inherit;
-      background-size: cover;
-      background-position: center;
-      filter: contrast(1.1) brightness(1.1);
-      z-index: 0;
-      transform: translateZ(0);
-      will-change: transform;
-    }
+  &:hover {
+    transform: translateY(-10px);
   }
+`;
 
-  &::before {
+const CardImage = styled.div`
+  width: 100%;
+  height: 280px;
+  background-image: url(${props => props.image});
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+  &::after {
     content: '';
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    background: ${props => props.overlay || 'linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.9))'};
-    z-index: 1;
-    transition: all 0.3s ease;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
   }
+`;
 
-  & > div, & > svg {
-    position: relative;
-    z-index: 2;
-    transition: opacity 0.3s ease;
-  }
-
-  @media (hover: hover) {
-    &:hover {
-      transform: translateY(-10px);
-
-      &::before {
-        background: ${props => props.hoverOverlay || 'linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6))'};
-      }
-
-      .card-title {
-        transform: translateY(-5px);
-      }
-
-      .card-description {
-        transform: translateY(-5px);
-      }
-    }
-  }
-
-  @media (hover: none) {
-    &::before {
-      background: linear-gradient(to bottom,
-        rgba(0, 0, 0, 0.2),
-        rgba(0, 0, 0, 0.5)
-      );
-      backdrop-filter: blur(2px);
-      -webkit-backdrop-filter: blur(2px);
-      z-index: 1;
-    }
-
-    .card-description, .arrow-icon {
-      opacity: 1;
-    }
-
-    & > div {
-      z-index: 2;
-    }
-
-    &.active {
-      &::before {
-        background: linear-gradient(to bottom,
-          rgba(0, 0, 0, 0.1),
-          rgba(0, 0, 0, 0.4)
-        );
-      }
-    }
-  }
-
-  @media (max-width: 768px) {
-    min-height: 240px;
-    padding: 30px;
-  }
-
-  @media (max-width: 480px) {
-    min-height: 200px;
-    padding: 25px;
-
-    &::after {
-      font-size: 1rem;
-    }
-  }
+const CardContent = styled.div`
+  flex-grow: 1; /* 핵심 */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* 하단 정렬 */
+  padding: 15px;
+  background: white;
+  gap: 8px;
 `;
 
 const CardTitle = styled.h3`
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  margin-bottom: 1rem;
-  transition: transform 0.3s ease;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  @media (hover: none) {
-    font-size: 1.3rem;
-    opacity: 1;
-    padding: 8px 12px;
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-radius: 8px;
-    display: inline-block;
-    margin-top: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-  }
-`;
-
-const CardIcon = styled.div`
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  color: white;
-  background: rgba(255, 255, 255, 0.2);
-  padding: 12px;
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(5px);
-  transition: all 0.3s ease;
-
-  ${Card}:hover & {
-    transform: scale(1.1);
-    background: rgba(255, 255, 255, 0.3);
-  }
+  color: #333;
+  margin: 0;
 `;
 
 const CardDescription = styled.p`
-  font-size: 1rem;
-  line-height: 1.6;
-  opacity: 1;
-  margin-bottom: 2rem;
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
   word-break: keep-all;
-  word-wrap: break-word;
-  transition: all 0.3s ease;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  line-height: 1.3;
+`;
 
-  @media (hover: none) {
-    font-size: 0.95rem;
-    padding: 12px 15px;
-    background: rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-radius: 12px;
-    margin-top: 15px;
-    line-height: 1.5;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+const cards = [
+  {
+    image: '/img/bestpoint/1.png',
+    title: '검증된 전문가 팀',
+    description: '공신력 있는 전문가와 협업'
+  },
+  {
+    image: '/img/bestpoint/7.jpeg',
+    title: '경상권 전문 사전점검업체',
+    description: '7년 경력, 지역 맞춤 점검'
+  },
+  {
+    image: '/img/bestpoint/2.jpeg',
+    title: '하자점검 정기교육',
+    description: '정기교육으로 품질 유지'
+  },
+  {
+    image: '/img/bestpoint/4.jpg',
+    title: '공동구매 진행',
+    description: '입주민 참여형 공동 점검'
+  },
+  {
+    image: '/img/bestpoint/vr2.png',
+    title: '국내최초! 세대기록 서비스',
+    description: '360도 VR로 세대 기록'
   }
-`;
-
-const ArrowIcon = styled(IoArrowForward)`
-  font-size: 1.5rem;
-  margin-top: auto;
-  transition: all 0.3s ease;
-`;
+];
 
 const BestPoint = () => {
-  const [activeCard, setActiveCard] = useState(null);
-  const [timer, setTimer] = useState(null);
-
-  const handleCardClick = (index) => {
-    if (window.matchMedia('(hover: hover)').matches) return;
-
-    if (timer) clearTimeout(timer);
-
-    if (activeCard === index) {
-      setActiveCard(null);
-      return;
-    }
-
-    setActiveCard(index);
-
-    const newTimer = setTimeout(() => {
-      setActiveCard(null);
-    }, 30000);
-
-    setTimer(newTimer);
-  };
-
-  useEffect(() => {
-    return () => {
-      if (timer) clearTimeout(timer);
-    };
-  }, [timer]);
-
-  const cards = [
-    {
-      icon: <FaUserTie />,
-      title: '검증된 전문가 팀',
-      description: `하방은 검증된 전문가 팀으로 구성되어 있습니다. 여기에 더해 공신력 있는 안전진단 전문업체 
-      (주)영남이엔지와 협력하여 고급 하자점검 기술을 확보하였습니다.`,
-      background: 'url(/img/bestpoint/1.png)',
-      overlay: 'linear-gradient(to bottom, rgba(25, 118, 210, 0.8), rgba(25, 118, 210, 0.9))',
-      hoverOverlay: 'linear-gradient(to bottom, rgba(25, 118, 210, 0.3), rgba(25, 118, 210, 0.6))'
-    },
-    {
-      icon: <FaMapMarkedAlt />,
-      title: '경상권 전문 사전점검업체',
-      description: `하방은 7년간 경상권 아파트 사전점검에 집중해온 전문업체입니다.
-풍부한 현장 경험과 지역 맞춤형 점검 시스템으로, 하자의 원인을 정확히 짚어내고 신속하게 대응합니다.`,
-      background: 'url(/img/bestpoint/7.jpeg)',
-      overlay: 'linear-gradient(to bottom, rgba(0, 191, 166, 0.8), rgba(0, 191, 166, 0.9))',
-      hoverOverlay: 'linear-gradient(to bottom, rgba(0, 191, 166, 0.2), rgba(0, 191, 166, 0.4))'
-    },
-    {
-      icon: <FaChalkboardTeacher />,
-      title: '하자점검 정기교육',
-      description: `하방은 하자점검 전문성을 유지하기 위해 정기적인 내부 교육과 실무 워크숍을 실시하고 있습니다.
-전문가들의 최신 트렌드와 사례를 지속적으로 공유하며, 점검 품질의 균일성과 정확성을 높이고 있습니다.
-`,
-      background: 'url(/img/bestpoint/2.jpeg)',
-      overlay: 'linear-gradient(to bottom, rgba(162, 89, 255, 0.8), rgba(162, 89, 255, 0.9))',
-      hoverOverlay: 'linear-gradient(to bottom, rgba(162, 89, 255, 0.3), rgba(162, 89, 255, 0.6))'
-    },
-    {
-      icon: <FaUsers />,
-      title: '공동구매 진행',
-      description: `하방은 주관사의 초청과 입주민들의 적극적인 참여로 형성된 공동구매 형태의 점검을 다수 진행해왔습니다.
-풍부한 진행 경험을 바탕으로, 단지별 특성과 일정에 맞춘 효율적인 사전점검 서비스를 제공합니다.`,
-      background: 'url(/img/bestpoint/4.jpg)',
-      overlay: 'linear-gradient(to bottom, rgba(21, 87, 204, 0.8), rgba(21, 87, 204, 0.9))',
-      hoverOverlay: 'linear-gradient(to bottom, rgba(21, 87, 204, 0.3), rgba(21, 87, 204, 0.6))'
-    },
-    {
-      icon: <FaVrCardboard />,
-      title: '국내최초! 세대기록 서비스',
-      description: `하방은 국내 최초로 360도 VR을 활용한 세대 기록 서비스를 랜하우스와의 협업을 통해 제공하고 있습니다.
-눈으로 직접 보는 듯한 입체적인 기록은, 하자 발생 시 증빙 자료로 활용되며 입주 후 분쟁 예방에도 강력한 효과를 발휘합니다.`,
-      background: 'url(/img/bestpoint/vr2.png)',
-      overlay: 'linear-gradient(to bottom, rgba(204, 171, 0, 0.85), rgba(153, 128, 0, 0.95))',
-      hoverOverlay: 'linear-gradient(to bottom, rgba(204, 171, 0, 0.3), rgba(153, 128, 0, 0.5))'
-    }
-  ];
-
   return (
     <Section>
       <Container>
-        <GridContainer>
-          <TopGrid>
-            <TitleContainer>
-              <IconContainer>
-                <CircleIcon>
-                  <RiQuestionMark />
-                </CircleIcon>
-                <Decoration />
-              </IconContainer>
-              <Title>
-                <span>WHY</span>
-                <span>하방인가요?</span>
-              </Title>
-              <Subtitle>하방의 특별한 점검 서비스를 제공합니다</Subtitle>
-            </TitleContainer>
-            {cards.slice(0, 2).map((card, index) => (
-              <Card 
-                key={index} 
-                background={card.background}
-                overlay={card.overlay}
-                hoverOverlay={card.hoverOverlay}
-                onClick={() => handleCardClick(index)}
-                className={activeCard === index ? 'active' : ''}
-              >
-                <div>
-                  <CardIcon>{card.icon}</CardIcon>
-                  <CardTitle className="card-title">{card.title}</CardTitle>
-                  <CardDescription className="card-description">{card.description}</CardDescription>
-                </div>
-                <ArrowIcon className="arrow-icon" />
-              </Card>
-            ))}
-          </TopGrid>
-          <BottomGrid>
-            {cards.slice(2).map((card, index) => (
-              <Card 
-                key={index + 2} 
-                background={card.background}
-                overlay={card.overlay}
-                hoverOverlay={card.hoverOverlay}
-                onClick={() => handleCardClick(index + 2)}
-                className={activeCard === (index + 2) ? 'active' : ''}
-              >
-                <div>
-                  <CardIcon>{card.icon}</CardIcon>
-                  <CardTitle className="card-title">{card.title}</CardTitle>
-                  <CardDescription className="card-description">{card.description}</CardDescription>
-                </div>
-                <ArrowIcon className="arrow-icon" />
-              </Card>
-            ))}
-          </BottomGrid>
-        </GridContainer>
+        <Grid>
+          <TitleSection>
+            <IconWrapper>
+              <BsQuestionCircle />
+            </IconWrapper>
+            <TitleWrapper>
+              <WhyTitle>WHY</WhyTitle>
+              <Title>하방인가요?</Title>
+            </TitleWrapper>
+            <Description>하방의 특별한 점검 서비스를 제공합니다</Description>
+          </TitleSection>
+          {cards.map((card, index) => (
+            <Card key={index}>
+              <CardImage image={card.image} />
+              <CardContent>
+                <CardTitle>{card.title}</CardTitle>
+                <CardDescription>{card.description}</CardDescription>
+              </CardContent>
+            </Card>
+          ))}
+        </Grid>
       </Container>
     </Section>
   );

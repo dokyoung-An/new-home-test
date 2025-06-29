@@ -1,19 +1,114 @@
 import styled from 'styled-components';
+import { sectionSpacing } from '../../../styles/common';
+import { float, pulse } from '../../../styles/animations';
+
 
 export const NewsSection = styled.section`
-  padding: 100px 0;
-  background-color: #fff;
+   ${sectionSpacing}
+  background-color: #0e1016;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(26, 109, 255, 0.07) 0%, transparent 60%),
+    radial-gradient(circle at 80% 70%, rgba(26, 109, 255, 0.1) 0%, transparent 60%),
+    radial-gradient(circle at 50% 50%, rgba(25, 30, 45, 0.9) 0%, rgba(14, 16, 22, 1) 70%);
+  color: #fff;
   position: relative;
+  overflow: hidden;
 
+  
+  /* 상단 경계선 효과 */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, 
+      rgba(230, 92, 48, 0), 
+      rgba(26, 109, 255, 0.9), 
+      rgba(230, 92, 48, 0)
+    );
+    z-index: 2;
+  }
+  
+  /* 배경 패턴 */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      linear-gradient(rgba(26, 109, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26, 109, 255, 0.02) 1px, transparent 1px);
+    background-size: 20px 20px;
+    z-index: 1;
+    opacity: 0.8;
+  }
+  
+  /* 글로우 파티클 효과 추가 */
+  &:before, &:after, .glow-particle1, .glow-particle2, .glow-particle3 {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: 1;
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  
+  .glow-particle1 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle,   rgba(26, 109, 255, 0.4) 0%, transparent 70%);
+    top: 10%;
+    right: 5%;
+    animation: ${float} 20s ease-in-out infinite;
+  }
+  
+  .glow-particle2 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle,rgba(26, 109, 255, 0.4) 0%, transparent 70%);
+    bottom: 10%;
+    left: 10%;
+    animation: ${float} 25s ease-in-out infinite alternate-reverse;
+  }
+  
+  .glow-particle3 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(230, 92, 48, 0.25) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ${pulse} 15s ease-in-out infinite;
+  }
+  
+  & > div.container {
+    position: relative;
+    z-index: 5;
+  }
+  
+  @media (max-width: 1024px) {
+    padding: 60px 0;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 60px 0;
+  }
+  
   @media (max-width: 480px) {
-    padding: 60px 20px  ;
+    padding: 40px 0;
+   
   }
 `;
 
 export const DesignElement1 = styled.div`
   position: absolute;
-  top: 125px;
-  left: calc((100% - 1200px) / 2 - 20px);
+  top: 140px;
+  left: calc((100% - 1200px) / 2 - 10px);
   width: 20px;
   height: 20px;
   background: linear-gradient(135deg, #1a6dff, #bfdcff);
@@ -39,7 +134,7 @@ export const DesignElement1 = styled.div`
 
 export const DesignElement2 = styled.div`
   position: absolute;
-  top: 105px;
+  top: 120px;
   left: calc((100% - 1200px) / 2 + 10px);
   width: 25px;
   height: 25px;
@@ -67,8 +162,8 @@ export const DesignElement2 = styled.div`
 
 export const DesignElement3 = styled.div`
   position: absolute;
-  top: 145px;
-  left: calc((100% - 1200px) / 2 - 5px);
+  top: 120px;
+  left: calc((100% - 1200px) / 2 - 10px);
   width: 15px;
   height: 15px;
   background: linear-gradient(135deg, 	#00C896, #A259FF);
@@ -108,7 +203,7 @@ export const NewsSectionHeader = styled.div`
 export const NewsTitle = styled.h2`
   font-size: 2.5rem;
   font-weight: 800;
-  color: #333;
+  color: #fff;
   margin-bottom: 20px;
   line-height: 1.3;
   
@@ -122,7 +217,7 @@ export const NewsTitle = styled.h2`
 
 export const NewsSubTitle = styled.p`
   font-size: 1.1rem;
-  color: #666;
+  color: rgba(255, 255, 255, 0.8);
   margin-top: 8px;
   line-height: 1.6;
 
