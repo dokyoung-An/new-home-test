@@ -38,24 +38,23 @@ const Header = () => {
       <HeaderContent>
         <Logo><a href="/">HABANG</a></Logo>
         <NavLinks>
-          <li><a href="#VRExperience">ABOUT</a></li>
-          <li><a href="#BenefitsSection">서비스</a></li>
+          <li><a href="#VRExperience">하방</a></li>
+          <li><a href="#BenefitsSection">아파트 사전점검</a></li>
           <li><a href="#FeaturesSection">하자정보</a></li>
           <li><a href="#FeaturesSection">보고서</a></li>
           <li><a href="#PricingSection">우리집VR</a></li>
-          <li><a href="/contact">문의하기</a></li>
         </NavLinks>
+         <InquiryButton><a href="/contact">문의하기</a></InquiryButton>
         <HamburgerButton onClick={toggleMenu}>
           <FaBars />
         </HamburgerButton>
         <MobileNav isOpen={isMenuOpen}>
           <MobileNavLinks>
-            <li><a href="#VRExperience" onClick={closeMenu}>ABOUT</a></li>
-            <li><a href="#BenefitsSection" onClick={closeMenu}>서비스</a></li>
+            <li><a href="#VRExperience" onClick={closeMenu}>하방</a></li>
+            <li><a href="#BenefitsSection" onClick={closeMenu}>아파트 사전점검</a></li>
             <li><a href="#FeaturesSection" onClick={closeMenu}>하자정보</a></li>
             <li><a href="#PricingSection" onClick={closeMenu}>보고서</a></li>
             <li><a href="#PricingSection" onClick={closeMenu}>우리집VR</a></li>
-            <li><a href="/contact" onClick={closeMenu}>문의하기</a></li>
           </MobileNavLinks>
         </MobileNav>
       </HeaderContent>
@@ -65,17 +64,18 @@ const Header = () => {
 
 const HeaderContainer = styled.header`
   position: fixed;
+  
   top: 0;
   left: 0;
   width: 100%;
   z-index: 100;
   background-color: ${({ scrolled, isHome, theme }) => {
     if (!isHome) return 'black';
-    return scrolled ? theme.secondaryColor : 'transparent';
+    return scrolled ? theme.secondaryColor : 'rgba(0, 0, 0, 0.05)';
   }};
   transition: all 0.3s ease;
   box-shadow: ${({ scrolled, isHome }) => (isHome && scrolled) ? '0 2px 10px rgba(0, 0, 0, 0.1)' : 'none'};
-  height: ${({ scrolled, isHome }) => (isHome && !scrolled) ? '100px' : '56px'};
+  height: ${({ scrolled, isHome }) => (isHome && !scrolled) ? '76px' : '76px'};
   display: flex;
   align-items: center;
 `;
@@ -89,7 +89,7 @@ const HeaderContent = styled.div`
 `;
 
 const Logo = styled.div`
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   font-weight: 400;
   transition: all 0.3s ease;
   font-family: 'Montserrat', sans-serif;
@@ -111,15 +111,17 @@ const Logo = styled.div`
 const NavLinks = styled.ul`
   display: flex;
   transition: all 0.3s ease;
+  margin:0 auto;
 
   li {
     margin-left: 40px;
     list-style: none;
+
   }
 
   a {
-    font-size: 0.9rem;
-    font-weight: lighter;
+    font-size: 1.2rem;
+    font-weight: 400;
     color: #fff;
     text-decoration: none;
     transition: color 0.3s ease;
@@ -128,6 +130,29 @@ const NavLinks = styled.ul`
       color: ${props => props.theme.primaryMiddle};
       text-decoration: none;
     }
+
+  
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const InquiryButton = styled.button`
+  background-color: #1a6dff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #fff;
+    color: #1a6dff;
   }
 
   @media (max-width: 768px) {

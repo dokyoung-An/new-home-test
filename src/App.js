@@ -12,6 +12,7 @@ import EventPopup from './components/EventPopup';
 import { useState, useEffect } from 'react';
 import FloatingButtons from './components/FloatingButtons';
 import ContactPage from './pages/ContactPage';
+import Buttons from './components/common/Buttons';
 
 const MainContent = styled.main`
   /* 패딩 제거 */
@@ -54,6 +55,7 @@ function App() {
           </Routes>
         </MainContent>
         <FloatingButtons />
+        <Buttons/>
       </Router>
       {showEventPopup && <EventPopup onClose={handleCloseEventPopup} />}
     </ThemeProvider>

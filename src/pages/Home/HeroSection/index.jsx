@@ -16,7 +16,8 @@ import {
   LogoSlider,
   SlideTrack,
   SliderLogo,
-  VideoBackground
+  VideoBackground,
+  
 } from './style';
 
 const HeroSection = () => {
@@ -33,7 +34,7 @@ const HeroSection = () => {
         <source src="/img/bg3.mp4" type="video/mp4" />
       </VideoBackground>
       
-      <Container>
+      <Container className='hero-container'>
         <HeroContent>
           <HeroTagline><span>신축아파트 하자 확인! 입주 전 필수</span></HeroTagline>
           <HeroTitle>
@@ -44,7 +45,7 @@ const HeroSection = () => {
            하자 확인에서 접수까지! 모든 과정을 완벽하게 대행해드립니다.
           </HeroSubTitle>
           <CTAButton>
-            <a href="#ContactFormSection">서비스 문의하기</a> <ArrowIcon color="#fff" />
+            <a href="#ContactFormSection">상담 신청 바로가기</a> 
           </CTAButton>
         </HeroContent>
       </Container>

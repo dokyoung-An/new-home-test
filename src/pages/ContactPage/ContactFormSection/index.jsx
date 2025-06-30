@@ -32,7 +32,7 @@ import {
   Th,
   Td,
   StatusButton,
-  Title as TableTitle,
+  TableTitle,
   MobileTable,
   MobileRow,
   FormInner,
@@ -62,6 +62,10 @@ const TitleBoxContainer = styled.div`
 const TitleContainer = styled.div`
   background-color: #F8F9FA;
   padding: 60px 0;
+
+  @media (max-width: 768px) {
+    padding: 20px 0;
+  }
 `;
 
 const TitleBox = styled.div`
@@ -94,12 +98,21 @@ const Subtitle = styled.p`
 `;
 
 const ButtonGroup = styled.div`
+  
   display: flex;
   gap: 10px;
+
+  @media (max-width: 768px) {
+     width: 100%;
+     justify-content: center;
+     align-items: center;
+  
+  }
+
 `;
 
 const Button = styled.button`
-  padding: 8px 16px;
+  padding: 15px 30px;
   border-radius: 8px;
   border: 1px solid #ddd;
   background: ${props => props.active ? '#4285F4' : 'white'};
@@ -107,9 +120,18 @@ const Button = styled.button`
   cursor: pointer;
   font-weight: 500;
   transition: all 0.2s ease;
+  font-size: 1.2rem;
 
   &:hover {
     background: ${props => props.active ? '#3367D6' : '#f5f5f5'};
+  }
+
+  @media (max-width: 768px) {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 400;
+    width: 50%;
+    
   }
 `;
 
@@ -429,11 +451,11 @@ const ContactFormSection = forwardRef((props, ref) => {
 
   return (
     <ContactSection id="ContactFormSection" ref={ref}>
-        <Sections style={{padding: '100px 0'}}>
+        <Sections style={{padding: '100px 0 0 0'}}>
        
           <TitleBoxContainer>
         <Title>상담 현황</Title>
-          <Subtitle>서비스 현황과 시 하자 100% 완벽관리입니다.</Subtitle>
+          <Subtitle>입주 전 필수! 하방 상담 현황을 확인해보세요.</Subtitle>
           </TitleBoxContainer>
           <TitleContainer>
           <TitleBox>
@@ -473,7 +495,7 @@ const ContactFormSection = forwardRef((props, ref) => {
         <Container>
           <TableContainer>
             <TableHeader>
-              <TableTitle style={{fontSize: '2rem', fontWeight: 'bold', marginBottom: '20px', color: '#333'}}>상담 현황 목록</TableTitle>
+              <TableTitle >상담 현황 목록</TableTitle>
               <ButtonGroup>
                 <Button active className="conform" onClick={handleConformClick}>상담신청</Button>
                 <Button>조회수</Button>

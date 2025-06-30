@@ -117,6 +117,7 @@ export const HeroContent = styled.div`
   @media (max-width: 768px) {
     margin-top: 20vh;
     padding-left: 30px;
+    text-align: center;
   }
 `;
 
@@ -218,6 +219,7 @@ export const HeroSubTitle = styled.p`
   animation-delay: 0.6s;
   position: relative;
   padding-left: 20px;
+  word-break: keep-all;
   
   &::before {
     content: '';
@@ -249,7 +251,7 @@ export const CTAButton = styled.button`
   font-weight: 600;
   padding: 14px 24px;
   border: none;
-  border-radius: 50px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
@@ -258,7 +260,7 @@ export const CTAButton = styled.button`
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   position: relative;
   overflow: hidden;
-  max-width: 200px;
+  width: 200px;
   animation: ${fadeIn} 0.8s ease-out forwards;
   opacity: 0;
   animation-delay: 0.8s;
@@ -297,15 +299,16 @@ export const CTAButton = styled.button`
   }
 
   @media (max-width: 768px) {
-    font-size: 14px;
-    padding: 10px 20px;
-    max-width: 180px;
+    font-size: 1rem;
+    padding: 15px 30px;
+    width: 100%;
+    margin: 0 auto;
   }
 
   @media (max-width: 480px) {
-    font-size: 12px;
-    padding: 12px 16px;
-    max-width: 143px;
+    font-size: 1rem;
+    padding: 15px 30px;
+   
   }
 `;
 
@@ -345,3 +348,7 @@ export const SliderLogo = styled.img`
     margin: 0 15px;
   }
 `; 
+
+
+
+

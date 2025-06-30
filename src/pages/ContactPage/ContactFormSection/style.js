@@ -792,7 +792,7 @@ export const TableHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #eee;
+ 
   margin-bottom: 20px;
 
   @media (max-width: 768px) {
@@ -878,6 +878,8 @@ export const Title = styled.h2`
   font-weight: bold;
   margin-bottom: 20px;
   color: #333;
+
+ 
 `;
 
 export const Container = styled.div`
@@ -890,12 +892,14 @@ export const StatsContainer = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 20px;
+
    
   @media (max-width: 768px) {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap:10px;
+    gap:0px;
+    
   }
 `;
 
@@ -910,11 +914,15 @@ export const StatBox = styled.div`
   &:hover {
     transform: translateY(-5px);
   }
+
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
 `;
 
 export const StatIcon = styled.div`
-  width: 58px;
-  height: 58px;
+  width: 78px;
+  height: 78px;
   background-color: #E8F1FF;
   border-radius: 12px;
   display: flex;
@@ -927,17 +935,25 @@ export const StatIcon = styled.div`
     height: 34px;
     color: #0066FF;
   }
+  @media (max-width: 768px) {
+    width: 58px;
+    height: 58px;
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
 `;
 
 export const StatContent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
 `;
 
 export const StatLabel = styled.span`
-  font-size: 1.2rem;
-  font-weight: 400;
+  font-size: 1.5rem;
+  font-weight: 500;
   color: #666;
 
   @media (max-width: 768px) {
@@ -946,7 +962,7 @@ export const StatLabel = styled.span`
 `;
 
 export const StatNumber = styled.span`
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 700;
   color: #333;
   line-height: 1;
@@ -1007,5 +1023,15 @@ export const PageButton = styled.button`
 
   &:hover {
     background: ${props => props.active ? '#3367D6' : '#f5f5f5'};
+  }
+`;
+
+export const TableTitle = styled.h2`
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
   }
 `;

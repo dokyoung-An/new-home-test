@@ -5,6 +5,7 @@ export const Container = styled.div`
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 20px;
+
 `;
 
 export const sectionSpacing = css`
