@@ -101,4 +101,26 @@ export const pulse = keyframes`
   100% {
     box-shadow: 0 0 0 0 rgba(26, 109, 255, 0);
   }
+`;
+
+export const slideIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
+
+export const scaleIn = keyframes`
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 `; 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import GlobalStyle from './styles/GlobalStyle';
 import theme from './styles/theme';
 import Home from './pages/Home';
@@ -13,13 +13,20 @@ import { useState, useEffect } from 'react';
 import FloatingButtons from './components/FloatingButtons';
 import ContactPage from './pages/ContactPage';
 import Buttons from './components/common/Buttons';
+import About from './pages/About';
+import Footer from './components/layout/Footer';
+import ApartInspection from './pages/ApartInspection';
+import AfterInspect from './pages/AfterInspect';
+import Report from './pages/Report';
+import Vr from './pages/Vr';
 
 const MainContent = styled.main`
   /* 패딩 제거 */
 `;
 
-function App() {
-
+// 앱의 주요 컨텐츠를 담당하는 컴포넌트
+const AppContent = () => {
+  const location = useLocation();
   const [showEventPopup, setShowEventPopup] = useState(false);
 
   useEffect(() => {
@@ -27,7 +34,6 @@ function App() {
     const hasSeenPopup = sessionStorage.getItem('hasSeenEventPopup');
     if (!hasSeenPopup) {
       setShowEventPopup(false);
-      
     }
   }, []);
 
@@ -37,27 +43,44 @@ function App() {
     sessionStorage.setItem('hasSeenEventPopup', 'true');
   };
 
+  // /contact 페이지에서는 Buttons를 렌더링하지 않음
+  const shouldShowButtons = location.pathname !== '/contact';
+
+  return (
+    <>
+      <Header />
+      <MainContent>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/admin/inquiry-board" element={<InquiryBoard />} />
+          <Route path="/admin/ambassador" element={<AmbassadorBoard />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/inspection" element={<ApartInspection />} />
+          <Route path="/afterInspection" element={<AfterInspect />} />
+          <Route path="/report" element={<Report />} />
+          <Route path="/vr" element={<Vr />} />
+          {/* <Route path="/admin/ambassador" element={<Ambassador />} /> */}
+          {/* 향후 확장을 위한 라우트 */}
+          {/* <Route path="/about" element={<About />} /> */}
+          {/* <Route path="/contact" element={<Contact />} /> */}
+        </Routes>
+      </MainContent>
+      <FloatingButtons />
+      {shouldShowButtons && <Buttons />}
+      {showEventPopup && <EventPopup onClose={handleCloseEventPopup} />}
+      <Footer />
+    </>
+  );
+};
+
+function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Router>
-        <Header />
-        <MainContent>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/admin/inquiry-board" element={<InquiryBoard />} />
-            <Route path="/admin/ambassador" element={<AmbassadorBoard />} />
-            <Route path="/contact" element={<ContactPage />} />
-            {/* <Route path="/admin/ambassador" element={<Ambassador />} /> */}
-            {/* 향후 확장을 위한 라우트 */}
-            {/* <Route path="/about" element={<About />} /> */}
-            {/* <Route path="/contact" element={<Contact />} /> */}
-          </Routes>
-        </MainContent>
-        <FloatingButtons />
-        <Buttons/>
+        <AppContent />
       </Router>
-      {showEventPopup && <EventPopup onClose={handleCloseEventPopup} />}
     </ThemeProvider>
   );
 }

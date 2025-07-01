@@ -20,7 +20,6 @@ import BestPoint from './BestPoint';
 const Home = () => {
   return (
     <>
-      <Header />
       <HeroSection/>
       <SloganSection/>
       <BestPoint/>
@@ -35,9 +34,6 @@ const Home = () => {
       <FAQSection/> 
       <NewsSection/>
       <CoworkerSection/>
-     
-     
-      <Footer />
     </>
   );
 };

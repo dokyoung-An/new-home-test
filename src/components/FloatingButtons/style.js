@@ -8,6 +8,9 @@ export const FloatingContainer = styled.div`
   flex-direction: column;
   gap: 15px;
   z-index: 1000;
+  @media (max-width: 780px) {
+    bottom:100px;
+  }
 `;
 
 export const FloatingButton = styled.button`

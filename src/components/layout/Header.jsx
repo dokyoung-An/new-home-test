@@ -7,7 +7,7 @@ const menuItems = [
   {
     label: '하방',
     subItems: [
-      { label: '하방 소개', href: '#VRExperience' },
+      { label: '하방 소개', href: '/about' },
       { label: '주요 실적', href: '#BenefitsSection' },
       { label: '정비 현황', href: '#Features' },
       { label: '파트너사', href: '#Partners' }
@@ -16,12 +16,12 @@ const menuItems = [
   {
     label: '아파트 사전점검',
     subItems: [
-      { label: '아파트 사전점검', href: '#Inspection' },
-      { label: '주택 종합 점검', href: '#HomeInspection' }
+      { label: '아파트 사전점검', href: '/inspection' },
+      { label: '입주 전 사전점검', href: '/afterInspection' }
     ]
   },
   {
-    label: '안전진단',
+    label: '하자 정보',
     subItems: [
       { label: '시설물 안전점검', href: '#Safety' },
       { label: '내진성능평가', href: '#Earthquake' },
@@ -32,9 +32,16 @@ const menuItems = [
     ]
   },
   {
-    label: '하자진단·소송',
+    label: '점검 보고서',
     subItems: [
-      { label: '하자진단·소송', href: '#DefectDiagnosis' }
+      { label: '점검 보고서', href: '/report' }
+    ]
+  },
+  {
+    label: '우리집 VR',
+    subItems: [
+      { label: '우리집 VR', href: '/vr' },
+      
     ]
   },
   {
@@ -43,14 +50,8 @@ const menuItems = [
       { label: '비즈니스 솔루션', href: '#Business' },
       { label: '세이프체크', href: '#SafeCheck' }
     ]
-  },
-  {
-    label: '고객지원',
-    subItems: [
-      { label: '상담 현황', href: '#Support' },
-      { label: '자주 묻는 질문', href: '#FAQ' }
-    ]
   }
+ 
 ];
 
 const Header = () => {
@@ -212,6 +213,7 @@ const NavItem = styled.li`
     white-space: nowrap;
     padding: 8px 16px;
     transition: all 0.3s ease;
+    display: block;
     
     &:hover {
       color: ${({ theme }) => theme.primaryMiddle};
@@ -221,6 +223,12 @@ const NavItem = styled.li`
   &:hover {
     min-width: 180px;
     margin: 0 -10px;
+    
+    > a {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
     
     > ul {
       opacity: 1;
@@ -237,7 +245,7 @@ const DropdownMenu = styled.ul`
   right: 0;
   transform: translateY(10px);
   background: rgba(255, 255, 255, 0.95);
-  min-width: 100%;
+  width: 100%;
   padding: 16px 0;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -251,7 +259,7 @@ const DropdownMenu = styled.ul`
   li {
     margin: 0;
     padding: 0;
-    text-align: left;
+    text-align: center;
     position: relative;
     
     &:after {
@@ -277,25 +285,10 @@ const DropdownMenu = styled.ul`
       transition: all 0.2s ease;
       white-space: nowrap;
       position: relative;
-      text-align: center;
       
       &:hover {
         color: ${({ theme }) => theme.primaryMiddle};
         background-color: rgba(26, 109, 255, 0.05);
-        
-        &:before {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-      
-      &:before {
-        content: '•';
-        position: absolute;
-        left: 12px;
-        opacity: 0;
-        transform: translateX(-10px);
-        transition: all 0.2s ease;
       }
     }
   }
