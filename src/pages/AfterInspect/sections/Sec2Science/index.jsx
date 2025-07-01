@@ -5,16 +5,8 @@ import { PersonIcon, TimeIcon, ReportIcon, PhoneIcon } from './icons';
 
 const images = [
   {
-    src: '/img/haja/42.jpg',
+    src: '/img/video/11.gif',
     // caption: '열화상 카메라를 통한 누수 점검'
-  },
-  {
-    src: '/img/haja/40.jpg',
-    // caption: '전문 장비를 활용한 정밀 점검'
-  },
-  {
-    src: '/img/haja/44.jpg',
-    // caption: '하자 부위 상세 촬영'
   }
 ];
 
@@ -62,13 +54,13 @@ const Sec2Science = () => {
           </Indicators>
         </ImageBlock>
         <TextBlock>
-          <SubTitle>보수가 잘됐는지 걱정되신다면 추가하세요!</SubTitle>
+          <SubTitle>Extra Service</SubTitle>
           <Title>
-          입주 전 최종 확인<br/>
-          보수 완료 여부를 점검합니다
+          입주 전 사전점검 서비스<br/>
+          특별 혜택
           </Title>
           <Description>
-            하자 보수 상태를 확인하는 후점검 서비스<br />
+            보일러 배관 점검까지 꼼꼼히 확인해 드립니다.<br />
           </Description>
           <FeatureList>
             {features.map((feature, index) => (

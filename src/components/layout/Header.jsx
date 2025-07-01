@@ -111,27 +111,43 @@ const Header = () => {
 
         {/* Mobile */}
         <MobileNav isOpen={isMenuOpen}>
-          <MobileNavLinks>
-            {menuItems.map((item) => (
-              <li key={item.label}>
-                <div onClick={() => toggleMobileSubMenu(item.label)}>
-                  {item.label}
-                </div>
-                {item.subItems && activeMobileMenu === item.label && (
-                  <MobileDropdown>
-                    {item.subItems.map((sub) => (
-                      <li key={sub.label}>
-                        <a href={sub.href} onClick={closeMenu}>
-                          {sub.label}
-                        </a>
-                      </li>
-                    ))}
-                  </MobileDropdown>
-                )}
-              </li>
-            ))}
-          </MobileNavLinks>
-        </MobileNav>
+        <MobileNavLinks>
+  {menuItems.map((item) => (
+    <li key={item.label}>
+      {item.subItems ? (
+        <div
+          onClick={() => toggleMobileSubMenu(item.label)}
+          className="mobile-nav-item"
+        >
+          {item.label}
+        </div>
+      ) : (
+        <a
+          href={item.href}
+          onClick={closeMenu}
+          className="mobile-nav-item"
+        >
+          {item.label}
+        </a>
+      )}
+
+      {item.subItems && activeMobileMenu === item.label && (
+        <MobileDropdown>
+          {item.subItems.map((sub) => (
+            <li key={sub.label}>
+              <a href={sub.href} onClick={closeMenu}>
+                {sub.label}
+              </a>
+            </li>
+          ))}
+        </MobileDropdown>
+      )}
+    </li>
+  ))}
+  </MobileNavLinks>
+</MobileNav>
+
+
       </HeaderContent>
     </HeaderContainer>
   );
@@ -184,7 +200,7 @@ const NavLinks = styled.ul`
   gap: 20px;
   align-items: center;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1086px) {
     display: none;
   }
 `;
@@ -301,7 +317,7 @@ const InquiryButton = styled.button`
     color: #1a6dff;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1086px) {
     display: none;
   }
 `;
@@ -315,7 +331,7 @@ const HamburgerButton = styled.button`
   cursor: pointer;
   z-index: 101;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1086px) {
     display: block;
   }
 `;

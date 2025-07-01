@@ -1,6 +1,7 @@
 // components/FixedBottomButtons.jsx
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const FixedBottomWrapper = styled.div`
   position: fixed;
@@ -14,7 +15,7 @@ const FixedBottomWrapper = styled.div`
   gap: 1rem;
   z-index: 1000;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1086px) {
     display: flex;
     background: #fff;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
@@ -34,10 +35,26 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
+
+
 const FixedBottomButtons = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleVRClick = () => {
+    if (location.pathname !== '/') {
+      // 다른 페이지일 경우: 이동 후 hash 전달
+      navigate('/#VRExperience');
+    } else {
+      // 현재가 홈이면 직접 스크롤
+      const el = document.getElementById('VRExperience');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <FixedBottomWrapper>
-      <Button variant="outlined"><a href="#VRExperience">VR체험</a></Button>
+      <Button variant="outlined" onClick={handleVRClick}>VR체험</Button>
       <Button><a href="/contact">상담신청</a></Button>
     </FixedBottomWrapper>
   );

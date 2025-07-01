@@ -4,24 +4,24 @@ import { fadeIn } from '../../../../styles/animations';
 
 const snsImages = [
   {
-    thumbnail: '/img/haja/1.jpg',
-    full: '/img/haja/1.jpg',
-    description: '마룻바닥 들뜸'
+    thumbnail: '/img/video/boil.png',
+    full: '/img/video/5.mp4',
+    description: '보일러 연결 미흡'
   },
   {
-    thumbnail: '/img/haja/46.jpg',
-    full: '/img/haja/46.jpg',
-    description: '발코니 바닥 물고임'
+    thumbnail: '/img/video/nusu.png',
+    full: '/img/video/6.mp4',
+    description: '욕실 천정 누수'
   },
   {
-    thumbnail: '/img/haja/30.jpg',
-    full: '/img/haja/30.jpg',
-    description: '바닥타일 들뜸'
+    thumbnail: '/img/video/gyelro2.jpg',
+    full: '/img/video/gyelro2.jpg',
+    description: '창문 결로'
   },
   {
-    thumbnail: '/img/haja/11.jpg',
-    full: '/img/haja/4.jpg',
-    description: '주방 타일 들뜸'
+    thumbnail: '/img/video/14.jpg',
+    full: '/img/video/13.jpg',
+    description: '변기 수전 결로'
   },
   {
     thumbnail: '/img/haja/5.jpg',
@@ -63,14 +63,28 @@ const Sec5SNS = () => {
       </Content>
 
       {selectedImage && (
-        <Modal onClick={() => setSelectedImage(null)}>
-          <ModalContent onClick={e => e.stopPropagation()}>
-            <ModalImage src={selectedImage.full} alt={selectedImage.description} />
-            <ModalDescription>{selectedImage.description}</ModalDescription>
-            <CloseButton onClick={() => setSelectedImage(null)}>×</CloseButton>
-          </ModalContent>
-        </Modal>
+  <Modal onClick={() => setSelectedImage(null)}>
+    <ModalContent onClick={e => e.stopPropagation()}>
+      {selectedImage.full.endsWith('.mp4') ? (
+        <ModalVideo
+          src={selectedImage.full}
+          controls
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+      ) : (
+        <ModalImage
+          src={selectedImage.full}
+          alt={selectedImage.description}
+        />
       )}
+      <ModalDescription>{selectedImage.description}</ModalDescription>
+      <CloseButton onClick={() => setSelectedImage(null)}>×</CloseButton>
+    </ModalContent>
+  </Modal>
+)}
     </Container>
   );
 };
@@ -255,6 +269,14 @@ const CloseButton = styled.button`
     top: -50px;
     right: 0;
   }
+`;
+
+const ModalVideo = styled.video`
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 10px;
+  background: black;
 `;
 
 export default Sec5SNS; 

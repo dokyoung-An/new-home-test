@@ -16,8 +16,24 @@ import CoworkerSection from './CoworkerSection';
 import ProcessSection from '../ContactPage/ProcessSection';
 
 import BestPoint from './BestPoint';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const Home = () => {
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash === '#VRExperience') {
+      const el = document.getElementById('VRExperience');
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100); // 렌더 완료 후 약간의 딜레이
+      }
+    }
+  }, [location]);
+  
   return (
     <>
       <HeroSection/>

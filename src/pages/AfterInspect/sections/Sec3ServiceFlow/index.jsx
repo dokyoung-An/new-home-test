@@ -59,7 +59,7 @@ const Sec3ServiceFlow = () => {
 const Container = styled.section`
   width: 100%;
   padding: 120px 0;
-  background: linear-gradient(to right, rgba(191, 220, 255, 0.5), rgba(227, 239, 255, 0.5));
+  background: linear-gradient(to bottom right,#bfdcff 40%, ${({ theme }) => `${theme.primaryLight}15`});
   
   @media (max-width: 768px) {
     padding: 80px 0;
