@@ -9,7 +9,7 @@ const Sec1Hero = () => {
         <TextBlock>
           <Title>
             사전점검<br />
-            <Highlight>왜? 해야할까요!</Highlight>
+            <Highlight><span>왜?</span> 해야할까요!</Highlight>
           </Title>
           <Description>
             하자 정보를 찾고 계신가요?<br />
@@ -18,7 +18,7 @@ const Sec1Hero = () => {
           <Button><a href="/contact">서비스 문의하기</a></Button>
         </TextBlock>
         <VideoBlock>
-        <iframe  src="https://www.youtube.com/embed/poA0jejqJ9s?si=Ylp5gHS2asOHvkjO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <video src={'/img/video/video.mp4'} autoPlay loop muted playsInline />
         </VideoBlock>
       </Content>
     </Container>
@@ -29,7 +29,7 @@ const Container = styled.section`
   width: 100%;
   height: 100vh;
   min-height: 800px;
-  background: linear-gradient(to right, #fff 60%, ${({ theme }) => `${theme.primaryLight}15`});
+  background: linear-gradient(to right,#bfdcff 60%, ${({ theme }) => `${theme.primaryLight}15`});
   display: flex;
   align-items: center;
   
@@ -37,6 +37,9 @@ const Container = styled.section`
     height: auto;
     min-height: auto;
     padding: 120px 0;
+  }
+  @media (max-width: 768px) {
+    padding: 100px 0 30px 0;
   }
 `;
 
@@ -58,12 +61,13 @@ const Content = styled.div`
   
   @media (max-width: 768px) {
     padding: 0 20px;
+    gap: 0px;
   }
 `;
 
 const TextBlock = styled.div`
   flex: 1;
-  max-width: 600px;
+  max-width: 700px;
 `;
 
 const Title = styled.h1`
@@ -84,6 +88,11 @@ const Title = styled.h1`
 
 const Highlight = styled.span`
   color: ${({ theme }) => theme.primary};
+
+  span{
+    color: ${({ theme }) => theme.primaryMiddle};
+    font-size: 4.2rem;
+  }
 `;
 
 const Description = styled.p`
@@ -126,14 +135,25 @@ const Button = styled.button`
 `;
 const VideoBlock = styled.div`
   flex: 1;
-  max-width: 900px;
+  max-width: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  video{
+    width: 100%;
+    height: 550px;
+    object-fit: contain;
+    
+
+    @media (max-width: 768px) {
+      height: 250px;
+     
+    }
+  }
+  
 `;
 
-const iframe = styled.iframe`
-  width: 100%;
-  aspect-ratio: 16/12;
-  object-fit: cover;
-  border-radius: 20px;
-`;
+
 
 export default Sec1Hero; 

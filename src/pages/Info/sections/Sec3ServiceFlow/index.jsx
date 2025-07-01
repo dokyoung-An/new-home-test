@@ -30,6 +30,10 @@ const Container = styled.section`
   width: 100%;
   padding: 120px 0;
   background: #fff;
+
+  @media (max-width: 768px) {
+    padding: 50px 0;
+  }
 `;
 
 const Content = styled.div`
@@ -37,6 +41,9 @@ const Content = styled.div`
   margin: 0 auto;
   padding: 0 2rem;
   animation: ${fadeIn} 1s ease-out;
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
 `;
 
 const TitleBlock = styled.div`
@@ -91,6 +98,10 @@ const StyledIframe = styled.iframe`
   
   /* IE and Edge */
   -ms-overflow-style: none;
+
+  @media (max-width: 768px) {
+    height: 1000px;
+  }
 `;
 
 export default Sec3ServiceFlow;
