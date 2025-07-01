@@ -14,16 +14,12 @@ const Sec3ServiceFlow = () => {
           </Description>
         </TitleBlock>
         <IframeWrapper>
-          <AspectRatioBox>
-            <StyledIframe
-              src="https://vink2.imweb.me/info"
-              title="하자 정보 안내"
-              frameBorder="0"
-              scrolling="no"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </AspectRatioBox>
+          <StyledIframe
+            src="https://vink2.imweb.me/info"
+            title="하자 정보 안내"
+            frameBorder="0"
+            scrolling="no"
+          />
         </IframeWrapper>
       </Content>
     </Container>
@@ -73,23 +69,15 @@ const Description = styled.p`
 
 const IframeWrapper = styled.div`
   width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 20px;
-`;
-
-const AspectRatioBox = styled.div`
-  position: relative;
-  width: 100%;
-  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 `;
 
 const StyledIframe = styled.iframe`
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
+  height: 700px;
   border: none;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
