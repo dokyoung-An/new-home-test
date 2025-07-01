@@ -30,7 +30,7 @@ const BoardContainer = styled.section`
 
 const BoardIframe = styled.iframe`
   width: 90%;
-  height: 800px;
+  height: 750px;
   border: none;
   background: white;
   overflow: hidden;
@@ -46,8 +46,12 @@ const BoardIframe = styled.iframe`
   /* IE and Edge */
   -ms-overflow-style: none;
 
+  @media (max-width: 1024px) {
+    height: 650px;
+  }
+
   @media (max-width: 768px) {
-    height: 1000px;
+    height: 800px;
     width: 100%;
   }
 `;

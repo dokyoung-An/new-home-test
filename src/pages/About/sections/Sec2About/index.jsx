@@ -4,7 +4,7 @@ import { fadeIn } from '../../../../styles/animations';
 
 const Sec2About = () => {
   return (
-    <Container>
+    <Container id="introduce">
       <Content>
         <TextSection>
           <Title>하방은 고객의 소중한 자산을<br />지키는 전문가입니다</Title>

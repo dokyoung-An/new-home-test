@@ -45,7 +45,7 @@ const HeroSection = () => {
            하자 확인에서 접수까지! 모든 과정을 완벽하게 대행해드립니다.
           </HeroSubTitle>
           <CTAButton>
-            <a href="#ContactFormSection">상담 신청 바로가기</a> 
+            <a href="/contact">상담 신청 바로가기</a> 
           </CTAButton>
         </HeroContent>
       </Container>

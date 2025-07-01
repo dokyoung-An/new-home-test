@@ -882,12 +882,6 @@ export const Title = styled.h2`
  
 `;
 
-export const Container = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-`;
-
 export const StatsContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -916,7 +910,7 @@ export const StatBox = styled.div`
   }
 
   @media (max-width: 768px) {
-    padding: 10px;
+    padding: 8px;
   }
 `;
 
@@ -936,11 +930,11 @@ export const StatIcon = styled.div`
     color: #0066FF;
   }
   @media (max-width: 768px) {
-    width: 58px;
-    height: 58px;
+    width: 50px;
+    height: 50px;
     svg {
-      width: 28px;
-      height: 28px;
+      width: 24px;
+      height: 24px;
     }
   }
 `;
@@ -949,6 +943,10 @@ export const StatContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+
+  @media (max-width: 768px) {
+    gap: 0px;
+  }
 `;
 
 export const StatLabel = styled.span`
@@ -957,7 +955,7 @@ export const StatLabel = styled.span`
   color: #666;
 
   @media (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 `;
 
@@ -974,7 +972,7 @@ export const StatNumber = styled.span`
     color: #666;
   }
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 `;
 
@@ -1033,5 +1031,93 @@ export const TableTitle = styled.h2`
   @media (max-width: 768px) {
     font-size: 1.8rem;
     margin-bottom: 10px;
+  }
+`;
+
+export const TitleBoxContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+`;
+
+export const Titles = styled.h2`
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
+  }
+`;
+
+export const TitleContainer = styled.div`
+  background-color: #F8F9FA;
+  padding: 30px 0;
+
+  @media (max-width: 768px) {
+    padding: 10px 0;
+  }
+`;
+
+export const TitleBox = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+`;
+
+export const Container = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @media (max-width: 768px) {
+    padding: 0 20px;
+    margin-top: -50px;
+  }
+`;
+
+
+
+export const Subtitle = styled.p`
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 50px;
+`;
+
+export const ButtonGroup = styled.div`
+  
+  display: flex;
+  gap: 10px;
+
+  @media (max-width: 768px) {
+     width: 100%;
+     justify-content: center;
+     align-items: center;
+  
+  }
+
+`;
+
+export const Button = styled.button`
+  padding: 15px 30px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: ${props => props.active ? '#4285F4' : 'white'};
+  color: ${props => props.active ? 'white' : '#333'};
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  font-size: 1.2rem;
+
+  &:hover {
+    background: ${props => props.active ? '#3367D6' : '#f5f5f5'};
+  }
+
+  @media (max-width: 768px) {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 400;
+    width: 50%;
+    
   }
 `;

@@ -6,9 +6,10 @@ import { FaBars } from 'react-icons/fa';
 const menuItems = [
   {
     label: '하방',
+    href: '/about',
     subItems: [
-      { label: '하방 소개', href: '/about' },
-      { label: '주요 실적', href: '#BenefitsSection' },
+      { label: '하방 소개', href: '#introduce' },
+      { label: '하방 강점', href: '#strength' },
       { label: '정비 현황', href: '#Features' },
       { label: '파트너사', href: '#Partners' }
     ]
@@ -21,36 +22,27 @@ const menuItems = [
     ]
   },
   {
-    label: '하자 정보',
-    subItems: [
-      { label: '시설물 안전점검', href: '#Safety' },
-      { label: '내진성능평가', href: '#Earthquake' },
-      { label: '구조 안전진단', href: '#Structure' },
-      { label: '건설공사 정기안전점검', href: '#Construction' },
-      { label: '안전점검을 현장조사', href: '#Investigation' },
-      { label: '교량 및 터널 (토목)', href: '#Bridge' }
-    ]
-  },
-  {
-    label: '점검 보고서',
-    subItems: [
-      { label: '점검 보고서', href: '/report' }
-    ]
-  },
-  {
-    label: '우리집 VR',
-    subItems: [
-      { label: '우리집 VR', href: '/vr' },
-      
-    ]
-  },
-  {
     label: 'B2B 비즈니스',
     subItems: [
       { label: '비즈니스 솔루션', href: '#Business' },
       { label: '세이프체크', href: '#SafeCheck' }
     ]
-  }
+  },
+  {
+    label: '하자 정보',
+    href: '/info'
+    
+  },
+  {
+    label: '점검 보고서',
+    href: '/report' 
+    
+  },
+  {
+    label: '우리집 VR',
+    href: '/vr'
+  },
+  
  
 ];
 

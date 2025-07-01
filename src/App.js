@@ -19,6 +19,7 @@ import ApartInspection from './pages/ApartInspection';
 import AfterInspect from './pages/AfterInspect';
 import Report from './pages/Report';
 import Vr from './pages/Vr';
+import Info from './pages/Info';
 
 const MainContent = styled.main`
   /* 패딩 제거 */
@@ -60,6 +61,7 @@ const AppContent = () => {
           <Route path="/afterInspection" element={<AfterInspect />} />
           <Route path="/report" element={<Report />} />
           <Route path="/vr" element={<Vr />} />
+          <Route path="/info" element={<Info />} />
           {/* <Route path="/admin/ambassador" element={<Ambassador />} /> */}
           {/* 향후 확장을 위한 라우트 */}
           {/* <Route path="/about" element={<About />} /> */}

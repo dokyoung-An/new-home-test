@@ -1,6 +1,5 @@
 import React, { useState, useEffect, forwardRef, useRef } from 'react';
 import { supabase } from '../../../lib/supabaseClient';
-import PricingSection from '../PricingSection';
 import {
   ContactSection,
   ContactContainer,
@@ -46,94 +45,22 @@ import {
   StatIcon,
   LoadMoreButton,
   Pagination,
-  PageButton
+  PageButton,
+  TitleBoxContainer,
+  TitleContainer,
+  TitleBox,
+  Container,
+  Titles,
+  Subtitle,
+  ButtonGroup,
+  Button
 } from './style';
-import styled from 'styled-components';
+
 import { useInView } from 'react-intersection-observer';
 import { BsFillChatDotsFill, BsFillCheckCircleFill, BsCalendarCheckFill } from 'react-icons/bs';
 
 
-const TitleBoxContainer = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-`;
 
-const TitleContainer = styled.div`
-  background-color: #F8F9FA;
-  padding: 60px 0;
-
-  @media (max-width: 768px) {
-    padding: 20px 0;
-  }
-`;
-
-const TitleBox = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-`;
-
-const Container = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-`;
-
-const Title = styled.h2`
-
-  font-size: 4rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-
-  @media (max-width: 768px) {
-    font-size: 2.2rem;
-  }
-`;
-
-const Subtitle = styled.p`
-  font-size: 1rem;
-  color: #666;
-  margin-bottom: 50px;
-`;
-
-const ButtonGroup = styled.div`
-  
-  display: flex;
-  gap: 10px;
-
-  @media (max-width: 768px) {
-     width: 100%;
-     justify-content: center;
-     align-items: center;
-  
-  }
-
-`;
-
-const Button = styled.button`
-  padding: 15px 30px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  background: ${props => props.active ? '#4285F4' : 'white'};
-  color: ${props => props.active ? 'white' : '#333'};
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  font-size: 1.2rem;
-
-  &:hover {
-    background: ${props => props.active ? '#3367D6' : '#f5f5f5'};
-  }
-
-  @media (max-width: 768px) {
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: 400;
-    width: 50%;
-    
-  }
-`;
 
 const ContactFormSection = forwardRef((props, ref) => {
   const [formData, setFormData] = useState({
@@ -454,7 +381,7 @@ const ContactFormSection = forwardRef((props, ref) => {
         <Sections style={{padding: '100px 0 0 0'}}>
        
           <TitleBoxContainer>
-        <Title>상담 현황</Title>
+        <Titles>상담 현황</Titles>
           <Subtitle>입주 전 필수! 하방 상담 현황을 확인해보세요.</Subtitle>
           </TitleBoxContainer>
           <TitleContainer>
