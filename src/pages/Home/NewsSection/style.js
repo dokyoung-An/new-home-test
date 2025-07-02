@@ -286,6 +286,7 @@ export const NewsCardHeader = styled.div`
 export const NewsCategory = styled.span`
   display: inline-block;
   padding: 6px 12px;
+  margin-bottom: 5px;
   background: ${({ type }) => {
     switch (type) {
       case 'notice':
@@ -314,6 +315,10 @@ export const NewsCategory = styled.span`
   font-size: 13px;
   font-weight: 600;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+ 
+
+  
 `;
 
 export const NewsCardContent = styled.div`
@@ -370,6 +375,7 @@ export const NewsLink = styled.a`
   display: flex;
   align-items: center;
   gap: 6px;
+  border: none;
   
   &:hover {
     text-decoration: underline;
@@ -434,6 +440,39 @@ export const PopupHeader = styled.div`
 
 export const PopupBody = styled.div`
   padding: 24px;
+  overflow-y: auto;
+  
+  .content {
+    white-space: pre-line;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #222;
+    word-break: keep-all;
+    text-align: center;
+  }
+
+  .download-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 24px;
+    padding: 12px 24px;
+    background-color: #1a6dff;
+    color: white;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #0056e0;
+    }
+
+    svg {
+      font-size: 1.2rem;
+    }
+  }
 `;
 
 export const PopupFooter = styled.div`

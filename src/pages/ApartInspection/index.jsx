@@ -7,6 +7,7 @@ import Sec4News from './sections/Sec4News';
 import Sec5SNS from './sections/Sec5SNS';
 import GuaranteeSection from './sections/GuaranteeSection';
 import FAQSection from './sections/FAQSection';
+import Sec7Experience from './sections/Sec7Expertise';
 
 const ApartInspection = () => {
   return (
@@ -16,7 +17,7 @@ const ApartInspection = () => {
       <Sec3ServiceFlow />
       <Sec4News />
       <Sec2Science />
-     
+      <Sec7Experience />
       <Sec5SNS />
       <FAQSection />
       <GuaranteeSection />

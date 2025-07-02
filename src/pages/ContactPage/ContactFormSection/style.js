@@ -1121,3 +1121,109 @@ export const Button = styled.button`
     
   }
 `;
+
+export const LookupModal = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: ${fadeIn} 0.3s ease-out;
+`;
+
+export const LookupForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 24px;
+`;
+
+export const LookupInput = styled.input`
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid ${({ theme }) => theme.borderColor};
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: ${({ theme }) => theme.primary};
+    box-shadow: 0 0 0 2px ${({ theme }) => `${theme.primary}20`};
+  }
+`;
+
+export const LookupButton = styled.button`
+  width: 100%;
+  padding: 14px;
+  background: ${({ theme }) => theme.primary};
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+
+  &:hover {
+    background: ${({ theme }) => theme.primaryDark};
+  }
+`;
+
+export const InquiryDetails = styled.div`
+  margin-top: 32px;
+  padding: 24px;
+  background: ${({ theme }) => theme.cardBackground};
+  border-radius: 12px;
+  animation: ${fadeIn} 0.3s ease-out;
+
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: ${({ theme }) => theme.text};
+  }
+
+  p {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    color: ${({ theme }) => theme.textLight};
+    line-height: 1.6;
+
+    strong {
+      color: ${({ theme }) => theme.text};
+      margin-right: 8px;
+    }
+  }
+`;
+
+export const DeleteButton = styled.button`
+  width: 100%;
+  padding: 12px;
+  background: #ff4d4f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+
+  &:hover {
+    background: #ff7875;
+  }
+`;
+
+export const NoDataMessage = styled.p`
+  text-align: center;
+  color: #ff4d4f;
+  margin-top: 16px;
+  font-size: 0.95rem;
+`;

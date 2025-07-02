@@ -63,7 +63,7 @@ const Sec5SNS = () => {
             <ImageItem key={index} onClick={() => setSelectedImage(image)}>
               <Thumbnail src={image.thumbnail} alt={image.description} />
               <ThumbnailOverlay>
-  <ThumbnailText>👆 {image.description}</ThumbnailText>
+  <ThumbnailText> {image.description}</ThumbnailText>
 </ThumbnailOverlay>
             </ImageItem>
           ))}
@@ -101,8 +101,7 @@ const Sec5SNS = () => {
 const Container = styled.section`
   width: 100%;
   padding: 120px 0;
-  background: linear-gradient(to bottom, #fff, #f8f9fa);
-  
+  background: linear-gradient(to right Top, rgba(255, 255, 255,0.4), rgba(26, 109, 255,0.15));  
   @media (max-width: 768px) {
     padding: 80px 0;
   }

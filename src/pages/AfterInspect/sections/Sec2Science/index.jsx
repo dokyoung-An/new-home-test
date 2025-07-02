@@ -23,7 +23,7 @@ const Sec2Science = () => {
 
   const features = [
     { icon: PersonIcon, text: '전문가 1인 현장 방문' },
-    { icon: TimeIcon, text: '1시간 내외 점검' },
+    { icon: TimeIcon, text: '2시간 내외 점검' },
     { icon: ReportIcon, text: '상세 보고서 제공' },
     { icon: PhoneIcon, text: '하자 접수 진행' },
   ];

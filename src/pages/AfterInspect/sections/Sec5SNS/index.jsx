@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { fadeIn } from '../../../../styles/animations';
+import { keyframes } from 'styled-components';
+
+const pulse = keyframes`
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+`;
+
 
 const snsImages = [
   {
@@ -24,14 +32,14 @@ const snsImages = [
     description: '변기 수전 결로'
   },
   {
-    thumbnail: '/img/haja/5.jpg',
-    full: '/img/haja/5.jpg',
-    description: '창호 실리콘 마감 불량'
+    thumbnail: '/img/haja/47.jpg',
+    full: '/img/haja/47.jpg',
+    description: ' 거실창 유리 굴절'
   },
   {
-    thumbnail: '/img/haja/6.jpg',
-    full: '/img/haja/6.jpg',
-    description: '베란다 방수 하자'
+    thumbnail: '/img/haja/34.jpg',
+    full: '/img/haja/34.jpg',
+    description: '오토씰 작동불량'
   }
 ];
 
@@ -55,8 +63,8 @@ const Sec5SNS = () => {
             <ImageItem key={index} onClick={() => setSelectedImage(image)}>
               <Thumbnail src={image.thumbnail} alt={image.description} />
               <ThumbnailOverlay>
-                <ThumbnailText>{image.description}</ThumbnailText>
-              </ThumbnailOverlay>
+  <ThumbnailText> {image.description}</ThumbnailText>
+</ThumbnailOverlay>
             </ImageItem>
           ))}
         </ImageGrid>
@@ -85,6 +93,7 @@ const Sec5SNS = () => {
     </ModalContent>
   </Modal>
 )}
+
     </Container>
   );
 };
@@ -92,7 +101,7 @@ const Sec5SNS = () => {
 const Container = styled.section`
   width: 100%;
   padding: 120px 0;
-  background: linear-gradient(to bottom, #fff, #f8f9fa);
+  background: linear-gradient(to bottom, #fff, rgba(26, 109, 255,0.05));
   
   @media (max-width: 768px) {
     padding: 80px 0;
@@ -168,6 +177,35 @@ const ImageGrid = styled.div`
   }
 `;
 
+const Thumbnail = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+`;
+
+const ThumbnailOverlay = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(20%);
+  transition: all 0.4s ease;
+  padding: 20px;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
 const ImageItem = styled.div`
   position: relative;
   aspect-ratio: 1;
@@ -180,43 +218,37 @@ const ImageItem = styled.div`
   &:hover {
     transform: translateY(-5px);
     
-    img {
+    ${Thumbnail} {
       transform: scale(1.1);
     }
-    
-    div {
+
+    ${ThumbnailOverlay} {
       opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    &:hover {
+      transform: none;
     }
   }
 `;
 
-const Thumbnail = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-`;
 
-const ThumbnailOverlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-`;
+
 
 const ThumbnailText = styled.span`
   color: white;
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 500;
   text-align: center;
-  padding: 0 20px;
+  word-break: keep-all;
+
+  @media (max-width: 768px) {
+    animation: ${pulse} 1.8s ease-in-out infinite;
+  }
+
 `;
 
 const Modal = styled.div`

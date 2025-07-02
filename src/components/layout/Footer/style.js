@@ -1,196 +1,114 @@
 import styled from 'styled-components';
 
 export const FooterWrapper = styled.footer`
-  background-color: #1a1a1a;
-  color: #ccc;
-  font-size: 0.85rem;
-  padding: 40px 0 20px;
-
-  @media (max-width: 480px) {
-    padding: 24px 0 10px;
-  }
+  background: linear-gradient(to left, rgba(0, 0, 0,1), rgba(1, 4, 9, 0.8));
+  color: #fff;
+  padding: 60px 0;
 `;
 
 export const FooterContent = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 24px;
-
-  @media (max-width: 480px) {
-    gap: 16px;
-  }
-`;
-
-export const FooterInfo = styled.div`
-  display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
+  gap: 80px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     flex-direction: column;
-    gap: 12px;
+    gap: 40px;
   }
 `;
 
 export const FooterLeft = styled.div`
-  flex: 1;
-  min-width: 200px;
+  flex: 2;
+`;
 
-  @media (max-width: 480px) {
-    min-width: 0;
-    margin-bottom: 8px;
+export const Logo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+
+  img {
+    height: 40px;
+    width: auto;
+    margin-left : -20px;
+
+  }
+
+  div {
+    p {
+      font-size: 14px;
+      line-height: 1.4;
+      color: #fff;
+      margin: 0;
+    }
   }
 `;
 
-export const FooterCenter = styled.div`
-  flex: 2;
-  min-width: 200px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+export const CompanyInfo = styled.div`
+  margin-bottom: 24px;
 
-  @media (max-width: 480px) {
-    min-width: 0;
-    gap: 0.5rem;
+  p {
+    font-size: 13px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
   }
+`;
+
+export const CopyrightText = styled.p`
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
 `;
 
 export const FooterRight = styled.div`
   flex: 1;
-  min-width: 120px;
-  text-align: right;
-
-  img {
-    width: 40px;
-  }
-
-  @media (max-width: 768px) {
-    text-align: left;
-  }
-  @media (max-width: 480px) {
-    min-width: 0;
-    margin-top: 8px;
-    img {
-      width: 32px;
-    }
-  }
 `;
 
-export const FooterNotice = styled.div`
-  line-height: 1.8;
-  font-size: 0.85rem;
-  color: #888;
-`;
-
-export const FooterTel = styled.div`
-  p {
-    margin: 0;
-    color: #ccc;
-  }
+export const ContactInfo = styled.div`
+  margin-bottom: 32px;
 
   h2 {
-    font-size: 1.5rem;
-    color: #E65C30;
-    margin: 0.5rem 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    margin: 0 0 16px 0;
+  }
+
+  p {
+    font-size: 13px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
   }
 `;
 
-export const FooterNav = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-
-  a {
-    color: #aaa;
-    text-decoration: none;
-    font-size: 0.85rem;
-
-    &:hover {
-      color: #fff;
-    }
-
-    &:not(:last-child)::after {
-      content: '|';
-      margin: 0 4px;
-      color: #444;
-    }
-  }
+export const SocialLinks = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
 `;
 
-export const FooterBottom = styled.div`
+export const SocialLink = styled.a`
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding-top: 12px;
-  border-top: 1px solid #222;
-
-  .copyright {
-    font-size: 0.75rem;
-    color: #555;
-  }
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    .copyright {
-      font-size: 0.6rem;
-    }
-  }
-`;
-
-export const FooterSelectGroup = styled.div`
-  display: flex;
-  gap: 10px;
-
-  select {
-    background-color: #111;
-    color: #ccc;
-    border: 1px solid #333;
-    padding: 4px 10px;
-    font-size: 0.85rem;
-
-    &:hover {
-      background-color: #222;
-    }
-  }
-`;
-
-export const SocialButtons = styled.div`
-  display: flex;
   gap: 8px;
-  margin-top: 8px;
-  max-width: 100%;
-`;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s ease;
 
-export const SocialButton = styled.a`
-  width: 38px;
-  height: 38px;
-  font-size: 16px;
-
-  @media (max-width: 480px) {
-    width: 32px;
-    height: 32px;
+  svg {
     font-size: 16px;
   }
-`;
-
-export const FooterLink = styled.button`
-  background: none;
-  border: none;
-  color: #aaa;
-  font-size: 0.85rem;
-  cursor: pointer;
-  padding: 0;
 
   &:hover {
     color: #fff;
   }
+`;
 
-  &:not(:last-child)::after {
-    content: '|';
-    margin: 0 8px;
-    color: #444;
-  }
+export const Divider = styled.div`
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin: 40px 0;
 `;

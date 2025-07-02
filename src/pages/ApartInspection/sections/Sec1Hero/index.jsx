@@ -18,7 +18,7 @@ const Sec1Hero = () => {
           <Button><a href="/contact">서비스 문의하기</a></Button>
         </TextBlock>
         <ImageBlock>
-          <MainImage src="/img/apartment/apart3.png" alt="하방 서비스" />
+          <MainImage src="/img/apartment/apart4.png" alt="하방 서비스" />
         </ImageBlock>
       </Content>
     </Container>

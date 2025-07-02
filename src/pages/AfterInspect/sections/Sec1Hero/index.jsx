@@ -18,7 +18,7 @@ const Sec1Hero = () => {
           <Button><a href="/contact">서비스 문의하기</a></Button>
         </TextBlock>
         <ImageBlock>
-          <MainImage src="/img/apartment/apart3.png" alt="하방 서비스" />
+          <MainImage src="/img/apartment/apart5.png" alt="하방 서비스" />
         </ImageBlock>
       </Content>
     </Container>
@@ -47,7 +47,7 @@ const Content = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 60px;
+  gap: 100px;
   animation: ${fadeIn} 1s ease-out;
   
   @media (max-width: 1024px) {
@@ -84,6 +84,7 @@ const Title = styled.h1`
 
 const Highlight = styled.span`
   color: ${({ theme }) => theme.primary};
+  
 `;
 
 const Description = styled.p`
@@ -127,7 +128,7 @@ const Button = styled.button`
 
 const ImageBlock = styled.div`
   flex: 1;
-  max-width: 600px;
+  max-width: 500px;
   position: relative;
   
   @media (max-width: 1024px) {

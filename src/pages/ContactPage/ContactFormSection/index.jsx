@@ -53,11 +53,22 @@ import {
   Titles,
   Subtitle,
   ButtonGroup,
-  Button
+  Button,
+  LookupModal,
+  LookupForm,
+  LookupInput,
+  LookupButton,
+  InquiryDetails,
+  DeleteButton,
+  NoDataMessage
 } from './style';
 
 import { useInView } from 'react-intersection-observer';
 import { BsFillChatDotsFill, BsFillCheckCircleFill, BsCalendarCheckFill } from 'react-icons/bs';
+
+
+
+
 
 
 
@@ -203,12 +214,47 @@ const ContactFormSection = forwardRef((props, ref) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [selectedTour, setSelectedTour] = useState(null);
 
+const [isLookupOpen, setIsLookupOpen] = useState(false);
+const [lookupData, setLookupData] = useState({
+  apartment: '',
+  name: '',
+  phone: ''
+});
+const [lookupResult, setLookupResult] = useState(null);
+const [lookupError, setLookupError] = useState('');
+
+  const formatPhoneNumber = (value) => {
+    if (!value) return value;
+    const phoneNumber = value.replace(/[^\d]/g, '');
+    const phoneNumberLength = phoneNumber.length;
+    if (phoneNumberLength < 4) return phoneNumber;
+    if (phoneNumberLength < 7) {
+      return `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(3)}`;
+    }
+    return `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(3, 7)}-${phoneNumber.slice(7, 11)}`;
+  };
+
+  const handlePhoneChange = (e, setter) => {
+    const { value } = e.target;
+    const formattedPhone = formatPhoneNumber(value);
+    if (formattedPhone.length <= 13) { // 010-1234-1234 형식의 최대 길이
+      setter(prev => ({
+        ...prev,
+        phone: formattedPhone
+      }));
+    }
+  };
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }));
+    if (name === 'phone') {
+      handlePhoneChange(e, setFormData);
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: type === 'checkbox' ? checked : value
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -376,6 +422,71 @@ const ContactFormSection = forwardRef((props, ref) => {
     setVisibleItems(prev => prev + itemsPerPage);
   };
 
+  const handleLookupChange = (e) => {
+    const { name, value } = e.target;
+    if (name === 'phone') {
+      handlePhoneChange(e, setLookupData);
+    } else {
+      setLookupData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    }
+  };
+
+  const handleLookupSubmit = async (e) => {
+    e.preventDefault();
+    setLookupError('');
+    setLookupResult(null);
+
+    try {
+      const { data, error } = await supabase
+        .from('habang')
+        .select('*')
+        .eq('apartment', lookupData.apartment)
+        .eq('name', lookupData.name)
+        .eq('phone', lookupData.phone)
+        .single();
+
+      if (error) {
+        if (error.code === 'PGRST116') {
+          setLookupError('일치하는 상담 내역을 찾을 수 없습니다.');
+        } else {
+          throw error;
+        }
+        return;
+      }
+
+      setLookupResult(data);
+    } catch (error) {
+      console.error('조회 중 오류 발생:', error);
+      setLookupError('조회 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+    }
+  };
+
+  const handleDeleteInquiry = async () => {
+    if (!lookupResult) return;
+    
+    if (window.confirm('정말로 상담 내역을 삭제하시겠습니까?')) {
+      try {
+        const { error } = await supabase
+          .from('habang')
+          .delete()
+          .eq('id', lookupResult.id);
+
+        if (error) throw error;
+
+        alert('상담 내역이 삭제되었습니다.');
+        setLookupResult(null);
+        setLookupData({ apartment: '', name: '', phone: '' });
+        setIsLookupOpen(false);
+      } catch (error) {
+        console.error('삭제 중 오류 발생:', error);
+        alert('삭제 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+      }
+    }
+  };
+
   return (
     <ContactSection id="ContactFormSection" ref={ref}>
         <Sections style={{padding: '100px 0 0 0'}}>
@@ -425,7 +536,8 @@ const ContactFormSection = forwardRef((props, ref) => {
               <TableTitle >상담 현황 목록</TableTitle>
               <ButtonGroup>
                 <Button active className="conform" onClick={handleConformClick}>상담신청</Button>
-                <Button>조회수</Button>
+                <Button onClick={() => setIsLookupOpen(true)}>조회하기</Button>
+
               </ButtonGroup>
             </TableHeader>
             
@@ -529,8 +641,9 @@ const ContactFormSection = forwardRef((props, ref) => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="연락처를 입력해주세요"
+                    placeholder="숫자만 입력하세요"
                     required
+                    maxLength={13}
                   />
                 </FormGroup>
               </FormRow>
@@ -567,7 +680,70 @@ const ContactFormSection = forwardRef((props, ref) => {
         </FormSection>
       </ContactContainer>
 
-  
+      {isLookupOpen && (
+        <LookupModal>
+          <FormInner>
+            <CloseButton onClick={() => setIsLookupOpen(false)}>×</CloseButton>
+            <FormTitle>상담 내역 조회</FormTitle>
+            <FormSubtitle>아파트명, 이름, 연락처를 입력해주세요.</FormSubtitle>
+            
+            <LookupForm onSubmit={handleLookupSubmit}>
+              <FormGroup>
+                <Label>아파트명<RequiredMark>*</RequiredMark></Label>
+                <LookupInput
+                  type="text"
+                  name="apartment"
+                  value={lookupData.apartment}
+                  onChange={handleLookupChange}
+                  required
+                />
+              </FormGroup>
+              
+              <FormGroup>
+                <Label>이름<RequiredMark>*</RequiredMark></Label>
+                <LookupInput
+                  type="text"
+                  name="name"
+                  value={lookupData.name}
+                  onChange={handleLookupChange}
+                  required
+                />
+              </FormGroup>
+              
+              <FormGroup>
+                <Label>연락처<RequiredMark>*</RequiredMark></Label>
+                <LookupInput
+                  type="tel"
+                  name="phone"
+                  value={lookupData.phone}
+                  onChange={handleLookupChange}
+                  placeholder="숫자만 입력하세요"
+                  required
+                  maxLength={13}
+                />
+              </FormGroup>
+
+              <LookupButton type="submit">조회하기</LookupButton>
+            </LookupForm>
+
+            {lookupError && <NoDataMessage>{lookupError}</NoDataMessage>}
+
+            {lookupResult && (
+              <InquiryDetails>
+                <h3>상담 내역</h3>
+                <p><strong>접수일:</strong> {new Date(lookupResult.created_at).toLocaleDateString()}</p>
+                <p><strong>아파트명:</strong> {lookupResult.apartment}</p>
+                <p><strong>이름:</strong> {lookupResult.name}</p>
+                <p><strong>연락처:</strong> {lookupResult.phone}</p>
+                <p><strong>지역:</strong> {lookupResult.region}</p>
+                <p><strong>상태:</strong> {getStatusText(lookupResult.inquiry_status)}</p>
+                <DeleteButton onClick={handleDeleteInquiry}>상담 내역 삭제</DeleteButton>
+              </InquiryDetails>
+            )}
+          </FormInner>
+        </LookupModal>
+      )}
+
 
     
     </ContactSection>

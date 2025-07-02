@@ -7,12 +7,12 @@ const menuItems = [
   {
     label: '하방',
     href: '/about',
-    subItems: [
-      { label: '하방 소개', href: '#introduce' },
-      { label: '하방 강점', href: '#strength' },
-      { label: '정비 현황', href: '#Features' },
-      { label: '파트너사', href: '#Partners' }
-    ]
+    // subItems: [
+    //   { label: '하방 소개', href: '#introduce' },
+    //   { label: '하방 강점', href: '#strength' },
+    //   { label: '정비 현황', href: '#Features' },
+    //   { label: '파트너사', href: '#Partners' }
+    // ]
   },
   {
     label: '아파트 사전점검',
@@ -23,10 +23,11 @@ const menuItems = [
   },
   {
     label: 'B2B 비즈니스',
-    subItems: [
-      { label: '비즈니스 솔루션', href: '#Business' },
-      { label: '세이프체크', href: '#SafeCheck' }
-    ]
+    href: '/b2b',
+    // subItems: [
+    //   { label: '비즈니스 솔루션', href: '#Business' },
+    //   { label: '세이프체크', href: '#SafeCheck' }
+    // ]
   },
   {
     label: '하자 정보',

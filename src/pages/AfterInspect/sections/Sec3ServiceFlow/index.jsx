@@ -104,6 +104,7 @@ const Title = styled.h2`
   @media (max-width: 768px) {
     font-size: 2.4rem;
   }
+  
 `;
 
 const Description = styled.p`
@@ -159,20 +160,28 @@ const CardImage = styled.img`
 
 const CardContent = styled.div`
   padding: 10px 30px;
-  max-height: 100px;
+  max-height: 120px;
 `;
 
 const CardTitle = styled.h3`
   font-size: 1.8rem;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   color: ${({ theme }) => theme.text};
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const CardDescription = styled.p`
   font-size: 1.1rem;
   line-height: 1.6;
   color: ${({ theme }) => theme.textLight};
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 export default Sec3ServiceFlow; 
