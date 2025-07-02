@@ -79,8 +79,8 @@ const AboutSection = () => {
         >
           <Heading>하방 임대사업 솔루션</Heading>
           <Description>
-            하방은 임대사업자에게 입주 전 세대 상태를 정밀하게 기록해 분쟁을 예방하고, 
-            원상복구 대비 자료로 활용할 수 있는 솔루션을 제공합니다.
+            하방은 임대사업자에게 입주 전 세대 상태를 정밀하게<br/> 기록해 분쟁을 예방하고, 
+            원상복구 대비 자료로 활용할 수 있는 <br/>솔루션을 제공합니다.
           </Description>
         </TextContent>
         <ImageWrapper

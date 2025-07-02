@@ -31,18 +31,18 @@ const HeroSection = () => {
   return (
     <Hero>
       <VideoBackground autoPlay muted loop playsInline preload="auto"  poster="/img/bg-poster.png" >
-        <source src="/img/bg3.mp4" type="video/mp4" />
+        <source src="/img/main3.mp4" type="video/mp4" />
       </VideoBackground>
       
       <Container className='hero-container'>
         <HeroContent>
-          <HeroTagline><span>신축아파트 하자 확인! 입주 전 필수</span></HeroTagline>
+          <HeroTagline><span>특별한 우리집을 위한 단 하나의 방법!</span></HeroTagline>
           <HeroTitle>
             <HeroTitleHighlight><span>HABANG</span></HeroTitleHighlight>
-            사전점검대행 서비스 
+            사전점검대행 
           </HeroTitle>
           <HeroSubTitle>
-           하자 확인에서 접수까지! 모든 과정을 완벽하게 대행해드립니다.
+          신축아파트 입주 전, 세대 내 하자 확인 대행 서비스
           </HeroSubTitle>
           <CTAButton>
             <a href="/contact">상담 신청 하기</a> 
