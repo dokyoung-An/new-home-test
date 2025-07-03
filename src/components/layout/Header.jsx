@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { FaBars } from 'react-icons/fa';
+import { IoIosArrowDown } from 'react-icons/io';
 
 const menuItems = [
   {
@@ -113,42 +114,49 @@ const Header = () => {
 
         {/* Mobile */}
         <MobileNav isOpen={isMenuOpen}>
-        <MobileNavLinks>
-  {menuItems.map((item) => (
-    <li key={item.label}>
-      {item.subItems ? (
-        <div
-          onClick={() => toggleMobileSubMenu(item.label)}
-          className="mobile-nav-item"
-        >
-          {item.label}
-        </div>
-      ) : (
-        <a
-          href={item.href}
-          onClick={closeMenu}
-          className="mobile-nav-item"
-        >
-          {item.label}
-        </a>
-      )}
-
-      {item.subItems && activeMobileMenu === item.label && (
-        <MobileDropdown>
-          {item.subItems.map((sub) => (
-            <li key={sub.label}>
-              <a href={sub.href} onClick={closeMenu}>
-                {sub.label}
-              </a>
-            </li>
-          ))}
-        </MobileDropdown>
-      )}
-    </li>
-  ))}
-  </MobileNavLinks>
-</MobileNav>
-
+          <MobileNavLinks currentPath={location.pathname}>
+            {menuItems.map((item) => (
+              <li key={item.label}>
+                {item.subItems ? (
+                  <>
+                    <div
+                      onClick={() => toggleMobileSubMenu(item.label)}
+                      className={`mobile-nav-item${activeMobileMenu === item.label ? ' active' : ''}`}
+                      style={{ color: location.pathname === item.href ? '#1a6dff' : 'white' }}
+                    >
+                      {item.label}
+                      <IoIosArrowDown style={{ color: location.pathname === item.href ? '#1a6dff' : 'white' }} />
+                    </div>
+                    {activeMobileMenu === item.label && (
+                      <MobileDropdown>
+                        {item.subItems.map((sub) => (
+                          <li key={sub.label}>
+                            <a 
+                              href={sub.href} 
+                              onClick={closeMenu}
+                              style={{ color: location.pathname === sub.href ? '#1a6dff' : 'white' }}
+                            >
+                              {sub.label}
+                            </a>
+                          </li>
+                        ))}
+                      </MobileDropdown>
+                    )}
+                  </>
+                ) : (
+                  <a
+                    href={item.href}
+                    onClick={closeMenu}
+                    className="mobile-nav-item"
+                    style={{ color: location.pathname === item.href ? '#1a6dff' : 'white' }}
+                  >
+                    {item.label}
+                  </a>
+                )}
+              </li>
+            ))}
+          </MobileNavLinks>
+        </MobileNav>
 
       </HeaderContent>
     </HeaderContainer>
@@ -162,7 +170,7 @@ const HeaderContainer = styled.header`
   width: 100%;
   z-index: 100;
   background-color: ${({ scrolled, isHome, theme }) =>
-    !isHome ? 'black' : scrolled ? theme.secondaryColor : 'rgba(0, 0, 0, 0.05)'};
+    !isHome ? '#1d1d20' : scrolled ? theme.secondaryColor : 'rgba(0, 0, 0, 0.05)'};
   transition: all 0.3s ease;
   box-shadow: ${({ scrolled, isHome }) =>
     isHome && scrolled ? '0 2px 10px rgba(0, 0, 0, 0.1)' : 'none'};
@@ -359,21 +367,32 @@ const MobileNavLinks = styled.ul`
     padding: 15px 30px;
     border-bottom: 1px solid rgba(255,255,255,0.1);
 
-    div {
-      color: white;
+    .mobile-nav-item {
+      color: ${props => props.currentPath === props.itemPath ? '#1a6dff' : 'white'};
       font-size: 1.1rem;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      text-decoration: none;
+
+      svg {
+        transition: transform 0.3s ease;
+        font-size: 1.2rem;
+      }
+
+      &.active svg {
+        transform: rotate(180deg);
+      }
     }
 
     a {
-      color: white;
+      color: ${props => props.currentPath === props.itemPath ? '#1a6dff' : 'white'};
       font-size: 1rem;
       text-decoration: none;
       display: block;
       padding: 8px 0;
+      position: relative;
 
       &:hover {
         color: ${({ theme }) => theme.primaryMiddle};
@@ -386,7 +405,7 @@ const MobileDropdown = styled.ul`
   list-style: none;
   padding: 10px 0 0 15px;
   margin: 0;
-  background-color: rgba(255, 255, 255, 0.05);
+  
 
   li {
     padding: 8px 0;
