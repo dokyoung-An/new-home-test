@@ -1,13 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { fadeIn } from '../../../../styles/animations';
 
 const Sec1Hero = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const handleVideoLoad = () => {
+    setIsVideoLoaded(true);
+  };
+
   return (
     <Container>
-      <VideoBackground autoPlay muted loop playsInline>
-        <source src="/img/banner.mp4" type="video/mp4" />
-      </VideoBackground>
+      {(!isMobile || isVideoLoaded) && (
+        <VideoBackground 
+          autoPlay 
+          muted 
+          loop 
+          playsInline
+          preload="auto"
+          onLoadedData={handleVideoLoad}
+        >
+          <source src={isMobile ? "/img/banner_mobile.mp4" : "/img/banner.mp4"} type="video/mp4" />
+        </VideoBackground>
+      )}
       <Overlay />
       <Content>
         <Title>하자 점검의 기준, 하방</Title>

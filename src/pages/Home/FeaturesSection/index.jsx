@@ -13,7 +13,6 @@ import {
   CardIcon,
   CardContent,
   VideoBackground,
- 
 } from './style';
 
 // 애니메이션을 위한 별도 스타일
@@ -37,32 +36,52 @@ const animationStyle = {
 };
 
 const FeaturesSection = () => {
-
+  const [isMobile, setIsMobile] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const videoRef = useRef(null);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.playbackRate = 0.5; // 50% 느리게 재생
     }
   }, []);
-  
 
-  
-
+  const handleVideoLoad = () => {
+    setIsVideoLoaded(true);
+  };
 
   return (
     <Features id="FeaturesSection">
-      <VideoBackground ref={videoRef} autoPlay muted loop playsInline>
-        <source src="/img/0619.mp4" type="video/mp4" />
-      </VideoBackground>
+      {(!isMobile || isVideoLoaded) && (
+        <VideoBackground 
+          ref={videoRef} 
+          autoPlay 
+          muted 
+          loop 
+          playsInline
+          preload="auto"
+          onLoadedData={handleVideoLoad}
+        >
+          <source src={isMobile ? "/img/0619_mobile.mp4" : "/img/0619.mp4"} type="video/mp4" />
+        </VideoBackground>
+      )}
       <Container>
         <FeatureTag>SERVICE</FeatureTag>
         <FeatureTitle>하방은 이렇게 다릅니다</FeatureTitle>
         <FeatureParagraph>
           하자체크는 기본! 하자 접수에 우리집 사이버모델하우스까지
         </FeatureParagraph>
-        
-       
         
         <FeatureGrid>
           <Row1>
@@ -130,8 +149,6 @@ const FeaturesSection = () => {
           </Row2>
         </FeatureGrid>
       </Container>
-
-  
     </Features>
   );
 };
