@@ -4,9 +4,10 @@ import { fadeIn } from '../../../../styles/animations';
 
 const Sec1Hero = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
@@ -17,30 +18,33 @@ const Sec1Hero = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  const handleVideoLoad = () => {
-    setIsVideoLoaded(true);
-  };
-
   return (
     <Container>
-      {(!isMobile || isVideoLoaded) && (
-        <VideoBackground 
-          autoPlay 
-          muted 
-          loop 
+      {isClient && (
+        <VideoBackground
+          autoPlay
+          muted
+          loop
           playsInline
           preload="auto"
-          onLoadedData={handleVideoLoad}
         >
-          <source src={isMobile ? "/img/banner_mobile.mp4" : "/img/banner.mp4"} type="video/mp4" />
+          <source
+            src={isMobile ? "/img/banner_mobile.mp4" : "/img/banner.mp4"}
+            type="video/mp4"
+          />
         </VideoBackground>
       )}
       <Overlay />
       <Content>
-        <Title>하자 점검의 기준, 하방</Title>
+        <Title>
+          하자 없는 집을 위한
+          <br />
+          하자 전문가의 꼼꼼한 점검
+        </Title>
         <Subtitle>
-          전문성과 혁신으로 고객의 자산가치를 높이는<br />
-          대한민국 대표 하자점검 기업입니다
+          하자 전문가가 직접 찾아가는
+          <br />
+          하자 점검 서비스
         </Subtitle>
       </Content>
       <ScrollIndicator />

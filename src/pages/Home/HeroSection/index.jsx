@@ -21,9 +21,10 @@ import {
 
 const HeroSection = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
@@ -34,10 +35,6 @@ const HeroSection = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  const handleVideoLoad = () => {
-    setIsVideoLoaded(true);
-  };
-
   const logos = [
     { src: wordmarkLogo, alt: '랜하우스 워드마크' },
     { src: symbolLogo, alt: '랜하우스 심볼' },
@@ -47,7 +44,7 @@ const HeroSection = () => {
 
   return (
     <Hero>
-      {(!isMobile || isVideoLoaded) && (
+      {isClient && (
         <VideoBackground
           autoPlay
           muted
@@ -55,7 +52,6 @@ const HeroSection = () => {
           playsInline
           preload="auto"
           poster="/img/bg-poster.png"
-          onLoadedData={handleVideoLoad}
         >
           <source
             src={isMobile ? "/img/main3_mobile.mp4" : "/img/main3.mp4"}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container } from '../../../styles/common';
 import {
   Features,
@@ -37,10 +37,10 @@ const animationStyle = {
 
 const FeaturesSection = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-  const videoRef = useRef(null);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
@@ -51,99 +51,67 @@ const FeaturesSection = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 0.5; // 50% 느리게 재생
-    }
-  }, []);
-
-  const handleVideoLoad = () => {
-    setIsVideoLoaded(true);
-  };
-
   return (
-    <Features id="FeaturesSection">
-      {(!isMobile || isVideoLoaded) && (
-        <VideoBackground 
-          ref={videoRef} 
-          autoPlay 
-          muted 
-          loop 
+    <Features>
+      {isClient && (
+        <VideoBackground
+          autoPlay
+          muted
+          loop
           playsInline
           preload="auto"
-          onLoadedData={handleVideoLoad}
+          style={{ playbackRate: 0.5 }}
         >
-          <source src={isMobile ? "/img/0619_mobile.mp4" : "/img/0619.mp4"} type="video/mp4" />
+          <source
+            src={isMobile ? "/img/0619_mobile.mp4" : "/img/0619.mp4"}
+            type="video/mp4"
+          />
         </VideoBackground>
       )}
       <Container>
-        <FeatureTag>SERVICE</FeatureTag>
-        <FeatureTitle>하방은 이렇게 다릅니다</FeatureTitle>
+        <FeatureTag>Our Features</FeatureTag>
+        <FeatureTitle>하방만의 특별한 서비스</FeatureTitle>
         <FeatureParagraph>
-          하자체크는 기본! 하자 접수에 우리집 사이버모델하우스까지
+          하자 점검 전문가가 직접 찾아가는 하자 점검 서비스
         </FeatureParagraph>
-        
         <FeatureGrid>
           <Row1>
-            <FeatureCard className="row1-card1">
-              <CardContent className="space-bg">
-                <IconContainer>
-                  <CardIcon>🔍</CardIcon>
-                </IconContainer>
-                <div>
-                  <h3>육안점검</h3>
-                  <p>국토부 하자점검규정 및 하방자체 DB를 바탕으로 <br/>미관상 하자, 중대하자 250여 가지 체크 항목을 확인합니다.</p>
-                </div>
+            <FeatureCard>
+              <IconContainer>
+                <CardIcon src="/img/service/001.png" alt="Icon 1" />
+              </IconContainer>
+              <CardContent>
+                <h3>전문가의 꼼꼼한 점검</h3>
+                <p>하자 전문가가 직접 방문하여 꼼꼼하게 점검합니다.</p>
               </CardContent>
             </FeatureCard>
-            
-            <FeatureCard className="dark">
-              <CardContent className="multi-platform-bg">
-                <IconContainer>
-                  <CardIcon>🔌</CardIcon>
-                </IconContainer>
-                <div>
-                  <h3>장비점검</h3>
-                  <p>공기 속 유해물질에서부터 바닥 기울어짐까지!<br/> 눈으로 볼 수 없는 사항을 점검합니다.</p>
-                </div>
+            <FeatureCard>
+              <IconContainer>
+                <CardIcon src="/img/service/002.png" alt="Icon 2" />
+              </IconContainer>
+              <CardContent>
+                <h3>신속한 보수 지원</h3>
+                <p>발견된 하자에 대해 신속한 보수를 지원합니다.</p>
               </CardContent>
             </FeatureCard>
           </Row1>
-          
           <Row2>
             <FeatureCard>
-              <CardContent className="zoom-bg">
-                <IconContainer>
-                  <CardIcon>📲</CardIcon>
-                </IconContainer>
-                <div>
-                  <h3>하자접수</h3>
-                  <p>사전점검 때 발견된 하자를 체크리스트 or 건설사 하자 접수 어플에 당일 접수해 드립니다다</p>
-                </div>
+              <IconContainer>
+                <CardIcon src="/img/service/003.png" alt="Icon 3" />
+              </IconContainer>
+              <CardContent>
+                <h3>전문적인 상담</h3>
+                <p>하자 관련 전문적인 상담을 제공합니다.</p>
               </CardContent>
             </FeatureCard>
-            
-            <FeatureCard className="orange">
-              <CardContent className="business-bg">
-                <IconContainer>
-                  <CardIcon>📊</CardIcon>
-                </IconContainer>
-                <div>
-                  <h3>하자점검 보고서</h3>
-                  <p>사전점검 후, 하자 사진과 하자 내용을 <br/>한 눈에 볼 수 있는 보고서를 제공합니다.</p>
-                </div>
-              </CardContent>
-            </FeatureCard>
-            
             <FeatureCard>
-              <CardContent className="data-bg">
-                <IconContainer>
-                  <CardIcon>❓</CardIcon>
-                </IconContainer>
-                <div>
-                  <h3>360도 VR 세대기록</h3>
-                  <p>사전점검 현장을, 360도 VR로 기록해 점검 후에도 쉽게 확인할 수 있습니다.</p>
-                </div>
+              <IconContainer>
+                <CardIcon src="/img/service/004.png" alt="Icon 4" />
+              </IconContainer>
+              <CardContent>
+                <h3>체계적인 보고서</h3>
+                <p>점검 결과를 체계적인 보고서로 제공합니다.</p>
               </CardContent>
             </FeatureCard>
           </Row2>
