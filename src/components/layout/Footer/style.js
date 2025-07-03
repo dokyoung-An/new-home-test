@@ -24,6 +24,7 @@ export const FooterLeft = styled.div`
 export const Logo = styled.div`
   display: flex;
   align-items: center;
+ 
   gap: 16px;
   margin-bottom: 24px;
 
@@ -40,8 +41,22 @@ export const Logo = styled.div`
       line-height: 1.4;
       color: #fff;
       margin: 0;
-    }
+     
+    } 
   }
+
+  @media (max-width: 480px) {
+      display:flex;
+      flex-direction: column;
+      align-items: flex-start;
+      
+      div{
+        p{
+          
+        }
+      }
+    
+    }
 `;
 
 export const CompanyInfo = styled.div`
