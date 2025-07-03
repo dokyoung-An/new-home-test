@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import GlobalStyle from './styles/GlobalStyle';
@@ -9,7 +9,6 @@ import Header from './components/layout/Header';
 import styled from 'styled-components';
 import AmbassadorBoard from './pages/AmbassadorBoard';
 import EventPopup from './components/EventPopup';
-import { useState, useEffect } from 'react';
 import FloatingButtons from './components/FloatingButtons';
 import ContactPage from './pages/ContactPage';
 import Buttons from './components/common/Buttons';
@@ -21,6 +20,7 @@ import Report from './pages/Report';
 import Vr from './pages/Vr';
 import Info from './pages/Info';
 import B2BLanding from './pages/B2BLanding';
+import LoadingScreen from './components/common/LoadingScreen';
 
 const MainContent = styled.main`
   /* 패딩 제거 */
@@ -30,6 +30,7 @@ const MainContent = styled.main`
 const AppContent = () => {
   const location = useLocation();
   const [showEventPopup, setShowEventPopup] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // 세션 스토리지에서 팝업 표시 여부 확인
@@ -37,6 +38,13 @@ const AppContent = () => {
     if (!hasSeenPopup) {
       setShowEventPopup(false);
     }
+
+    // 최소 1.5초 동안 로딩 화면을 보여줍니다
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const handleCloseEventPopup = () => {
@@ -50,6 +58,7 @@ const AppContent = () => {
 
   return (
     <>
+      <LoadingScreen isLoading={isLoading} />
       <Header />
       <MainContent>
         <Routes>
