@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container } from '../../../styles/common';
 import ArrowIcon from '../../../components/common/ArrowIcon';
 import wordmarkLogo from '../../../assets/images/logo.png';
@@ -17,10 +17,27 @@ import {
   SlideTrack,
   SliderLogo,
   VideoBackground,
-  
 } from './style';
 
 const HeroSection = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const handleVideoLoad = () => {
+    setIsVideoLoaded(true);
+  };
+
   const logos = [
     { src: wordmarkLogo, alt: '랜하우스 워드마크' },
     { src: symbolLogo, alt: '랜하우스 심볼' },
@@ -30,9 +47,22 @@ const HeroSection = () => {
 
   return (
     <Hero>
-      <VideoBackground autoPlay muted loop playsInline preload="auto"  poster="/img/bg-poster.png" >
-        <source src="/img/main3.mp4" type="video/mp4" />
-      </VideoBackground>
+      {(!isMobile || isVideoLoaded) && (
+        <VideoBackground
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/img/bg-poster.png"
+          onLoadedData={handleVideoLoad}
+        >
+          <source
+            src={isMobile ? "/img/main3-mobile.mp4" : "/img/main3.mp4"}
+            type="video/mp4"
+          />
+        </VideoBackground>
+      )}
       
       <Container className='hero-container'>
         <HeroContent>
