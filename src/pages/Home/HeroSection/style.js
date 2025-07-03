@@ -280,7 +280,7 @@ export const CTAButton = styled.button`
     );
     transition: all 0.6s ease;
   }
-  
+
   &:hover {
     transform: translateY(-3px) scale(1.03);
     box-shadow: 0 10px 20px rgba(0,0,0,0.3);
@@ -347,7 +347,7 @@ export const SliderLogo = styled.img`
     height: 60px;
     margin: 0 15px;
   }
-`; 
+`;
 
 
 

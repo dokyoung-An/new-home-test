@@ -58,7 +58,7 @@ const HeroSection = () => {
           onLoadedData={handleVideoLoad}
         >
           <source
-            src={isMobile ? "/img/main_mobile.mp4" : "/img/main.mp4"}
+            src={isMobile ? "/img/main3_mobile.mp4" : "/img/main3.mp4"}
             type="video/mp4"
           />
         </VideoBackground>
