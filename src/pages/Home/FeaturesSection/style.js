@@ -360,7 +360,7 @@ export const FeatureCard = styled.div`
   border-radius: 20px;
   padding: 30px;
   height: 420px;
-  background-color: rgba(35, 38, 48, 0.7);
+ 
   @media (hover: hover) {
     backdrop-filter: blur(10px);
   }
@@ -379,10 +379,49 @@ export const FeatureCard = styled.div`
   transition: all 0.4s ease;
   transform: translateZ(0);
   
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.7;
+    transition: all 0.4s ease;
+    z-index: 1;
+  }
+
+  &.card-inspection::before {
+    background-image: url('/img/service/001.png');
+  }
+
+  &.card-repair::before {
+    background-image: url('/img/service/7.png');
+  }
+
+  &.card-consultation::before {
+    background-image: url('/img/service/hand.jpg');
+  }
+
+  &.card-report::before {
+    background-image: url('/img/service/report.png');
+  }
+
+  &.card-vr::before {
+    background-image: url('/img/service/vr2.png');
+  }
+  
   &:hover {
     transform: translateY(-8px) translateZ(0);
     box-shadow: 0 20px 40px rgba(26, 109, 255, 0.25), 0 10px 20px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(26, 109, 255, 0.15);
+
+    &::before {
+      opacity: 1;
+      transform: scale(1.05);
+    }
   }
   
   &::after {
@@ -399,6 +438,12 @@ export const FeatureCard = styled.div`
       transparent 60%
     );
     pointer-events: none;
+    z-index: 2;
+  }
+
+  & > * {
+    position: relative;
+    z-index: 3;
   }
   
   &.dark {
@@ -444,6 +489,7 @@ export const FeatureCard = styled.div`
       position: relative;
       z-index: 2;
     }
+
   }
   
   @media (max-width: 768px) {
@@ -493,31 +539,8 @@ export const CardContent = styled.div`
     }
   }
   
-  /* 클래스 기반 배경 이미지 설정 */
-  &.space-bg::before {
-    background-image: url('/img/service/1.jpg');
-  }
-  
-  &.multi-platform-bg::before {
-    background-image: url('/img/service/7.png');
-  }
-  
-  &.zoom-bg::before {
-    background-image: url('/img/service/hand.jpg');
-    background-position: center;
-    opacity: 0.25;
-  }
-  
-  &.business-bg::before {
-    background-image: url('/img/service/report.png');
-  }
-  
-  &.data-bg::before {
-    background-image: url('/img/service/vr2.png');
-  }
-  
   h3 {
-    font-size: 1.35rem;
+    font-size: 1.8rem;
     margin-bottom: 15px;
     color: #fff;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 0, 0, 0.4);
@@ -526,13 +549,13 @@ export const CardContent = styled.div`
     letter-spacing: 0.5px;
     
     @media (max-width: 480px) {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
     }
   }
   
   p {
     color: rgba(255, 255, 255, 0.95);
-    font-size: 1rem;
+    font-size: 1.2rem;
     line-height: 1.6;
     position: relative;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
@@ -568,7 +591,7 @@ export const IconContainer = styled.div`
   }
 `;
 
-export const CardIcon = styled.div`
+export const CardIcon = styled.img`
   width: 40px;
   height: 40px;
   display: flex;
@@ -577,11 +600,15 @@ export const CardIcon = styled.div`
   font-size: 22px;
   filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
   transition: transform 0.3s ease;
-  
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
   ${FeatureCard}:hover & {
     transform: scale(1.1);
   }
-`; 
+`;
 
 export const circle = keyframes`
   0% { transform: rotate(0deg); }

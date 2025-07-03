@@ -30,7 +30,8 @@ const MainContent = styled.main`
 const AppContent = () => {
   const location = useLocation();
   const [showEventPopup, setShowEventPopup] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [hasInitiallyLoaded, setHasInitiallyLoaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(location.pathname === '/' && !hasInitiallyLoaded);
 
   useEffect(() => {
     // 세션 스토리지에서 팝업 표시 여부 확인
@@ -39,17 +40,23 @@ const AppContent = () => {
       setShowEventPopup(false);
     }
 
-    // 최소 1.5초 동안 로딩 화면을 보여줍니다
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
+    // 첫 진입 시에만 로딩 화면 표시
+    if (location.pathname === '/' && !hasInitiallyLoaded) {
+      // 로딩 시간 후에 페이드아웃 시작
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+        // 페이드아웃이 완료된 후 초기 로딩 상태 업데이트
+        setTimeout(() => {
+          setHasInitiallyLoaded(true);
+        }, 1000);
+      }, 2000);
 
-    return () => clearTimeout(timer);
-  }, []);
+      return () => clearTimeout(timer);
+    }
+  }, [location.pathname, hasInitiallyLoaded]);
 
   const handleCloseEventPopup = () => {
     setShowEventPopup(false);
-    // 팝업을 닫았다는 정보를 세션 스토리지에 저장
     sessionStorage.setItem('hasSeenEventPopup', 'true');
   };
 
@@ -58,7 +65,7 @@ const AppContent = () => {
 
   return (
     <>
-      <LoadingScreen isLoading={isLoading} />
+      {!hasInitiallyLoaded && location.pathname === '/' && <LoadingScreen isLoading={isLoading} />}
       <Header />
       <MainContent>
         <Routes>

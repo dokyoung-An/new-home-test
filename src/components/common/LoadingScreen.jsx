@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 const fadeIn = keyframes`
@@ -59,7 +59,8 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  animation: ${props => props.isLoading ? fadeIn : fadeOut} 0.5s ease-in-out forwards;
+  opacity: ${props => props.isLoading ? 1 : 0};
+  transition: opacity 1s ease-out;
 `;
 
 const LogoContainer = styled.div`
@@ -86,6 +87,21 @@ const Line = styled.div`
 `;
 
 const LoadingScreen = ({ isLoading }) => {
+  const [shouldRender, setShouldRender] = useState(true);
+
+  useEffect(() => {
+    if (!isLoading) {
+      // transition이 끝난 후 컴포넌트를 제거
+      const timer = setTimeout(() => {
+        setShouldRender(false);
+      }, 1000); // transition 시간과 동일하게 설정
+
+      return () => clearTimeout(timer);
+    }
+  }, [isLoading]);
+
+  if (!shouldRender) return null;
+
   return (
     <Container isLoading={isLoading}>
       <LogoContainer>

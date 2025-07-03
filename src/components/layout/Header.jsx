@@ -16,6 +16,7 @@ const menuItems = [
   },
   {
     label: '아파트 사전점검',
+    href: '/inspection',
     subItems: [
       { label: '아파트 사전점검', href: '/inspection' },
       { label: '입주 전 사전점검', href: '/afterInspection' }
