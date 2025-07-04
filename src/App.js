@@ -21,6 +21,7 @@ import Vr from './pages/Vr';
 import Info from './pages/Info';
 import B2BLanding from './pages/B2BLanding';
 import LoadingScreen from './components/common/LoadingScreen';
+import { logError, measurePerformance } from './utils/errorTracking';
 
 const MainContent = styled.main`
   /* 패딩 제거 */
@@ -53,6 +54,21 @@ const AppContent = () => {
 
       return () => clearTimeout(timer);
     }
+
+    // 페이지 로드 시 성능 측정
+    window.addEventListener('load', () => {
+      measurePerformance();
+    });
+
+    // 전역 에러 핸들링
+    window.onerror = (message, source, lineno, colno, error) => {
+      logError(error, { message, source, lineno, colno });
+    };
+
+    // Promise 에러 핸들링
+    window.onunhandledrejection = (event) => {
+      logError(event.reason, { type: 'unhandledRejection' });
+    };
   }, [location.pathname, hasInitiallyLoaded]);
 
   const handleCloseEventPopup = () => {
