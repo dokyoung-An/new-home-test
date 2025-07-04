@@ -8,9 +8,11 @@ import {
   VideoBackground,
   VideoOverlay
 } from './style';
+import { useMediaQuery } from 'react-responsive';
 
 const BannerSection = () => {
   const videoRef = useRef(null);
+  const isMobile = useMediaQuery({ maxWidth: 768 });
 
   const firstText = '점검하세요!';
   const secondText = ' 하자는 줄이고, 입주는 편해집니다.'; // 앞에 공백 포함
@@ -69,7 +71,10 @@ const BannerSection = () => {
   return (
     <BannerWrapper>
       <VideoBackground ref={videoRef} autoPlay muted loop playsInline>
-        <source src="/img/banner.mp4" type="video/mp4" />
+        <source
+          src={isMobile ? "/img/banner_mobile.mp4" : "/img/banner_optimized.mp4"}
+          type="video/mp4"
+        />
       </VideoBackground>
       <VideoOverlay />
 

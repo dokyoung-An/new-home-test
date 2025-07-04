@@ -14,6 +14,7 @@ import {
   CardContent,
   VideoBackground,
 } from './style';
+import { useMediaQuery } from 'react-responsive';
 
 // 애니메이션을 위한 별도 스타일
 const animationStyle = {
@@ -36,19 +37,11 @@ const animationStyle = {
 };
 
 const FeaturesSection = () => {
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = useMediaQuery({ maxWidth: 768 });
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-
-    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   return (
@@ -63,7 +56,7 @@ const FeaturesSection = () => {
           style={{ playbackRate: 0.5 }}
         >
           <source
-            src={isMobile ? "/img/0619_mobile.mp4" : "/img/0619.mp4"}
+            src={isMobile ? "/img/0619_mobile.mp4" : "/img/0619_optimized.mp4"}
             type="video/mp4"
           />
         </VideoBackground>

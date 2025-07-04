@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { fadeIn } from '../../../../styles/animations';
-import { keyframes } from 'styled-components';
+import { useMediaQuery } from 'react-responsive';
 
 
 const pulse = keyframes`
@@ -10,41 +10,42 @@ const pulse = keyframes`
   100% { transform: scale(1); opacity: 1; }
 `;
 
-const snsImages = [
-  {
-    thumbnail: '/img/haja/rayser.png',
-    full: '/img/video/rayser.mp4',
-    description: '바닥 기울어짐'
-  },
-  {
-    thumbnail: '/img/video/nusu2.png',
-    full: '/img/video/7.mp4',
-    description: '욕실 천정 누수'
-  },
-  {
-    thumbnail: '/img/video/chang.png',
-    full: '/img/video/13.mp4',
-    description: '창문 개폐 시 소음발생'
-  },
-  {
-    thumbnail: '/img/video/gyelro.png',
-    full: '/img/video/8.mp4',
-    description: '결로 하자'
-  },
-  {
-    thumbnail: '/img/video/bal.png',
-    full: '/img/video/11.mp4',
-    description: '바닥 들뜸'
-  },
-  {
-    thumbnail: '/img/video/jam.png',
-    full: '/img/video/3.mp4',
-    description: '잠금장치 불량'
-  }
-];
-
 const Sec5SNS = () => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+
+  const snsImages = [
+    {
+      thumbnail: '/img/haja/rayser.png',
+      full: isMobile ? '/img/video/rayser_mobile.mp4' : '/img/video/rayser_optimized.mp4',
+      description: '바닥 기울어짐'
+    },
+    {
+      thumbnail: '/img/video/nusu2.png',
+      full: isMobile ? '/img/video/7_mobile.mp4' : '/img/video/7_optimized.mp4',
+      description: '욕실 천정 누수'
+    },
+    {
+      thumbnail: '/img/video/chang.png',
+      full: isMobile ? '/img/video/13_mobile.mp4' : '/img/video/13_optimized.mp4',
+      description: '창문 개폐 시 소음발생'
+    },
+    {
+      thumbnail: '/img/video/gyelro.png',
+      full: isMobile ? '/img/video/8_mobile.mp4' : '/img/video/8_optimized.mp4',
+      description: '결로 하자'
+    },
+    {
+      thumbnail: '/img/video/bal.png',
+      full: isMobile ? '/img/video/11_mobile.mp4' : '/img/video/11_optimized.mp4',
+      description: '바닥 들뜸'
+    },
+    {
+      thumbnail: '/img/video/jam.png',
+      full: isMobile ? '/img/video/3_mobile.mp4' : '/img/video/3_optimized.mp4',
+      description: '잠금장치 불량'
+    }
+  ];
 
   return (
     <Container>
@@ -234,9 +235,6 @@ const ImageItem = styled.div`
   }
 `;
 
-
-
-
 const ThumbnailText = styled.span`
   color: white;
   font-size: 1rem;
@@ -247,7 +245,6 @@ const ThumbnailText = styled.span`
   @media (max-width: 768px) {
     animation: ${pulse} 1.8s ease-in-out infinite;
   }
-
 `;
 
 const Modal = styled.div`

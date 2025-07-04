@@ -1,21 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { fadeIn } from '../../../../styles/animations';
+import { useMediaQuery } from 'react-responsive';
 
 const Sec1Hero = () => {
-  const [isMobile, setIsMobile] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  const isMobile = useMediaQuery({ maxWidth: 768 });
 
   useEffect(() => {
     setIsClient(true);
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-
-    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   return (
@@ -29,7 +22,7 @@ const Sec1Hero = () => {
           preload="auto"
         >
           <source
-            src={isMobile ? "/img/banner_mobile.mp4" : "/img/banner.mp4"}
+            src={isMobile ? "/img/banner_mobile.mp4" : "/img/banner_optimized.mp4"}
             type="video/mp4"
           />
         </VideoBackground>
