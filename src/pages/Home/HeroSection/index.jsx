@@ -54,7 +54,7 @@ const HeroSection = () => {
           poster="/img/bg-poster.png"
         >
           <source
-            src={isMobile ? "/img/main3_mobile.mp4" : "/img/main3.mp4"}
+            src={isMobile ? "/img/bg3_mobile.mp4" : "/img/bg3_optimized.mp4"}
             type="video/mp4"
           />
         </VideoBackground>

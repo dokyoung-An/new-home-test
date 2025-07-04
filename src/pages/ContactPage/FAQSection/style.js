@@ -17,73 +17,6 @@ export const FAQWrapper = styled.div`
   }
 `;
 
-export const DesignElement1 = styled.div`
-  position: absolute;
-  top: 85px;
-  left: calc((100% - 1200px) / 2 - 20px);
-  width: 20px;
-  height: 20px;
-  background: linear-gradient(135deg, #1a6dff, #1557cc);
-  border-radius: 6px;
-  opacity: 0.9;
-  transform: rotate(-15deg);
-  
-  @media (max-width: 1240px) {
-    left: 10px;
-  }
-  
-  @media (max-width: 768px) {
-    width: 15px;
-    height: 15px;
-    top:-10px;
-  }
-`;
-
-export const DesignElement2 = styled.div`
-  position: absolute;
-  top: 65px;
-  left: calc((100% - 1200px) / 2 + 10px);
-  width: 25px;
-  height: 25px;
-  background: linear-gradient(135deg, #1a6dff, #00BFA6);
-  border-radius: 8px;
-  opacity: 0.85;
-  transform: rotate(10deg);
-  
-  @media (max-width: 1240px) {
-    left: 40px;
-  }
-  
-  @media (max-width: 768px) {
-    width: 18px;
-    height: 18px;
-    left: 32px;
-    top: -20px;
-  }
-`;
-
-export const DesignElement3 = styled.div`
-  position: absolute;
-  top: 105px;
-  left: calc((100% - 1200px) / 2 - 5px);
-  width: 15px;
-  height: 15px;
-  background: linear-gradient(135deg, 	#00C896, #A259FF);
-  border-radius: 5px;
-  opacity: 0.95;
-  transform: rotate(30deg);
-  
-  @media (max-width: 1240px) {
-    left: 25px;
-  }
-  
-  @media (max-width: 768px) {
-    width: 12px;
-    height: 12px;
-    top: 5px;
-  }
-`;
-
 export const FAQContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
@@ -100,9 +33,50 @@ export const FAQContainer = styled.div`
   }
 `;
 
-// ... existing code ...
+export const FAQTitleWrapper = styled.div`
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 40px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 80%;
+    background: ${props => props.theme.primaryColor};
+    border-radius: 2px;
+  }
+
+  
+
+  @media (max-width: 768px) {
+    padding-left: 15px;
+    margin-bottom: 30px;
+
+    &::after {
+      font-size: 4rem;
+      right: -20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding-left: 12px;
+    margin-bottom: 20px;
+
+    &::after {
+      font-size: 3rem;
+      right: -10px;
+    }
+  }
+`;
 
 export const FAQTitle = styled.div`
+  position: relative;
+  z-index: 1;
+
   h2, h3 {
     font-size: 3rem;
     font-weight: 700;
@@ -263,25 +237,4 @@ export const MoreFAQLink = styled.a`
   font-weight: 500;
   text-decoration: none;
   transition: color 0.3s ease;
-  
-  &:hover {
-    color: ${props => props.theme.primaryDark};
-  }
-  
-  @media (max-width: 1024px) {
-    font-size: 0.9375rem;
-    margin-top: 32px;
-  }
-  
-  @media (max-width: 768px) {
-    font-size: 0.875rem;
-    margin-top: 28px;
-  }
-  
-  @media (max-width: 480px) {
-    font-size: 0.8125rem;
-    margin-top: 24px;
-  }
 `;
-
-// ... existing code ...

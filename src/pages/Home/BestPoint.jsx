@@ -162,13 +162,13 @@ const CardDescription = styled.p`
 const cards = [
   {
     image: '/img/bestpoint/1.png',
-    title: '검증된 전문가 팀',
-    description: '공신력 있는 전문가와 협업'
+    title: '검증된 전문가',
+    description: '실력과 신뢰로 검증된 전문가 인력 운영'
   },
   {
     image: '/img/bestpoint/7.jpeg',
-    title: '경상권 전문 사전점검업체',
-    description: '7년 경력, 지역 맞춤 점검'
+    title: '1만세대 이상 사전점검 진행',
+    description: '검증된 실전 경험, 더 정확하고 꼼꼼한 점검'
   },
   {
     image: '/img/bestpoint/2.jpeg',
@@ -177,13 +177,13 @@ const cards = [
   },
   {
     image: '/img/bestpoint/4.jpg',
-    title: '공동구매 진행',
-    description: '입주민 참여형 공동 점검'
+    title: '공동구매 다수 진행',
+    description: '수많은 공동구매로 입증된 하방 서비스'
   },
   {
     image: '/img/bestpoint/vr2.png',
     title: '국내최초! 세대기록 서비스',
-    description: '360도 VR로 세대 기록'
+    description: '입주민 편의 향상, 360도 VR로 세대 기록'
   }
 ];
 

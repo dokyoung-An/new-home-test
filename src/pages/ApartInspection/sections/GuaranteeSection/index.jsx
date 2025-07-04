@@ -1,41 +1,47 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FloorIcon, LeakIcon, SmoothIcon, DoorIcon, WarningIcon } from './icons';
+import { FloorIcon, LeakIcon, SmoothIcon, DoorIcon, WarningIcon, WallIcon, DoorIcon2 } from './icons';
 
-const defectCriteria = [
+const defectCriteria  = [
   {
-    id: 1,
-    icon: FloorIcon,
-    title: '바닥 수평',
-    description: '10m 이내 13mm 이상 차이 나는 경우'
-  },
-  {
-    id: 2,
+    id: '1',
     icon: LeakIcon,
-    title: '천장/벽 누수',
-    description: '눈에 띄는 누수 흔적이나 누수 사진이 있는 경우',
-    subText: '· 결로 제외'
+    description: '천장, 벽, 바닥 등 구조체에서 발생한 **지속적 또는 반복적 누수**로, 실내 사용에 큰 제약이 있는 경우',
+    note: '단순 결로, 배관 마감 부실 제외'
   },
   {
-    id: 3,
-    icon: SmoothIcon,
-    title: '평활도',
-    description: '물이 고이거나 빠지지 않는 경우',
-    subText: '· 흠집 시공 제외'
+    id: '2',
+    icon: FloorIcon,
+    description: '거실, 침실 등 주요 거주공간에서 **바닥 수평차가 15mm 이상**이거나, 고정형 가구 설치가 어려운 수준',
+    note: '10m 기준 수평차 13mm 이상은 국토부 기준에도 포함됨'
   },
   {
-    id: 4,
+    id: '3',
     icon: DoorIcon,
-    title: '문/샤시 수직/수평',
-    description: '문이 닫히지 않거나 좌우 5mm 이상 차이 난 경우'
+    description: '**샤시나 방문이 완전히 닫히지 않거나** 바람/소음 유입이 심각하여 기능상 사용이 어려운 경우',
+    note: '단순한 미세 유격, 외관 스크래치 제외'
   },
   {
-    id: 5,
+    id: '4',
+    icon: WallIcon,
+    description: '**벽체 내부나 바닥 슬래브 아래에 매립된 급수·배수·난방 배관에서 발생하는 누수, 소음, 누설 등의 하자**',
+    note: '매립 설비에서 발생하는 하자는 구조상 사전점검 당일 확인이 어려우며, 본 서비의 환불 기준에 해당되지 않음'
+  },
+  {
+    id: '5',
     icon: WarningIcon,
-    title: '마감재 파손',
-    description: '자재 교체가 필요한 정도의 하자가 발생한 경우'
+    description: '벽, 바닥, 천장 등의 마감재가 **깨짐·탈락·파손 등으로 인해 실제 사용이 불가능하거나**, 보수가 불가피한 수준일 경우',
+    note: '단순 스크래치, 경미한 오염 또는 미관상의 불만족은 제외'
+  },
+  {
+    id: '6',
+    icon: DoorIcon2,
+    description: '**현관문의 틈, 고정 불량 등으로 인해 외부 소음, 바람, 냄새 등이 실내로 유입되는 등 차폐 성능이 현저히 부족한 경우**',
+    note: '단순한 소음 민감도 또는 도어 클로저 미세 조정 문제는 제외'
   }
+  
 ];
+
 
 const GuaranteeSection = () => {
   return (
@@ -44,7 +50,7 @@ const GuaranteeSection = () => {
       <Content>
         <Header>
           <Title>중대 하자 보증 제도</Title>
-          <SubTitle>책임있는 점검를 약속합니다</SubTitle>
+          <SubTitle>책임있는 점검을 약속합니다</SubTitle>
         </Header>
 
         <GuaranteeCard>
@@ -72,6 +78,9 @@ const GuaranteeSection = () => {
           <NoticeList>
             <NoticeItem>
               각 하자는 누적되어 해당 기준에 도달해야 100%까지 보장되며, 보수 과정이나 입주 후에 생긴 하자는 책임지지 않습니다.
+            </NoticeItem>
+            <NoticeItem>
+            하자의 유형과 심각도는 국토교통부 하자심사 기준 및 당사 전문가의 공식 판단을 기준으로 하며, 단순한 외관 스크래치나 <br/>주관적 불만족은 해당되지 않습니다.
             </NoticeItem>
             <NoticeItem>
               환불을 위해 사진 등 증빙 자료가 필요합니다.
@@ -218,6 +227,8 @@ const DefectDescription = styled.p`
   color: ${({ theme }) => theme.textLight};
   line-height: 1.6;
   margin-bottom: 8px;
+  word-break: keep-all;
+  word-wrap: break-word;
 `;
 
 const SubText = styled.p`
@@ -229,7 +240,7 @@ const SubText = styled.p`
 const NoticeCard = styled.div`
   background: white;
   border-radius: 16px;
-  padding: 30px;
+  padding: 30px 40px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 `;
 
@@ -251,7 +262,9 @@ const NoticeItem = styled.li`
   margin-bottom: 12px;
   font-size: 0.95rem;
   color: ${({ theme }) => theme.textLight};
-  line-height: 1.6;
+  line-height: 1.8;
+  word-break: keep-all;
+  word-wrap: break-word;
 
   &:before {
     content: "•";

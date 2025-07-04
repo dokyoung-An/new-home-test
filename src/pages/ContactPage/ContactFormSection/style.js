@@ -24,6 +24,7 @@ export const ContactSection = styled.section`
   overflow: hidden;
   ${sectionSpacing}
 
+
 `;
 
 export const ContactContainer = styled.div`

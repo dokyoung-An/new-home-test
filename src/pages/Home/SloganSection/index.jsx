@@ -62,8 +62,8 @@ const SloganSection = () => {
         </ChatBubbles>
         
         <VerticalLine />
-        <SloganTitle>소중한 우리집, 하자란 단연코 없어야 합니다.</SloganTitle>
-        <SloganSubtitle>어렵고, 번거로운 하자 확인!<br/> 하방이 해결해드립니다.</SloganSubtitle>
+        <SloganTitle>도대체 어떻게 적어야 전문가를 찾으실까요?</SloganTitle>
+        <SloganSubtitle>신축아파트 하자<br/> 하방이 찾아드립니다.</SloganSubtitle>
         <HighlightText>사전점검대행 하방</HighlightText>
       </Container>
     </Slogan>

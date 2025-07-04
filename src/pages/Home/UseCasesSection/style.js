@@ -7,15 +7,6 @@ const fadeIn = keyframes`
   to { opacity: 1; transform: translateY(0); }
 `;
 
-const shine = keyframes`
-  from { background-position: -200% center; }
-  to { background-position: 200% center; }
-`;
-
-const floatUp = keyframes`
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-`;
 
 // 메인 래퍼
 
@@ -376,10 +367,11 @@ export const DetailImage = styled.div`
 
 export const DetailDescription = styled.div`
   width: 45%;
-  padding: 0 20px;
+  padding: 0 15px;
   font-size: 16px;
   line-height: 1.6;
   color: #333;
+  word-break: keep-all;
   
   @media (max-width: 768px) {
     width: 100%;

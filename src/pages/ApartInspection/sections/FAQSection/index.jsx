@@ -10,9 +10,7 @@ import {
   FAQQuestion,
   FAQAnswer,
   MoreFAQLink,
-  DesignElement1,
-  DesignElement2,
-  DesignElement3
+  FAQTitleWrapper
 } from './style';
 
 const FAQSection = () => {
@@ -82,18 +80,18 @@ const FAQSection = () => {
   return (
     <section id="FAQSection">
       <FAQWrapper>
-        <DesignElement1 />
-        <DesignElement2 />
-        <DesignElement3 />
+       
         <Container>
           <FAQContainer>
             <div>
-              <FAQTitle>
-                <h2>하방</h2>
-                <h3>F&Q</h3>
-              </FAQTitle>
+              <FAQTitleWrapper>
+                <FAQTitle>
+                  <h2>하방</h2>
+                  <h3>F&A</h3>
+                </FAQTitle>
+              </FAQTitleWrapper>
               <FAQDescription>
-                하방의 사전점검 서비스에 대해 궁금하신 점이 있으신가요?
+                하방에게 궁금하신 점이 있으신가요?<br/>
                 자주 묻는 질문과 답변을 확인해 보세요.
               </FAQDescription>
               <MoreFAQLink href="/contact">상담 신청하기→</MoreFAQLink>

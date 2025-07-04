@@ -12,9 +12,9 @@ const pulse = keyframes`
 
 const snsImages = [
   {
-    thumbnail: '/img/video/4t.jpg',
-    full: '/img/video/9.mp4',
-    description: '창문 개폐 하자'
+    thumbnail: '/img/haja/rayser.png',
+    full: '/img/video/rayser.mp4',
+    description: '바닥 기울어짐'
   },
   {
     thumbnail: '/img/video/nusu2.png',
@@ -54,7 +54,7 @@ const Sec5SNS = () => {
           <Title>하자 점검 사례</Title>
           <Description>
             하방이 발견한 다양한 하자 사례를 소개합니다.<br />
-            숨겨진 하자도 놓치지 않고 찾아냅니다.
+            신축아파트 하자 사례를 직접 확인해 보세요.
           </Description>
         </TitleBlock>
         
