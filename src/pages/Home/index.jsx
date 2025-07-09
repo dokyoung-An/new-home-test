@@ -7,7 +7,8 @@ import BenefitsSection from './BenefitsSection';
 import UseCasesSection from './UseCasesSection';
 import FeaturesSection from './FeaturesSection';
 import TestimonialsSection from './TestimonialsSection';
-
+import AdvantagesSection from './AdvantagesSection';
+import ServiceSection from './ServiceSection';
 import NewsSection from './NewsSection';
 import FAQSection from '../ContactPage/FAQSection';
 import CoworkerSection from './CoworkerSection';
@@ -36,14 +37,18 @@ const Home = () => {
     <>
       <HeroSection/>
       <SloganSection/>
-      <BestPoint/>
-      <BenefitsSection/>
-      <FeaturesSection/>
+    
+      <AdvantagesSection/>
+      <ServiceSection/>
       <VRExperienceSection/>
-     
-      <UseCasesSection/>
       <TestimonialsSection />
+      <BenefitsSection/>
+      <UseCasesSection/>
+    
       
+     
+    
+     
       <ProcessSection/>
       <FAQSection/> 
       <NewsSection/>

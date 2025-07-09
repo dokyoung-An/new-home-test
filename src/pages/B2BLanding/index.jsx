@@ -1,29 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
 import HeroSection from './sections/HeroSection';
-import AboutSection from './sections/AboutSection';
-import BenefitsSection from './sections/BenefitsSection';
-import StatisticsSection from './sections/StatisticsSection';
+import VRAdvantagesSection from './sections/VRAdvantagesSection';
 import CaseStudySection from './sections/CaseStudySection';
 import CTASection from './sections/CTASection';
-
-const PageWrapper = styled.div`
-  width: 100%;
-  overflow: hidden;
-`;
+import FAQSection from './sections/FAQSection';
 
 const B2BLanding = () => {
   return (
     <PageWrapper>
       <HeroSection />
-      <AboutSection />
-      <BenefitsSection />
-      <StatisticsSection />
+      <VRAdvantagesSection />
       <CaseStudySection />
+      <FAQSection />
       <CTASection />
     </PageWrapper>
   );
 };
+
+const PageWrapper = styled.div`
+  width: 100%;
+  overflow-x: hidden;
+`;
 
 export default B2BLanding; 

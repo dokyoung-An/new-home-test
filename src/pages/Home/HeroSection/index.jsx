@@ -71,7 +71,7 @@ const HeroSection = () => {
           신축아파트 입주 전, 세대 내 하자 확인 대행 서비스
           </HeroSubTitle>
           <CTAButton>
-            <a href="/contact">상담 신청 하기</a> 
+            <a href="/contact">상담 신청</a> 
           </CTAButton>
         </HeroContent>
       </Container>

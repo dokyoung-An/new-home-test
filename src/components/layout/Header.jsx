@@ -20,7 +20,8 @@ const menuItems = [
     href: '/inspection',
     subItems: [
       { label: '아파트 사전점검', href: '/inspection' },
-      { label: '입주 전 사전점검', href: '/afterInspection' }
+      { label: '입주 전 사전점검', href: '/afterInspection' },
+      { label: '후점검 서비스', href: '/checkInspection' }
     ]
   },
   {
@@ -86,7 +87,7 @@ const Header = () => {
   return (
     <HeaderContainer scrolled={scrolled} isHome={isHome}>
       <HeaderContent>
-        <Logo><a href="/">HABANG</a></Logo>
+        <Logo><img src="/img/habang4.png" alt="HABANG" /><a href="/">HABANG</a></Logo>
 
         {/* Desktop */}
         <NavLinks>
@@ -191,10 +192,19 @@ const Logo = styled.div`
   font-size: 1.8rem;
   font-family: 'Montserrat', sans-serif;
   letter-spacing: 0.05em;
-
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  img {
+    width: 35px;
+    height: 25px;
+    margin-bottom: 5px;
+  }
   a {
     color: #fff;
     text-decoration: none;
+    font-size: 1.55rem;
+    font-weight: 600;
   }
 
   @media (max-width: 768px) {

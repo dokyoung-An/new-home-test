@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import { slideUp, scroll } from '../../../styles/animations';
 
+
+
+
 export const SliderContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -12,9 +15,7 @@ export const SliderContainer = styled.div`
   @media (max-width: 768px) {
     overflow: hidden;
     padding: 0;
-    width: 100%;
-  
-    
+    width: 100%; 
   }
 `;
 

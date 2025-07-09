@@ -26,6 +26,7 @@ import {
   CTAIcon,
   CTAText,
   ClickGuide,
+
 } from './style';
 import { MdVrpano, MdPhotoCamera, MdOutlineSpeed, MdDevices } from 'react-icons/md';
 
@@ -126,7 +127,7 @@ const VRExperienceSection = () => {
   };
 
   return (
-    <section id="VRExperience" style={{ marginBottom: 0, paddingBottom: 0, paddingTop: 0}}>
+    <section id="VRExperience" style={{  marginBottom: 0, paddingBottom: 0, paddingTop: 0}}>
       <VRExperience>
         <Container>
           <ExperienceWrapper>

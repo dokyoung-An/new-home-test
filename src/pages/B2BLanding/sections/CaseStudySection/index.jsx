@@ -4,11 +4,11 @@ import { motion } from 'framer-motion';
 import { FaFileContract, FaClipboardCheck, FaPhoneAlt, FaCommentDots, FaImage } from 'react-icons/fa';
 
 const SectionWrapper = styled.section`
-  padding: 100px 0;
-  background: white;
+  padding: 100px 0 50px;
+  background: linear-gradient(135deg, #0B1B35 0%, #0A1F45 50%, #0B2555 100%);
   
   @media (max-width: 768px) {
-    padding: 60px 0;
+    padding: 60px 20px;
   }
 `;
 
@@ -27,7 +27,7 @@ const Title = styled.h2`
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: #1a1a1a;
+  color: rgba(255, 255, 255, 1);
   
   @media (max-width: 768px) {
     font-size: 2rem;
@@ -36,7 +36,7 @@ const Title = styled.h2`
 
 const Description = styled.p`
   font-size: 1.2rem;
-  color: #666;
+  color: rgba(255, 255, 255, 0.8);
   line-height: 1.6;
   max-width: 800px;
   margin: 0 auto;
@@ -48,7 +48,8 @@ const IframeContainer = styled.div`
   height: 600px;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   
   @media (max-width: 768px) {
     height: 700px;
@@ -66,21 +67,22 @@ const Detail = styled.div`
   margin-top: 60px;
   width: 100%;
   padding: 0 20px;
-  max-width: 1200px;
-
+  max-width: 850px;
+  margin: 0 auto;
+  margin-top: 60px;
 
   p {
     font-size: 24px;
     font-weight: 600;
-    color: #333;
-    margin-bottom: 32px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 20px;
     text-align: center;
 
     span {
       display: block;
       font-size: 16px;
       font-weight: 700;
-      color: #1a6dff;
+      color: rgba(255, 255, 255, 0.7);
       margin-left: 10px;
     }
   }
@@ -95,14 +97,16 @@ const Detail = styled.div`
 
     @media (max-width: 1024px) {
       grid-template-columns: repeat(5, 1fr);
-      
     }
 
-
-
     @media (max-width: 480px) {
+      display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
+      
+      li:nth-child(n+4) {
+        transform: translateX(calc(100% / 2));
+      }
     }
   }
 `;
@@ -110,21 +114,24 @@ const Detail = styled.div`
 const FeatureCard = styled.li`
   background: white;
   border-radius: 12px;
-  padding: 16px;
+  padding: 16px 16px 0 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   aspect-ratio: 1/1;
   width: 100%;
-  max-width: 160px;
+  max-width: 140px;
   margin: 0 auto;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.1);
   }
 
   .icon-wrapper {
@@ -176,8 +183,9 @@ const FeatureCard = styled.li`
   }
 
   @media (max-width: 480px) {
-    max-width: 120px;
+    max-width: none;
     padding: 10px;
+    margin: 0;
 
     .icon-wrapper {
       width: 36px;

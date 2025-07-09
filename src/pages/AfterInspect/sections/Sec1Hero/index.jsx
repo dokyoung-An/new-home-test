@@ -15,7 +15,7 @@ const Sec1Hero = () => {
             전문적인 장비와 20년 이상의 경험으로<br />
             완벽한 하자 점검을 약속드립니다
           </Description>
-          <Button><a href="/contact">서비스 문의하기</a></Button>
+          <Button><a href="/contact">서비스 문의</a></Button>
         </TextBlock>
         <ImageBlock>
           <MainImage src="/img/apartment/apart5.png" alt="하방 서비스" />
@@ -27,16 +27,19 @@ const Sec1Hero = () => {
 
 const Container = styled.section`
   width: 100%;
-  height: 100vh;
-  min-height: 800px;
+  min-height: 700px;
   background: linear-gradient(to right, #fff 60%, ${({ theme }) => `${theme.primaryLight}15`});
   display: flex;
   align-items: center;
+  padding: 100px 0;
   
   @media (max-width: 1024px) {
-    height: auto;
     min-height: auto;
-    padding: 120px 0;
+    padding: 100px 0;
+  }
+
+  @media (max-width: 768px) {
+    padding: 80px 0;
   }
 `;
 
@@ -46,8 +49,7 @@ const Content = styled.div`
   padding: 0 40px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 100px;
+  gap: 60px;
   animation: ${fadeIn} 1s ease-out;
   
   @media (max-width: 1024px) {
@@ -62,8 +64,12 @@ const Content = styled.div`
 `;
 
 const TextBlock = styled.div`
-  flex: 1;
-  max-width: 600px;
+  width: 600px;
+  
+  @media (max-width: 1024px) {
+    width: 100%;
+    max-width: 600px;
+  }
 `;
 
 const Title = styled.h1`
@@ -127,13 +133,12 @@ const Button = styled.button`
 `;
 
 const ImageBlock = styled.div`
-  flex: 1;
-  max-width: 500px;
+  width: 600px;
   position: relative;
   
   @media (max-width: 1024px) {
     width: 100%;
-    max-width: 500px;
+    max-width: 600px;
   }
 `;
 
@@ -142,6 +147,7 @@ const MainImage = styled.img`
   height: auto;
   object-fit: cover;
   border-radius: 20px;
+ 
 `;
 
 export default Sec1Hero; 

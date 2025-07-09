@@ -41,6 +41,8 @@ const Title = styled.h2`
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 3rem;
+  word-break: keep-all;
+  word-wrap: break-word;
   
   @media (max-width: 768px) {
     font-size: 2rem;
@@ -95,7 +97,7 @@ const CTASection = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <Title>임대사업자 전용 VR 서비스,<br />지금 상담해보세요.</Title>
+          <Title>하방 VR 서비스, <br />지금 상담해보세요.</Title>
           <ButtonGroup>
             <Button 
               to="/contact"

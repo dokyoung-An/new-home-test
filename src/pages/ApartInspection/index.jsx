@@ -5,23 +5,30 @@ import Sec2Science from './sections/Sec2Science';
 import Sec3ServiceFlow from './sections/Sec3ServiceFlow';
 import Sec4News from './sections/Sec4News';
 import Sec5SNS from './sections/Sec5SNS';
-import GuaranteeSection from './sections/GuaranteeSection';
+import Sec7Expertise from './sections/Sec7Expertise';
 import FAQSection from './sections/FAQSection';
-import Sec7Experience from './sections/Sec7Expertise';
+import GuaranteeSection from './sections/GuaranteeSection';
+import ServiceDetailSection from './sections/ServiceDetailSection';
+import WhyInspectionSection from './sections/WhyInspectionSection';
+import InspectionProcessSection from './sections/InspectionProcessSection';
+
 
 const ApartInspection = () => {
   return (
     <Container>
       <Sec1Hero />
+      <WhyInspectionSection />
+      <ServiceDetailSection />
+      <InspectionProcessSection />
      
-      <Sec3ServiceFlow />
-      <Sec4News />
-      <Sec2Science />
-      <Sec7Experience />
+      <Sec7Expertise />
+     
+   
+     
       <Sec5SNS />
+    
       <FAQSection />
       <GuaranteeSection />
-
     </Container>
   );
 };

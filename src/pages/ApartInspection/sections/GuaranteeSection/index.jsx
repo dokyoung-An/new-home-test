@@ -56,7 +56,10 @@ const GuaranteeSection = () => {
         <GuaranteeCard>
           <CardTitle>중대 하자 보증 제도</CardTitle>
           <CardDescription>
-            하자 전달 인력 배치, 중대 하자 최대 <Highlight>100% 환불 보장</Highlight>
+          <span className='card1'>"혹시 하방의 점검이 만족스럽지 못하셨나요?
+          불편을 드린점 진심으로 사과드립니다."<br/></span>
+          <span className='card2'>하방은 중대 하자에 대해 전담 인력을 통해 즉시 대응하며,
+          <Highlight> 최대 100% 환불</Highlight>까지 보장합니다</span>
           </CardDescription>
         </GuaranteeCard>
 
@@ -168,6 +171,18 @@ const CardDescription = styled.p`
   font-size: 1.1rem;
   color: ${({ theme }) => theme.textLight};
   line-height: 1.6;
+  .card1{
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 2;
+   
+    color:#676767;
+  } 
+  .card2{
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+   
+  } 
 `;
 
 const Highlight = styled.span`

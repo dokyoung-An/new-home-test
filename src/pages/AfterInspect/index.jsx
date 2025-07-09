@@ -8,19 +8,25 @@ import Sec5SNS from './sections/Sec5SNS';
 import Sec7Expertise from '../ApartInspection/sections/Sec7Expertise';
 import GuaranteeSection from './sections/GuaranteeSection';
 import FAQSection from './sections/FAQSection';
+import AfterInspectionSection from './sections/AfterInspectionSection';
+import InspectionProcessSection from '../AfterInspect/sections/InspectionProcessSection';
+import ServiceDetailSection from '../AfterInspect/sections/ServiceDetailSection';
+import LastChanceSection from './sections/LastChanceSection';
 
 const ApartInspection = () => {
   return (
     <Container>
       <Sec1Hero />
-     
-      <Sec3ServiceFlow />
-      <Sec4News />
-      <Sec2Science />
-     
+      <AfterInspectionSection />
+      <ServiceDetailSection/>
+      <InspectionProcessSection />
+      <LastChanceSection />
+      
+   
       <Sec5SNS />
       <FAQSection />
       <GuaranteeSection />
+   
     </Container>
   );
 };

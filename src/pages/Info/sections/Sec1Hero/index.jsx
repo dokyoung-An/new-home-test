@@ -1,8 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 import { fadeIn } from '../../../../styles/animations';
+import { useState, useEffect } from 'react';
 
 const Sec1Hero = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  const checkMobile = () => {
+    setIsMobile(window.innerWidth <= 768);
+  };
+
+  useEffect(() => {
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
     <Container>
       <Content>
@@ -18,7 +32,12 @@ const Sec1Hero = () => {
           <Button><a href="/contact">서비스 문의하기</a></Button>
         </TextBlock>
         <VideoBlock>
-        <video src={'/img/video/video.mp4'} autoPlay loop muted playsInline />
+          <video autoPlay muted loop playsInline>
+            <source
+              src={isMobile ? "/img/video/video_mobile.mp4" : "/img/video/video_optimized.mp4"}
+              type="video/mp4"
+            />
+          </video>
         </VideoBlock>
       </Content>
     </Container>

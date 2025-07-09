@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { fadeIn } from '../../../../styles/animations'
+import { Container } from '../../../../styles/common';
+import { MdBuildCircle } from 'react-icons/md';
 
 const equipmentData = [
   {
@@ -37,15 +39,72 @@ const equipmentData = [
   }
 ];
 
+const IconDivider = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+  
+  &::before,
+  &::after {
+    content: '';
+    height: 1px;
+    width: 80px;
+    background: #E0E0E0;
+  }
+  
+  @media (max-width: 768px) {
+    gap: 15px;
+    margin-bottom: 25px;
+    
+    &::before,
+    &::after {
+      width: 50px;
+    }
+  }
+`;
+
+const IconWrapper = styled.div`
+  width: 40px;
+  height: 40px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  svg {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover svg {
+    transform: rotate(15deg);
+  }
+  
+  @media (max-width: 768px) {
+    width: 30px;
+    height: 30px;
+  }
+`;
+
 const Sec7Expertise = () => {
   const firstRowItems = equipmentData.slice(0, 3);
   const secondRowItems = equipmentData.slice(3);
 
   return (
-    <Container>
+    <Container style={{ padding: '100px 0px' }}>
+      <IconDivider>
+        <IconWrapper>
+          <MdBuildCircle />
+        </IconWrapper>
+      </IconDivider>
       <TitleSection>
         <Title>하방의 전문 장비</Title>
-        <SubTitle>정밀한 하자 점검을 위한 최신 장비를 사용합니다</SubTitle>
+        <Subtitle>
+          하자 점검의 정확도를 높이는 전문 장비들을 소개합니다
+        </Subtitle>
       </TitleSection>
       <GridContainer>
         <Row>
@@ -79,17 +138,6 @@ const Sec7Expertise = () => {
   );
 };
 
-const Container = styled.section`
-  max-width: 1200px;
-  margin: 120px auto;
-  padding: 0 20px;
-  animation: ${fadeIn} 1s ease-out;
-
-  @media (max-width: 768px) {
-    margin: 80px auto;
-  }
-`;
-
 const TitleSection = styled.div`
   text-align: center;
   margin-bottom: 60px;
@@ -106,7 +154,7 @@ const Title = styled.h2`
   }
 `;
 
-const SubTitle = styled.p`
+const Subtitle = styled.p`
   font-size: 1.1rem;
   color: ${({ theme }) => theme.textLight};
   line-height: 1.6;
@@ -175,8 +223,6 @@ const EquipmentImage = styled.img`
 const TextContainer = styled.div`
   padding:15px 24px;
 `;
-
-
 
 const EquipmentName = styled.h3`
   font-size: 1.25rem;

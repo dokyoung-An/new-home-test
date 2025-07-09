@@ -162,7 +162,7 @@ const UseCasesSection = () => {
     <UseCasesWrapper id="UseCasesSection">
       <Container>
         <SectionSubtitle>Use Cases</SectionSubtitle>
-        <SectionTitle>하방 이렇게 활용하세요</SectionTitle>
+        <SectionTitle>하방! 이렇게 활용하셨어요</SectionTitle>
         
         <TabsContainer>
           <TabButton 

@@ -20,8 +20,8 @@ import Report from './pages/Report';
 import Vr from './pages/Vr';
 import Info from './pages/Info';
 import B2BLanding from './pages/B2BLanding';
-import LoadingScreen from './components/common/LoadingScreen';
 import { logError, measurePerformance } from './utils/errorTracking';
+import CheckInspection from './pages/CheckInspection';
 
 const MainContent = styled.main`
   /* 패딩 제거 */
@@ -31,28 +31,15 @@ const MainContent = styled.main`
 const AppContent = () => {
   const location = useLocation();
   const [showEventPopup, setShowEventPopup] = useState(false);
-  const [hasInitiallyLoaded, setHasInitiallyLoaded] = useState(false);
-  const [isLoading, setIsLoading] = useState(location.pathname === '/' && !hasInitiallyLoaded);
 
   useEffect(() => {
+    // 페이지 이동 시 스크롤을 상단으로 이동
+    window.scrollTo(0, 0);
+    
     // 세션 스토리지에서 팝업 표시 여부 확인
     const hasSeenPopup = sessionStorage.getItem('hasSeenEventPopup');
     if (!hasSeenPopup) {
       setShowEventPopup(false);
-    }
-
-    // 첫 진입 시에만 로딩 화면 표시
-    if (location.pathname === '/' && !hasInitiallyLoaded) {
-      // 로딩 시간 후에 페이드아웃 시작
-      const timer = setTimeout(() => {
-        setIsLoading(false);
-        // 페이드아웃이 완료된 후 초기 로딩 상태 업데이트
-        setTimeout(() => {
-          setHasInitiallyLoaded(true);
-        }, 1000);
-      }, 2000);
-
-      return () => clearTimeout(timer);
     }
 
     // 페이지 로드 시 성능 측정
@@ -69,7 +56,7 @@ const AppContent = () => {
     window.onunhandledrejection = (event) => {
       logError(event.reason, { type: 'unhandledRejection' });
     };
-  }, [location.pathname, hasInitiallyLoaded]);
+  }, [location.pathname]);
 
   const handleCloseEventPopup = () => {
     setShowEventPopup(false);
@@ -81,7 +68,6 @@ const AppContent = () => {
 
   return (
     <>
-      {!hasInitiallyLoaded && location.pathname === '/' && <LoadingScreen isLoading={isLoading} />}
       <Header />
       <MainContent>
         <Routes>
@@ -92,14 +78,11 @@ const AppContent = () => {
           <Route path="/about" element={<About />} />
           <Route path="/inspection" element={<ApartInspection />} />
           <Route path="/afterInspection" element={<AfterInspect />} />
+          <Route path="/checkInspection" element={<CheckInspection />} />
           <Route path="/report" element={<Report />} />
           <Route path="/vr" element={<Vr />} />
           <Route path="/info" element={<Info />} />
           <Route path="/b2b" element={<B2BLanding />} />
-          {/* <Route path="/admin/ambassador" element={<Ambassador />} /> */}
-          {/* 향후 확장을 위한 라우트 */}
-          {/* <Route path="/about" element={<About />} /> */}
-          {/* <Route path="/contact" element={<Contact />} /> */}
         </Routes>
       </MainContent>
       <FloatingButtons />
