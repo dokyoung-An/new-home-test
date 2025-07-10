@@ -108,12 +108,12 @@ export const ProcessWrapper = styled.section`
   }
   
   @media (max-width: 768px) {
-    padding: 90px 0;
+    padding: 90px 20px;
     min-height: auto;
   }
   
   @media (max-width: 480px) {
-    padding: 70px 0;
+    padding: 70px 20px;
   }
 `;
 
@@ -235,6 +235,8 @@ export const HighlightText = styled.div`
   display: inline-block;
   animation: ${fadeIn} 1s ease-in-out 0.4s backwards, ${shimmer} 3s linear infinite;
   letter-spacing: -0.5px;
+ 
+
   
   @media (max-width: 768px) {
     font-size: 2.5rem;
@@ -416,6 +418,7 @@ export const StepDescription = styled.p`
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.6;
+  word-break: keep-all;
   
   @media (max-width: 480px) {
     font-size: 0.9rem;

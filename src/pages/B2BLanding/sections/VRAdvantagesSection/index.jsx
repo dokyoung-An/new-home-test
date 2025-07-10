@@ -32,8 +32,8 @@ const VRAdvantagesSection = () => {
         <Content>
           <TextBlock>
             <Title>
-              VR로 시작하는 <br />
-              스마트한 임대 마케팅
+              임대주택에 <br />
+              VR을 활용한다면?
             </Title>
             <Description>
               시간과 비용을 절약하면서도 <br />
@@ -104,9 +104,7 @@ const Title = styled.h2`
   @media (max-width: 768px) {
     font-size: 2.5rem;
     margin-bottom: 20px;
-    br {
-      display: none;
-    }
+   
   }
 `;
 
@@ -123,9 +121,8 @@ const Description = styled.p`
   
   @media (max-width: 768px) {
     font-size: 1.1rem;
-    br {
-      display: none;
-    }
+ 
+    
   }
 `;
 
@@ -142,7 +139,7 @@ const AdvantagesGrid = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 20px;
-    max-width: 500px;
+    max-width: 280px;
     margin: 0 auto;
   }
 `;
@@ -208,6 +205,7 @@ const CardDescription = styled.p`
   
   @media (max-width: 768px) {
     font-size: 1rem;
+    margin: 0 auto;
   }
 `;
 

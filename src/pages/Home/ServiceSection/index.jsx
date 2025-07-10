@@ -75,11 +75,19 @@ const Container = styled.section`
   margin: 120px auto;
   padding: 0 20px;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    margin: 80px 20px;
+  }
 `;
 
 const SectionHeader = styled.div`
   text-align: center;
   margin-bottom: 80px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 40px;
+  }
 `;
 
 const SectionTitle = styled.h2`
@@ -87,12 +95,20 @@ const SectionTitle = styled.h2`
   font-weight: 700;
   margin-bottom: 16px;
   color: ${({ theme }) => theme.secondary || '#1A1F36'};
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
 `;
 
 const SectionSubtitle = styled.p`
   font-size: 1.2rem;
   color: ${({ theme }) => theme.textLight || '#666'};
   font-weight: 300;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const CardContainer = styled.div`
@@ -159,6 +175,10 @@ const ImageWrapper = styled.div`
   @media (max-width: 1200px) {
     height: 280px;
   }
+
+  @media (max-width: 768px) {
+    height: 200px;
+  }
 `;
 
 const CardImage = styled.img`
@@ -170,6 +190,8 @@ const CardImage = styled.img`
   ${Card}:hover & {
     transform: scale(1.1);
   }
+
+
 `;
 
 const ImageOverlay = styled.div`
@@ -194,6 +216,8 @@ const CardContent = styled.div`
   position: relative;
   padding: 32px 24px;
   border-top: none;
+
+  
 `;
 
 const ServiceNumber = styled.span`
@@ -204,6 +228,10 @@ const ServiceNumber = styled.span`
   margin-bottom: 16px;
   display: block;
   letter-spacing: 0.1em;
+
+  @media (max-width: 768px) {
+   margin-bottom: 10px;
+  }
 `;
 
 const CardTitle = styled.h3`
@@ -216,6 +244,10 @@ const CardTitle = styled.h3`
 
   ${Card}:hover & {
     color: #1a6dff;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
   }
 `;
 
@@ -236,6 +268,8 @@ const CardDescription = styled.p`
   margin-bottom: 24px;
   word-break: keep-all;
   min-height: 3.2em;
+
+ 
 `;
 
 const ViewMore = styled.span`

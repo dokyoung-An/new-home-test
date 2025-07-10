@@ -33,9 +33,9 @@ const WhySection = () => {
       <Container>
         <Content>
           <TextBlock>
-            <Slogan>후점검이 꼭 해야해?</Slogan>
+            <Slogan>후점검 꼭 해야해?</Slogan>
             <Title>
-              후점검이<br />
+              후점검이 <br />
               필요한 이유는?
             </Title>
             <Description>
@@ -84,6 +84,12 @@ const Section = styled.section`
     bottom: 0;
     background: radial-gradient(circle at 80% -50%, rgba(75, 159, 255, 0.08) 0%, transparent 50%);
   }
+  @media (max-width: 768px) {
+    height: auto;
+    min-height: auto;
+    padding: 60px 20px 60px 20px;
+   
+  }
 `;
 
 const Content = styled.div`
@@ -91,7 +97,6 @@ const Content = styled.div`
   z-index: 1;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 40px;
   display: flex;
   align-items: flex-start;
   gap: 200px;
@@ -118,6 +123,12 @@ const Content = styled.div`
 const TextBlock = styled.div`
   flex: 1;
   max-width: 500px;
+
+  @media (max-width: 768px) {
+    min-width: 300px;
+    word-break: keep-all;
+   
+  }
 `;
 
 const Slogan = styled.p`
@@ -156,14 +167,20 @@ const Slogan = styled.p`
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    padding:10px 20px;
+  }
 `;
 
 const Title = styled.h2`
   font-size: 3.5rem;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.5;
   margin-bottom: 30px;
   color: rgba(255, 255, 255, 0.95);
+  
   
   @media (max-width: 1200px) {
     font-size: 3rem;
@@ -198,6 +215,7 @@ const CardGrid = styled.div`
   gap: 40px;
   width: 100%;
   max-width: 600px;
+  min-width: 600px;
   
   @media (max-width: 1200px) {
     gap: 30px;
@@ -207,7 +225,11 @@ const CardGrid = styled.div`
     grid-template-columns: 1fr;
     gap: 20px;
     max-width: 500px;
+    min-width: 300px;
     margin: 0 auto;
+  }
+  @media (max-width: 480px) {
+    min-width: 200px;
   }
 `;
 

@@ -116,7 +116,7 @@ export const Testimonials = styled.section`
   }
   
   @media (max-width: 480px) {
-    padding: 40px 0;
+    padding: 40px 0 20px 0;
    
   }
 `;

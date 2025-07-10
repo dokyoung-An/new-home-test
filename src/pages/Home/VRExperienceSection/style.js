@@ -188,6 +188,7 @@ export const ExperienceSubtitle = styled.h3`
   text-transform: uppercase;
   display: inline-block;
   position: relative;
+  word-break: keep-all;
   
   span {
     color: #fff;

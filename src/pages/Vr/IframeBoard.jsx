@@ -5,7 +5,7 @@ const IframeBoard = () => {
   return (
     <BoardContainer>
        <SectionHeader>
-        <SectionTitle>우리집 VR</SectionTitle>
+        {/* <SectionTitle>우리집 VR</SectionTitle> */}
         <SectionDescription>고객님 전화번호 뒤 4자리를 검색창에 입력하여 VR을 확인해보세요.
           <span>※ 비밀번호는 고객님 전화번호 <br/>010부터 끝까지 숫자로 되어 있습니다. </span>
           <span>보고서가 열리지 않는다면 <br/>고객센터로 문의주시기 바랍니다. </span>
@@ -33,7 +33,7 @@ const BoardContainer = styled.section`
   padding-top: 100px;
 
   @media (max-width: 768px) {
-    padding-top: 80px;
+    padding-top: 60px;
   }
 `;
 const SectionHeader = styled.div`
@@ -98,8 +98,8 @@ const SectionDescription = styled.p`
 `;
 
 const BoardIframe = styled.iframe`
-  width: 90%;
-  height: 750px;
+   width: 90%;
+   height: 750px;
   border: none;
   background: white;
   overflow: hidden;
@@ -129,13 +129,16 @@ const BoardIframe = styled.iframe`
   height: 600px;
 }
 @media (max-width: 600px) {
-  height: 650px;
+  height: 600px;
 }
 @media (max-width: 480px) {
-  height: 800px;
+  height: 600px;
 }
 @media (max-width: 380px) {
-  height: 850px;
+  height: 780px;
+}
+@media (max-width: 340px) {
+  height: 800px;
 }
 `;
 

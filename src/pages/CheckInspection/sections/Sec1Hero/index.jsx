@@ -39,6 +39,11 @@ const Container = styled.section`
     min-height: auto;
     padding: 120px 0;
   }
+  @media (max-width: 768px) {
+    height: auto;
+    min-height: auto;
+    padding: 120px 20px 80px 20px;
+  }
 `;
 
 const Content = styled.div`

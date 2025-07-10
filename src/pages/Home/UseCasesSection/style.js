@@ -154,6 +154,7 @@ export const CaseCardsContainer = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
+    padding: 0 20px;
   }
 `;
 
@@ -229,6 +230,7 @@ export const CardTitle = styled.h3`
   font-weight: 700;
   color: #333;
   transition: color 0.3s ease;
+  word-break: keep-all;
   
   ${CaseCard}:hover & {
     color: ${({ theme }) => theme.primaryMiddle};

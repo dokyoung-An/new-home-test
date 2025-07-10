@@ -193,11 +193,19 @@ export const NewsContainer = styled.div`
   margin: 0 auto;
   padding: 0 20px;
   position: relative;
+
+  @media (max-width: 480px) {
+    padding: 0 40px 20px 40px;
+  }
 `;
 
 export const NewsSectionHeader = styled.div`
   margin-bottom: 60px;
   text-align: left;
+
+  @media (max-width: 480px) {
+    margin-bottom: 40px;
+  }
 `;
 
 export const NewsTitle = styled.h2`

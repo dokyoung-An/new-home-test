@@ -5,8 +5,6 @@ import {
   CTASubtitle,
   CTATitle,
   CTAHighlight,
-  CameraContainer,
-  CameraImg,
   PartnersSlider,
   PartnersTrack,
   PartnerLogo
@@ -66,7 +64,7 @@ const CoworkerSection = () => {
       <Container>
         <CTASubtitle>파트너사</CTASubtitle>
         <CTATitle>하방은 입주 박람회 주관사의</CTATitle>
-<CTAHighlight>공식 파트너로 활동 하고 있습니다.</CTAHighlight>
+<CTAHighlight>공식 파트너로 <br/>활동 하고 있습니다.</CTAHighlight>
       </Container>
       <PartnersSlider>
         <PartnersTrack

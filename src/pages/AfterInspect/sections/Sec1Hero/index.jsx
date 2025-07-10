@@ -12,8 +12,8 @@ const Sec1Hero = () => {
             <Highlight> 확인하지 못했다면?</Highlight>
           </Title>
           <Description>
-            전문적인 장비와 20년 이상의 경험으로<br />
-            완벽한 하자 점검을 약속드립니다
+           하자 책임을 명확히 할 마지막 기회!<br/>
+           입주 전 사전점검을 진행하세요.
           </Description>
           <Button><a href="/contact">서비스 문의</a></Button>
         </TextBlock>
@@ -39,7 +39,9 @@ const Container = styled.section`
   }
 
   @media (max-width: 768px) {
-    padding: 80px 0;
+    height: auto;
+    min-height: auto;
+    padding: 120px 20px 80px 20px;
   }
 `;
 

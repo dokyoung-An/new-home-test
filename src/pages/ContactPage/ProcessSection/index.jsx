@@ -54,7 +54,7 @@ const ProcessSection = () => {
           <SectionTitle>4단계로 완성되는</SectionTitle>
           <HighlightText>하방의 사전점검</HighlightText>
           <p>
-            입주민 여러분의 당당한 권리행사, 하방과 함께 강력히 행사하세요
+            입주민 여러분의 당당한 권리 <br/> 하방과 함께 강력히 행사하세요
            
           </p>
         </SectionHeader>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Container } from '../../../styles/common';
-import ArrowIcon from '../../../components/common/ArrowIcon';
 import wordmarkLogo from '../../../assets/images/logo.png';
 import symbolLogo from '../../../assets/images/habang4.png';
 

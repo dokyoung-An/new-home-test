@@ -17,6 +17,7 @@ export const CTABanner = styled.section`
 
   @media (max-width: 480px) {
     max-height: 500px;
+    padding: 0px 20px 40px 20px;
   }
 `;
 
@@ -41,10 +42,18 @@ export const CTATitle = styled.h2`
   margin-bottom: 16px;
   color: #fff;
   line-height: 1.3;
+
+  br{
+    display: none;
+  }
   
   @media (max-width: 480px) {
     font-size: 1.5rem;
     margin-bottom: 12px;
+
+    br{
+      display: block;
+    }
   }
 `;
 
@@ -60,7 +69,7 @@ export const CTAHighlight = styled.div`
     font-size: 2rem;
     word-break: keep-all;
     line-height: 1.3;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
   }
 `;
 

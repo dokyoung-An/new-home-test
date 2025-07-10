@@ -23,7 +23,8 @@ import {
   SectionSubtitle,
   InfoWrapper,
   TextWrapper,
-  DividerIcon
+  DividerIcon,
+  ContainerWrapper
 } from './style';
 
 const InspectionProcessSection = () => {
@@ -54,12 +55,7 @@ const InspectionProcessSection = () => {
   };
 
   return (
-    <section style={{ 
-      background: 'linear-gradient(180deg, #F5F7FF 0%, rgba(245, 247, 255, 0.5) 100%)',
-      padding: '100px 0 120px',
-      position: 'relative',
-      overflow: 'hidden'
-    }}>
+    <ContainerWrapper>
       <Container>
         <DividerIcon>
           <MdSettings />
@@ -107,7 +103,7 @@ const InspectionProcessSection = () => {
           </ConsultBanner>
         </ProcessWrapper>
       </Container>
-    </section>
+    </ContainerWrapper>
   );
 };
 

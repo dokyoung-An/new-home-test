@@ -6,7 +6,7 @@ const HeroSection = () => {
     <HeroContainer>
       <HeroContent>
         <MainTitle>
-          하방 사전점검 서비스<br/>- 우리집 VR -
+          우리집 VR
         </MainTitle>
         <SubTitle>
           사전점검 현장을 그대로 VR에 담았습니다.<br />
@@ -29,6 +29,12 @@ const HeroContainer = styled.section`
   text-align: left;
   position: relative;
   color: white;
+
+  @media (max-width: 768px) {
+    height: auto;
+    min-height: auto;
+    padding: 120px 20px 80px 20px;
+  }
 `;
 
 const HeroContent = styled.div`

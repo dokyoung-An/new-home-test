@@ -1,11 +1,22 @@
 import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
-  width: 100%;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  width: 100%;
+`;
 
+export const SectionContainer = styled.section`
+  padding: 100px 20px;
+  
+  @media (max-width: 1024px) {
+    padding: 80px 20px;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 60px 20px;
+  }
 `;
 
 export const sectionSpacing = css`

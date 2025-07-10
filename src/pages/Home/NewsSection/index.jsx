@@ -93,9 +93,9 @@ const NewsComponent = () => {
 
   return (
     <NewsSection>
-      <DesignElement1 />
+      {/* <DesignElement1 />
       <DesignElement2 />
-      <DesignElement3 />
+      <DesignElement3 /> */}
       <NewsContainer>
         <NewsSectionHeader>
           <NewsTitle>최신 뉴스 & 정보<br /><span style={{ color:'#1a6dff' }}>하방 INFO</span></NewsTitle>

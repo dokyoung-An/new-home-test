@@ -7,7 +7,7 @@ const Sec2About = () => {
     <Container id="introduce">
       <Content>
         <TextSection>
-          <Title>하방은 고객의 소중한 자산을<br />지키는 전문가입니다</Title>
+          <Title>하방은 고객의 소중한 자산을 <br />지키는 전문가입니다</Title>
           <Description>
             하방은 전문적인 하자 점검 서비스를 제공하며, 
             최신 VR 기술을 활용한 정밀한 기록과 
@@ -39,6 +39,10 @@ const Container = styled.section`
   width: 100%;
   padding: 120px 0;
   background-color: #fff;
+
+  @media (max-width: 768px) {
+    padding: 80px 20px 40px 20px;
+  }
 `;
 
 const Content = styled.div`
@@ -46,6 +50,13 @@ const Content = styled.div`
   margin: 0 auto;
   padding: 0 20px;
   animation: ${fadeIn} 1s ease-out;
+  word-break: keep-all;
+
+  @media (max-width: 768px) {
+    br{
+      display: none;
+    }
+  }
 `;
 
 const TextSection = styled.div`

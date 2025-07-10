@@ -15,6 +15,13 @@ const HeroWrapper = styled.section`
   background-size: cover;
   color: white;
   text-align: center;
+  word-break: keep-all;
+
+  @media (max-width: 768px) {
+    height: auto;
+    min-height: auto;
+    padding: 120px 20px 80px 20px;
+  }
 `;
 
 const ContentWrapper = styled(motion.div)`

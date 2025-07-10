@@ -6,6 +6,7 @@ import { FaFileContract, FaClipboardCheck, FaPhoneAlt, FaCommentDots, FaImage } 
 const SectionWrapper = styled.section`
   padding: 100px 0 50px;
   background: linear-gradient(135deg, #0B1B35 0%, #0A1F45 50%, #0B2555 100%);
+
   
   @media (max-width: 768px) {
     padding: 60px 20px;
@@ -28,9 +29,17 @@ const Title = styled.h2`
   font-weight: 700;
   margin-bottom: 1rem;
   color: rgba(255, 255, 255, 1);
+
+  br{
+    display: none;
+  }
+  
   
   @media (max-width: 768px) {
     font-size: 2rem;
+    br{
+      display: block;
+    }
   }
 `;
 
@@ -50,10 +59,11 @@ const IframeContainer = styled.div`
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.1);
+
   
   @media (max-width: 768px) {
     height: 700px;
-    padding: 0 20px;
+  
   }
 `;
 
@@ -103,6 +113,7 @@ const Detail = styled.div`
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
+      transform: translateX(calc(-100% / 10));
       
       li:nth-child(n+4) {
         transform: translateX(calc(100% / 2));
@@ -228,7 +239,7 @@ const CaseStudySection = () => {
     <SectionWrapper>
       <Container>
         <Header>
-          <Title>직접 체험해 확인하세요</Title>
+          <Title>직접 <br />체험해 확인하세요</Title>
           <Description>
             퇴거 시, 입주 전 VR 기록으로 수리비 분쟁 없이 마무리할 수 있습니다.
           </Description>

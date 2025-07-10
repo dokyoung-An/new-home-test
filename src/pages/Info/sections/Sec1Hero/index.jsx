@@ -58,7 +58,9 @@ const Container = styled.section`
     padding: 120px 0;
   }
   @media (max-width: 768px) {
-    padding: 100px 0 30px 0;
+    height: auto;
+    min-height: auto;
+    padding: 120px 20px 20px 20px;
   }
 `;
 

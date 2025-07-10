@@ -8,11 +8,11 @@ const Sec1Hero = () => {
       <Content>
         <TextBlock>
           <Title>
-            하자를 찾는 일의<br />
+            하자를 찾는<br />
             <Highlight>새로운 기준</Highlight>
           </Title>
           <Description>
-            전문적인 장비와 7년의 경험으로<br />
+            전문적인 장비와 7년의 경험으로 <br />
             완벽한 하자 점검을 약속드립니다
           </Description>
           <Button><a href="/contact">서비스 문의</a></Button>
@@ -38,6 +38,12 @@ const Container = styled.section`
     height: auto;
     min-height: auto;
     padding: 120px 0;
+
+  }
+  @media (max-width: 768px) {
+    height: auto;
+    min-height: auto;
+    padding: 120px 20px 80px 20px;
   }
 `;
 

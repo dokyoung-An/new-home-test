@@ -6,12 +6,12 @@ const HeroSection = () => {
     <HeroContainer>
       <HeroContent>
         <MainTitle>
-          하방 사전점검 서비스<br/>
-           - 결과 보고서 -
+          사전점검 <br/>
+          결과 보고서 
           
         </MainTitle>
         <SubTitle>
-          <span>사전점검 때 발견된<br/> 하자를 정리한 보고서입니다.</span>
+          <span>사전점검 때 발견한<br/> 하자를 정리한 보고서입니다.</span>
           <span>하자보수 확인을 위해<br/> 보고서를 활용해 보세요.</span>
         </SubTitle>
       </HeroContent>
@@ -31,6 +31,16 @@ const HeroContainer = styled.section`
   text-align: left;
   position: relative;
   color: white;
+  word-break: keep-all;
+
+  @media (max-width: 768px) {
+    height: auto;
+    min-height: auto;
+    padding: 120px 20px 80px 20px;
+    
+
+   
+  }
 `;
 
 const HeroContent = styled.div`
@@ -49,9 +59,17 @@ const MainTitle = styled.h1`
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   text-align: center;
 
+  br{
+    display: none;
+  }
+
   @media (max-width: 768px) {
     font-size: 3rem;
     text-align: center;
+
+    br{
+      display: block;
+    }
   }
 `;
 

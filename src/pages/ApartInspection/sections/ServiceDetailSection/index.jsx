@@ -12,7 +12,8 @@ import {
   CardTitle,
   CardDescription,
   SectionDivider,
-  DividerIcon
+  DividerIcon,
+  ContainerWrapper
 } from './style';
 
 const services = [
@@ -56,7 +57,7 @@ const services = [
 
 const ServiceDetailSection = () => {
   return (
-    <section style={{ background: '#fff', padding: '100px 0' }}>
+    <ContainerWrapper>
       <Container>
         <ServiceDetailWrapper>
           <SectionDivider>
@@ -82,7 +83,7 @@ const ServiceDetailSection = () => {
           </CardGrid>
         </ServiceDetailWrapper>
       </Container>
-    </section>
+    </ContainerWrapper>
   );
 };
 

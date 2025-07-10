@@ -31,8 +31,8 @@ const Sec1Hero = () => {
       <Content>
         <Title>
           하자 없는 집을 위한
-          <br />
-          하자 전문가의 꼼꼼한 점검
+
+          전문가의 꼼꼼한 점검
         </Title>
         <Subtitle>
           하자 전문가가 직접 찾아가는
@@ -54,6 +54,11 @@ const Container = styled.section`
   position: relative;
   color: white;
   overflow: hidden;
+  @media (max-width: 768px) {
+    height: auto;
+    min-height: auto;
+    padding: 120px 20px 80px 20px;
+  }
 `;
 
 const VideoBackground = styled.video`
@@ -80,13 +85,15 @@ const Content = styled.div`
   text-align: center;
   animation: ${fadeIn} 1s ease-out;
   padding: 0 20px;
+  
 `;
 
 const Title = styled.h1`
   font-size: 4.5rem;
   font-weight: 700;
   margin-bottom: 2rem;
-  line-height: 1.2;
+  line-height: 1.5;
+  word-break: keep-all;
   
   @media (max-width: 768px) {
     font-size: 3rem;

@@ -12,13 +12,13 @@ const cards = [
     link: 'https://www.molit.go.kr',
   },
   {
-    title: '하자분쟁조정위원회',
+    title: '하자 분쟁조정 위원회',
     desc: '공동주택 하자 분쟁 조정 신청',
     icon: '/img/info/logo.png',
     link: 'https://www.adc.go.kr',
   },
   {
-    title: '경기도하자규정집',
+    title: '경기도 하자 규정집',
     desc: '입주 전 꼭 알아야 할 주요 사례 정리',
     icon: '/img/info/logo2.png',
     link: 'https://buly.kr/4Fsi1Aq',
@@ -35,7 +35,7 @@ const cards = [
 const Sec4News = () => {
   return (
     <Section>
-      <Title>하자 관련 유용한 사이트 소개</Title>
+      <Title>하자 관련 <br />유용한 사이트 소개</Title>
       <SubText>하자와 관련된 유용한 사이트를 소개합니다.</SubText>
 
       <CardGrid>
@@ -70,6 +70,16 @@ const Title = styled.h2`
   margin-bottom: 10px;
   word-break: keep-all;
   word-wrap: break-word;
+
+  br{
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    br{
+      display: block;
+    }
+  }
 `;
 
 const SubText = styled.p`
@@ -85,11 +95,14 @@ const CardGrid = styled.div`
   justify-items: center;
   max-width: 1200px;
   margin: 0 auto;
+  
 
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 10px;
+    padding: 0 20px;
+    
   }
   
   
@@ -136,6 +149,7 @@ const CardTitle = styled.h3`
 font-size: 1.1rem;
 font-weight: 600;
 margin-bottom: 8px;
+word-break: keep-all;
 
 @media (max-width: 768px) {
   font-size: 0.95rem;

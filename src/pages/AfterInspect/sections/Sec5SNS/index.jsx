@@ -107,7 +107,7 @@ const Container = styled.section`
   padding: 120px 0;
   background: linear-gradient(180deg, #F5F7FF 0%, rgba(245, 247, 255, 0.5) 100%);
   @media (max-width: 768px) {
-    padding: 80px 0;
+    padding: 60px 20px 0 20px;
   }
 `;
 

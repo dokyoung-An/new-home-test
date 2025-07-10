@@ -105,6 +105,10 @@ const Container = styled.section`
   background-size: cover;
   background-position: center;
   padding: 100px 0;
+
+  @media (max-width: 768px) {
+    padding: 60px 20px 60px 20px;
+  }
 `;
 
 const BackgroundOverlay = styled.div`
@@ -128,6 +132,7 @@ const Content = styled.div`
 const Header = styled.header`
   text-align: center;
   margin-bottom: 60px;
+  word-break: keep-all;
 `;
 
 const SubTitle = styled.h3`
@@ -242,6 +247,11 @@ const NoticeCard = styled.div`
   border-radius: 16px;
   padding: 30px 40px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  word-break: keep-all;
+
+  @media (max-width: 768px) {
+    padding: 30px 25px;
+  }
 `;
 
 const NoticeTitle = styled.h4`

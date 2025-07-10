@@ -12,7 +12,8 @@ import {
   CardTitle,
   CardDescription,
   SectionDivider,
-  DividerIcon
+  DividerIcon,
+  ContainerWrapper
 } from './style';
 
 const services = [
@@ -56,7 +57,7 @@ const services = [
 
 const ServiceDetailSection = () => {
   return (
-    <section style={{ background: '#fff', padding: '100px 0' }}>
+    <ContainerWrapper >
       <Container>
         <ServiceDetailWrapper>
           <SectionDivider>
@@ -66,7 +67,7 @@ const ServiceDetailSection = () => {
           </SectionDivider>
           <SectionTitle>전문적인 사전점검 서비스</SectionTitle>
           <SectionSubtitle>
-            20년 이상의 경험을 바탕으로 한 전문가들이 제공하는 체계적인 점검 서비스
+            7년 이상의 경험을 바탕으로 한 전문가들이 제공하는 체계적인 점검 서비스
           </SectionSubtitle>
           <CardGrid>
             {services.map((service, index) => (
@@ -82,7 +83,7 @@ const ServiceDetailSection = () => {
           </CardGrid>
         </ServiceDetailWrapper>
       </Container>
-    </section>
+    </ContainerWrapper>
   );
 };
 

@@ -10,9 +10,9 @@ const stats = [
     width: '250px'
   },
   {
-    number: 20,
-    label: '전문가 경력',
-    suffix: '년+',
+    number: 90,
+    label: '하루 점검',
+    suffix: '세대',
     width: '200px'
   },
   {
@@ -106,7 +106,6 @@ const Sec4History = () => {
   return (
     <Container ref={sectionRef}>
       <Content>
-        <Title>하방의 발자취</Title>
         <StatsGrid>
           {stats.map((stat, index) => (
             <StatBox key={index} width={stat.width}>
@@ -127,12 +126,28 @@ const Sec4History = () => {
 
 const Container = styled.section`
   width: 100%;
-  padding: 120px 0;
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-    url('/public/img/bg4.png') no-repeat center center;
+  padding: 80px 0;
+  background: url('./img/bg2.jpg') no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
   color: white;
+  position: relative;
+  z-index: 1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+  }
+
+  @media (max-width: 768px) {
+    padding: 20px 0;
+  }
 `;
 
 const Content = styled.div`
@@ -142,17 +157,6 @@ const Content = styled.div`
   animation: ${fadeIn} 1s ease-out;
 `;
 
-const Title = styled.h2`
-  font-size: 2.8rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 80px;
-  
-  @media (max-width: 768px) {
-    font-size: 2.2rem;
-    margin-bottom: 60px;
-  }
-`;
 
 const StatsGrid = styled.div`
   display: flex;
@@ -161,7 +165,7 @@ const StatsGrid = styled.div`
   flex-wrap: wrap;
   
   @media (max-width: 768px) {
-    gap: 30px;
+    gap: 0px;
   }
 `;
 
@@ -181,7 +185,7 @@ const StatBox = styled.div`
   
   @media (max-width: 480px) {
     width: 100%;
-    margin-top: 20px !important;
+    margin-top: 0px !important;
     
     &:first-child {
       margin-top: 0;

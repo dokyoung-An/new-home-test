@@ -25,7 +25,7 @@ const Sec3Strength = () => {
     <Container id="strength">
       <Content>
         <Title>하방의 강점</Title>
-        <SubTitle>20년 이상의 경험과 최신 기술의 결합</SubTitle>
+        <SubTitle>7년 이상의 경험과 최신 기술의 결합</SubTitle>
         
         <CardGrid>
           {strengthData.map((item, index) => (
@@ -45,6 +45,10 @@ const Container = styled.section`
   width: 100%;
   padding: 120px 0;
   background-color: ${({ theme }) => theme.secondaryLight};
+
+  @media (max-width: 768px) {
+    padding: 60px 0;
+  }
 `;
 
 const Content = styled.div`

@@ -5,7 +5,7 @@ import SloganSection from './SloganSection';
 import VRExperienceSection from './VRExperienceSection';
 import BenefitsSection from './BenefitsSection';
 import UseCasesSection from './UseCasesSection';
-import FeaturesSection from './FeaturesSection';
+
 import TestimonialsSection from './TestimonialsSection';
 import AdvantagesSection from './AdvantagesSection';
 import ServiceSection from './ServiceSection';
@@ -14,7 +14,7 @@ import FAQSection from '../ContactPage/FAQSection';
 import CoworkerSection from './CoworkerSection';
 import ProcessSection from '../ContactPage/ProcessSection';
 
-import BestPoint from './BestPoint';
+
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 

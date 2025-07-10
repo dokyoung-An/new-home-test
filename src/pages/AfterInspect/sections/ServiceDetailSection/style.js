@@ -1,6 +1,15 @@
 import styled from 'styled-components';
 import { fadeIn } from '../../../../styles/animations';
 
+
+export const ContainerWrapper = styled.div`
+  background: #fff;
+  padding: 100px 0;
+
+  @media (max-width: 768px) {
+    padding: 60px 20px;
+  }
+`;
 export const ServiceDetailWrapper = styled.div`
   text-align: center;
   animation: ${fadeIn} 1s ease-in-out;
@@ -40,6 +49,7 @@ export const SectionTitle = styled.h2`
   
   @media (max-width: 768px) {
     font-size: 2rem;
+    word-break: keep-all;
   }
 `;
 

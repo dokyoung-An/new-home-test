@@ -74,7 +74,7 @@ const IframeBoard = () => {
   return (
     <BoardContainer>
       <SectionHeader>
-        <SectionTitle>사전점검 결과 보고서</SectionTitle>
+        {/* <SectionTitle>사전점검 결과 보고서</SectionTitle> */}
         <SectionDescription>고객님 전화번호 뒤 4자리를 검색창에 입력하여 VR을 확인해보세요.
           <span>※ 비밀번호는 고객님 전화번호 <br/>010부터 끝까지 숫자로 되어 있습니다. </span>
           <span>보고서가 열리지 않는다면 <br/>고객센터로 문의주시기 바랍니다. </span>
@@ -134,7 +134,7 @@ const BoardContainer = styled.section`
   padding-top: 100px;
 
   @media (max-width: 768px) {
-    padding-top: 80px;
+    padding-top: 60px;
   }
 `;
 

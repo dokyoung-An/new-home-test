@@ -182,6 +182,8 @@ const TimingCard = styled.div`
   
   @media (max-width: 768px) {
     padding: 25px;
+    min-width: 280px;
+  
   }
 `;
 
@@ -210,8 +212,8 @@ const CardIconWrapper = styled.div`
   }
   
   @media (max-width: 768px) {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
   }
 `;
 
@@ -219,6 +221,7 @@ const CardTitle = styled.h3`
   font-size: 1.8rem;
   font-weight: 700;
   color: ${({ theme }) => theme.primary};
+  
   
   @media (max-width: 768px) {
     font-size: 1.6rem;

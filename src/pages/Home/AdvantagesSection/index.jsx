@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
+
 
 const ArrowIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -33,13 +34,13 @@ const AdvantagesSection = () => {
     {
       subtitle: "SATISFACTION",
       title: "고객 만족도 100%",
-      description: "믿고 함께 맞기는 파트너. 박람회 주관사 협업",
+      description: "믿고 함께 맞기는 파트너. \n 박람회 주관사 협업",
       image: "/img/bestpoint/4.jpg",
     },
     {
       subtitle: "TECHNOLOGY",
       title: "끊임없는 기술 개발",
-      description: "끊임없는 기술 개발로 최적의 서비스를 제공합니다",
+      description: "끊임없는 기술 개발로\n 최적의 서비스를 제공합니다",
       image: "/img/bestpoint/vr2.png",
     },
   ];
@@ -91,6 +92,11 @@ const Container = styled.section`
   width: 100%;
   height: 60vh;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    height: 45vh;
+    
+  }
 `;
 
 const Slide = styled.div`
@@ -149,11 +155,20 @@ const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 768px) {
+    padding: 0 40px;
+  }
 `;
 
 const TextContent = styled.div`
   color: #FFF;
   max-width: 600px;
+  word-break: keep-all;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `;
 
 const Subtitle = styled.span`
@@ -164,6 +179,7 @@ const Subtitle = styled.span`
   margin-bottom: 1rem;
   color: ${({ theme }) => theme.primaryLight || '#1557cc'};
   font-family: 'Montserrat', sans-serif;
+  word-break: keep-all;
   
   @media (max-width: 768px) {
     font-size: 0.875rem;
@@ -176,6 +192,7 @@ const Title = styled.h2`
   margin-bottom: 1.5rem;
   line-height: 1.2;
   letter-spacing: -0.02em;
+  word-break: keep-all;
   
   @media (max-width: 768px) {
     font-size: 2.5rem;
@@ -188,12 +205,22 @@ const Description = styled.p`
   opacity: 0.9;
   font-weight: 300;
   letter-spacing: -0.01em;
+  word-break: keep-all;
   
   @media (max-width: 768px) {
     font-size: 1.125rem;
+    white-space: pre-line;
   }
 `;
 
+const float = keyframes`
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+`;
 const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
@@ -231,10 +258,19 @@ const StyledLink = styled(Link)`
     &::after {
       width: 100%;
     }
+
+  
   }
 
+
   @media (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 0.8rem;
+    bottom: 5%;
+    right: 5%;
+    
+    animation: ${float} 2s ease-in-out infinite;
+    
+
   }
 `;
 
@@ -260,6 +296,10 @@ const Indicator = styled.button`
 
   &:hover {
     background: #FFF;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 

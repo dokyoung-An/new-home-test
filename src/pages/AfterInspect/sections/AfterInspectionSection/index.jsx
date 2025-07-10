@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Container } from '../../../../styles/common';
+import { Container, SectionContainer } from '../../../../styles/common';
 import { MdOutlineTimer } from 'react-icons/md';
 import { BsClockHistory, BsCardChecklist, BsPeople } from 'react-icons/bs';
 
@@ -13,7 +13,7 @@ const AfterInspectionSection = () => {
             <DividerIcon>
               <MdOutlineTimer />
             </DividerIcon>
-            <Title>준공 후에도<br />사전점검이 가능합니다</Title>
+            <Title>준공 후에도<br /> 점검 가능합니다</Title>
             <Description>
               입주 전이라면 준공일이 지났더라도<br />
               사전점검을 진행할 수 있습니다.
@@ -63,8 +63,7 @@ const AfterInspectionSection = () => {
   );
 };
 
-const SectionWrapper = styled.section`
-  padding: 100px 0;
+const SectionWrapper = styled(SectionContainer)`
   background: linear-gradient(180deg, #F5F7FF 0%, rgba(245, 247, 255, 0.5) 100%);
 `;
 
@@ -111,6 +110,7 @@ const Title = styled.h2`
   line-height: 1.3;
   margin-bottom: 24px;
   word-break: keep-all;
+  width: 100%;
   
   @media (max-width: 768px) {
     font-size: 2.4rem;
@@ -188,7 +188,8 @@ const PointItem = styled.div`
   }
 
   @media (max-width: 768px) {
-    padding: 16px;
+    padding: 0px;
+    width: 100%;
   }
 `;
 

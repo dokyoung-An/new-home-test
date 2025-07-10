@@ -21,6 +21,17 @@ const rotate = keyframes`
   }
 `;
 
+export const ContainerWrapper = styled.div`
+  background: linear-gradient(180deg, #F5F7FF 0%, rgba(245, 247, 255, 0.5) 100%);
+  padding: 100px 0 120px;
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    padding: 40px 0 90px;
+  }
+`;
+
 const iconStyles = css`
   width: 80px;
   height: 80px;

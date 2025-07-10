@@ -28,7 +28,7 @@ const SpecialSection = () => {
   ];
 
   return (
-    <section style={{ background: '#fff', padding: '120px 0' }}>
+    <ContainerWrapper>
       <Container>
         <Content>
           <TextBlock>
@@ -55,9 +55,21 @@ const SpecialSection = () => {
           </CardGrid>
         </Content>
       </Container>
-    </section>
+    </ContainerWrapper>
   );
 };
+
+const ContainerWrapper = styled.div`
+  background: linear-gradient(180deg, #F5F7FF 0%, rgba(245, 247, 255, 0.5) 100%);
+  padding: 100px 0 120px;
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    padding: 60px 0px 60px 0px;
+  }
+`;
+
 
 const Content = styled.div`
   max-width: 1400px;
@@ -73,6 +85,7 @@ const Content = styled.div`
     padding: 0 20px;
     gap: 60px;
   }
+
 `;
 
 const TextBlock = styled.div`

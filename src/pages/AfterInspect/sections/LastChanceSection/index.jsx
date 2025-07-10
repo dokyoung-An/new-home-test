@@ -52,6 +52,13 @@ const SectionWrapper = styled.section`
   @media (max-width: 1024px) {
     padding: 4rem 0;
   }
+
+  @media (max-width: 768px) {
+    padding: 2rem 0;
+    min-height: 350px;
+  }
+
+  
 `;
 
 const BackgroundOverlay = styled.div`
@@ -73,6 +80,7 @@ const StyledContainer = styled(Container)`
   display: flex;
   align-items: center;
   height: 100%;
+
 `;
 
 const ContentWrapper = styled.div`
@@ -90,6 +98,10 @@ const ContentWrapper = styled.div`
     gap: 4rem;
     align-items: center;
     text-align: center;
+  }
+
+  @media (max-width: 768px) {
+   gap: 0px;
   }
 `;
 
