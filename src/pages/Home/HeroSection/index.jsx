@@ -61,13 +61,13 @@ const HeroSection = () => {
       
       <Container className='hero-container'>
         <HeroContent>
-          <HeroTagline><span>특별한 우리집을 위한 단 하나의 방법!</span></HeroTagline>
+          <HeroTagline><span>완벽한 우리집을 위한 특별한 방법!</span></HeroTagline>
           <HeroTitle>
             <HeroTitleHighlight><span>HABANG</span></HeroTitleHighlight>
-            사전점검대행 
+            사전점검 서비스
           </HeroTitle>
           <HeroSubTitle>
-          신축아파트 입주 전, 세대 내 하자 확인 대행 서비스
+          하자 점검 전문가와 함께하는 체계적인 하자점검
           </HeroSubTitle>
           <CTAButton>
             <a href="/contact">상담 신청</a> 

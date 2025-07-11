@@ -15,6 +15,7 @@ import CoworkerSection from './CoworkerSection';
 import ProcessSection from '../ContactPage/ProcessSection';
 
 
+
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
@@ -37,7 +38,6 @@ const Home = () => {
     <>
       <HeroSection/>
       <SloganSection/>
-    
       <AdvantagesSection/>
       <ServiceSection/>
       <VRExperienceSection/>

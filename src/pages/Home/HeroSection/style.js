@@ -24,18 +24,22 @@ export const Hero = styled.section`
   align-items: flex-start;
   position: relative;
   overflow: hidden;
+  z-index: 1;
   
-  &::after {
+  &::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #000;
+    background-color:rgb(7, 16, 42);
     opacity: 0.5;
-    z-index: 1;
+    z-index: 2;
+    
   }
+
+ 
 `;
 
 export const VideoBackground = styled.video`
@@ -45,7 +49,7 @@ export const VideoBackground = styled.video`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 0;
+  z-index: 1;
 `;
 
 export const MainNav = styled.nav`
@@ -108,7 +112,7 @@ export const HeroContent = styled.div`
   text-align: left;
   margin-top: 18vh;
   margin-left: 0;
-  padding-left: 40px;
+  padding-left: 0px;
   max-width: 1000px;
   position: relative;
   z-index: 2;
@@ -124,16 +128,17 @@ export const HeroContent = styled.div`
 
 export const HeroTagline = styled.h4`
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 2px;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   display: inline-block;
   position: relative;
   animation: ${fadeIn} 0.8s ease-out forwards;
   opacity: 0;
   animation-delay: 0.2s;
   color: rgba(255, 255, 255, 0.8);
+  padding-left: 0;
   
   span {
     position: relative;
@@ -145,17 +150,21 @@ export const HeroTagline = styled.h4`
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 1px;
+      height: 3px;
       background: linear-gradient(90deg, 
         transparent, 
-        ${props => props.theme.primaryMiddle}, 
-        transparent
+rgba(162, 89, 255,0.4), 
+rgba(0, 191, 166,0.5), 
+rgba(21, 87, 204,0.4),
+transparent
       );
     }
   }
 
   @media (max-width: 768px) {
     font-size: 14px;
+    align-self: center;
+    margin-bottom: 15px;
   }
 `;
 
@@ -163,7 +172,7 @@ export const HeroTitle = styled.h1`
   font-size: 84px;
   font-weight: 800;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-  margin-bottom: 30px;
+
   line-height: 1.1;
   word-break: keep-all;
   display: flex;
@@ -172,11 +181,14 @@ export const HeroTitle = styled.h1`
   animation: ${fadeIn} 0.8s ease-out forwards;
   opacity: 0;
   animation-delay: 0.4s;
+  padding-left: 0;
+  margin-top: -5px;
 
   @media (max-width: 768px) {
     font-size: 60px;
     line-height: 1.2;
-  
+    align-items: center;
+    margin-top: 0;
   }
 
   @media (max-width: 480px) {
@@ -185,18 +197,27 @@ export const HeroTitle = styled.h1`
 `;
 
 export const HeroTitleHighlight = styled.span`
-  font-size: 140px;
+  font-size: 135px;
   font-weight: 900;
   display: inline-block;
-  margin-bottom: 10px;
-  background: linear-gradient(90deg, #e3efff, #1a6dff, #fff);
+
+  background: linear-gradient(180deg, #e3efff,#1a6dff, #1557cc);
   background-size: 200% auto;
   color: transparent;
   -webkit-background-clip: text;
+  font-family: "Noto Sans", sans-serif;
   background-clip: text;
+  transform: scale(0.98,1.01);
+  letter-spacing: -2px;
   display: block;
-  text-shadow: 0 0 20px rgba(255, 183, 77, 0.3);
+  margin-left: -15px;
+  /* transform:scale(0.95,1.01); */
+  text-shadow: 0 0 20px rgba(26, 109, 255, 0.3);
   animation: ${highlightAnimation} 6s ease infinite;
+
+  span{
+    font-weight: 800;
+  }
   
   @media (max-width: 768px) {
     font-size: 90px;
@@ -211,7 +232,8 @@ export const HeroTitleHighlight = styled.span`
 export const HeroSubTitle = styled.p`
   font-size: 20px;
   font-weight: 400;
-  margin-bottom: 40px;
+ 
+  margin-top: 10px;
   color: rgba(255, 255, 255, 0.8);
   max-width: 600px;
   line-height: 1.7;
@@ -219,23 +241,24 @@ export const HeroSubTitle = styled.p`
   opacity: 0;
   animation-delay: 0.6s;
   position: relative;
-  padding-left: 20px;
+  padding-left: 0;
   word-break: keep-all;
-  
+  padding-left: 15px;
+
   &::before {
     content: '';
     position: absolute;
     left: 0;
-    top: 0;
-    width: 4px;
-    height: 100%;
+    top: 60%;
+    transform: translateY(-50%);
+    width: 3px;
+    height:60%;
     background: ${props => props.theme.primaryMiddle};
-    border-radius: 4px;
+    border-radius: 2px;
   }
 
   @media (max-width: 480px) {
     font-size: 16px;
-    padding-left: 15px;
   }
 `;
 
@@ -252,7 +275,7 @@ export const CTAButton = styled.button`
   font-weight: 600;
   padding: 14px 24px;
   border: none;
-  border-radius: 10px;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
@@ -265,6 +288,7 @@ export const CTAButton = styled.button`
   animation: ${fadeIn} 0.8s ease-out forwards;
   opacity: 0;
   animation-delay: 0.8s;
+  margin-top: 40px;
   
   &::after {
     content: '';
@@ -315,12 +339,12 @@ export const CTAButton = styled.button`
 
 export const LogoSliderContainer = styled.div`
   position: absolute;
-  bottom: 20px;
+  bottom: 30px;
   left: 0;
   width: 100%;
   overflow: hidden;
   padding: 30px 0 15px 0;
-  z-index: 2;
+  z-index: 3;
 `;
 
 export const LogoSlider = styled.div`
@@ -331,13 +355,13 @@ export const LogoSlider = styled.div`
 export const SlideTrack = styled.div`
   display: flex;
   width: fit-content;
-  animation: ${scroll} 10s linear infinite;
+  animation: ${scroll} 12s ease-in-out infinite;
 `;
 
 export const SliderLogo = styled.img`
-  height: 120px;
-  margin: 0 30px;
-  opacity: 0.2;
+  height: 80px;
+  margin: 0 20px;
+  opacity: 0.25;
   
   @media (max-width: 768px) {
     height: 80px;
