@@ -232,20 +232,19 @@ export const HeroTitleHighlight = styled.span`
 export const HeroSubTitle = styled.p`
   font-size: 20px;
   font-weight: 400;
- 
   margin-top: 10px;
   color: rgba(255, 255, 255, 0.8);
   max-width: 600px;
-  line-height: 1.7;
+  line-height: 1.5;
   animation: ${fadeIn} 0.8s ease-out forwards;
   opacity: 0;
   animation-delay: 0.6s;
   position: relative;
   padding-left: 0;
   word-break: keep-all;
-  padding-left: 15px;
+  
 
-  &::before {
+  /* &::before {
     content: '';
     position: absolute;
     left: 0;
@@ -255,26 +254,23 @@ export const HeroSubTitle = styled.p`
     height:60%;
     background: ${props => props.theme.primaryMiddle};
     border-radius: 2px;
-  }
+  } */
 
   @media (max-width: 480px) {
     font-size: 16px;
   }
 `;
 
-export const ArrowIcon = styled.span`
-  margin-left: 10px;
-  font-size: 1.2rem;
-  transition: transform 0.3s ease;
-`;
+
 
 export const CTAButton = styled.button`
-  background: linear-gradient(to right, ${props => props.theme.primaryColor}, ${props => props.theme.primaryMiddle});
-  color: white;
+  background-color:rgba(250,250,250,0.9);
+  color: #1a6dff;
+  box-shadow: 0 0 10px rgba(26, 109, 255, 1);
   font-size: 16px;
   font-weight: 600;
-  padding: 14px 24px;
-  border: none;
+  padding: 14px 20px;
+  
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -284,11 +280,15 @@ export const CTAButton = styled.button`
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   position: relative;
   overflow: hidden;
-  width: 200px;
+  max-width: 180px;
   animation: ${fadeIn} 0.8s ease-out forwards;
   opacity: 0;
   animation-delay: 0.8s;
   margin-top: 40px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  letter-spacing: 0px;
+
   
   &::after {
     content: '';
@@ -299,16 +299,16 @@ export const CTAButton = styled.button`
     height: 100%;
     background: linear-gradient(
       90deg,
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 0.2),
-      rgba(255, 255, 255, 0)
+      rgba(26, 109, 255, 0),
+      rgba(26, 109, 255, 0.2),
+      rgba(26, 109, 255, 0)
     );
     transition: all 0.6s ease;
   }
 
   &:hover {
-    transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
     
     .arrow-icon {
       transform: translateX(5px);

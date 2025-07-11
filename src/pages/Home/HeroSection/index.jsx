@@ -70,7 +70,7 @@ const HeroSection = () => {
           하자 점검 전문가와 함께하는 체계적인 하자점검
           </HeroSubTitle>
           <CTAButton>
-            <a href="/contact">상담 신청</a> 
+            <a href="/contact">문의하기기</a> 
           </CTAButton>
         </HeroContent>
       </Container>
