@@ -23,8 +23,40 @@ import B2BLanding from './pages/B2BLanding';
 import { logError, measurePerformance } from './utils/errorTracking';
 import CheckInspection from './pages/CheckInspection';
 
+// 에러 바운더리 컴포넌트 추가
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error('Error caught by boundary:', error, errorInfo);
+    logError(error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ padding: '20px', textAlign: 'center' }}>
+          <h1>페이지 로딩 중 문제가 발생했습니다.</h1>
+          <button onClick={() => window.location.reload()}>
+            새로고침
+          </button>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
+}
+
 const MainContent = styled.main`
-  /* 패딩 제거 */
+  min-height: 100vh;
 `;
 
 // 앱의 주요 컨텐츠를 담당하는 컴포넌트
@@ -95,12 +127,16 @@ const AppContent = () => {
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <Router>
-        <AppContent />
-      </Router>
-    </ThemeProvider>
+    <ErrorBoundary>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Router>
+          <React.Suspense fallback={<div>로딩중...</div>}>
+            <AppContent />
+          </React.Suspense>
+        </Router>
+      </ThemeProvider>
+    </ErrorBoundary>
   );
 }
 
