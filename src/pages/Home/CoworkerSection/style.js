@@ -14,6 +14,7 @@ export const CTABanner = styled.section`
   position: relative;
   max-height: 836px;
   z-index: 1;
+  
 
   @media (max-width: 480px) {
     max-height: 500px;
@@ -42,6 +43,7 @@ export const CTATitle = styled.h2`
   margin-bottom: 16px;
   color: #fff;
   line-height: 1.3;
+  word-break: keep-all;
 
   br{
     display: none;
