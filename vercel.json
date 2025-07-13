@@ -7,6 +7,15 @@
   ],
   "headers": [
     {
+      "source": "/index.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    },
+    {
       "source": "/img/(.*).mp4",
       "headers": [
         {
@@ -23,4 +32,4 @@
   "buildCommand": "npm run build",
   "outputDirectory": "build",
   "framework": "create-react-app"
-} 
+}

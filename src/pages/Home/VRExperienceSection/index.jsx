@@ -39,32 +39,32 @@ const VRExperienceSection = () => {
   const slides = [
     {
       title: '더샵 엘로이',
-      bgImage: 'eloi.JPG',
+      bgImage: 'eloi.jpg',
       vrUrl: ' https://lanhouse-in-port.vercel.app/더샵엘로이/'
     },
     {
       title: '수원아이파크시티12단지',
-      bgImage: 'suwon.JPG',
+      bgImage: 'suwon.jpg',
       vrUrl: 'https://lanhouse-in-port.vercel.app/수원아이파크시티12단지/'
     },
     {
       title: '분당어울림',
-      bgImage: 'bundangulim.JPG',
+      bgImage: 'bundangulim.jpg',
       vrUrl: 'https://lanhouse-in-port.vercel.app/금호어울림/'
     },
     {
       title: '리버센SK뷰',
-      bgImage: 'deone.JPG',
+      bgImage: 'deone.jpg',
       vrUrl: 'https://lanhouse-in-port.vercel.app/리버센sk뷰/'
     },
     {
       title: '화성비봉금강펜테리움',
-      bgImage: 'bibong.JPG',
+      bgImage: 'bibong.jpg',
       vrUrl: ' https://lanhouse-in-port.vercel.app/비봉금강펜테리움/'
     },
     {
       title: '도심역한양수자인리버파인',
-      bgImage: 'dosim.JPG',
+      bgImage: 'dosim.jpg',
       vrUrl: ' https://lanhouse-in-port.vercel.app/도심역한양수자인/'
     }
   ];

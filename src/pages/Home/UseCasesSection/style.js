@@ -154,7 +154,9 @@ export const CaseCardsContainer = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
-    padding: 0 20px;
+    padding: 0;
+    justify-items: center;
+    justify-content: center;
   }
 `;
 
@@ -167,6 +169,9 @@ export const CaseCard = styled.div`
   transition: all 0.3s ease;
   cursor: pointer;
   position: relative;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
   
   &:hover {
     transform: translateY(-10px);
