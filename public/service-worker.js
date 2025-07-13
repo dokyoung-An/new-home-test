@@ -1,42 +1,61 @@
-const CACHE_NAME = 'habang-cache-v1';
-const urlsToCache = [
-  '/',
-  '/index.html',
-  '/static/js/main.chunk.js',
-  '/static/js/0.chunk.js',
-  '/static/js/bundle.js',
-  '/manifest.json',
-  '/favicon.ico',
-  '/img-optimized/**/*.webp',
-  '/img/video/**/*.mp4',
+const CACHE_NAME = 'habang-cache-v2';
+
+// 캐시하지 않을 요청 패턴
+const NO_CACHE_PATTERNS = [
+  /^chrome-extension:/,
+  /^data:/,
+  /^javascript:/
 ];
 
 self.addEventListener('install', (event) => {
+  self.skipWaiting();
+});
+
+self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(urlsToCache))
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cacheName) => {
+          if (cacheName !== CACHE_NAME) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
   );
 });
 
 self.addEventListener('fetch', (event) => {
+  // 캐시하지 않을 요청 패턴 체크
+  if (NO_CACHE_PATTERNS.some(pattern => pattern.test(event.request.url))) {
+    return;
+  }
+
+  // HTML 요청은 항상 네트워크 우선
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request)
+        .catch(() => caches.match('/index.html'))
+    );
+    return;
+  }
+
   event.respondWith(
-    caches.match(event.request)
-      .then((response) => {
-        if (response) {
-          return response;
+    fetch(event.request)
+      .then(response => {
+        // 유효한 응답만 캐시
+        if (response && response.status === 200) {
+          const responseToCache = response.clone();
+          caches.open(CACHE_NAME)
+            .then(cache => {
+              cache.put(event.request, responseToCache);
+            })
+            .catch(error => {
+              console.error('Cache put error:', error);
+            });
         }
-        return fetch(event.request)
-          .then((response) => {
-            if (!response || response.status !== 200 || response.type !== 'basic') {
-              return response;
-            }
-            const responseToCache = response.clone();
-            caches.open(CACHE_NAME)
-              .then((cache) => {
-                cache.put(event.request, responseToCache);
-              });
-            return response;
-          });
+        return response;
       })
+      .catch(() => caches.match(event.request))
   );
 }); 
