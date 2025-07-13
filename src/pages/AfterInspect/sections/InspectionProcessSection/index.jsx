@@ -85,8 +85,8 @@ const InspectionProcessSection = () => {
                   <MdOutlineQuestionMark />
                 </QuestionIcon>
                 <TextWrapper>
-                  <BannerTitle>하방 하자 컨설팅 진행 중!</BannerTitle>
-                  <BannerDescription>하자 접수 중 궁금하신 점이 있으신가요?</BannerDescription>
+                  <BannerTitle>하자 컨설팅 진행 중!</BannerTitle>
+                  <BannerDescription>하자에 관한 궁금한 점이 있으신가요?</BannerDescription>
                 </TextWrapper>
               </InfoWrapper>
               <ButtonGroup>

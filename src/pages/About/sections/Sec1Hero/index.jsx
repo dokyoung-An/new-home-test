@@ -30,9 +30,7 @@ const Sec1Hero = () => {
       <Overlay />
       <Content>
         <Title>
-          하자 없는 집을 위한
-
-          전문가의 꼼꼼한 점검
+         하자를 찾는 특별한 방법
         </Title>
         <Subtitle>
           하자 전문가가 직접 찾아가는
@@ -97,11 +95,9 @@ const Title = styled.h1`
   
   @media (max-width: 768px) {
     font-size: 3rem;
+    line-height: 1.2;
   }
-  
-  @media (max-width: 480px) {
-    font-size: 2.5rem;
-  }
+
 `;
 
 const Subtitle = styled.p`

@@ -14,31 +14,31 @@ const Sec7Performance = () => {
       { 
         name: '남영역롯데캐슬헤리티지',
         location: '용인시',
-        image: '/img/product/yong_heri.jpg',
+        image: '/img/product/yong_heri.JPG',
         description: '사전점검 컨설팅'
       },
       { 
         name: '에코델타시티푸르지오센터파크',
         location: '부산',
-        image: '/img/product/bu_echo.jpg',
+        image: '/img/product/bu_echo.JPG',
         description: '아파트 전수점검'
       },
       { 
         name: '원호자이더포레',
         location: '구미시',
-        image: '/img/product/gu_one.jpg',
+        image: '/img/product/gu_one.JPG',
         description: '공동주택 품질점검'
       },
       { 
         name: '자이시그니처',
         location: '창원시',
-        image: '/img/product/chang_zai.jpg',
+        image: '/img/product/chang_zai.JPG',
         description: '사전점검 컨설팅'
       },
       { 
         name: '힐스테이트마크로엔',
         location: '창원시',
-        image: '/img/product/chang_hil.jpg',
+        image: '/img/product/chang_hil.JPG',
         description: '아파트 전수점검'
       }
     ],
@@ -46,37 +46,37 @@ const Sec7Performance = () => {
       { 
         name: '구의역롯데캐슬이스트폴',
         location: '서울시',
-        image: '/img/product/seo_east.jpg',
+        image: '/img/product/seo_east.JPG',
         description: '공동주택 품질점검'
       },
       { 
         name: '롯데캐슬하버팰리스',
         location: '창원시',
-        image: '/img/product/chang_lotte.jpg',
+        image: '/img/product/chang_lotte.JPG',
         description: '사전점검 컨설팅'
       },
       { 
         name: '한화포레나노태',
         location: '천안시',
-        image: '/img/product/cheon_no.jpg',
+        image: '/img/product/cheon_no.JPG',
         description: '아파트 전수점검'
       },
       { 
         name: '오천아이파크',
         location: '포항시',
-        image: '/img/product/po_o.jpg',
+        image: '/img/product/po_o.JPG',
         description: '공동주택 품질점검'
       },
       { 
         name: '죽전역에일린의뜰',
         location: '대구시',
-        image: '/img/product/dae_juk.jpg',
+        image: '/img/product/dae_juk.JPG',
         description: '사전점검 컨설팅'
       },
       { 
         name: '강동중흥밀레니얼S클래스',
         location: '서울시',
-        image: '/img/product/seo_mil.jpg',
+        image: '/img/product/seo_mil.JPG',
         description: '아파트 전수점검'
       }
     ],
@@ -84,37 +84,37 @@ const Sec7Performance = () => {
       { 
         name: '디에이치퍼스티어아이파크',
         location: '서울시',
-        image: '/img/product/seo_the.jpg',
+        image: '/img/product/seo_the.JPG',
         description: '공동주택 품질점검'
       },
       { 
         name: '부평그랑힐스',
         location: '인천시',
-        image: '/img/product/in_bu.jpg',
+        image: '/img/product/in_bu.JPG',
         description: '사전점검 컨설팅'
       },
       { 
         name: '래미안원베일리',
         location: '서울',
-        image: '/img/product/seo_re.jpg',
+        image: '/img/product/seo_re.JPG',
         description: '아파트 전수점검'
       },
       { 
         name: '서대구역반도유보라센텀',
         location: '대구',
-        image: '/img/product/dae_ban.jpg',
+        image: '/img/product/dae_ban.JPG',
         description: '공동주택 품질점검'
       },
       { 
         name: '지웰시티자이',
         location: '울산',
-        image: '/img/product/ul_ge.jpg',
+        image: '/img/product/ul_ge.JPG',
         description: '사전점검 컨설팅'
       },
       { 
         name: '수성더팰리스푸르지오더샵',
         location: '대구',
-        image: '/img/product/dae_su.jpg',
+        image: '/img/product/dae_su.JPG',
         description: '아파트 전수점검'
       }
     ]

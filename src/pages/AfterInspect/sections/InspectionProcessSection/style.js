@@ -12,6 +12,15 @@ const float = keyframes`
   }
 `;
 
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
 export const ContainerWrapper = styled.div`
   background: linear-gradient(180deg, #F5F7FF 0%, rgba(245, 247, 255, 0.5) 100%);
   padding: 100px 0 120px;
@@ -19,16 +28,7 @@ export const ContainerWrapper = styled.div`
   overflow: hidden;
 
   @media (max-width: 768px) {
-    padding: 40px 0 90px;
-  }
-`;
-
-const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+    padding: 40px 20px 90px 20px;
   }
 `;
 
@@ -59,7 +59,7 @@ export const SectionTitle = styled.h2`
   color: #1a1a1a;
   margin-bottom: 30px;
   word-break: keep-all;
-  line-height: 1.2;
+  line-height: 1.4;
   
   @media (max-width: 768px) {
     font-size: 2.4rem;
@@ -67,7 +67,7 @@ export const SectionTitle = styled.h2`
 `;
 
 export const SectionSubtitle = styled.p`
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   text-align: center;
   color: ${({ theme }) => theme.textLight || '#666'};
   margin-bottom: 60px;
@@ -75,7 +75,7 @@ export const SectionSubtitle = styled.p`
   line-height: 1.6;
   
   @media (max-width: 768px) {
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin-bottom: 40px;
     padding: 0 20px;
     br {
@@ -90,7 +90,7 @@ export const ProcessWrapper = styled.div`
 
 export const ProcessGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 30px;
   margin-bottom: 0px;
   
@@ -107,6 +107,12 @@ export const ProcessGrid = styled.div`
 
 export const IconWrapper = styled.div`
   ${iconStyles}
+
+  @media (max-width: 768px) {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+  }
 `;
 
 export const ProcessItem = styled.div`
@@ -125,6 +131,8 @@ export const ProcessItem = styled.div`
       color: #fff;
     }
   }
+
+ 
 `;
 
 export const ProcessTitle = styled.h3`
@@ -187,7 +195,6 @@ export const BannerContent = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 30px;
-
   
   @media (max-width: 1024px) {
     flex-direction: column;
@@ -237,6 +244,7 @@ export const BannerTitle = styled.h3`
   font-weight: 700;
   color: #fff;
   margin-bottom: 8px;
+  word-wrap: keep-all;
   
   @media (max-width: 768px) {
     font-size: 1.5rem;
@@ -246,6 +254,7 @@ export const BannerTitle = styled.h3`
 export const BannerDescription = styled.p`
   font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.9);
+  word-break: keep-all;
   
   @media (max-width: 768px) {
     font-size: 1rem;

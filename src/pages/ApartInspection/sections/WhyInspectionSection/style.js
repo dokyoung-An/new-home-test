@@ -21,6 +21,16 @@ const fadeInOut = keyframes`
   }
 `;
 
+export const ContainerWrapper = styled.div`
+  background: #f8f9ff;
+  padding: 100px 0;
+
+
+  @media (max-width: 768px) {
+    padding: 40px 20px;
+  }
+`;
+
 const slideUp = keyframes`
   from {
     opacity: 0;
@@ -116,6 +126,7 @@ export const Subtitle = styled.h3`
   margin-bottom: 2rem;
   line-height: 1.4;
   animation: ${slideUp} 0.8s ease-out;
+  word-break: keep-all;
   
   @media (max-width: 768px) {
     font-size: 1.3rem;
@@ -160,10 +171,15 @@ export const PointItem = styled.li`
   transition: all 0.3s ease;
   line-height: 1.6;
   
-  strong {
+  .de1 {
     font-weight: 600;
     color: #2D5BFF;
-    margin-right: 4px;
+    margin-right: 8px;
+    display: inline;
+  }
+
+  .de2 {
+    display: inline;
   }
   
   &:before {
@@ -204,16 +220,29 @@ export const PointItem = styled.li`
   @media (max-width: 768px) {
     font-size: 0.95rem;
     padding-left: 30px;
-    
+    display: block;
     
     &:before {
       width: 18px;
       height: 18px;
+      top: 10px;
+      transform: none;
     }
     
     svg {
       left: 4px;
+      top: 10px;
+      transform: none;
       font-size: 10px;
+    }
+
+    .de1 {
+      display: block;
+      margin-bottom: 4px;
+    }
+    .de2 {
+      display: block;
+      color: #666;
     }
   }
 `;

@@ -7,8 +7,8 @@ const ImageWrapper = styled.div`
 `;
 
 const OptimizedImage = ({ src, alt, width, height, className }) => {
-  // WebP 경로 생성
-  const webpSrc = src.replace('/img/', '/img-optimized/').replace(/\.(jpg|jpeg|png)$/, '.webp');
+  // WebP 경로 생성 - 대소문자 구분 없이 확장자 처리
+  const webpSrc = src.replace('/img/', '/img-optimized/').replace(/\.(jpg|jpeg|png|JPG|JPEG|PNG)$/i, '.webp');
   
   return (
     <ImageWrapper width={width} height={height} className={className}>

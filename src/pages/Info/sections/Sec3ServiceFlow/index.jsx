@@ -64,13 +64,13 @@ const Title = styled.h2`
 `;
 
 const Description = styled.p`
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   line-height: 1.6;
   color: ${({ theme }) => theme.textLight};
   word-break: keep-all;
   
   @media (max-width: 768px) {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 `;
 

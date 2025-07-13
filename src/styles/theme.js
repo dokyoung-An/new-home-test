@@ -12,6 +12,7 @@ const theme = {
   primaryReward: '#00BFA6',
   primarypurple: '#A259FF',
   primaryyellow: '#FFD600',
+  textLight: '#666',
 };
 
 export default theme; 

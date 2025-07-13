@@ -102,25 +102,23 @@ const Title = styled.h2`
   }
   
   @media (max-width: 768px) {
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: 20px;
    
   }
 `;
 
 const Description = styled.p`
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   line-height: 1.6;
-  color: ${({ theme }) => theme.textLight};
+  color: #666;
   word-break: keep-all;
   word-wrap: break-word;
   
-  @media (max-width: 1200px) {
-    font-size: 1.2rem;
-  }
+
   
   @media (max-width: 768px) {
-    font-size: 1.1rem;
+    font-size: 1rem;
  
     
   }

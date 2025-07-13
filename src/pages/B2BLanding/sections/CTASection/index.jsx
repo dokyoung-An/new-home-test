@@ -27,7 +27,7 @@ const SectionWrapper = styled.section`
   }
   
   @media (max-width: 768px) {
-    padding: 60px 0;
+    padding: 40px 0;
   }
 `;
 
@@ -46,6 +46,7 @@ const Title = styled.h2`
   
   @media (max-width: 768px) {
     font-size: 2rem;
+    margin-bottom: 2rem;
   }
 `;
 
@@ -57,6 +58,7 @@ const ButtonGroup = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
+    
   }
 `;
 
@@ -85,6 +87,11 @@ const Button = styled(motion(Link))`
       background-color: rgba(255, 255, 255, 0.1);
     }
   `}
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
 `;
 
 const CTASection = () => {

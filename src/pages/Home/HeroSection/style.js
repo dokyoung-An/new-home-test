@@ -25,6 +25,7 @@ export const Hero = styled.section`
   position: relative;
   overflow: hidden;
   z-index: 1;
+  background: url('/img/bg-poster.png') center center/cover no-repeat;
   
   &::before {
     content: '';
@@ -36,10 +37,7 @@ export const Hero = styled.section`
     background-color:rgb(7, 16, 42);
     opacity: 0.5;
     z-index: 2;
-    
   }
-
- 
 `;
 
 export const VideoBackground = styled.video`
@@ -50,6 +48,12 @@ export const VideoBackground = styled.video`
   height: 100%;
   object-fit: cover;
   z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+  
+  &.loaded {
+    opacity: 1;
+  }
 `;
 
 export const MainNav = styled.nav`
@@ -121,8 +125,12 @@ export const HeroContent = styled.div`
   
   @media (max-width: 768px) {
     margin-top: 20vh;
-    padding-left: 30px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
+    align-items: center;
   }
 `;
 
@@ -165,6 +173,8 @@ transparent
     font-size: 14px;
     align-self: center;
     margin-bottom: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 `;
 
@@ -189,6 +199,9 @@ export const HeroTitle = styled.h1`
     line-height: 1.2;
     align-items: center;
     margin-top: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
   }
 
   @media (max-width: 480px) {
@@ -221,6 +234,8 @@ export const HeroTitleHighlight = styled.span`
   
   @media (max-width: 768px) {
     font-size: 90px;
+    margin-left: 0;
+    text-align: center;
   }
 
   @media (max-width: 480px) {
@@ -243,21 +258,20 @@ export const HeroSubTitle = styled.p`
   padding-left: 0;
   word-break: keep-all;
   
+br{
+  display: none;
+}
 
-  /* &::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 60%;
-    transform: translateY(-50%);
-    width: 3px;
-    height:60%;
-    background: ${props => props.theme.primaryMiddle};
-    border-radius: 2px;
-  } */
-
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     font-size: 16px;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    br{
+      display: block;
+    }
   }
 `;
 
@@ -326,8 +340,9 @@ export const CTAButton = styled.button`
   @media (max-width: 768px) {
     font-size: 1rem;
     padding: 15px 30px;
-    width: 100%;
-    margin: 0 auto;
+    width: auto;
+    min-width: 180px;
+    margin: 40px auto 0;
   }
 
   @media (max-width: 480px) {

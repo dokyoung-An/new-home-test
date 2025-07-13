@@ -69,7 +69,7 @@ const SubTitle = styled.p`
   text-align: center;
 
   @media (max-width: 768px) {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     text-align: center;
     word-break: keep-all;
   }

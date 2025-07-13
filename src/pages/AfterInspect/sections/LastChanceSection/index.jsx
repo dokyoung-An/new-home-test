@@ -138,10 +138,12 @@ const Subheadline = styled.h3`
 
   @media (max-width: 1024px) {
     font-size: 1.6rem;
+    margin-bottom: 0.5rem;
   }
 
   @media (max-width: 768px) {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+   
   }
 `;
 

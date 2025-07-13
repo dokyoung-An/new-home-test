@@ -65,9 +65,9 @@ const ServiceDetailSection = () => {
               <MdEngineering />
             </DividerIcon>
           </SectionDivider>
-          <SectionTitle>전문적인 사전점검 서비스</SectionTitle>
+          <SectionTitle>전문적인<br/> 사전점검 서비스</SectionTitle>
           <SectionSubtitle>
-            20년 이상의 경험을 바탕으로 한 전문가들이 제공하는 체계적인 점검 서비스
+            7년 이상의 실전 하자 점검 경력을 보유한 전문가들이 제공하는 체계적인 점검 서비스
           </SectionSubtitle>
           <CardGrid>
             {services.map((service, index) => (

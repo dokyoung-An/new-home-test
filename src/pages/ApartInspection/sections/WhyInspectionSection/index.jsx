@@ -12,7 +12,8 @@ import {
   SlideImage,
   PointList,
   PointItem,
-  CheckIcon
+  CheckIcon,  
+  ContainerWrapper
 } from './style';
 
 const WhyInspectionSection = () => {
@@ -69,7 +70,7 @@ const WhyInspectionSection = () => {
   }, []);
 
   return (
-    <section style={{ background: '#f8f9ff', padding: '100px 0' }}>
+    <ContainerWrapper >
       <Container>
         <WhyInspectionWrapper>
           <ContentContainer>
@@ -89,19 +90,19 @@ const WhyInspectionSection = () => {
               <PointList>
                 <PointItem>
                   <CheckIcon />
-                  <strong>비용 증가</strong> 입주 후 하자 발견 시 보수 비용 부담
+                  <span className='de1'>비용 증가</span> <span className='de2'>입주 후 하자 발견 시 보수 비용 부담</span>
                 </PointItem>
                 <PointItem>
                   <CheckIcon />
-                  <strong>생활 불편</strong> 입주 중 하자 처리로 인한 일상 방해
+                  <span className='de1'>생활 불편</span> <span className='de2'>입주 중 하자 처리로 인한 일상 방해</span>
                 </PointItem>
                 <PointItem>
                   <CheckIcon />
-                  <strong>책임 회피</strong> 시간 경과에 따른 시공사 책임감 저하
+                  <span className='de1'>책임 회피</span> <span className='de2'>시간 경과에 따른 시공사 책임감 저하</span>
                 </PointItem>
                 <PointItem>
                   <CheckIcon />
-                  <strong>가치 하락</strong> 누적된 하자로 인한 자산 가치 감소
+                  <span className='de1'>가치 하락</span> <span className='de2'>누적된 하자로 인한 자산 가치 감소</span>
                 </PointItem>
               </PointList>
             </TextContent>
@@ -118,7 +119,7 @@ const WhyInspectionSection = () => {
           </ContentContainer>
         </WhyInspectionWrapper>
       </Container>
-    </section>
+    </ContainerWrapper>
   );
 };
 

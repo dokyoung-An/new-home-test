@@ -46,9 +46,16 @@ export const SectionTitle = styled.h2`
   font-weight: 700;
   color: #1a1a1a;
   margin-bottom: 1rem;
+
+  br{
+    display: none;
+  }
   
   @media (max-width: 768px) {
     font-size: 2rem;
+    br{
+      display: block;
+    }
   }
 `;
 
@@ -60,6 +67,7 @@ export const SectionSubtitle = styled.p`
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  word-break: keep-all;
   
   @media (max-width: 768px) {
     font-size: 1rem;

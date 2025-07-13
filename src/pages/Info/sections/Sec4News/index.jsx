@@ -36,7 +36,7 @@ const Sec4News = () => {
   return (
     <Section>
       <Title>하자 관련 <br />유용한 사이트 소개</Title>
-      <SubText>하자와 관련된 유용한 사이트를 소개합니다.</SubText>
+      <SubText>하자 문제 해결 정보를 확인해 보세요</SubText>
 
       <CardGrid>
       {cards.map(({ title, desc, icon, link, iconSize }) => (
@@ -83,9 +83,13 @@ const Title = styled.h2`
 `;
 
 const SubText = styled.p`
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #666;
   margin-bottom: 50px;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 const CardGrid = styled.div`

@@ -36,7 +36,7 @@ const Title = styled(motion.h1)`
   margin-bottom: 1.5rem;
   
   @media (max-width: 768px) {
-    font-size: 2.5rem;
+    font-size: 3rem;
   }
 `;
 
@@ -44,27 +44,15 @@ const Subtitle = styled(motion.p)`
   font-size: 1.5rem;
   margin-bottom: 2.5rem;
   line-height: 1.6;
+  color:rgba(255, 255, 255, 0.8);
+  
   
   @media (max-width: 768px) {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 `;
 
-const CTAButton = styled(motion.button)`
-  padding: 1rem 2.5rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  background-color: #1a6dff;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.2s;
 
-  &:hover {
-    background-color: #0056e0;
-  }
-`;
 
 const ScrollIndicator = styled.div`
   position: absolute;
@@ -128,15 +116,6 @@ const HeroSection = () => {
           공실을 줄이고, 분쟁을 줄입니다.<br />
           하방이 임대사업의 새로운 표준이 됩니다.
         </Subtitle>
-        {/* <CTAButton
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          상담 신청하기
-        </CTAButton> */}
         <ScrollIndicator />
       </ContentWrapper>
     </HeroWrapper>

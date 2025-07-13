@@ -94,7 +94,8 @@ const Sec7Expertise = () => {
   const secondRowItems = equipmentData.slice(3);
 
   return (
-    <Container style={{ padding: '100px 0px' }}>
+    <ContainerWrapper>
+    <Container>
       <IconDivider>
         <IconWrapper>
           <MdBuildCircle />
@@ -135,8 +136,17 @@ const Sec7Expertise = () => {
         </Row>
       </GridContainer>
     </Container>
+    </ContainerWrapper>
   );
 };
+
+const ContainerWrapper = styled.div`
+  padding: 100px 0;
+
+  @media (max-width: 768px) {
+    padding: 40px 20px;
+  }
+`;  
 
 const TitleSection = styled.div`
   text-align: center;

@@ -23,23 +23,23 @@ const snsImages = [
     description: '욕실 천정 누수'
   },
   {
-    thumbnail: '/img/video/gyelro2.jpg',
-    full: '/img/video/gyelro2.jpg',
+    thumbnail: '/img/video/gyelro2.JPG',
+    full: '/img/video/gyelro2.JPG',
     description: '창문 결로'
   },
   {
-    thumbnail: '/img/video/14.jpg',
-    full: '/img/video/13.jpg',
+    thumbnail: '/img/video/14.JPG',
+    full: '/img/video/13.JPG',
     description: '변기 수전 결로'
   },
   {
-    thumbnail: '/img/haja/47.jpg',
-    full: '/img/haja/47.jpg',
+    thumbnail: '/img/haja/47.JPG',
+    full: '/img/haja/47.JPG',
     description: ' 거실창 유리 굴절'
   },
   {
-    thumbnail: '/img/haja/34.jpg',
-    full: '/img/haja/34.jpg',
+    thumbnail: '/img/haja/34.JPG',
+    full: '/img/haja/34.JPG',
     description: '오토씰 작동불량'
   }
 ];
@@ -57,7 +57,7 @@ const Sec5SNS = () => {
           <Title>하자 점검 사례</Title>
           <Description>
             하방이 발견한 다양한 하자 사례를 소개합니다.<br />
-            신축아파트 하자 사례를 직접 확인해 보세요.
+            신축아파트 하자를 직접 확인해 보세요.
           </Description>
         </TitleBlock>
         
@@ -187,13 +187,13 @@ const Title = styled.h2`
 
 const Description = styled.p`
  
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   line-height: 1.6;
-  color: ${({ theme }) => theme.textLight};
+  color:#666;
   word-break: keep-all;
   
   @media (max-width: 768px) {
-    font-size: 1.1rem;
+    font-size: 1rem;
     br {
       display: none;
     }

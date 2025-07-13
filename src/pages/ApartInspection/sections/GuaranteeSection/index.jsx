@@ -176,6 +176,10 @@ const CardDescription = styled.p`
   font-size: 1.1rem;
   color: ${({ theme }) => theme.textLight};
   line-height: 1.6;
+  word-break: keep-all;
+  word-wrap: keep-all;
+
+  
   .card1{
     font-size: 1.1rem;
     font-weight: 600;
@@ -187,6 +191,16 @@ const CardDescription = styled.p`
     font-size: 1.1rem;
     margin-bottom: 12px;
    
+  } 
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    .card1{
+      font-size: 1rem;
+    }
+    .card2{
+      font-size: 1rem;
+    }
   } 
 `;
 

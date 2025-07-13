@@ -49,6 +49,10 @@ const Description = styled.p`
   line-height: 1.6;
   max-width: 800px;
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 const IframeContainer = styled.div`
@@ -239,7 +243,7 @@ const CaseStudySection = () => {
     <SectionWrapper>
       <Container>
         <Header>
-          <Title>직접 <br />체험해 확인하세요</Title>
+          <Title>체험해 보세요!!</Title>
           <Description>
             퇴거 시, 입주 전 VR 기록으로 수리비 분쟁 없이 마무리할 수 있습니다.
           </Description>

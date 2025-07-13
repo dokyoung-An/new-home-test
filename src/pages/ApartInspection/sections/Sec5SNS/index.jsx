@@ -58,7 +58,7 @@ const Sec5SNS = () => {
           <Title>하자 점검 사례</Title>
           <Description>
             하방이 발견한 다양한 하자 사례를 소개합니다.<br />
-            신축아파트 하자 사례를 직접 확인해 보세요.
+            신축아파트 하자를 직접 확인해 보세요.
           </Description>
         </TitleBlock>
         
@@ -187,7 +187,7 @@ const Title = styled.h2`
 const Description = styled.p`
   font-size: 1.25rem;
   line-height: 1.6;
-  color: ${({ theme }) => theme.textLight};
+  color: #666;
   word-break: keep-all;
   
   @media (max-width: 768px) {

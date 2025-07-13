@@ -65,9 +65,9 @@ const InspectionProcessSection = () => {
         <DividerIcon>
           <MdSettings />
         </DividerIcon>
-        <SectionTitle>하방의 점검 프로세스</SectionTitle>
+        <SectionTitle>사전점검 프로세스</SectionTitle>
         <SectionSubtitle>
-          전문성과 신뢰성을 바탕으로 체계적인 점검 프로세스를 제공합니다.<br />
+          전문성과 신뢰성을 바탕으로 체계적인 점검 프로세스를 제공합니다. <br />
           하자 발견부터 보고서 작성까지, 모든 과정을 꼼꼼하게 진행합니다.
         </SectionSubtitle>
         <ProcessWrapper>
@@ -90,8 +90,8 @@ const InspectionProcessSection = () => {
                   <MdOutlineQuestionMark />
                 </QuestionIcon>
                 <TextWrapper>
-                  <BannerTitle>하방 하자 컨설팅 진행 중!</BannerTitle>
-                  <BannerDescription>하자 접수 중 궁금하신 점이 있으신가요?</BannerDescription>
+                  <BannerTitle>하자 컨설팅 진행 중!</BannerTitle>
+                  <BannerDescription>하자에 관한 궁금한 점이 있으신가요?</BannerDescription>
                 </TextWrapper>
               </InfoWrapper>
               <ButtonGroup>
