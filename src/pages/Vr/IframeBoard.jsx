@@ -99,7 +99,7 @@ const SectionDescription = styled.p`
 
 const BoardIframe = styled.iframe`
    width: 90%;
-   height: 750px;
+   height: 1050px;
   border: none;
   background: white;
   overflow: hidden;
@@ -116,29 +116,53 @@ const BoardIframe = styled.iframe`
   -ms-overflow-style: none;
 
   @media (max-width: 1200px) {
-    height: 650px;
+    height: 900px;
   }
 
 @media (max-width: 1024px) {
-  height: 650px;
+  height: 900px;
+}
+
+@media (max-width: 953px) {
+  height: 880px;
+}
+
+@media (max-width: 920px) {
+  height: 1100px;
 }
 @media (max-width: 900px) {
-  height: 650px;
+  height: 900px;
 }
-@media (max-width: 768px) {
-  height: 600px;
+
+@media (max-width: 850px) {
+  height: 1000px;
 }
-@media (max-width: 600px) {
-  height: 600px;
+
+
+@media (max-width: 753px) {
+  height: 1000px;
 }
-@media (max-width: 480px) {
-  height: 600px;
+
+@media (max-width: 670px) {
+  height: 1050px;
+}
+
+
+@media (max-width: 590px) {
+  height: 1050px;
+}
+@media (max-width: 520px) {
+  height: 1150px;
+}
+
+@media (max-width: 515px) {
+  height: 1200px;
 }
 @media (max-width: 380px) {
-  height: 780px;
+  height: 1200px;
 }
 @media (max-width: 340px) {
-  height: 800px;
+  height: 1200px;
 }
 `;
 

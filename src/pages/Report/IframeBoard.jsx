@@ -293,7 +293,7 @@ const MonthItem = styled.button`
 
 const BoardIframe = styled.iframe`
    width: 90%;
-   height: 750px;
+   height: 850px;
   border: none;
   background: white;
   overflow: hidden;
@@ -310,26 +310,26 @@ const BoardIframe = styled.iframe`
   -ms-overflow-style: none;
 
   @media (max-width: 1200px) {
-    height: 650px;
+    height: 800px;
   }
 
 @media (max-width: 1024px) {
-  height: 650px;
+  height: 700px;
 }
 @media (max-width: 900px) {
-  height: 650px;
+  height: 730px;
 }
 @media (max-width: 768px) {
-  height: 600px;
-}
-@media (max-width: 600px) {
-  height: 650px;
-}
-@media (max-width: 480px) {
   height: 800px;
 }
+@media (max-width: 600px) {
+  height: 830px;
+}
+@media (max-width: 480px) {
+  height: 880px;
+}
 @media (max-width: 380px) {
-  height: 850px;
+  height: 950px;
 }
 `;
 
