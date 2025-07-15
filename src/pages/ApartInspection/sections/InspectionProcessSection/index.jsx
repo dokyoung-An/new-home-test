@@ -52,11 +52,11 @@ const InspectionProcessSection = () => {
   ];
 
   const handleKakaoClick = () => {
-    window.open('https://pf.kakao.com/_IxoRxjb', '_blank');
+    window.open('http://pf.kakao.com/_hIxdss/chat', '_blank');
   };
 
   const handleCallClick = () => {
-    window.location.href = 'tel:1544-1516';
+    window.location.href = 'tel:1566-2384';
   };
 
   return (
