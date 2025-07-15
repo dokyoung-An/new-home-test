@@ -107,7 +107,7 @@ const Header = () => {
           ))}
         </NavLinks>
 
-        <InquiryButton><a href="/contact">문의하기</a></InquiryButton>
+        <InquiryButton href="/contact">문의하기</InquiryButton>
 
         <HamburgerButton onClick={toggleMenu}>
           <FaBars />
@@ -322,7 +322,7 @@ const DropdownMenu = styled.ul`
   }
 `;
 
-const InquiryButton = styled.button`
+const InquiryButton = styled.a`
   background-color: #1a6dff;
   color: #fff;
   border: none;
@@ -331,6 +331,9 @@ const InquiryButton = styled.button`
   font-size: 1rem;
   font-weight: 400;
   cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
 
   &:hover {
     background-color: #fff;
