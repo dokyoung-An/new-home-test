@@ -23,13 +23,13 @@ const AdvantagesSection = () => {
       subtitle: "TRAINING",
       title: "하자 전문가 양성 프로그램",
       description: "분기별 하자 점검 교육 & 전문가 양성 프로그램",
-      image: "/img/bestpoint/2.JPEG",
+      image: "/img/bestpoint/2.jpeg",
     },
     {
       subtitle: "SYSTEM",
       title: "체계적인 점검 시스템",
       description: "철저한 매뉴얼로 꼼꼼하게 점검합니다",
-      image: "/img/bestpoint/7.JPEG",
+      image: "/img/bestpoint/7.jpeg",
     },
     {
       subtitle: "SATISFACTION",
