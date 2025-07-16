@@ -284,7 +284,7 @@ export const CTAButton = styled.button`
   font-size: 16px;
   font-weight: 600;
   padding: 14px 20px;
-  
+  text-decoration: none;
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;

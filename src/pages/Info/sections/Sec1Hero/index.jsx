@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 
 const Sec1Hero = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
   const checkMobile = () => {
     setIsMobile(window.innerWidth <= 768);
@@ -14,8 +15,20 @@ const Sec1Hero = () => {
     checkMobile();
     window.addEventListener('resize', checkMobile);
 
+    // 비디오 프리로드
+    const preloadVideo = () => {
+      const videoUrl = isMobile ? "/img/video/video_mobile.mp4" : "/img/video/video_optimized.mp4";
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'video';
+      link.href = videoUrl;
+      document.head.appendChild(link);
+    };
+
+    preloadVideo();
+
     return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  }, [isMobile]);
 
   return (
     <Container>
@@ -32,7 +45,15 @@ const Sec1Hero = () => {
           <Button><a href="/contact">서비스 문의하기</a></Button>
         </TextBlock>
         <VideoBlock>
-          <video autoPlay muted loop playsInline>
+          <video 
+            autoPlay 
+            muted 
+            loop 
+            playsInline
+            preload="metadata"
+            onLoadedData={() => setIsVideoLoaded(true)}
+            className={isVideoLoaded ? 'loaded' : ''}
+          >
             <source
               src={isMobile ? "/img/video/video_mobile.mp4" : "/img/video/video_optimized.mp4"}
               type="video/mp4"
@@ -161,20 +182,22 @@ const VideoBlock = styled.div`
   justify-content: center;
   align-items: center;
 
-  video{
+  video {
     width: 100%;
     height: 550px;
     object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
     
-
+    &.loaded {
+      opacity: 1;
+    }
+    
     @media (max-width: 768px) {
-      height: 250px;
-     
+      height: auto;
     }
   }
-  
 `;
-
 
 
 export default Sec1Hero; 

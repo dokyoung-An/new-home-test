@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { fadeIn } from '../../../../styles/animations';
 
 const Sec1Hero = () => {
+  useEffect(() => {
+    // 이미지 프리로드
+    const preloadImage = () => {
+      const imageUrl = '/img-optimized/apartment/apart4.webp';
+      const img = new Image();
+      img.src = imageUrl;
+    };
+    preloadImage();
+  }, []);
+
   return (
     <Container>
       <Content>
@@ -18,7 +28,15 @@ const Sec1Hero = () => {
           <Button><a href="/contact">서비스 문의</a></Button>
         </TextBlock>
         <ImageBlock>
-          <MainImage src="/img/apartment/apart4.png" alt="하방 서비스" />
+          <MainImage 
+            src="/img-optimized/apartment/apart4.webp"
+            srcSet="/img-optimized/apartment/apart4-mobile.webp 768w,
+                    /img-optimized/apartment/apart4.webp 1200w"
+            sizes="(max-width: 768px) 100vw,
+                   50vw"
+            alt="하방 서비스"
+            loading="eager"
+          />
         </ImageBlock>
       </Content>
     </Container>

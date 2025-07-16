@@ -44,18 +44,60 @@ const HeroSection = () => {
         setIsVideoLoaded(true);
       };
 
+      // 비디오 버퍼링 최적화
+      const optimizeVideoPlayback = () => {
+        if (video.readyState >= 3) {
+          setIsVideoLoaded(true);
+        }
+        
+        // 모바일에서 데이터 사용량 최적화
+        if (isMobile) {
+          video.setAttribute('playsinline', '');
+          video.setAttribute('webkit-playsinline', '');
+          // 모바일에서는 480p 해상도로 제한
+          video.style.maxHeight = '480px';
+        }
+
+        // 백그라운드 탭에서 비디오 일시정지
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) {
+            video.pause();
+          } else {
+            video.play();
+          }
+        });
+      };
+
+      // 비디오 프리로드 최적화
+      const preloadVideo = () => {
+        const videoUrl = isMobile ? "/img/bg3_mobile.mp4" : "/img/bg3_optimized.mp4";
+        
+        // 연결 상태 확인
+        if (navigator.connection) {
+          const connection = navigator.connection;
+          // 느린 연결에서는 프리로드 스킵
+          if (connection.saveData || connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
+            return;
+          }
+        }
+
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'video';
+        link.href = videoUrl;
+        document.head.appendChild(link);
+      };
+
       video.addEventListener('loadeddata', handleLoadedData);
-      
-      // 이미 로드된 경우를 처리
-      if (video.readyState >= 3) {
-        setIsVideoLoaded(true);
-      }
+      optimizeVideoPlayback();
+      preloadVideo();
 
       return () => {
         video.removeEventListener('loadeddata', handleLoadedData);
+        document.removeEventListener('visibilitychange', () => {});
       };
     }
-  }, [isClient]);
+  }, [isClient, isMobile]);
 
   const logos = [
     { src: wordmarkLogo, alt: '랜하우스 워드마크' },
@@ -73,7 +115,8 @@ const HeroSection = () => {
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
+          poster="/img/bg-poster.webp"
           className={isVideoLoaded ? 'loaded' : ''}
         >
           <source
@@ -93,8 +136,8 @@ const HeroSection = () => {
           <HeroSubTitle>
           하자 점검 전문가와 함께하는<br/> 체계적인 하자점검
           </HeroSubTitle>
-          <CTAButton>
-            <a href="/contact">문의하기</a> 
+          <CTAButton as="a" href="/contact">
+            문의하기
           </CTAButton>
         </HeroContent>
       </Container>
@@ -106,7 +149,8 @@ const HeroSection = () => {
               <SliderLogo 
                 key={index} 
                 src={logo.src} 
-                alt={logo.alt} 
+                alt={logo.alt}
+                loading="lazy"
               />
             ))}
             
@@ -115,7 +159,8 @@ const HeroSection = () => {
               <SliderLogo 
                 key={`duplicate-${index}`} 
                 src={logo.src} 
-                alt={logo.alt} 
+                alt={logo.alt}
+                loading="lazy"
               />
             ))}
           </SlideTrack>
