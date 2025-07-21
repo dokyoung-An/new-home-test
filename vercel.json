@@ -37,9 +37,7 @@
       ]
     }
   ],
-  "redirects": [
-    { "source": "/", "destination": "https://habang.kr", "permanent": true }
-  ],
+
   
   "buildCommand": "npm run build",
   "outputDirectory": "build",
