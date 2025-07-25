@@ -44,7 +44,7 @@ const menuItems = [
   },
   {
     label: '우리집 VR',
-    href: '/vr'
+    href: 'https://habang.imweb.me/vr2'
   },
   
  
