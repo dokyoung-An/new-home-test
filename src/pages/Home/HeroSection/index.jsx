@@ -54,8 +54,6 @@ const HeroSection = () => {
         if (isMobile) {
           video.setAttribute('playsinline', '');
           video.setAttribute('webkit-playsinline', '');
-          // 모바일에서는 480p 해상도로 제한
-          video.style.maxHeight = '480px';
         }
 
         // 백그라운드 탭에서 비디오 일시정지

@@ -54,6 +54,7 @@ export const VideoBackground = styled.video`
   &.loaded {
     opacity: 1;
   }
+ 
 `;
 
 export const MainNav = styled.nav`

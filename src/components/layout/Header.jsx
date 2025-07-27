@@ -39,7 +39,7 @@ const menuItems = [
   },
   {
     label: '점검 보고서',
-    href: '/report' 
+    href: 'https://habang.imweb.me/report' 
     
   },
   {
@@ -187,6 +187,8 @@ const HeaderContent = styled.div`
   align-items: center;
   padding: 0 40px;
 `;
+
+
 
 const Logo = styled.div`
   font-size: 1.8rem;
