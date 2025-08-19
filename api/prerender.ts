@@ -14,7 +14,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     console.log('User-Agent:', ua);
     console.log('Is Bot:', isBot);
     console.log('PRERENDER_TOKEN exists:', !!process.env.PRERENDER_TOKEN);
-    console.log('PRERENDER_TOKEN length:', process.env.PRERENDER_TOKEN?.length || 0);
 
     // 원래 풀 URL 구성
     const host = (req.headers['x-forwarded-host'] as string) || (req.headers.host as string);
@@ -35,13 +34,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       });
 
       console.log('Prerender Response Status:', r.status);
-      console.log('Prerender Response Headers:', Object.fromEntries(r.headers.entries()));
 
       // 응답 그대로 전달(상태/헤더/바디)
       r.headers.forEach((v, k) => res.setHeader(k, v));
       res.status(r.status);
       const body = await r.arrayBuffer();
-      console.log('Prerender Response Body Length:', body.byteLength);
       return res.send(Buffer.from(body));
     }
 
@@ -51,7 +48,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const indexResponse = await fetch(indexUrl);
     const indexHtml = await indexResponse.text();
     
-    console.log('Index HTML length:', indexHtml.length);
     res.setHeader('Content-Type', 'text/html');
     res.setHeader('Cache-Control', 'public, max-age=0');
     return res.send(indexHtml);
