@@ -2,18 +2,7 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/api/prerender$1",
-      "has": [
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": ".*(Yeti|Googlebot|bingbot|Baiduspider|DuckDuckBot|Twitterbot|facebookexternalhit|Slackbot|LinkedInBot|Daum[ _]oa).*"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": "/api/prerender$1"
     }
   ],
   "headers": [

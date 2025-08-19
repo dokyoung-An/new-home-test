@@ -29,9 +29,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.send(Buffer.from(body));
     }
 
-    // 일반 사용자: SPA로
+    // 일반 사용자: index.html로 리다이렉트 (내부)
+    const indexUrl = `${proto}://${host}/index.html`;
+    const indexResponse = await fetch(indexUrl);
+    const indexHtml = await indexResponse.text();
+    
+    res.setHeader('Content-Type', 'text/html');
     res.setHeader('Cache-Control', 'public, max-age=0');
-    return res.redirect(307, '/');
+    return res.send(indexHtml);
   } catch (e: any) {
     console.error('[prerender proxy error]', e);
     return res.status(500).send('Prerender proxy error');
