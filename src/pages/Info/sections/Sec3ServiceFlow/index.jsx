@@ -15,7 +15,7 @@ const Sec3ServiceFlow = () => {
         </TitleBlock>
         <IframeWrapper>
           <StyledIframe
-            src="https://vink2.imweb.me/info"
+            src="https://habang.imweb.me/info"
             title="하자 정보 안내"
             frameBorder="0"
             scrolling="no"
