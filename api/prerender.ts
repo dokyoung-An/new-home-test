@@ -4,11 +4,13 @@ const BOT_UA = /(Yeti|Googlebot|bingbot|Baiduspider|DuckDuckBot|Twitterbot|faceb
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
+    const path = req.url?.replace(/^\/api\/prerender/, '') || '/';
     const ua = (req.headers['user-agent'] as string) || '';
     const isBot = BOT_UA.test(ua);
 
     // 디버깅 로그
     console.log('=== PRERENDER DEBUG ===');
+    console.log('Path:', path);
     console.log('User-Agent:', ua);
     console.log('Is Bot:', isBot);
     console.log('PRERENDER_TOKEN exists:', !!process.env.PRERENDER_TOKEN);
@@ -17,7 +19,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // 원래 풀 URL 구성
     const host = (req.headers['x-forwarded-host'] as string) || (req.headers.host as string);
     const proto = (req.headers['x-forwarded-proto'] as string) || 'https';
-    const path = req.url?.replace(/^\/api\/prerender/, '') || '/';
     const originalUrl = `${proto}://${host}${path}`;
 
     console.log('Original URL:', originalUrl);

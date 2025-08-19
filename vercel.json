@@ -1,28 +1,30 @@
 {
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/api/prerender$1"
-    }
-  ],
-  "headers": [
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    },
+    {
+      "source": "/(.*\\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|mp4|webp|pdf))$",
+      "destination": "/$1"
+    },
     {
       "source": "/(.*)",
-      "headers": [
+      "destination": "/api/prerender$1",
+      "has": [
         {
-          "key": "Cache-Control",
-          "value": "no-cache, no-store, must-revalidate"
-        },
-        {
-          "key": "Pragma",
-          "value": "no-cache"
-        },
-        {
-          "key": "Expires",
-          "value": "0"
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(Yeti|Googlebot|bingbot|Baiduspider|DuckDuckBot|Twitterbot|facebookexternalhit|Slackbot|LinkedInBot|Daum[ _]oa).*"
         }
       ]
     },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
     {
       "source": "/img/(.*).mp4",
       "headers": [
