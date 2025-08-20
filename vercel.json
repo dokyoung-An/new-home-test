@@ -1,33 +1,49 @@
-
 {
-    "headers": [
-      {
-        "source": "/(.*)\\.(png|jpg|jpeg|webp|avif|gif|svg|ico|mp4|webm|mp3|woff2|ttf|otf)",
-        "headers": [
-          { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-        ]
-      },
-      {
-        "source": "/assets/(.*)",
-        "headers": [
-          { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-        ]
-      },
-      {
-        "source": "/images/(.*)",
-        "headers": [
-          { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-        ]
-      },
-      {
-        "source": "/",
-        "headers": [
-          { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
-        ]
-      }
-    ],
-    "rewrites": [
-      { "source": "/(.*)", "destination": "/" }  
-    ]
-  }
-  
+  "rewrites": [
+    {
+      "source": "/seo-proxy/(.*)",
+      "destination": "/api/prerender/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/api/prerender/$1",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent", 
+          "value": ".*(bot|crawler|spider|Yeti|Googlebot).*"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)\\.(png|jpg|jpeg|webp|avif|gif|svg|ico|mp4|webm|mp3|woff2|ttf|otf)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
+    }
+  ]
+}
