@@ -14,6 +14,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     console.log('User-Agent:', ua);
     console.log('Is Bot:', isBot);
     console.log('PRERENDER_TOKEN exists:', !!process.env.PRERENDER_TOKEN);
+    console.log('PRERENDER_TOKEN length:', process.env.PRERENDER_TOKEN?.length || 0);
+    console.log('All env vars:', Object.keys(process.env).filter(key => key.includes('PRERENDER')));
 
     // 원래 풀 URL 구성
     const host = (req.headers['x-forwarded-host'] as string) || (req.headers.host as string);
@@ -26,10 +28,18 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       const prerenderUrl = `https://service.prerender.io/${originalUrl}`;
       console.log('Prerender URL:', prerenderUrl);
       
+      // 여러 환경변수 이름 시도
+      const token = process.env.PRERENDER_TOKEN || 
+                   process.env.PRERENDER_API_TOKEN || 
+                   process.env.PRERENDER_IO_TOKEN ||
+                   process.env.REACT_APP_PRERENDER_TOKEN || '';
+      
+      console.log('Using token length:', token.length);
+      
       const r = await fetch(prerenderUrl, {
         headers: {
           'User-Agent': ua,
-          'X-Prerender-Token': process.env.PRERENDER_TOKEN || ''
+          'X-Prerender-Token': token
         }
       });
 
