@@ -28,7 +28,7 @@ export const Hero = styled.section`
   background: url('/img/bg-poster.png') center center/cover no-repeat;
   
   &::before {
-    content: '';
+    content: '';    
     position: absolute;
     top: 0;
     left: 0;
