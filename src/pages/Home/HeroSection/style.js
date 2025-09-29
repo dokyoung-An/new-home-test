@@ -25,7 +25,7 @@ export const Hero = styled.section`
   position: relative;
   overflow: hidden;
   z-index: 1;
-  background: url('/img/bg-poster.png') center center/cover no-repeat;
+ 
   
   &::before {
     content: '';    
@@ -48,7 +48,7 @@ export const VideoBackground = styled.video`
   height: 100%;
   object-fit: cover;
   z-index: 1;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.3s ease-in;
   
   &.loaded {
@@ -137,7 +137,7 @@ export const HeroContent = styled.div`
 
 export const HeroTagline = styled.h4`
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 800;
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 10px;
@@ -152,22 +152,16 @@ export const HeroTagline = styled.h4`
   span {
     position: relative;
     padding-bottom: 8px;
+    background: linear-gradient(90deg, 
+rgba(162, 89, 255,0.8), 
+rgba(0, 191, 166,0.9), 
+rgba(21, 87, 204,0.8));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
     
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, 
-        transparent, 
-rgba(162, 89, 255,0.4), 
-rgba(0, 191, 166,0.5), 
-rgba(21, 87, 204,0.4),
-transparent
-      );
-    }
+
   }
 
   @media (max-width: 768px) {
@@ -180,11 +174,10 @@ transparent
 `;
 
 export const HeroTitle = styled.h1`
-  font-size: 84px;
+  font-size: 74px;
   font-weight: 800;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-
-  line-height: 1.1;
+  line-height: 1.4;
   word-break: keep-all;
   display: flex;
   flex-direction: column;
@@ -196,17 +189,17 @@ export const HeroTitle = styled.h1`
   margin-top: -5px;
 
   @media (max-width: 768px) {
-    font-size: 60px;
-    line-height: 1.2;
+    font-size: 40px;
+    line-height: 1.5;
     align-items: center;
     margin-top: 0;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
     width: 100%;
   }
 
   @media (max-width: 480px) {
-    font-size: 42px;
+    font-size: 32px;
   }
 `;
 
@@ -266,10 +259,11 @@ br{
   @media (max-width: 768px) {
     font-size: 16px;
     text-align: center;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
     margin-left: auto;
     margin-right: auto;
+    line-height: 1.5;
     br{
       display: block;
     }
@@ -279,12 +273,12 @@ br{
 
 
 export const CTAButton = styled.button`
-  background-color:rgba(250,250,250,0.9);
-  color: #1a6dff;
+  background-color:#1a6dff;
+  color: #fff;
   box-shadow: 0 0 10px rgba(26, 109, 255, 1);
   font-size: 16px;
   font-weight: 600;
-  padding: 14px 20px;
+  padding: 10px 20px;
   text-decoration: none;
   border-radius: 6px;
   cursor: pointer;
@@ -302,28 +296,14 @@ export const CTAButton = styled.button`
   margin-top: 40px;
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  letter-spacing: 0px;
-
+  letter-spacing: 1px;
+ 
   
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      rgba(26, 109, 255, 0),
-      rgba(26, 109, 255, 0.2),
-      rgba(26, 109, 255, 0)
-    );
-    transition: all 0.6s ease;
-  }
+  
 
   &:hover {
     transform: translateY(-5px) scale(1.03);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 15px rgba(255,255,255,0.3);
     
     .arrow-icon {
       transform: translateX(5px);
@@ -340,17 +320,15 @@ export const CTAButton = styled.button`
 
   @media (max-width: 768px) {
     font-size: 1rem;
-    padding: 15px 30px;
+    padding: 10px 20px;
     width: auto;
     min-width: 180px;
     margin: 40px auto 0;
+    font-weight: 400;
+    letter-spacing: 1px;
   }
 
-  @media (max-width: 480px) {
-    font-size: 1rem;
-    padding: 15px 30px;
-   
-  }
+ 
 `;
 
 export const LogoSliderContainer = styled.div`

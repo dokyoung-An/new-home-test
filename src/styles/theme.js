@@ -13,6 +13,11 @@ const theme = {
   primarypurple: '#A259FF',
   primaryyellow: '#FFD600',
   textLight: '#666',
+  kyengsang:'rgba(26, 109, 255, 0.5)',
+  daejeon:'rgba(0, 240, 141,0.5)',
+  seoul:'rgba(240, 0, 226,0.5)',
+  jeonra:'rgba(240, 181, 0, 0.5)',
+  extra:'rgba(79, 0, 240,0.5)',
 };
 
 export default theme; 

@@ -4,9 +4,6 @@ import {
   ContactSection,
   ContactContainer,
   ContentSection,
-  SectionTitle,
-  SectionDescription,
- 
   FormSection,
   FormTitle,
   FormSubtitle,
@@ -16,15 +13,8 @@ import {
   Label,
   RequiredMark,
   Input,
- 
   SubmitButton,
-
-  DesignElement1,
-  DesignElement2,
-  DesignElement3,
   Sections,
-  InquiryBoard,
-
   TableContainer,
   TableHeader,
   Table,
@@ -35,8 +25,7 @@ import {
   MobileTable,
   MobileRow,
   FormInner,
-  CloseButton,
-  
+  CloseButton, 
   StatsContainer,
   StatBox,
   StatContent,
@@ -77,8 +66,10 @@ const ContactFormSection = forwardRef((props, ref) => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    region: '',
-    apartment: ''
+    apartment_name: '',
+    inspection_date: '',
+    area_size: '',
+    selected_service: ''
   });
   const [recentInquiries, setRecentInquiries] = useState([]);
   const [inquiries, setInquiries] = useState([]);
@@ -108,6 +99,17 @@ const ContactFormSection = forwardRef((props, ref) => {
 
   const [visibleItems, setVisibleItems] = useState(itemsPerPage);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  // 서비스 옵션
+  const serviceOptions = [
+    '사전점검',
+    '준공 후 사전점검', 
+    '후점검',
+    '360도 VR 서비스'
+  ];
+
+  // 서비스 옵션만 유지
+  // 평형은 직접 입력으로 변경
 
   useEffect(() => {
     const handleResize = () => {
@@ -209,14 +211,11 @@ const ContactFormSection = forwardRef((props, ref) => {
     }
   };
 
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [rotateDirection, setRotateDirection] = useState('right');
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [selectedTour, setSelectedTour] = useState(null);
+
 
 const [isLookupOpen, setIsLookupOpen] = useState(false);
 const [lookupData, setLookupData] = useState({
-  apartment: '',
+  apartment_name: '',
   name: '',
   phone: ''
 });
@@ -265,8 +264,10 @@ const [lookupError, setLookupError] = useState('');
         .insert([{
           name: formData.name,
           phone: formData.phone,
-          region: formData.region,
-          apartment: formData.apartment,
+          apartment_name: formData.apartment_name,
+          inspection_date: formData.inspection_date,
+          area_size: formData.area_size,
+          selected_service: formData.selected_service,
           inquiry_status: 'new',
           created_at: new Date().toISOString()
         }]);
@@ -277,8 +278,10 @@ const [lookupError, setLookupError] = useState('');
       setFormData({
         name: '',
         phone: '',
-        region: '',
-        apartment: ''
+        apartment_name: '',
+        inspection_date: '',
+        area_size: '',
+        selected_service: ''
       });
       
       // 폼 제출 후 즉시 목록 업데이트
@@ -443,7 +446,7 @@ const [lookupError, setLookupError] = useState('');
       const { data, error } = await supabase
         .from('habang')
         .select('*')
-        .eq('apartment', lookupData.apartment)
+        .or(`apartment_name.eq.${lookupData.apartment_name},apartment.eq.${lookupData.apartment_name}`)
         .eq('name', lookupData.name)
         .eq('phone', lookupData.phone)
         .single();
@@ -555,7 +558,7 @@ const [lookupError, setLookupError] = useState('');
                 {currentInquiries.map((inquiry) => (
                   <tr key={inquiry.id}>
                     <Td>{inquiry.id + 9480}</Td>
-                    <Td>{inquiry.apartment}</Td>
+                    <Td>{inquiry.apartment_name || inquiry.apartment || 'N/A'}</Td>
                     <Td>{maskName(inquiry.name)}</Td>
                     <Td>{new Date(inquiry.created_at).toLocaleDateString()}</Td>
                     <Td>
@@ -573,7 +576,7 @@ const [lookupError, setLookupError] = useState('');
             <MobileTable>
               {currentInquiries.map((inquiry) => (
                 <MobileRow key={inquiry.id}>
-                  <div className="apartment">{inquiry.apartment}</div>
+                  <div className="apartment">{inquiry.apartment_name || inquiry.apartment || 'N/A'}</div>
                   <div className="info-row">
                     <div className="info-left">
                       <span className="name">{maskName(inquiry.name)}</span>
@@ -648,30 +651,57 @@ const [lookupError, setLookupError] = useState('');
                 </FormGroup>
               </FormRow>
 
+              <FormGroup>
+                <Label>아파트명<RequiredMark>*</RequiredMark></Label>
+                <Input
+                  type="text"
+                  name="apartment_name"
+                  value={formData.apartment_name}
+                  onChange={handleChange}
+                  placeholder="e편한세상 프리미엄"
+                  required
+                />
+              </FormGroup>
+
               <FormRow columns="1fr 1fr">
                 <FormGroup>
-                  <Label>지역<RequiredMark>*</RequiredMark></Label>
+                  <Label>점검 희망일<RequiredMark>*</RequiredMark></Label>
                   <Input
-                    type="text"
-                    name="region"
-                    value={formData.region}
+                    type="date"
+                    name="inspection_date"
+                    value={formData.inspection_date}
                     onChange={handleChange}
-                    placeholder="예: 서울시 강남구"
                     required
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label>아파트명<RequiredMark>*</RequiredMark></Label>
+                  <Label>평형<RequiredMark>*</RequiredMark></Label>
                   <Input
                     type="text"
-                    name="apartment"
-                    value={formData.apartment}
+                    name="area_size"
+                    value={formData.area_size}
                     onChange={handleChange}
-                    placeholder="아파트명을 입력해주세요"
+                    placeholder="예: 32평, 84㎡"
                     required
                   />
                 </FormGroup>
               </FormRow>
+
+              <FormGroup>
+                <Label>선택 서비스<RequiredMark>*</RequiredMark></Label>
+                <Input
+                  as="select"
+                  name="selected_service"
+                  value={formData.selected_service}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">선택하세요</option>
+                  {serviceOptions.map(service => (
+                    <option key={service} value={service}>{service}</option>
+                  ))}
+                </Input>
+              </FormGroup>
 
 
               <SubmitButton type="submit">문의하기</SubmitButton>
@@ -692,8 +722,8 @@ const [lookupError, setLookupError] = useState('');
                 <Label>아파트명<RequiredMark>*</RequiredMark></Label>
                 <LookupInput
                   type="text"
-                  name="apartment"
-                  value={lookupData.apartment}
+                  name="apartment_name"
+                  value={lookupData.apartment_name}
                   onChange={handleLookupChange}
                   required
                 />
@@ -732,10 +762,18 @@ const [lookupError, setLookupError] = useState('');
               <InquiryDetails>
                 <h3>상담 내역</h3>
                 <p><strong>접수일:</strong> {new Date(lookupResult.created_at).toLocaleDateString()}</p>
-                <p><strong>아파트명:</strong> {lookupResult.apartment}</p>
+                <p><strong>아파트명:</strong> {lookupResult.apartment_name || lookupResult.apartment}</p>
                 <p><strong>이름:</strong> {lookupResult.name}</p>
                 <p><strong>연락처:</strong> {lookupResult.phone}</p>
-                <p><strong>지역:</strong> {lookupResult.region}</p>
+                {lookupResult.inspection_date && (
+                  <p><strong>점검 희망일:</strong> {new Date(lookupResult.inspection_date).toLocaleDateString()}</p>
+                )}
+                {lookupResult.area_size && (
+                  <p><strong>평형:</strong> {lookupResult.area_size}</p>
+                )}
+                {lookupResult.selected_service && (
+                  <p><strong>선택 서비스:</strong> {lookupResult.selected_service}</p>
+                )}
                 <p><strong>상태:</strong> {getStatusText(lookupResult.inquiry_status)}</p>
                 <DeleteButton onClick={handleDeleteInquiry}>상담 내역 삭제</DeleteButton>
               </InquiryDetails>

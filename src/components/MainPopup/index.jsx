@@ -1,22 +1,76 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { supabase } from '../../lib/supabaseClient';
 
-const MainPopup = ({ isOpen, onClose, onCloseToday }) => {
-  console.log('MainPopup 렌더링:', { isOpen });
+const MainPopup = ({ isOpen, onClose, onCloseToday, popupSettings: propPopupSettings }) => {
+  const [popupSettings, setPopupSettings] = useState({
+    isActive: true,
+    imageUrl: '/img/popup.png',
+    showTodayButton: true,
+    showCloseButton: true,
+    todayButtonText: '오늘만 보기',
+    closeButtonText: '닫힘'
+  });
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
+
+  // props로 받은 팝업 설정이 있으면 즉시 사용
+  useEffect(() => {
+    if (propPopupSettings) {
+      setPopupSettings(propPopupSettings);
+      setIsDataLoaded(true);
+    } else {
+      // props가 없으면 기존 방식으로 로드
+      loadPopupSettings();
+    }
+  }, [propPopupSettings]);
+
+  const loadPopupSettings = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('popup_settings')
+        .select('*')
+        .eq('id', 1)
+        .single();
+      
+      if (error) {
+        console.error('팝업 설정 로드 오류:', error);
+        // 에러가 있어도 기본값 사용
+        setIsDataLoaded(true);
+        return;
+      }
+      
+      if (data) {
+        setPopupSettings(data);
+      }
+      setIsDataLoaded(true);
+    } catch (err) {
+      console.error('팝업 설정 로드 중 예외:', err);
+      setIsDataLoaded(true);
+    }
+  };
   
-  if (!isOpen) return null;
+  if (!isOpen || !popupSettings.isActive) return null;
+
+  // 데이터가 로드되지 않았어도 기본값으로 즉시 표시
+  if (!isDataLoaded) {
+    // 기본값으로 즉시 표시 (로딩 메시지 제거)
+  }
 
   return (
     <PopupOverlay onClick={onClose}>
       <PopupContainer onClick={(e) => e.stopPropagation()}>
-        <PopupImage src="/img/popup.png" alt="팝업 이미지" />
+        <PopupImage src={popupSettings.imageUrl} alt="팝업 이미지" />
         <ButtonContainer>
-          <TodayButton onClick={onCloseToday}>
-            오늘만 보기
-          </TodayButton>
-          <CloseButton onClick={onClose}>
-            닫힘
-          </CloseButton>
+          {popupSettings.showTodayButton && (
+            <TodayButton onClick={onCloseToday}>
+              {popupSettings.todayButtonText}
+            </TodayButton>
+          )}
+          {popupSettings.showCloseButton && (
+            <CloseButton onClick={onClose}>
+              {popupSettings.closeButtonText}
+            </CloseButton>
+          )}
         </ButtonContainer>
         
         {/* 개발용 localStorage 초기화 버튼 (숨김) */}
@@ -31,7 +85,6 @@ const MainPopup = ({ isOpen, onClose, onCloseToday }) => {
         onClick={() => {
           localStorage.removeItem('hasSeenMainPopupToday');
           localStorage.removeItem('mainPopupDate');
-          console.log('팝업 localStorage 초기화됨');
           onClose();
         }}>
           초기화
@@ -66,6 +119,18 @@ const PopupOverlay = styled.div`
   @media (max-width: 480px) {
     padding: 10px;
   }
+`;
+
+const LoadingMessage = styled.div`
+  padding: 40px;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  min-width: 200px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const PopupContainer = styled.div`

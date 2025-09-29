@@ -2,12 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import HeroSection from './HeroSection';
 import IframeBoard from './IframeBoard';
+import ReportBoard from './sections/ReportBoard';
 
 const Report = () => {
   return (
     <PageContainer>
       <HeroSection />
-      <IframeBoard />
+      <ReportBoard />
     </PageContainer>
   );
 };

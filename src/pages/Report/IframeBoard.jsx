@@ -24,21 +24,8 @@ const IframeBoard = () => {
   }, []);
 
   const reports = {
-    '2025': 'https://vink2.imweb.me/report2025',
-    '2024': {
-      1: 'https://vink2.imweb.me/202401',
-      2: 'https://vink2.imweb.me/202402',
-      3: 'https://vink2.imweb.me/202403',
-      4: 'https://vink2.imweb.me/202404',
-      5: 'https://vink2.imweb.me/202405',
-      6: 'https://vink2.imweb.me/202406',
-      7: 'https://vink2.imweb.me/202407',
-      8: 'https://vink2.imweb.me/202408',
-      9: 'https://vink2.imweb.me/202409',
-      10: 'https://vink2.imweb.me/202410',
-      11: 'https://vink2.imweb.me/202411',
-      12: 'https://vink2.imweb.me/202412'
-    }
+    '2025': 'https://habang.imweb.me/report',
+    '2024': 'https://habang.imweb.me/202401'
   };
 
   const handleYearClick = (year) => {
@@ -75,7 +62,7 @@ const IframeBoard = () => {
     <BoardContainer>
       <SectionHeader>
         {/* <SectionTitle>사전점검 결과 보고서</SectionTitle> */}
-        <SectionDescription>고객님 전화번호 뒤 4자리를 검색창에 입력하여 VR을 확인해보세요.
+        <SectionDescription>고객님 전화번호 뒤 4자리를 검색창에 입력하여 보고서를 확인해보세요.
           <span>※ 비밀번호는 고객님 전화번호 <br/>010부터 끝까지 숫자로 되어 있습니다. </span>
           <span>보고서가 열리지 않는다면 <br/>고객센터로 문의주시기 바랍니다. </span>
         </SectionDescription>
@@ -88,7 +75,7 @@ const IframeBoard = () => {
               onClick={() => handleYearClick(year)}
               isActive={selectedYear === year}
             >
-              {year}년 보고서
+              {year}년 10월 이전 보고서
             </YearButton>
             {year === '2024' && selectedYear === '2024' && (
               <MonthDropdown ref={dropdownRef} isOpen={isMonthDropdownOpen}>

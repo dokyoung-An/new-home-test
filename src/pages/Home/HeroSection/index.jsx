@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Container } from '../../../styles/common';
-import wordmarkLogo from '../../../assets/images/logo.png';
-import symbolLogo from '../../../assets/images/habang4.png';
+
 
 import {
   Hero,
@@ -68,7 +67,7 @@ const HeroSection = () => {
 
       // 비디오 프리로드 최적화
       const preloadVideo = () => {
-        const videoUrl = isMobile ? "/img/bg3_mobile.mp4" : "/img/bg3_optimized.mp4";
+        const videoUrl = isMobile ? "/img/video/bg.mp4" : "/img/video/bg.mp4";
         
         // 연결 상태 확인
         if (navigator.connection) {
@@ -97,13 +96,7 @@ const HeroSection = () => {
     }
   }, [isClient, isMobile]);
 
-  const logos = [
-    { src: wordmarkLogo, alt: '랜하우스 워드마크' },
-    { src: symbolLogo, alt: '랜하우스 심볼' },
-    { src: wordmarkLogo, alt: '랜하우스 워드마크' },
-    { src: symbolLogo, alt: '랜하우스 심볼' }
-  ];
-
+ 
   return (
     <Hero>
       {isClient && (
@@ -113,12 +106,13 @@ const HeroSection = () => {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
           poster="/img/bg-poster.webp"
           className={isVideoLoaded ? 'loaded' : ''}
+          onError={(e) => console.error('Video error:', e)}
         >
           <source
-            src={isMobile ? "/img/bg3_mobile.mp4" : "/img/bg3_optimized.mp4"}
+            src="/img/video/bg.mp4"
             type="video/mp4"
           />
         </VideoBackground>
@@ -126,13 +120,13 @@ const HeroSection = () => {
       
       <Container className='hero-container'>
         <HeroContent>
-          <HeroTagline><span>완벽한 우리집을 위한 특별한 방법!</span></HeroTagline>
+          <HeroTagline><span>경상권 사전점검 1위</span></HeroTagline>
           <HeroTitle>
-            <HeroTitleHighlight><span>HABANG</span></HeroTitleHighlight>
-            사전점검 서비스
+        <span>가장 가까운 곳에서 만나는</span>
+            가장 확실한 사전점검
           </HeroTitle>
           <HeroSubTitle>
-          하자 점검 전문가와 함께하는<br/> 체계적인 하자점검
+          당신 곁의 아파트 사전점검 전문가, <br/>하방에 문의해보세요!
           </HeroSubTitle>
           <CTAButton as="a" href="/contact">
             문의하기
@@ -140,30 +134,7 @@ const HeroSection = () => {
         </HeroContent>
       </Container>
 
-      <LogoSliderContainer>
-        <LogoSlider>
-          <SlideTrack>
-            {logos.map((logo, index) => (
-              <SliderLogo 
-                key={index} 
-                src={logo.src} 
-                alt={logo.alt}
-                loading="lazy"
-              />
-            ))}
-            
-            {/* 무한 애니메이션을 위한 복제 */}
-            {logos.map((logo, index) => (
-              <SliderLogo 
-                key={`duplicate-${index}`} 
-                src={logo.src} 
-                alt={logo.alt}
-                loading="lazy"
-              />
-            ))}
-          </SlideTrack>
-        </LogoSlider>
-      </LogoSliderContainer>
+     
     </Hero>
   );
 };

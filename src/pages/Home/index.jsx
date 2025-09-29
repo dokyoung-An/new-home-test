@@ -1,18 +1,18 @@
 import React from 'react';
 
 import HeroSection from './HeroSection';
-import SloganSection from './SloganSection';
-import VRExperienceSection from './VRExperienceSection';
-import BenefitsSection from './BenefitsSection';
-import UseCasesSection from './UseCasesSection';
-
+import StatsSection from './StatsSection';
+import ProjectSection from './ProjectSection';
+import GallerySection from './GallerySection';
+import BenefitsAnimationSection from './BenefitsAnimationSection';
+import ContactSection from './ContactSection';
 import TestimonialsSection from './TestimonialsSection';
-import AdvantagesSection from './AdvantagesSection';
 import ServiceSection from './ServiceSection';
 import NewsSection from './NewsSection';
 import FAQSection from '../ContactPage/FAQSection';
 import CoworkerSection from './CoworkerSection';
 import ProcessSection from '../ContactPage/ProcessSection';
+import UseCasesSection from './UseCasesSection';
 
 
 
@@ -37,22 +37,18 @@ const Home = () => {
   return (
     <>
       <HeroSection/>
-      <SloganSection/>
-      <AdvantagesSection/>
+      <StatsSection/>
+      <ProjectSection/>
+      <GallerySection/>
       <ServiceSection/>
-      <VRExperienceSection/>
-      <TestimonialsSection />
-      <BenefitsSection/>
-      <UseCasesSection/>
-    
-      
-     
-    
-     
+      <BenefitsAnimationSection/>   
       <ProcessSection/>
+      <TestimonialsSection />
+      <UseCasesSection/>    
       <FAQSection/> 
-      <NewsSection/>
+      <ContactSection/>
       <CoworkerSection/>
+
     </>
   );
 };

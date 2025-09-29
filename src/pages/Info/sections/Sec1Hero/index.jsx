@@ -42,7 +42,7 @@ const Sec1Hero = () => {
             하자 정보를 찾고 계신가요?<br />
             하방에서 제공하는 하자 정보를 확인해 보세요.
           </Description>
-          <Button><a href="/contact">서비스 문의하기</a></Button>
+          <Button><a href="/contact">문의하기</a></Button>
         </TextBlock>
         <VideoBlock>
           <video 
@@ -81,7 +81,7 @@ const Container = styled.section`
   @media (max-width: 768px) {
     height: auto;
     min-height: auto;
-    padding: 120px 20px 20px 20px;
+    padding: 120px 20px 40px 20px;
   }
 `;
 
@@ -156,10 +156,10 @@ const Button = styled.button`
   background: ${({ theme }) => theme.primaryMiddle};
   color: white;
   font-size: 1.1rem;
-  font-weight: 600;
-  padding: 18px 40px;
+  font-weight: 400;
+  padding: 12px 50px;
   border: none;
-  border-radius: 50px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
 
@@ -172,7 +172,8 @@ const Button = styled.button`
   
   @media (max-width: 768px) {
     width: 100%;
-    max-width: 300px;
+    max-width: 200px;
+    margin-bottom: 20px;
   }
 `;
 const VideoBlock = styled.div`

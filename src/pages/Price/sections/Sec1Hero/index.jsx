@@ -1,0 +1,173 @@
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
+import { fadeIn } from '../../../../styles/animations';
+
+const Sec1Hero = () => {
+  useEffect(() => {
+    // 이미지 프리로드
+    const preloadImage = () => {
+      const imageUrl = '/img/price/홈페이지_서비스견적_메인.png';
+      const img = new Image();
+      img.src = imageUrl;
+    };
+    preloadImage();
+  }, []);
+
+  return (
+    <Container>
+      <Content>
+        <TextBlock>
+          <Title>
+            투명하고 정직한 가격
+            사전점검 정찰제
+          </Title>
+          <Description>
+            숨은 비용 없이, 누구나 안심할 수 있는<br />
+            합리적인 견적
+          </Description>
+          <Button><a href="/contact">문의하기</a></Button>
+        </TextBlock>
+        <ImageBlock>
+          <MainImage 
+            src="/img/price/price_main.png"
+            alt="투명한 가격 정책"
+            loading="eager"
+          />
+        </ImageBlock>
+      </Content>
+    </Container>
+  );
+};
+
+const Container = styled.section`
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  background: linear-gradient(to right, #fff 60%, ${({ theme }) => `${theme.primaryLight}15`});
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  @media (max-width: 1024px) {
+    height: auto;
+    min-height: auto;
+    padding: 120px 0;
+  }
+  
+  @media (max-width: 768px) {
+    height: auto;
+    min-height: auto;
+    padding: 120px 20px 80px 20px;
+  }
+`;
+
+const Content = styled.div`
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 130px;
+  animation: ${fadeIn} 1s ease-out;
+  
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+    padding: 0 20px;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 0 20px;
+  }
+`;
+
+const TextBlock = styled.div`
+  flex: 1;
+  max-width: 800px;
+`;
+
+const Title = styled.h1`
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 30px;
+  word-break: keep-all;
+  
+  @media (max-width: 1200px) {
+    font-size: 3.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2.8rem;
+  }
+`;
+
+
+
+const Description = styled.p`
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: ${({ theme }) => theme.textLight};
+  margin-bottom: 40px;
+  word-break: keep-all;
+  
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    br {
+      display: none;
+    }
+  }
+`;
+
+const Button = styled.button`
+  background: ${({ theme }) => theme.primaryMiddle};
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 400;
+  padding: 12px 50px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.3px;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &:hover {
+    background: white;
+    color: ${({ theme }) => theme.primaryMiddle};
+    border: 1px solid ${({ theme }) => theme.primaryMiddle};
+    transform: translateY(-2px);
+  }
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 200px;
+    margin-bottom: 20px;
+  }
+`;
+
+const ImageBlock = styled.div`
+  flex: 1;
+  max-width: 400px;
+  position: relative;
+  
+  @media (max-width: 1024px) {
+    width: 100%;
+    max-width: 250px;
+  }
+`;
+
+const MainImage = styled.img`
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 20px;
+`;
+
+export default Sec1Hero;

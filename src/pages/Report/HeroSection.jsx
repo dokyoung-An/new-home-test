@@ -21,7 +21,7 @@ const HeroSection = () => {
 
 const HeroContainer = styled.section`
   width: 100%;
-  height: 100vh;
+  height: 60vh;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
               url('/img/report/1.jpg') no-repeat center center;
   background-size: cover;

@@ -25,8 +25,8 @@ const menuItems = [
     ]
   },
   {
-    label: 'B2B 비즈니스',
-    href: '/b2b',
+    label: '가격 안내',
+    href: '/price',
     // subItems: [
     //   { label: '비즈니스 솔루션', href: '#Business' },
     //   { label: '세이프체크', href: '#SafeCheck' }
@@ -39,12 +39,12 @@ const menuItems = [
   },
   {
     label: '점검 보고서',
-    href: 'https://habang.imweb.me/report' 
+    href: '/report' 
     
   },
   {
     label: '우리집 VR',
-    href: 'https://habang.imweb.me/vr2'
+    href: '/vr'
   },
   
  
@@ -108,6 +108,7 @@ const Header = () => {
         </NavLinks>
 
         <InquiryButton href="/contact">문의하기</InquiryButton>
+       
 
         <HamburgerButton onClick={toggleMenu}>
           <FaBars />
@@ -156,6 +157,16 @@ const Header = () => {
                 )}
               </li>
             ))}
+            <li>
+              <a
+                href="/admin/login"
+                onClick={closeMenu}
+                className="mobile-nav-item"
+                style={{ color: location.pathname === '/admin/login' ? '#1a6dff' : 'white' }}
+              >
+                Admin 로그인
+              </a>
+            </li>
           </MobileNavLinks>
         </MobileNav>
 
@@ -340,6 +351,30 @@ const InquiryButton = styled.a`
   &:hover {
     background-color: #fff;
     color: #1a6dff;
+  }
+
+  @media (max-width: 1086px) {
+    display: none;
+  }
+`;
+
+const AdminLink = styled.a`
+  background-color: #ff4757;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 400;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  margin-left: 10px;
+
+  &:hover {
+    background-color: #fff;
+    color: #ff4757;
   }
 
   @media (max-width: 1086px) {

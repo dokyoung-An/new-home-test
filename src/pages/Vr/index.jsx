@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import HeroSection from './HeroSection';
-import IframeBoard from './IframeBoard';
+import VrBoard from './sections/VrBoard';
 
-const Report = () => {
+const Vr = () => {
   return (
     <PageContainer>
       <HeroSection />
-      <IframeBoard />
+      <VrBoard />
     </PageContainer>
   );
 };
@@ -18,4 +18,4 @@ const PageContainer = styled.div`
   background: #f8f9fa;
 `;
 
-export default Report; 
+export default Vr; 

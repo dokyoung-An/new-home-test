@@ -43,7 +43,7 @@ export const ProcessWrapper = styled.section`
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    filter: brightness(0.3) contrast(1.2);
+    /* filter: brightness(0.3) contrast(1.2); */
     z-index: -2;
   }
   
@@ -63,49 +63,6 @@ export const ProcessWrapper = styled.section`
     opacity: 0.8;
   }
   
-  /* 글로우 파티클 효과 */
-  .glow-particle1, .glow-particle2 {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(60px);
-    z-index: -1;
-    opacity: 0.3;
-    pointer-events: none;
-  }
-  
-  .glow-particle1 {
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(230, 92, 48, 0.3) 0%, transparent 70%);
-    top: 10%;
-    right: 5%;
-    animation: ${float} 20s ease-in-out infinite;
-  }
-  
-  .glow-particle2 {
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(230, 92, 48, 0.2) 0%, transparent 70%);
-    bottom: 10%;
-    left: 10%;
-    animation: ${float} 25s ease-in-out infinite alternate-reverse;
-  }
-  
-  /* 상단 경계선 효과 */
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, 
-      rgba(230, 92, 48, 0), 
-      rgba(230, 92, 48, 0.7), 
-      rgba(230, 92, 48, 0)
-    );
-    z-index: 2;
-  }
   
   @media (max-width: 768px) {
     padding: 90px 20px;
@@ -137,22 +94,7 @@ export const SectionHeader = styled(CommonSectionHeader)`
   margin: 0 auto 70px;
   position: relative;
   
-  /* 장식용 요소 추가 */
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 4px;
-    background: linear-gradient(90deg, 
-      ${props => props.theme.primaryReward}, 
-      ${props => props.theme.primaryMiddle}, 
-      ${props => props.theme.primaryReward}
-    );
-    border-radius: 2px;
-  }
+
   
   p {
     color: rgba(255, 255, 255, 0.8);

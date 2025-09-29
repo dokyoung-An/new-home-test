@@ -4,22 +4,7 @@ import styled from 'styled-components';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const FixedBottomWrapper = styled.div`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 1rem;
-  background: transparent;
-  display: none;
-  justify-content: center;
-  gap: 1rem;
-  z-index: 1000;
-
-  @media (max-width: 1086px) {
-    display: flex;
-    background: #fff;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
-  }
+  display: none; /* 모바일 하단 고정 버튼 비활성화 */
 `;
 
 const Button = styled.button`

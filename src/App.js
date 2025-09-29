@@ -23,6 +23,23 @@ import Info from './pages/Info';
 import B2BLanding from './pages/B2BLanding';
 import { logError, measurePerformance } from './utils/errorTracking';
 import CheckInspection from './pages/CheckInspection';
+import BottomPopup from './components/BottomPopup';
+import ProjectBoard from './pages/ProjectBoard';
+import Price from './pages/Price';
+import Event from './pages/Event';
+import EventDetail from './pages/EventDetail';
+import ActiveEventDetail from './pages/ActiveEventDetail';
+import ActiveEventAdmin from './pages/Admin/ActiveEventAdmin';
+import ReportDetail from './pages/ReportDetail';
+import ReportAdmin from './pages/Admin/ReportAdmin';
+import VrDetail from './pages/VrDetail';
+import VrAdmin from './pages/Admin/VrAdmin';
+import AdminDashboard from './pages/Admin/Dashboard';
+import AdminLogin from './pages/Admin/Login';
+import AdminAuth from './components/AdminAuth';
+import PopupPreview from './pages/PopupPreview';
+import GroupBuy from './pages/Buy';
+import { supabase } from './lib/supabaseClient';
 
 // 에러 바운더리 컴포넌트 추가
 class ErrorBoundary extends React.Component {
@@ -65,6 +82,28 @@ const AppContent = () => {
   const location = useLocation();
   const [showEventPopup, setShowEventPopup] = useState(false);
   const [showMainPopup, setShowMainPopup] = useState(false);
+  const [popupSettings, setPopupSettings] = useState(null);
+
+  // 앱 시작 시 팝업 설정 미리 로드
+  useEffect(() => {
+    const loadPopupSettings = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('popup_settings')
+          .select('*')
+          .eq('id', 1)
+          .single();
+        
+        if (!error && data) {
+          setPopupSettings(data);
+        }
+      } catch (err) {
+        console.error('팝업 설정 미리 로드 오류:', err);
+      }
+    };
+    
+    loadPopupSettings();
+  }, []);
 
   useEffect(() => {
     // 페이지 이동 시 스크롤을 상단으로 이동
@@ -76,31 +115,10 @@ const AppContent = () => {
       const hasSeenPopupToday = localStorage.getItem('hasSeenMainPopupToday');
       const popupDate = localStorage.getItem('mainPopupDate');
       
-      console.log('팝업 디버깅:', {
-        currentPath: location.pathname,
-        today,
-        hasSeenPopupToday,
-        popupDate,
-        shouldShow: hasSeenPopupToday !== 'true' || popupDate !== today
-      });
-      
-      // 항상 팝업을 표시하도록 임시 변경 (테스트용)
       // 오늘 날짜가 다르거나 오늘 팝업을 보지 않았다면 표시
       const shouldShowPopup = hasSeenPopupToday !== 'true' || popupDate !== today;
       
       if (shouldShowPopup) {
-        console.log('팝업을 표시합니다.');
-        // 즉시 팝업 표시
-        setShowMainPopup(true);
-      } else {
-        console.log('팝업을 표시하지 않습니다. localStorage 데이터:', {
-          hasSeenPopupToday,
-          popupDate,
-          today
-        });
-        
-        // 강제로 팝업 표시 (임시 테스트)
-        console.log('강제로 팝업을 표시합니다 (테스트용)');
         setShowMainPopup(true);
       }
     }
@@ -143,14 +161,12 @@ const AppContent = () => {
     const today = new Date().toDateString();
     localStorage.setItem('hasSeenMainPopupToday', 'true');
     localStorage.setItem('mainPopupDate', today);
-    console.log('오늘만 보기 클릭됨. localStorage 저장:', { hasSeenMainPopupToday: 'true', mainPopupDate: today });
   };
 
   // 개발용: localStorage 초기화 함수 (콘솔에서 사용 가능)
   window.clearPopupStorage = () => {
     localStorage.removeItem('hasSeenMainPopupToday');
     localStorage.removeItem('mainPopupDate');
-    console.log('팝업 localStorage가 초기화되었습니다.');
     window.location.reload();
   };
 
@@ -170,10 +186,44 @@ const AppContent = () => {
           <Route path="/inspection" element={<ApartInspection />} />
           <Route path="/afterInspection" element={<AfterInspect />} />
           <Route path="/checkInspection" element={<CheckInspection />} />
+          <Route path="/price" element={<Price />} />
           <Route path="/report" element={<Report />} />
           <Route path="/vr" element={<Vr />} />
           <Route path="/info" element={<Info />} />
           <Route path="/b2b" element={<B2BLanding />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin" element={
+            <AdminAuth>
+              <AdminDashboard />
+            </AdminAuth>
+          } />
+          <Route path="/admin/projects" element={
+            <AdminAuth>
+              <ProjectBoard />
+            </AdminAuth>
+          } />
+          <Route path="/admin/active-events" element={
+            <AdminAuth>
+              <ActiveEventAdmin />
+            </AdminAuth>
+          } />
+          <Route path="/admin/reports" element={
+            <AdminAuth>
+              <ReportAdmin />
+            </AdminAuth>
+          } />
+          <Route path="/admin/vr" element={
+            <AdminAuth>
+              <VrAdmin />
+            </AdminAuth>
+          } />
+          <Route path="/popup-preview" element={<PopupPreview />} />
+          <Route path="/event" element={<Event />} />
+          <Route path="/event/:id" element={<EventDetail />} />
+          <Route path="/active-event/:id" element={<ActiveEventDetail />} />
+          <Route path="/report/:id" element={<ReportDetail />} />
+          <Route path="/vr/:id" element={<VrDetail />} />
+          <Route path="/group-buy" element={<GroupBuy />} />
         </Routes>
       </MainContent>
       <FloatingButtons />
@@ -184,8 +234,10 @@ const AppContent = () => {
           isOpen={showMainPopup}
           onClose={handleCloseMainPopup}
           onCloseToday={handleCloseMainPopupToday}
+          popupSettings={popupSettings}
         />
       )}
+      <BottomPopup />
       <Footer />
     </>
   );

@@ -128,15 +128,17 @@ const Description = styled.p`
 `;
 
 const Button = styled.button`
-  background: ${({ theme }) => theme.primaryMiddle};
+ background: ${({ theme }) => theme.primaryMiddle};
   color: white;
   font-size: 1.1rem;
-  font-weight: 600;
-  padding: 18px 40px;
+  font-weight: 400;
+  padding: 12px 50px;
   border: none;
-  border-radius: 50px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
+  letter-spacing: 0.3px;
+
 
   &:hover {
     background: white;
@@ -146,8 +148,8 @@ const Button = styled.button`
   }
   
   @media (max-width: 768px) {
-    width: 100%;
-    max-width: 300px;
+    max-width: 200px;
+    margin-bottom: 20px;
   }
 `;
 
@@ -158,7 +160,7 @@ const ImageBlock = styled.div`
   
   @media (max-width: 1024px) {
     width: 100%;
-    max-width: 500px;
+    max-width: 300px;
   }
 `;
 

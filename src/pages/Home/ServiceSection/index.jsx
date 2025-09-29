@@ -41,7 +41,7 @@ const ServiceSection = () => {
   return (
     <Container>
       <SectionHeader>
-        <SectionTitle>서비스 소개</SectionTitle>
+        <SectionTitle>서비스 <span>소개</span></SectionTitle>
         <SectionSubtitle>하방의 전문적인 서비스를 소개합니다</SectionSubtitle>
       </SectionHeader>
       <CardContainer>
@@ -58,7 +58,7 @@ const ServiceSection = () => {
                 <CardSubtitle>{service.subtitle}</CardSubtitle>
                 <CardDescription>{service.description}</CardDescription>
                 <ViewMore>
-                  View More
+                  자세히 알아보기
                   <Arrow>→</Arrow>
                 </ViewMore>
               </CardContent>
@@ -91,23 +91,27 @@ const SectionHeader = styled.div`
 `;
 
 const SectionTitle = styled.h2`
-  font-size: 3rem;
+  font-size: 36px;
   font-weight: 700;
   margin-bottom: 16px;
   color: ${({ theme }) => theme.secondary || '#1A1F36'};
 
+  span {
+    color: #1a6dff;
+  }
+
   @media (max-width: 768px) {
-    font-size: 2.5rem;
+    font-size: 28px;
   }
 `;
 
 const SectionSubtitle = styled.p`
-  font-size: 1.2rem;
+  font-size: 18px;
   color: ${({ theme }) => theme.textLight || '#666'};
   font-weight: 300;
 
   @media (max-width: 768px) {
-    font-size: 1.1rem;
+    font-size: 16px;
   }
 `;
 
@@ -169,7 +173,7 @@ const CardInner = styled.div`
 const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
-  height: 320px;
+  height: 280px;
   overflow: hidden;
   
   @media (max-width: 1200px) {
@@ -276,13 +280,16 @@ const ViewMore = styled.span`
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 0.8rem;
+  font-weight: 600;
   color: #1a6dff;
   font-family: 'Montserrat', sans-serif;
   letter-spacing: 0.05em;
   opacity: 0.9;
   transition: opacity 0.3s ease;
+  border: 1px solid #1a6dff;
+  border-radius: 20px;
+  padding: 8px 16px;
 
   ${Card}:hover & {
     opacity: 1;
