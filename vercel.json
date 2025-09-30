@@ -1,22 +1,33 @@
 {
+  "buildCommand": "npm run build",
+  "outputDirectory": "build",
   "rewrites": [
     {
-      "source": "/seo-proxy/(.*)",
-      "destination": "/api/prerender/$1"
+      "source": "/api/:path*",
+      "destination": "/api/:path*"
     },
     {
-      "source": "/(.*)",
-      "destination": "/api/prerender/$1",
-      "has": [
-        {
-          "type": "header",
-          "key": "user-agent", 
-          "value": ".*(bot|crawler|spider|Yeti|Googlebot).*"
-        }
-      ]
+      "source": "/static/:path*",
+      "destination": "/static/:path*"
     },
     {
-      "source": "/(.*)",
+      "source": "/img/:path*",
+      "destination": "/img/:path*"
+    },
+    {
+      "source": "/img-optimized/:path*",
+      "destination": "/img-optimized/:path*"
+    },
+    {
+      "source": "/icons/:path*",
+      "destination": "/icons/:path*"
+    },
+    {
+      "source": "/files/:path*",
+      "destination": "/files/:path*"
+    },
+    {
+      "source": "/:path*",
       "destination": "/index.html"
     }
   ],
