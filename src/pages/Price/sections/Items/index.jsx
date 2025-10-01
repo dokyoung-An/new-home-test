@@ -68,7 +68,7 @@ const Items = () => {
         <SectionTitle>포함 서비스 항목</SectionTitle>
         <SectionSubtitle>
          전문가의 육안점검부터 장비점검, 하자접수까지 한번에!<br/>
-         추가 비용 없는 올이원 점검 서비스로 안심을 더합니다. 
+         추가 비용 없는 올인원 점검 서비스로 안심을 더합니다. 
         </SectionSubtitle>
         <ProcessWrapper>
           <ProcessGrid>

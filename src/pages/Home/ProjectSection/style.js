@@ -264,30 +264,38 @@ export const ProjectLocation = styled.p`
 
 export const BenefitSection = styled.div`
   margin-top: 60px;
+  margin-left: 120px;
+ padding: 0px 30px;
  
   
   
   @media (max-width: 768px) {
     margin-top: 40px;
+    margin-left: 0px;
+    padding: 0px 30px;
   }
 `;
 
 export const BenefitGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
   gap: 10px;
+ 
   
   
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    gap: 0px;
+    
   }
 `;
 
 export const BenefitCard = styled.div`
   text-align: center;
-  padding: 30px 40px;
+  padding: 30px 20px;
   text-align:left;
+
+  width: 100%;
+  margin: 0 auto;
  
  
  

@@ -122,7 +122,7 @@ const HeroSection = () => {
         <HeroContent>
           <HeroTagline><span>경상권 사전점검 1위</span></HeroTagline>
           <HeroTitle>
-        <span>가장 가까운 곳에서 만나는</span>
+        <span>가장 가까운 곳에서 만나는</span><br />
             가장 확실한 사전점검
           </HeroTitle>
           <HeroSubTitle>

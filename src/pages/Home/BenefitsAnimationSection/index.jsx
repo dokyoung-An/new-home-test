@@ -49,7 +49,7 @@ const BenefitsAnimationSection = () => {
     {
       id: 4,
       image: '/img/service/4-1.png',
-      title: '업계 최고! 360°로 만나는',
+      title: '업계 최초초! 360°로 만나는',
       subtitle: '우리집 VR 기록 서비스',
       description: '준공 전 우리집, 사전점검 현장을 그대로 담아 PC/모바일로 언제든 확인 가능!\n 부동산 홍보, 인테리어 공사 등에 적극 활용하세요.',
       imagePosition: 'right',

@@ -7,6 +7,7 @@ import {
   ProjectContent,
   ProjectTitle,
   FilterSection,
+  FilterButton,
   ProjectLayout,
   YearBadge,
   ProjectGrid,
@@ -32,6 +33,7 @@ const ProjectSection = () => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [latestYear, setLatestYear] = useState('2025');
+  const [selectedLocation, setSelectedLocation] = useState('전체');
 
 
   const benefits = [
@@ -99,8 +101,13 @@ const ProjectSection = () => {
     fetchProjects();
   }, []);
 
-  // 모든 프로젝트 표시 (연도는 이미 최신으로 필터링됨)
-  const filteredProjects = projects;
+  // 지역별로 프로젝트 필터링
+  const filteredProjects = selectedLocation === '전체' 
+    ? projects 
+    : projects.filter(project => project.location === selectedLocation);
+  
+  // 지역 목록 (경상권)
+  const locations = ['전체', '울산', '부산', '대구', '창원', '포항', '김해'];
 
   // 모바일 체크
   const [isMobile, setIsMobile] = useState(false);
@@ -130,6 +137,15 @@ const ProjectSection = () => {
           </ProjectTitle>
           
           <FilterSection>
+            {locations.map((location) => (
+              <FilterButton
+                key={location}
+                active={selectedLocation === location}
+                onClick={() => setSelectedLocation(location)}
+              >
+                {location}
+              </FilterButton>
+            ))}
             <MoreButton as={Link} to="/about">
               더보기 ›
             </MoreButton>

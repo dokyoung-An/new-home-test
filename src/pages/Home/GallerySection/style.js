@@ -83,6 +83,21 @@ export const OverlayIcon = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 15px;
+  
+  img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+  
+  @media (max-width: 768px) {
+    margin-bottom: 10px;
+    
+    img {
+      width: 60px;
+      height: 60px;
+    }
+  }
 `;
 
 export const GalleryOverlay = styled.div`
@@ -120,38 +135,20 @@ export const ImageTitle = styled.div`
   }
 `;
 
-export const GalleryItem = styled.div`
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  aspect-ratio: 1;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  
-  &:hover {
-    transform: translateY(-5px);
-  }
-  
-  &:hover ${GalleryOverlay} {
-    opacity: 1;
-  }
-`;
-
-export const GalleryImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-  
-  ${GalleryItem}:hover & {
-    transform: scale(1.05);
-  }
-`;
-
 export const OverlayContent = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   padding: 10px 20px;
+  background: rgba(255, 255, 255, 1);
+  transition: opacity 0.3s ease;
    
   @media (max-width: 768px) {
     padding: 15px;
@@ -176,10 +173,45 @@ export const OverlayDescription = styled.p`
   line-height: 1.6;
   word-break: keep-all;
   color: #333;
-  max-width: 200px;
+  max-width: 90%;
+  margin: 0 auto;
   
   @media (max-width: 768px) {
     font-size: 12px;
     line-height: 1.5;
+  }
+`;
+
+export const GalleryItem = styled.div`
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 1;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
+  
+  &:hover ${GalleryOverlay} {
+    opacity: 1;
+  }
+  
+  &:hover ${OverlayContent} {
+    opacity: 0;
+  }
+`;
+
+export const GalleryImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  overflow: hidden;
+  
+  ${GalleryItem}:hover & {
+    transform: scale(1.01);
   }
 `;

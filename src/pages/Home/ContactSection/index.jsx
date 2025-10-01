@@ -226,8 +226,8 @@ const ContactSection = () => {
             <span>Contact</span> US
           </ContactTitle>
           <ContactSubtitle>
-            <span>하방의 사전점검 서비스로</span>소중한 공간의 가치를 지킬 수 있습니다 .<br/>
-            전문가와 맞춤 상담을 통해 가장 적합한 솔루션을 확인해 보세요.
+            <span>하방의 사전점검 서비스로</span> 소중한 공간의 가치를 지킬 수 있습니다 .<br/>
+            전문가의 맞춤 상담을 통해, 가장 적합한 솔루션을 확인해 보세요.
         
           </ContactSubtitle>
               <RecentInquiries>
@@ -281,7 +281,7 @@ const ContactSection = () => {
               <FormContainer>
                 <FormTitle>하방 사전점검 문의하기</FormTitle>
                 <FormDescription>
-                  문의 하신 내용을 담당자 검토 후 <br/>순차적으로 답변 드리겠습니다.
+                  문의하신 내용은 담당자 검토 후 <br/>순차적으로 답변 드리겠습니다.
                 </FormDescription>
 
                 <ContactForm onSubmit={handleSubmit}>

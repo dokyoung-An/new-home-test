@@ -123,6 +123,7 @@ export const HeroContent = styled.div`
   z-index: 2;
   display: flex;
   flex-direction: column;
+
   
   @media (max-width: 768px) {
     margin-top: 20vh;
@@ -136,9 +137,10 @@ export const HeroContent = styled.div`
 `;
 
 export const HeroTagline = styled.h4`
+  text-align: left;
   font-size: 16px;
   font-weight: 800;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   margin-bottom: 10px;
   display: inline-block;
@@ -148,14 +150,14 @@ export const HeroTagline = styled.h4`
   animation-delay: 0.2s;
   color: rgba(255, 255, 255, 0.8);
   padding-left: 0;
-  
+  padding-left: 2px;
   span {
     position: relative;
     padding-bottom: 8px;
     background: linear-gradient(90deg, 
-rgba(162, 89, 255,0.8), 
-rgba(0, 191, 166,0.9), 
-rgba(21, 87, 204,0.8));
+rgba(200, 164, 248, 0.8), 
+rgba(135, 243, 229, 0.9), 
+rgba(91, 126, 185, 0.8));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -179,9 +181,7 @@ export const HeroTitle = styled.h1`
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
   line-height: 1.4;
   word-break: keep-all;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  text-align: left;
   animation: ${fadeIn} 0.8s ease-out forwards;
   opacity: 0;
   animation-delay: 0.4s;
@@ -189,9 +189,9 @@ export const HeroTitle = styled.h1`
   margin-top: -5px;
 
   @media (max-width: 768px) {
+    text-align: center;
     font-size: 40px;
     line-height: 1.5;
-    align-items: center;
     margin-top: 0;
     padding-left: 10px;
     padding-right: 10px;
@@ -251,6 +251,7 @@ export const HeroSubTitle = styled.p`
   position: relative;
   padding-left: 0;
   word-break: keep-all;
+  text-align: left;
   
 br{
   display: none;

@@ -29,9 +29,9 @@ const ServiceSection = () => {
       number: "03"
     },
     {
-      title: "B2B 비즈니스",
-      subtitle: "BUSINESS SOLUTION",
-      description: "VR 세대기록서비스를 제공해 임대사업 효율성을 높입니다",
+      title: "360º 세대 VR 서비스",
+      subtitle: "VR Record Service",
+      description: "최신 VR 기술로 사전점검 현장을 그대로로 기록해 드립니다",
       image: "/img/service/vr.png",
       link: "/b2b",
       number: "04"
