@@ -74,7 +74,9 @@ export const GalleryGrid = styled.div`
   }
   
   @media (max-width: 480px) {
+    grid-template-columns: repeat(1, 1fr);
     gap: 15px;
+    min-width: 250px;
   }
 `;
 
@@ -96,6 +98,12 @@ export const OverlayIcon = styled.div`
     img {
       width: 60px;
       height: 60px;
+    }
+  }
+  @media (max-width: 480px) {
+    img {
+      width: 80px;
+      height: 80px;
     }
   }
 `;
@@ -166,6 +174,11 @@ export const OverlayTitle = styled.h3`
     font-size: 16px;
     margin-bottom: 8px;
   }
+
+  @media (max-width: 480px) {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
 `;
 
 export const OverlayDescription = styled.p`
@@ -179,6 +192,13 @@ export const OverlayDescription = styled.p`
   @media (max-width: 768px) {
     font-size: 12px;
     line-height: 1.5;
+  }
+  @media (max-width: 480px) {
+    font-size: 14px;
+    padding: 0 10px;
+    text-align: center;
+    word-break: keep-all;
+    letter-spacing:0.5px;
   }
 `;
 

@@ -85,7 +85,7 @@ const StatsSection = () => {
           <StatsGrid>
             <StatItem>
               <StatNumber>
-                하방의 점검한 단지 <span>{counts.satisfaction.toLocaleString()}개 +</span>
+                하방의 점검한 단지 <span>{counts.satisfaction.toLocaleString()}개+</span>
               </StatNumber>
               <StatLabel>
                 하방에서 점검한 세대수 <span>{counts.inspections.toLocaleString()}세대+</span>
@@ -95,7 +95,7 @@ const StatsSection = () => {
           
           <StatDescription>
             시간이 만든 전문성.<br/>
-            하방은 7년을 축적해왔습니다.
+            하방은 7년을 증명해 왔습니다.
           </StatDescription>
         </StatsContent>
       </Container>

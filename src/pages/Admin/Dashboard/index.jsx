@@ -14,13 +14,13 @@ const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('inquiries');
 
   const menuItems = [
-    { id: 'inquiries', label: '문의사항 관리', icon: '💬' },
+    { id: 'inquiries', label: '고객 문의 관리', icon: '💬' },
     { id: 'reports', label: '보고서 관리', icon: '📄' },
     { id: 'vr', label: 'VR 관리', icon: '🥽' },
-    { id: 'events', label: '이벤트 관리', icon: '📅' },
+    { id: 'events', label: '상시 이벤트', icon: '📅' },
     { id: 'active-events', label: '진행중인 이벤트', icon: '🎯' },
     { id: 'projects', label: '공동구매 관리', icon: '🏗️' },
-    { id: 'project-section', label: '프로젝트 섹션 관리', icon: '🏢' },
+    { id: 'project-section', label: '프로젝트 관리', icon: '🏢' },
     { id: 'popup', label: '팝업 관리', icon: '🪟' },
    
   ];

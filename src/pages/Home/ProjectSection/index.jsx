@@ -50,7 +50,7 @@ const ProjectSection = () => {
     {
       icon: '/img/icons/3.png',
       title: '밀착 하자 컨설팅',
-      description: '점검 이후에도 보수 요청 및 하자 처리 과정을 온라인으로 완벽 케어어'
+      description: '점검 이후에도 보수 요청 및 하자 처리 과정을 온라인으로 완벽 케어'
     }
   ];
 
@@ -107,7 +107,7 @@ const ProjectSection = () => {
     : projects.filter(project => project.location === selectedLocation); // 특정 지역 선택 시 해당 지역의 모든 프로젝트
   
   // 지역 목록 (경상권)
-  const locations = ['전체', '울산', '부산', '대구', '창원', '포항', '김해'];
+  const locations = ['전체', '울산', '부산', '대구','구미','창원', '포항', '김해','양산'];
 
   // 모바일 체크
   const [isMobile, setIsMobile] = useState(false);
