@@ -15,7 +15,7 @@ const GroupBuyAdmin = () => {
   const [newPost, setNewPost] = useState({
     complexName: '',
     reviewUrl: '',
-    popupImageUrl: '',
+    popupImageUrls: [], // 배열로 변경
     status: '모집중',
     date: new Date().toISOString().split('T')[0] // 오늘 날짜로 기본값 설정
   });
@@ -24,7 +24,7 @@ const GroupBuyAdmin = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [uploadingImage, setUploadingImage] = useState(false);
-  const [imagePreview, setImagePreview] = useState('');
+  const [imagePreviews, setImagePreviews] = useState([]); // 배열로 변경
 
   // 데이터 로드
   useEffect(() => {
@@ -45,7 +45,7 @@ const GroupBuyAdmin = () => {
         complexName: post.complex_name,
         status: post.status,
         reviewUrl: post.review_url || '',
-        popupImageUrl: post.popup_image_url || ''
+        popupImageUrls: post.popup_image_urls ? JSON.parse(post.popup_image_urls) : []
       }));
       
       setPosts(formattedData);
@@ -56,36 +56,46 @@ const GroupBuyAdmin = () => {
     }
   };
 
-  // 이미지 업로드 핸들러
+  // 이미지 업로드 핸들러 (다중 업로드)
   const handleImageUpload = async (e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+    const files = Array.from(e.target.files || []);
+    if (files.length === 0) return;
 
-    // 파일 크기 체크 (5MB)
-    if (file.size > 5 * 1024 * 1024) {
-      alert('이미지 크기는 5MB를 초과할 수 없습니다.');
+    // 최대 10개 제한
+    if (newPost.popupImageUrls.length + files.length > 10) {
+      alert('최대 10개의 이미지만 업로드할 수 있습니다.');
       return;
     }
 
-    // 파일 타입 체크
-    if (!file.type.startsWith('image/')) {
-      alert('이미지 파일만 업로드 가능합니다.');
-      return;
+    // 파일 검증
+    for (const file of files) {
+      // 파일 크기 체크 (5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        alert(`${file.name}: 이미지 크기는 5MB를 초과할 수 없습니다.`);
+        return;
+      }
+
+      // 파일 타입 체크
+      if (!file.type.startsWith('image/')) {
+        alert(`${file.name}: 이미지 파일만 업로드 가능합니다.`);
+        return;
+      }
     }
 
     try {
       setUploadingImage(true);
       
-      // 이전 이미지가 있으면 삭제
-      if (newPost.popupImageUrl) {
-        await deletePopupImage(newPost.popupImageUrl);
-      }
-
-      // 새 이미지 업로드
-      const imageUrl = await uploadPopupImage(file);
+      const uploadedUrls = [];
       
-      setNewPost({...newPost, popupImageUrl: imageUrl});
-      setImagePreview(imageUrl);
+      // 각 파일 업로드
+      for (const file of files) {
+        const imageUrl = await uploadPopupImage(file);
+        uploadedUrls.push(imageUrl);
+      }
+      
+      const newImageUrls = [...newPost.popupImageUrls, ...uploadedUrls];
+      setNewPost({...newPost, popupImageUrls: newImageUrls});
+      setImagePreviews(newImageUrls);
       
     } catch (err) {
       alert(`이미지 업로드 실패: ${err.message}`);
@@ -94,15 +104,16 @@ const GroupBuyAdmin = () => {
     }
   };
 
-  // 이미지 삭제 핸들러
-  const handleImageDelete = async () => {
-    if (!newPost.popupImageUrl) return;
-
+  // 개별 이미지 삭제 핸들러
+  const handleImageDelete = async (index) => {
+    const imageUrl = newPost.popupImageUrls[index];
+    
     if (window.confirm('이미지를 삭제하시겠습니까?')) {
       try {
-        await deletePopupImage(newPost.popupImageUrl);
-        setNewPost({...newPost, popupImageUrl: ''});
-        setImagePreview('');
+        await deletePopupImage(imageUrl);
+        const newImageUrls = newPost.popupImageUrls.filter((_, i) => i !== index);
+        setNewPost({...newPost, popupImageUrls: newImageUrls});
+        setImagePreviews(newImageUrls);
       } catch (err) {
         alert(`이미지 삭제 실패: ${err.message}`);
       }
@@ -123,11 +134,11 @@ const GroupBuyAdmin = () => {
       setNewPost({ 
         complexName: '', 
         reviewUrl: '',
-        popupImageUrl: '',
+        popupImageUrls: [],
         status: '모집중',
         date: new Date().toISOString().split('T')[0]
       });
-      setImagePreview('');
+      setImagePreviews([]);
       await loadPosts();
       alert('게시글이 추가되었습니다.');
     } catch (err) {
@@ -145,7 +156,7 @@ const GroupBuyAdmin = () => {
     setEditData({
       complexName: post.complexName,
       reviewUrl: post.reviewUrl || '',
-      popupImageUrl: post.popupImageUrl || '',
+      popupImageUrls: post.popupImageUrls || [],
       status: post.status,
       date: post.date
     });
@@ -227,28 +238,34 @@ const GroupBuyAdmin = () => {
               />
             </InputGroup>
             <InputGroup>
-              <Label>팝업 이미지 (선택사항)</Label>
+              <Label>팝업 이미지 (선택사항, 최대 10개)</Label>
               <ImageUploadContainer>
                 <ImageUploadInput
                   type="file"
                   id="popup-image-upload"
                   accept="image/*"
+                  multiple
                   onChange={handleImageUpload}
                   disabled={uploadingImage}
                 />
                 <ImageUploadButton htmlFor="popup-image-upload" disabled={uploadingImage}>
-                  {uploadingImage ? '업로드 중...' : '이미지 선택'}
+                  {uploadingImage ? '업로드 중...' : '이미지 선택 (다중)'}
                 </ImageUploadButton>
-                {newPost.popupImageUrl && (
-                  <ImageDeleteButton type="button" onClick={handleImageDelete} disabled={uploadingImage}>
-                    삭제
-                  </ImageDeleteButton>
-                )}
               </ImageUploadContainer>
-              {imagePreview && (
-                <ImagePreview src={imagePreview} alt="팝업 이미지 미리보기" />
+              {imagePreviews.length > 0 && (
+                <ImagePreviewGrid>
+                  {imagePreviews.map((url, index) => (
+                    <ImagePreviewItem key={index}>
+                      <ImagePreview src={url} alt={`팝업 이미지 ${index + 1}`} />
+                      <ImageDeleteBadge onClick={() => handleImageDelete(index)}>
+                        ✕
+                      </ImageDeleteBadge>
+                      <ImageNumber>{index + 1}</ImageNumber>
+                    </ImagePreviewItem>
+                  ))}
+                </ImagePreviewGrid>
               )}
-              <ImageInfo>• 최대 5MB, JPG/PNG/WEBP/GIF 지원</ImageInfo>
+              <ImageInfo>• 최대 10개, 각 5MB, JPG/PNG/WEBP/GIF 지원</ImageInfo>
             </InputGroup>
             <InputGroup>
               <Label>상태</Label>
@@ -327,8 +344,13 @@ const GroupBuyAdmin = () => {
                     )}
                   </TableCell>
                   <TableCell>
-                    {post.popupImageUrl ? (
-                      <ThumbnailImage src={post.popupImageUrl} alt="팝업 이미지" />
+                    {post.popupImageUrls && post.popupImageUrls.length > 0 ? (
+                      <ThumbnailContainer>
+                        <ThumbnailImage src={post.popupImageUrls[0]} alt="팝업 이미지 1" />
+                        {post.popupImageUrls.length > 1 && (
+                          <ImageCount>+{post.popupImageUrls.length - 1}</ImageCount>
+                        )}
+                      </ThumbnailContainer>
                     ) : (
                       <NoUrl>-</NoUrl>
                     )}
@@ -708,29 +730,76 @@ const ImageUploadButton = styled.label`
   }
 `;
 
-const ImageDeleteButton = styled.button`
-  background: ${({ disabled }) => disabled ? '#ccc' : '#f44336'};
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: ${({ disabled }) => disabled ? 'not-allowed' : 'pointer'};
-  transition: all 0.3s ease;
+const ImagePreview = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+`;
 
-  &:hover {
-    background: ${({ disabled }) => disabled ? '#ccc' : '#da190b'};
+const ImagePreviewGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
   }
 `;
 
-const ImagePreview = styled.img`
-  max-width: 200px;
-  max-height: 200px;
-  margin-top: 10px;
+const ImagePreviewItem = styled.div`
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%; /* 1:1 비율 */
   border-radius: 8px;
+  overflow: hidden;
   border: 2px solid #e0e0e0;
-  object-fit: contain;
+  background: #f5f5f5;
+
+  ${ImagePreview} {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+`;
+
+const ImageDeleteBadge = styled.button`
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 24px;
+  height: 24px;
+  background: rgba(244, 67, 54, 0.9);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 2;
+
+  &:hover {
+    background: #d32f2f;
+    transform: scale(1.1);
+  }
+`;
+
+const ImageNumber = styled.div`
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 1;
 `;
 
 const ImageInfo = styled.small`
@@ -738,6 +807,11 @@ const ImageInfo = styled.small`
   margin-top: 8px;
   color: #666;
   font-size: 0.85rem;
+`;
+
+const ThumbnailContainer = styled.div`
+  position: relative;
+  display: inline-block;
 `;
 
 const ThumbnailImage = styled.img`
@@ -752,6 +826,24 @@ const ThumbnailImage = styled.img`
   &:hover {
     transform: scale(1.1);
   }
+`;
+
+const ImageCount = styled.div`
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  background: ${({ theme }) => theme.primaryMiddle};
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 `;
 
 export default GroupBuyAdmin;

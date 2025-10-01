@@ -69,7 +69,9 @@ export const addGroupBuyPost = async (postData) => {
     const insertData = {
       complex_name: postData.complexName,
       review_url: postData.reviewUrl || null,
-      popup_image_url: postData.popupImageUrl || null,
+      popup_image_urls: postData.popupImageUrls && postData.popupImageUrls.length > 0 
+        ? JSON.stringify(postData.popupImageUrls) 
+        : null,
       status: postData.status,
       created_at: postData.date ? new Date(postData.date).toISOString() : new Date().toISOString()
     };
@@ -95,7 +97,9 @@ export const updateGroupBuyPost = async (id, postData) => {
     const updateData = {
       complex_name: postData.complexName,
       review_url: postData.reviewUrl || null,
-      popup_image_url: postData.popupImageUrl || null,
+      popup_image_urls: postData.popupImageUrls && postData.popupImageUrls.length > 0 
+        ? JSON.stringify(postData.popupImageUrls) 
+        : null,
       status: postData.status,
       updated_at: new Date().toISOString()
     };

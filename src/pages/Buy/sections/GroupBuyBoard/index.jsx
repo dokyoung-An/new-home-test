@@ -11,7 +11,7 @@ const GroupBuyBoard = () => {
   const [error, setError] = useState(null);
   const [searchKeyword, setSearchKeyword] = useState('');
   const [searchInput, setSearchInput] = useState('');
-  const [selectedPopupImage, setSelectedPopupImage] = useState(null);
+  const [selectedPopupImages, setSelectedPopupImages] = useState([]); // 배열로 변경
 
   // 실제 데이터 로드
   useEffect(() => {
@@ -31,7 +31,7 @@ const GroupBuyBoard = () => {
         complexName: post.complex_name,
         status: post.status,
         reviewUrl: post.review_url || null,
-        popupImageUrl: post.popup_image_url || null
+        popupImageUrls: post.popup_image_urls ? JSON.parse(post.popup_image_urls) : []
       }));
       
       setPosts(formattedData);
@@ -78,14 +78,14 @@ const GroupBuyBoard = () => {
     setCurrentPage(1);
   };
 
-  const handleComplexNameClick = (popupImageUrl) => {
-    if (popupImageUrl) {
-      setSelectedPopupImage(popupImageUrl);
+  const handleComplexNameClick = (popupImageUrls) => {
+    if (popupImageUrls && popupImageUrls.length > 0) {
+      setSelectedPopupImages(popupImageUrls);
     }
   };
 
   const handleClosePopup = () => {
-    setSelectedPopupImage(null);
+    setSelectedPopupImages([]);
   };
 
   return (
@@ -159,8 +159,8 @@ const GroupBuyBoard = () => {
                     <TableCell>{(currentPage - 1) * 10 + index + 1}</TableCell>
                     <TableCell className="start-date">{post.date}</TableCell>
                     <TableCell>
-                      {post.popupImageUrl ? (
-                        <ComplexNameButton onClick={() => handleComplexNameClick(post.popupImageUrl)}>
+                      {post.popupImageUrls && post.popupImageUrls.length > 0 ? (
+                        <ComplexNameButton onClick={() => handleComplexNameClick(post.popupImageUrls)}>
                           {post.complexName}
                         </ComplexNameButton>
                       ) : (
@@ -203,12 +203,19 @@ const GroupBuyBoard = () => {
         </BoardContainer>
 
         {/* 팝업 모달 */}
-        {selectedPopupImage && (
+        {selectedPopupImages.length > 0 && (
           <PopupModal onClick={handleClosePopup}>
             <PopupContent onClick={(e) => e.stopPropagation()}>
               <CloseButton onClick={handleClosePopup}>✕</CloseButton>
+              
               <PopupImageContainer>
-                <PopupImage src={selectedPopupImage} alt="공동구매 상세 정보" />
+                {selectedPopupImages.map((imageUrl, index) => (
+                  <PopupImage 
+                    key={index}
+                    src={imageUrl} 
+                    alt={`공동구매 상세 정보 ${index + 1}`} 
+                  />
+                ))}
               </PopupImageContainer>
             </PopupContent>
           </PopupModal>
@@ -652,17 +659,16 @@ const PopupImageContainer = styled.div`
   
   /* 스크롤바 스타일링 */
   &::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
   }
 
   &::-webkit-scrollbar-track {
     background: #f1f1f1;
-    border-radius: 10px;
   }
 
   &::-webkit-scrollbar-thumb {
     background: #888;
-    border-radius: 10px;
+    border-radius: 5px;
   }
 
   &::-webkit-scrollbar-thumb:hover {
@@ -674,6 +680,11 @@ const PopupImage = styled.img`
   width: 100%;
   height: auto;
   display: block;
+  
+  /* 이미지 사이 구분선 추가 */
+  &:not(:last-child) {
+    border-bottom: 2px solid #e0e0e0;
+  }
 `;
 
 export default GroupBuyBoard;
