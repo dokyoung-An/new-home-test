@@ -103,8 +103,8 @@ const ProjectSection = () => {
 
   // 지역별로 프로젝트 필터링
   const filteredProjects = selectedLocation === '전체' 
-    ? projects 
-    : projects.filter(project => project.location === selectedLocation);
+    ? projects.slice(0, 6) // '전체' 선택 시 최신 6개만
+    : projects.filter(project => project.location === selectedLocation); // 특정 지역 선택 시 해당 지역의 모든 프로젝트
   
   // 지역 목록 (경상권)
   const locations = ['전체', '울산', '부산', '대구', '창원', '포항', '김해'];
@@ -122,8 +122,12 @@ const ProjectSection = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // 모바일에서는 3개, PC에서는 6개
-  const displayProjects = isMobile ? filteredProjects.slice(0, 3) : filteredProjects.slice(0, 6);
+  // '전체' 필터: 이미 6개로 제한됨
+  // 특정 지역 필터: 모바일 3개, PC 6개
+  // 모바일에서는 항상 최대 3개만 표시
+  const displayProjects = selectedLocation === '전체'
+    ? (isMobile ? filteredProjects.slice(0, 3) : filteredProjects) // 전체: 모바일 3개, PC 6개
+    : (isMobile ? filteredProjects.slice(0, 3) : filteredProjects.slice(0, 6)); // 지역: 모바일 3개, PC 6개
 
  
 

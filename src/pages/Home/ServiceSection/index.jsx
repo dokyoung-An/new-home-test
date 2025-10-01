@@ -282,7 +282,7 @@ const ViewMore = styled.span`
   gap: 8px;
   font-size: 0.8rem;
   font-weight: 600;
-  color: #1a6dff;
+  color: #fff;
   font-family: 'Montserrat', sans-serif;
   letter-spacing: 0.05em;
   opacity: 0.9;
@@ -290,6 +290,8 @@ const ViewMore = styled.span`
   border: 1px solid #1a6dff;
   border-radius: 20px;
   padding: 8px 16px;
+  background-color: #1a6dff;
+ 
 
   ${Card}:hover & {
     opacity: 1;
@@ -298,6 +300,16 @@ const ViewMore = styled.span`
 
 const Arrow = styled.span`
   transition: transform 0.3s ease;
+  animation: arrow-animation 2s ease-in-out infinite;
+  
+  @keyframes arrow-animation {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(4px);
+    }
+  }
 
   ${Card}:hover & {
     transform: translateX(8px);
