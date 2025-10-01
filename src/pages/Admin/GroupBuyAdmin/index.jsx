@@ -5,7 +5,9 @@ import {
   getGroupBuyPosts, 
   addGroupBuyPost, 
   updateGroupBuyPost, 
-  deleteGroupBuyPost
+  deleteGroupBuyPost,
+  uploadPopupImage,
+  deletePopupImage
 } from '../../../lib/groupBuyApi';
 
 const GroupBuyAdmin = () => {
@@ -13,6 +15,7 @@ const GroupBuyAdmin = () => {
   const [newPost, setNewPost] = useState({
     complexName: '',
     reviewUrl: '',
+    popupImageUrl: '',
     status: '모집중',
     date: new Date().toISOString().split('T')[0] // 오늘 날짜로 기본값 설정
   });
@@ -20,6 +23,8 @@ const GroupBuyAdmin = () => {
   const [editData, setEditData] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [uploadingImage, setUploadingImage] = useState(false);
+  const [imagePreview, setImagePreview] = useState('');
 
   // 데이터 로드
   useEffect(() => {
@@ -39,7 +44,8 @@ const GroupBuyAdmin = () => {
         displayDate: new Date(post.created_at).toISOString().split('T')[0].replace(/-/g, '.'),
         complexName: post.complex_name,
         status: post.status,
-        reviewUrl: post.review_url || ''
+        reviewUrl: post.review_url || '',
+        popupImageUrl: post.popup_image_url || ''
       }));
       
       setPosts(formattedData);
@@ -47,6 +53,59 @@ const GroupBuyAdmin = () => {
       setError(`게시글을 불러오는데 실패했습니다: ${err.message}`);
     } finally {
       setLoading(false);
+    }
+  };
+
+  // 이미지 업로드 핸들러
+  const handleImageUpload = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // 파일 크기 체크 (5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      alert('이미지 크기는 5MB를 초과할 수 없습니다.');
+      return;
+    }
+
+    // 파일 타입 체크
+    if (!file.type.startsWith('image/')) {
+      alert('이미지 파일만 업로드 가능합니다.');
+      return;
+    }
+
+    try {
+      setUploadingImage(true);
+      
+      // 이전 이미지가 있으면 삭제
+      if (newPost.popupImageUrl) {
+        await deletePopupImage(newPost.popupImageUrl);
+      }
+
+      // 새 이미지 업로드
+      const imageUrl = await uploadPopupImage(file);
+      
+      setNewPost({...newPost, popupImageUrl: imageUrl});
+      setImagePreview(imageUrl);
+      
+    } catch (err) {
+      alert(`이미지 업로드 실패: ${err.message}`);
+    } finally {
+      setUploadingImage(false);
+    }
+  };
+
+  // 이미지 삭제 핸들러
+  const handleImageDelete = async () => {
+    if (!newPost.popupImageUrl) return;
+
+    if (window.confirm('이미지를 삭제하시겠습니까?')) {
+      try {
+        await deletePopupImage(newPost.popupImageUrl);
+        setNewPost({...newPost, popupImageUrl: ''});
+        setImagePreview('');
+      } catch (err) {
+        alert(`이미지 삭제 실패: ${err.message}`);
+      }
     }
   };
 
@@ -63,10 +122,12 @@ const GroupBuyAdmin = () => {
       
       setNewPost({ 
         complexName: '', 
-        reviewUrl: '', 
+        reviewUrl: '',
+        popupImageUrl: '',
         status: '모집중',
         date: new Date().toISOString().split('T')[0]
       });
+      setImagePreview('');
       await loadPosts();
       alert('게시글이 추가되었습니다.');
     } catch (err) {
@@ -84,6 +145,7 @@ const GroupBuyAdmin = () => {
     setEditData({
       complexName: post.complexName,
       reviewUrl: post.reviewUrl || '',
+      popupImageUrl: post.popupImageUrl || '',
       status: post.status,
       date: post.date
     });
@@ -165,13 +227,37 @@ const GroupBuyAdmin = () => {
               />
             </InputGroup>
             <InputGroup>
+              <Label>팝업 이미지 (선택사항)</Label>
+              <ImageUploadContainer>
+                <ImageUploadInput
+                  type="file"
+                  id="popup-image-upload"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                  disabled={uploadingImage}
+                />
+                <ImageUploadButton htmlFor="popup-image-upload" disabled={uploadingImage}>
+                  {uploadingImage ? '업로드 중...' : '이미지 선택'}
+                </ImageUploadButton>
+                {newPost.popupImageUrl && (
+                  <ImageDeleteButton type="button" onClick={handleImageDelete} disabled={uploadingImage}>
+                    삭제
+                  </ImageDeleteButton>
+                )}
+              </ImageUploadContainer>
+              {imagePreview && (
+                <ImagePreview src={imagePreview} alt="팝업 이미지 미리보기" />
+              )}
+              <ImageInfo>• 최대 5MB, JPG/PNG/WEBP/GIF 지원</ImageInfo>
+            </InputGroup>
+            <InputGroup>
               <Label>상태</Label>
               <Select
                 value={newPost.status}
                 onChange={(e) => setNewPost({...newPost, status: e.target.value})}
               >
                 <option value="모집중">모집중</option>
-                <option value="예약 마감">예약마감</option>
+                <option value="예약마감">예약마감</option>
               </Select>
             </InputGroup>
             <AddButton onClick={handleAddPost} disabled={loading}>
@@ -190,6 +276,7 @@ const GroupBuyAdmin = () => {
                 <HeaderCell>날짜</HeaderCell>
                 <HeaderCell>단지명</HeaderCell>
                 <HeaderCell>리뷰 URL</HeaderCell>
+                <HeaderCell>팝업 이미지</HeaderCell>
                 <HeaderCell>상태</HeaderCell>
                 <HeaderCell>관리</HeaderCell>
               </HeaderRow>
@@ -237,6 +324,13 @@ const GroupBuyAdmin = () => {
                       ) : (
                         <NoUrl>-</NoUrl>
                       )
+                    )}
+                  </TableCell>
+                  <TableCell>
+                    {post.popupImageUrl ? (
+                      <ThumbnailImage src={post.popupImageUrl} alt="팝업 이미지" />
+                    ) : (
+                      <NoUrl>-</NoUrl>
                     )}
                   </TableCell>
                   <TableCell>
@@ -357,7 +451,8 @@ const SectionTitle = styled.h2`
 `;
 
 const AddForm = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
   gap: 20px;
   align-items: end;
 
@@ -368,7 +463,7 @@ const AddForm = styled.div`
 `;
 
 const InputGroup = styled.div`
-  flex: 1;
+  flex: 1
 `;
 
 const Label = styled.label`
@@ -584,6 +679,78 @@ const CancelButton = styled.button`
 
   &:hover {
     background: #757575;
+  }
+`;
+
+const ImageUploadContainer = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+`;
+
+const ImageUploadInput = styled.input`
+  display: none;
+`;
+
+const ImageUploadButton = styled.label`
+  background: ${({ disabled }) => disabled ? '#ccc' : '#4caf50'};
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: ${({ disabled }) => disabled ? 'not-allowed' : 'pointer'};
+  transition: all 0.3s ease;
+  white-space: nowrap;
+
+  &:hover {
+    background: ${({ disabled }) => disabled ? '#ccc' : '#45a049'};
+  }
+`;
+
+const ImageDeleteButton = styled.button`
+  background: ${({ disabled }) => disabled ? '#ccc' : '#f44336'};
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: ${({ disabled }) => disabled ? 'not-allowed' : 'pointer'};
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: ${({ disabled }) => disabled ? '#ccc' : '#da190b'};
+  }
+`;
+
+const ImagePreview = styled.img`
+  max-width: 200px;
+  max-height: 200px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: 2px solid #e0e0e0;
+  object-fit: contain;
+`;
+
+const ImageInfo = styled.small`
+  display: block;
+  margin-top: 8px;
+  color: #666;
+  font-size: 0.85rem;
+`;
+
+const ThumbnailImage = styled.img`
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
   }
 `;
 

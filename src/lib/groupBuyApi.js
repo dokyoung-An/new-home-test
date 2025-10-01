@@ -1,5 +1,49 @@
 import { supabase } from './supabaseClient';
 
+// 팝업 이미지 업로드
+export const uploadPopupImage = async (file) => {
+  try {
+    const fileExt = file.name.split('.').pop();
+    const fileName = `${Math.random().toString(36).substring(2)}_${Date.now()}.${fileExt}`;
+    const filePath = `group-buy-popups/${fileName}`;
+
+    const { error: uploadError } = await supabase.storage
+      .from('images')
+      .upload(filePath, file);
+
+    if (uploadError) {
+      throw new Error(`이미지 업로드 오류: ${uploadError.message}`);
+    }
+
+    const { data: { publicUrl } } = supabase.storage
+      .from('images')
+      .getPublicUrl(filePath);
+
+    return publicUrl;
+  } catch (error) {
+    throw error;
+  }
+};
+
+// 팝업 이미지 삭제
+export const deletePopupImage = async (imageUrl) => {
+  try {
+    if (!imageUrl) return;
+    
+    const path = imageUrl.split('/images/')[1];
+    if (!path) return;
+
+    const { error } = await supabase.storage
+      .from('images')
+      .remove([path]);
+
+    if (error) {
+      console.error('이미지 삭제 오류:', error);
+    }
+  } catch (error) {
+    console.error('이미지 삭제 중 에러:', error);
+  }
+};
 
 // 공동구매 게시글 전체 조회
 export const getGroupBuyPosts = async () => {
@@ -25,6 +69,7 @@ export const addGroupBuyPost = async (postData) => {
     const insertData = {
       complex_name: postData.complexName,
       review_url: postData.reviewUrl || null,
+      popup_image_url: postData.popupImageUrl || null,
       status: postData.status,
       created_at: postData.date ? new Date(postData.date).toISOString() : new Date().toISOString()
     };
@@ -50,6 +95,7 @@ export const updateGroupBuyPost = async (id, postData) => {
     const updateData = {
       complex_name: postData.complexName,
       review_url: postData.reviewUrl || null,
+      popup_image_url: postData.popupImageUrl || null,
       status: postData.status,
       updated_at: new Date().toISOString()
     };

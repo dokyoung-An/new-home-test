@@ -83,9 +83,7 @@ export const ProjectTitle = styled.h2`
     font-size: 24px;
     margin-bottom: 40px;
     
-    br {
-      display: none;
-    }
+    
   }
 `;
 

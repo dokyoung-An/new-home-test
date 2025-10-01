@@ -11,6 +11,7 @@ const GroupBuyBoard = () => {
   const [error, setError] = useState(null);
   const [searchKeyword, setSearchKeyword] = useState('');
   const [searchInput, setSearchInput] = useState('');
+  const [selectedPopupImage, setSelectedPopupImage] = useState(null);
 
   // 실제 데이터 로드
   useEffect(() => {
@@ -29,7 +30,8 @@ const GroupBuyBoard = () => {
         date: new Date(post.created_at).toISOString().split('T')[0].replace(/-/g, '.'),
         complexName: post.complex_name,
         status: post.status,
-        reviewUrl: post.review_url || null
+        reviewUrl: post.review_url || null,
+        popupImageUrl: post.popup_image_url || null
       }));
       
       setPosts(formattedData);
@@ -74,6 +76,16 @@ const GroupBuyBoard = () => {
     setSearchInput('');
     setSearchKeyword('');
     setCurrentPage(1);
+  };
+
+  const handleComplexNameClick = (popupImageUrl) => {
+    if (popupImageUrl) {
+      setSelectedPopupImage(popupImageUrl);
+    }
+  };
+
+  const handleClosePopup = () => {
+    setSelectedPopupImage(null);
   };
 
   return (
@@ -146,7 +158,15 @@ const GroupBuyBoard = () => {
                   <TableRow key={post.id}>
                     <TableCell>{(currentPage - 1) * 10 + index + 1}</TableCell>
                     <TableCell className="start-date">{post.date}</TableCell>
-                    <TableCell>{post.complexName}</TableCell>
+                    <TableCell>
+                      {post.popupImageUrl ? (
+                        <ComplexNameButton onClick={() => handleComplexNameClick(post.popupImageUrl)}>
+                          {post.complexName}
+                        </ComplexNameButton>
+                      ) : (
+                        post.complexName
+                      )}
+                    </TableCell>
                     <TableCell>
                       <StatusBadge status={post.status}>
                         {post.status}
@@ -181,6 +201,18 @@ const GroupBuyBoard = () => {
             </Pagination>
           )}
         </BoardContainer>
+
+        {/* 팝업 모달 */}
+        {selectedPopupImage && (
+          <PopupModal onClick={handleClosePopup}>
+            <PopupContent onClick={(e) => e.stopPropagation()}>
+              <CloseButton onClick={handleClosePopup}>✕</CloseButton>
+              <PopupImageContainer>
+                <PopupImage src={selectedPopupImage} alt="공동구매 상세 정보" />
+              </PopupImageContainer>
+            </PopupContent>
+          </PopupModal>
+        )}
       </Content>
     </Container>
   );
@@ -410,7 +442,7 @@ const HeaderCell = styled.th`
   word-break: keep-all;
 
   @media (max-width: 768px) {
-    padding: 8px 8px;
+    padding: 8px 4px;
     font-size: 0.9rem;
 
     &.start-date {
@@ -533,6 +565,115 @@ const PaginationButton = styled.button`
     height: 35px;
     font-size: 0.9rem;
   }
+`;
+
+const ComplexNameButton = styled.button`
+  background: none;
+  border: none;
+  color: ${({ theme }) => theme.primaryMiddle};
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: all 0.3s ease;
+  padding: 0;
+
+  &:hover {
+    color: ${({ theme }) => theme.primaryDark};
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+`;
+
+const PopupModal = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+  animation: ${fadeIn} 0.3s ease-out;
+`;
+
+const PopupContent = styled.div`
+  position: relative;
+  background: white;
+  border-radius: 16px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+`;
+
+const CloseButton = styled.button`
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: rotate(90deg);
+  }
+
+  @media (max-width: 768px) {
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    top: 10px;
+    right: 10px;
+  }
+`;
+
+const PopupImageContainer = styled.div`
+  max-height: 90vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  
+  /* 스크롤바 스타일링 */
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+`;
+
+const PopupImage = styled.img`
+  width: 100%;
+  height: auto;
+  display: block;
 `;
 
 export default GroupBuyBoard;

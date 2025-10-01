@@ -136,7 +136,7 @@ const ProjectSection = () => {
       <Container>
         <ProjectContent>
           <ProjectTitle>
-            사전점검 하방은 <span>경상권 1위 업체</span>로서<br />
+            사전점검 하방은 <span>경상권 1위 업체</span>로서 <br />
             <span>지역 밀착형 고객 서비스</span>를 기본으로 제공 합니다
           </ProjectTitle>
           
