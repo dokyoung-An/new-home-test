@@ -476,6 +476,7 @@ const TableCell = styled.td`
   border-bottom: 1px solid #cedae7;
   font-size: 1rem;
   word-break: keep-all;
+  text-decoration: none;
 
   @media (max-width: 768px) {
     padding: 12px 8px;
@@ -577,13 +578,14 @@ const PaginationButton = styled.button`
 const ComplexNameButton = styled.button`
   background: none;
   border: none;
-  color: ${({ theme }) => theme.primaryMiddle};
+  color: ${({ theme }) => theme.primary};
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
   text-decoration: underline;
   transition: all 0.3s ease;
   padding: 0;
+  text-decoration: none;
 
   &:hover {
     color: ${({ theme }) => theme.primaryDark};

@@ -6,8 +6,10 @@ import { fadeIn } from '../../../../styles/animations';
 const BannerItem = ({ 
   topText, 
   mainTitle, 
+  mainTitle2,
   highlightText, 
   description, 
+  description2,
   imageSrc, 
   imageAlt, 
   variant = 'primary',
@@ -37,7 +39,11 @@ const BannerItem = ({
           <MainTitle variant={variant}>
             {mainTitle} 
           </MainTitle>
+          <MainTitle2 variant={variant}>
+            {mainTitle2} 
+          </MainTitle2>
           <Description>{description}</Description>
+          <Description2>{description2}</Description2>
           <Wrapper>
           <ContactButton onClick={handlePhoneClick}>
             {buttonText}
@@ -65,10 +71,11 @@ const GroupBuyBanner = () => {
   return (
     <>
       <BannerItem 
-        mainTitle="궁금한 점이 있으시면 하방으로 연락주세요."
-    
-        description={`고객센터 운영시간 
-            : 평일 오전 9시~ 오후 6시, 점심시간 오전 12시~ 오후 1시`}
+        mainTitle="궁금한 점이 있으시면 하방으로 연락주세요." 
+        mainTitle2={`궁금한 점이 있으시면 
+          하방으로 연락주세요.`}
+        description={`고객센터 운영시간`}
+        description2={`: 평일 9시~ 오후 6시 | 점심시간 12시~ 오후 1시`}
         imageSrc="/img/price/phone2.png"
         imageAlt="공동구매 캐릭터"
         variant="primary"
@@ -160,9 +167,6 @@ const MainTitle = styled.h2`
   color: #333;
   word-break: keep-all;
   
-  span{
-    color: ${({ variant }) => variant === 'secondary' ? '#7710f4' : '#1d60f1'};
-  }
 
   @media (max-width: 1200px) {
     font-size: 1.8rem;
@@ -170,14 +174,29 @@ const MainTitle = styled.h2`
 
   @media (max-width: 768px) {
     font-size: 1.5rem;
+    display: none;
   }
 `;
 
+const MainTitle2 = styled.h2`
+   display: none;
+
+   @media (max-width: 768px) {
+    display: block;
+    font-size: 1.8rem;
+    white-space: pre-line;
+    line-height: 1.5;
+    text-align: center;
+    
+  }
+
+
+
+`;
 
 const Description = styled.p`
   font-size: 1.1rem;
   line-height: 1.6;
-  margin-bottom: 30px;
   opacity: 0.9;
   white-space: pre-line;
   word-break: keep-all;
@@ -186,11 +205,33 @@ const Description = styled.p`
 
   @media (max-width: 768px) {
     font-size: 1.1rem;
+    text-align: center;
+    padding-left: 0;
     br {
       display: none;
     }
   }
 `;
+
+const Description2 = styled.p`
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  opacity: 0.9;
+  white-space: pre-line;
+  word-break: keep-all;
+  font-weight: 500;
+  text-align: left;
+  margin-top: -10px;
+  padding-left: 20px;
+
+  @media (max-width: 768px) {
+    text-align: center;
+    padding-left: 0;
+   
+  }
+`;
+
 
 const Wrapper = styled.div`
   display: flex;
@@ -230,6 +271,7 @@ const ContactButton = styled.button`
   @media (max-width: 768px) {
     width: 100%;
     max-width: 300px;
+    margin:0 auto;
     
   }
 `;
